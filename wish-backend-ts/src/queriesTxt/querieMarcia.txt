@@ -1,0 +1,106 @@
+db.residents.aggregate([
+    {
+        $unwind: { path: "$costs", preserveNullAndEmptyArrays: true }
+    },
+
+    {
+        $lookup: {
+           from: "payments",
+           let: { resident_id: "$_id", costId: "$costs.id" },
+           pipeline: [
+              { $match:
+                 { $expr:
+                    { $and:
+                       [
+                         { $eq: [ "$residentId",  "$$resident_id" ] },
+                         { $eq: [ "$costId",  "$$costId" ] }
+                       ]
+                    }
+                 }
+              },
+              { $addFields: {year: {  $year: "$date" }} },
+              { $project: { residentId: 0, _id: 0 } }
+           ],
+           as: "payments"
+        }
+    },
+    
+    {
+        $group : {
+           "_id": "$_id",
+            user: { $first: "$$ROOT" },
+            costs: {
+                "$push": {
+                    id: "$$ROOT.costs.id",
+                    name: "$$ROOT.costs.name",
+                    periodicity: "$$ROOT.costs.periodicity",
+                    value: "$$ROOT.costs.value",
+                    date: "$$ROOT.costs.date",
+                    totalAnual: "$$ROOT.costs.totalAnual",
+                    payments: "$$ROOT.payments",
+                 }   
+            },
+        }
+     },
+
+     { $project: {"_id":0, "user.costs": 0,"user.payments": 0 } }
+])
+
+
+
+QUERY 2
+db.residents.aggregate([
+    {
+        $unwind: { path: "$costs", preserveNullAndEmptyArrays: true }
+    },
+
+    {
+        $lookup: {
+           from: "payments",
+           let: { resident_id: "$email", costId: "$costs.id" },
+           pipeline: [
+              { $match:
+                 { $expr:
+                    { $and:
+                       [
+                         { $eq: [ "$residentId",  "$$resident_id" ] },
+                         { $eq: [ "$costId",  "$$costId" ] }
+                       ]
+                    }
+                 }
+              },
+              { $addFields: {year: {  $year: "$date" }} },
+              { $project: { residentId: 0, _id: 0 } }
+           ],
+           as: "payments"
+        }
+    },
+    
+    {
+        $group : {
+           "_id": "$_id",
+            user: { 
+                $first: {
+                    email: "$email",    
+                    name: "$name",
+                    address: "$address",
+                    emailStatus: "$emailStatus",
+                    phoneNumber: "$phoneNumber",   
+                }
+            },
+            costs: {
+                "$push": {
+                    id: "$costs.id",
+                    name: "$costs.name",
+                    periodicity: "$costs.periodicity",
+                    value: "$costs.value",
+                    date: "$costs.date",
+                    totalAnual: "$costs.totalAnual",
+                    payments: "$payments",
+                 }   
+            },
+        }
+     },
+
+     { $replaceWith: { $mergeObjects:  [ "$user", { "_id": "$_id", costs: "$costs" }  ] } }
+])

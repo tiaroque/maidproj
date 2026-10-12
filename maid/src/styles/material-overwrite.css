@@ -1,0 +1,861 @@
+:root {
+  --mat-button-text-container-shape: 16px;
+  --mat-button-text-container-height: 50px;
+
+  /* // --body-overflow: auto; */
+  --mat-tab-divider-height: 0px;
+
+  /* // mat-form-field */
+  /* --mat-form-field-container-text-line-height: 1.5rem; */
+  --mat-form-field-outlined-container-shape: 16px !important;
+  --mat-form-field-outlined-container-color: var(--mat-sys-background);
+  /* Focus uses mint so it does not read as the red invalid outline. */
+  --mat-form-field-outlined-focus-outline-color: var(--mat-sys-tertiary);
+  --mat-form-field-outlined-focus-label-text-color: var(--mat-sys-tertiary);
+  --mat-form-field-container-vertical-padding: 10px;
+  --mat-form-field-container-height: 44px;
+
+  --mat-dialog-container-shape: 15px;
+
+  /* // button toggle */
+  --mat-button-toggle-divider-color: var(--mat-sys-surface-container-high);
+  --mat-button-toggle-height: 44px;
+
+  --mat-fab-extended-container-height: 36px;
+  --mat-autocomplete-container-shape: 8px;
+  --mat-stepper-header-height: 50px;
+  --mat-snackbar-container-shape: 14px;
+  --mat-checkbox-label-text-line-height: 0.96rem;
+
+  /* Expansion Panel */
+  --mat-expansion-container-shape: 18px;
+  --mat-expansion-header-expanded-state-height: 50px;
+  --mat-expansion-container-text-color: var(--mat-sys-on-secondary-container);
+  .unicorn-dark-theme {
+    --mat-expansion-container-text-color: var(--mat-sys-on-surface);
+  }
+
+  /* --mat-sys-surface-container-low */
+  --mat-fab-small-container-shape: 9999px;
+
+  /* EXPANSION CONTAINER */
+  --mat-expansion-container-background-color: var(--mat-sys-surface-bright);
+  --mat-card-elevated-container-color: var(--mat-sys-surface-container-high);
+  /* --mat-expansion-container-background-color: white;
+  --mat-card-elevated-container-color: white; */
+  .unicorn-dark-theme {
+    --mat-expansion-container-background-color: var(
+      --mat-sys-surface-container-high
+    );
+    --mat-card-elevated-container-color: var(--mat-sys-surface-container-high);
+  }
+
+  .menu-expansion-container {
+    /* --mat-expansion-container-background-color: var(---mat-sys-background); */
+    --mat-expansion-container-background-color: var(--mat-sys-background);
+  }
+
+  .unicorn-dark-theme .menu-expansion-container {
+    --mat-expansion-container-background-color: var(--mat-sys-background);
+  }
+
+  /* Mat Fab Button */
+  --mat-fab-small-container-elevation-shadow: var(--mat-sys-level0);
+  --mat-fab-small-hover-container-elevation-shadow: var(--mat-sys-level0);
+  --mat-fab-small-pressed-container-elevation-shadow: var(--mat-sys-level1);
+  --mat-fab-small-focus-container-elevation-shadow: var(--mat-sys-level1);
+
+  .move-images {
+    --mat-fab-small-container-color: var(--mat-sys-background);
+    --mat-fab-small-foreground-color: var(--mat-sys-on-background);
+  }
+
+  --mat-optgroup-label-text-size: 1rem;
+
+  /* Mat Flat Button */
+  --mat-button-filled-container-color: var(--mat-sys-primary);
+  --mat-button-filled-label-text-color: var(--mat-sys-on-primary);
+  --mat-button-filled-horizontal-padding: 15px;
+
+  /* Mat Menu */
+  --mat-menu-item-leading-spacing: 8px;
+
+  /* Mat Badge */
+  --mat-badge-background-color: var(--mat-sys-primary);
+
+  /* Mat Switch */
+  --mat-slide-toggle-label-text-color: var(--mat-sys-on-surface);
+}
+
+/* // // // // // Header Tabs // // // // */
+
+.mat-mdc-tab-link:hover .mdc-tab__ripple::before {
+  border-radius: 8px !important;
+}
+
+.mat-ripple.mat-mdc-tab-ripple {
+  border-radius: 8px !important;
+}
+
+.xprofile .mat-mdc-form-field-error-wrapper {
+  @apply pl-[10px]!;
+}
+
+.xprofile .mdc-text-field--outlined {
+  background-color: var(--mat-sys-background);
+  border-radius: var(--mat-form-field-outlined-container-shape);
+}
+
+/* // .year .mat-mdc-form-field-error,
+// .day .mat-mdc-form-field-error {
+//   z-index: 10;
+//   width: 300px; */
+
+/* //   .unicorn-dark-theme {
+//     background-color: var(--mat-app-background-color);
+//   }
+// } */
+/* 
+// // // // // // // // // // // // // // // //
+// // // // MAT EXPANSION PANEL // // // // // // */
+
+.menu-left .mat-accordion .mat-expansion-panel {
+  border-top-right-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+}
+
+/* .mat-expansion-panel-header {
+  @apply m-1.5 rounded-lg !important;
+} */
+/* 
+.mat-expansion-panel-spacing {
+  margin: 8px 0 !important;
+} */
+
+/* .mat-accordion > .mat-expansion-panel-spacing:first-child,
+.mat-accordion
+  > *:first-child:not(.mat-expansion-panel)
+  .mat-expansion-panel-spacing {
+  margin-top: 0 !important;
+} */
+
+.headers-align .mat-expansion-panel-header-description {
+  flex-grow: 1 !important;
+  justify-content: flex-end;
+  align-items: center;
+  width: 80px;
+}
+
+.headers-align .mat-expansion-panel-header-title {
+  flex-basis: 100% !important;
+}
+
+.mat-vertical-content {
+  padding: 12px 6px 0px 12px !important;
+}
+
+/* AUTOCOMPLETE */
+.cdk-overlay-pane:not(.mat-mdc-autocomplete-panel-above)
+  div.mat-mdc-autocomplete-panel {
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
+}
+
+/* // // // // // // // // // // // // // // // //
+// Signup terms and conditions checkboxes on top
+// // // // // // // // // // // // // // // // */
+.checkboxes-top {
+  .mat-internal-form-field {
+    align-items: flex-start;
+  }
+  .mdc-label {
+    @apply pt-1;
+  }
+}
+
+@media (min-width: 640px) {
+  .mat-datepicker-content-container {
+    width: 350px !important;
+    height: auto !important;
+  }
+}
+
+.mat-mdc-mini-fab {
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.language .mat-mdc-menu-item {
+  min-height: 40px !important;
+}
+
+.mat-mdc-menu-item:has([matMenuItemIcon]) {
+  padding-left: var(--mat-menu-item-with-icon-leading-spacing, 12px) !important;
+  padding-right: var(--mat-menu-item-with-icon-trailing-spacing, 12px) !important;
+}
+
+.mat-mdc-menu-item [matMenuItemIcon] {
+  flex-shrink: 0;
+  width: var(--mat-menu-item-icon-size, 24px);
+  height: var(--mat-menu-item-icon-size, 24px);
+  margin-right: var(--mat-menu-item-spacing, 12px) !important;
+}
+
+[dir="rtl"] .mat-mdc-menu-item:has([matMenuItemIcon]) {
+  padding-left: var(--mat-menu-item-with-icon-trailing-spacing, 12px) !important;
+  padding-right: var(--mat-menu-item-with-icon-leading-spacing, 12px) !important;
+}
+
+[dir="rtl"] .mat-mdc-menu-item [matMenuItemIcon] {
+  margin-right: 0 !important;
+  margin-left: var(--mat-menu-item-spacing, 12px) !important;
+}
+
+.mat-mdc-form-field,
+.mat-mdc-select,
+.mat-mdc-select-panel,
+.mat-mdc-option,
+.mat-mdc-autocomplete-panel,
+.mat-mdc-menu-panel,
+.mat-mdc-menu-item,
+.mat-mdc-dialog-container,
+.mat-datepicker-content,
+.mat-mdc-snack-bar-container,
+.mat-mdc-chip,
+.mat-mdc-button-base,
+.mat-mdc-tab-header,
+.mat-mdc-paginator,
+.mat-mdc-tooltip-surface,
+.mdc-list-item__primary-text,
+.mdc-floating-label,
+.mat-mdc-select-min-line {
+  font-family: Nunito, "Nunito Fallback", sans-serif;
+  letter-spacing: normal;
+}
+
+.admin-chrome {
+  --mat-tab-active-indicator-color: #0f9488;
+  --mat-tab-active-ripple-color: rgb(15 148 136 / 0.2);
+  color: var(--mat-sys-on-surface);
+  background-color: var(--mat-sys-background);
+  border-bottom-color: var(--mat-sys-outline-variant) !important;
+}
+
+.admin-chrome .admin-logo {
+  color: #155e63;
+}
+
+.admin-chrome .mat-mdc-tab-link {
+  color: rgb(112 128 126) !important;
+}
+
+.admin-chrome .mat-mdc-tab-link .mdc-tab__content {
+  font-family: Nunito, "Nunito Fallback", sans-serif;
+  font-weight: 500;
+  letter-spacing: normal;
+}
+
+.admin-chrome .mat-mdc-tab-link.mdc-tab--active {
+  color: #0f766e !important;
+}
+
+.admin-chrome .mobile-btn > span {
+  background: #155e63;
+}
+
+.admin-chrome.unicorn-dark-theme {
+  --mat-sys-on-surface-variant: #7fd8c3;
+  --mat-sys-primary: #7fd8c3;
+  color: var(--mat-sys-on-surface);
+  background-color: var(--mat-sys-background);
+  border-bottom-color: rgb(127 216 195 / 0.28) !important;
+}
+
+.admin-chrome.unicorn-dark-theme .admin-logo {
+  color: #7fd8c3;
+}
+
+.admin-chrome.unicorn-dark-theme .mat-mdc-tab-link {
+  color: rgb(237 243 242 / 0.78) !important;
+}
+
+.admin-chrome.unicorn-dark-theme .mat-mdc-tab-link.mdc-tab--active {
+  color: #7fd8c3 !important;
+}
+
+.admin-chrome.unicorn-dark-theme .mobile-btn > span {
+  background: #7fd8c3;
+}
+
+app-left-nav {
+  --left-nav-bg: var(--mat-sys-background);
+}
+
+.unicorn-dark-theme app-left-nav {
+  --left-nav-bg: var(--mat-sys-surface-container-low);
+}
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px !important;
+}
+
+/* The icon column is 48px wide in both the expanded and the compact rail, so
+   collapsing the menu never nudges the icons sideways. It also lines the
+   profile menu up with the chat conversation rows, which are already 48px. */
+.side-nav-item {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  align-items: center;
+  min-height: 44px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--mat-sys-on-surface-variant) !important;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  /* Width matches the duration the nav host animates its own width over, so
+     the row shrinks with the rail instead of snapping ahead of it. */
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    width 300ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .side-nav-item {
+    transition:
+      background-color 180ms ease,
+      color 180ms ease;
+  }
+}
+
+.side-nav-item svg {
+  justify-self: center;
+}
+
+/* The label stays on one line while the rail narrows, so it slides out of view
+   with the rail instead of reflowing onto a second line first. */
+.side-nav-item:not(.conversation-item) > span {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.side-nav-item:hover {
+  background-color: var(--mat-sys-surface-container);
+  color: var(--mat-sys-on-surface) !important;
+}
+
+.side-nav-item:focus {
+  outline: none;
+}
+
+.side-nav-item:focus-visible {
+  outline: 2px solid #155e63;
+  outline-offset: 2px;
+}
+
+.filter-panel {
+  --mat-form-field-container-height: 40px;
+  --mat-form-field-container-vertical-padding: 8px;
+  container-type: inline-size;
+  container-name: filter-panel;
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  z-index: 50;
+  width: 100%;
+  box-shadow: 0 12px 32px rgb(15 42 46 / 0.14);
+}
+
+@media (min-width: 640px) {
+  .filter-panel {
+    width: 28rem !important;
+    max-width: 28rem;
+  }
+}
+
+.location-search-compact {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: 1fr;
+}
+
+@container filter-panel (min-width: 28rem) {
+  .location-search-compact {
+    grid-template-columns: 12.5rem minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+.filter-panel .mat-mdc-slider {
+  display: block;
+  box-sizing: border-box;
+  height: 32px;
+  min-height: 32px;
+  max-width: 100%;
+  overflow: visible;
+  /* Range thumbs sit on the track ends; inset so they stay inside the panel. */
+  width: calc(100% - 24px) !important;
+  margin-inline: 12px !important;
+}
+
+.filter-panel .mat-mdc-form-field {
+  margin-bottom: 0;
+}
+
+.filter-panel .mat-mdc-text-field-wrapper,
+.filter-panel .mdc-text-field--outlined {
+  height: 40px;
+}
+
+.filter-panel .mat-mdc-form-field-infix {
+  min-height: 40px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.side-nav-item.conversation-item {
+  position: relative;
+  box-sizing: border-box;
+  grid-template-columns: 40px minmax(0, 1fr) auto;
+  column-gap: 8px;
+  height: 48px;
+  min-height: 48px;
+  padding: 4px !important;
+  overflow: visible;
+  font-weight: 500;
+}
+
+.side-nav-item.conversation-item .conversation-copy {
+  min-width: 0;
+  overflow: hidden;
+  padding-block: 0 !important;
+}
+
+.side-nav-item.conversation-item .conversation-avatar {
+  overflow: visible;
+}
+
+/* Fade the labels in while the rail widens; the compact rule below sets
+   `transition: none` so collapsing stays instant. */
+.side-nav-item.conversation-item .conversation-copy,
+.side-nav-item.conversation-item .conversation-meta {
+  transition: opacity 200ms ease-out 80ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .side-nav-item.conversation-item .conversation-copy,
+  .side-nav-item.conversation-item .conversation-meta {
+    transition: none;
+  }
+}
+
+.side-nav-item .conversation-favorite,
+.side-nav-item .conversation-alert {
+  color: var(--mat-sys-outline) !important;
+}
+
+.conversation-favorite.is-favorite,
+.conversation-favorite-badge {
+  color: #7fd8c3 !important;
+}
+
+.left-nav-compact .side-nav-item.conversation-item {
+  width: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  grid-template-columns: 40px;
+  column-gap: 0;
+  justify-content: center;
+  justify-items: center;
+  justify-self: center;
+  overflow: visible;
+}
+
+.left-nav-compact .side-nav-item.conversation-item .conversation-copy,
+.left-nav-compact .side-nav-item.conversation-item .conversation-meta {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: none;
+}
+
+.side-nav-item.menu-active {
+  background-color: rgb(21 94 99 / 0.1) !important;
+  color: #0f766e !important;
+}
+
+/* Marker down the leading edge, so the active page does not rely on a faint
+   tint alone. Conversations in the chat list have their own indicator, and the
+   compact rail has no room for one. */
+.side-nav-item.menu-active:not(.conversation-item) {
+  position: relative;
+}
+
+.left-nav-compact .side-nav-item.menu-active::after {
+  display: none;
+}
+
+.side-nav-item.menu-active:not(.conversation-item)::after {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  top: 50%;
+  height: 1.25rem;
+  width: 3px;
+  transform: translateY(-50%);
+  border-radius: 0 3px 3px 0;
+  background-color: currentColor;
+}
+
+.left-nav-compact,
+.left-nav-compact * {
+  scrollbar-width: none;
+}
+
+.left-nav-compact::-webkit-scrollbar,
+.left-nav-compact *::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none;
+}
+
+.left-nav-compact .side-nav {
+  align-items: center;
+}
+
+/* Same 48px track and the same row height as the expanded rail: only the
+   label column goes away, so nothing moves in either direction. */
+.left-nav-compact .side-nav-item:not(.conversation-item) {
+  grid-template-columns: 48px;
+  width: 48px;
+  min-width: 48px;
+  padding: 0;
+}
+
+.left-nav-compact .side-nav-item > span {
+  display: none !important;
+}
+
+.left-nav-compact app-messages-list .animate-pulse > div {
+  justify-content: flex-start;
+  gap: 0;
+}
+
+.left-nav-compact app-messages-list .animate-pulse > div > :not(:first-child) {
+  display: none !important;
+}
+
+.unicorn-dark-theme .side-nav-item.menu-active {
+  background-color: rgb(127 216 195 / 0.14) !important;
+  color: #7fd8c3 !important;
+}
+
+.side-nav-item.conversation-item.menu-active {
+  box-shadow: none;
+}
+
+.side-nav-item.conversation-item.menu-active::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -5px;
+  z-index: 1;
+  width: 3px;
+  height: 28px;
+  transform: translateY(-50%);
+  border-radius: 999px;
+  background: #7fd8c3;
+}
+
+.side-nav-item.conversation-item .conversation-photo .profile-img-border {
+  border: 0 !important;
+}
+
+.left-nav-compact .side-nav-item.conversation-item.menu-active {
+  box-shadow: none;
+}
+
+.left-nav-compact .side-nav-item.conversation-item.menu-active::before {
+  display: none;
+}
+
+.unicorn-dark-theme .side-nav-item.conversation-item.menu-active {
+  box-shadow: none;
+}
+
+.chat-composer-field {
+  --mat-form-field-container-height: 44px;
+  --mat-form-field-container-vertical-padding: 10px;
+  --mat-form-field-outlined-outline-width: 0;
+  --mat-form-field-outlined-outline-color: transparent;
+  --mat-form-field-outlined-hover-outline-color: transparent;
+  --mat-form-field-outlined-focus-outline-color: transparent;
+  --mat-form-field-outlined-disabled-outline-color: transparent;
+}
+
+.chat-composer-field .mdc-notched-outline {
+  display: none;
+}
+
+.chat-composer-field .mat-mdc-text-field-wrapper {
+  background: transparent !important;
+  padding-inline: 0 !important;
+}
+
+.chat-send-btn:disabled {
+  cursor: default;
+  opacity: 0.45;
+}
+
+.chat-presence-online {
+  color: #2f8a4e;
+}
+
+.app-menu {
+  --mat-menu-container-shape: 16px;
+  --mat-menu-container-color: var(--mat-sys-surface-container-low);
+  --mat-menu-container-elevation-shadow:
+    0 12px 32px rgb(15 42 46 / 0.14), 0 2px 6px rgb(15 42 46 / 0.08);
+  --mat-menu-item-label-text-size: 0.875rem;
+  --mat-menu-item-label-text-weight: 600;
+  --mat-menu-item-label-text-color: var(--mat-sys-on-surface);
+  --mat-menu-item-icon-color: var(--mat-sys-on-surface-variant);
+  --mat-menu-item-icon-size: 20px;
+  --mat-menu-item-spacing: 12px;
+  --mat-menu-item-with-icon-leading-spacing: 12px;
+  --mat-menu-item-with-icon-trailing-spacing: 16px;
+  --mat-menu-item-hover-state-layer-color: rgb(15 148 136 / 0.08);
+  --mat-menu-item-focus-state-layer-color: rgb(15 148 136 / 0.12);
+  min-width: 220px !important;
+  margin-top: 4px;
+  border: 1px solid var(--mat-sys-outline-variant);
+}
+
+.unicorn-dark-theme .app-menu {
+  --mat-menu-container-color: var(--mat-sys-surface-container-high);
+  --mat-menu-container-elevation-shadow: 0 12px 32px rgb(0 0 0 / 0.45);
+  --mat-menu-item-hover-state-layer-color: rgb(127 216 195 / 0.1);
+  --mat-menu-item-focus-state-layer-color: rgb(127 216 195 / 0.14);
+}
+
+.app-menu .mat-mdc-menu-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 6px !important;
+}
+
+.app-menu .mat-mdc-menu-item,
+.app-menu .mat-mdc-menu-item .mat-mdc-menu-ripple {
+  border-radius: 10px !important;
+}
+
+.app-menu .mat-mdc-menu-item {
+  min-height: 42px;
+}
+
+.app-menu .mat-mdc-menu-item .mat-icon {
+  font-size: 20px !important;
+  line-height: 20px;
+}
+
+.app-menu svg[matMenuItemIcon],
+.app-menu .app-menu-icon {
+  color: var(--mat-menu-item-icon-color);
+}
+
+.app-menu .mat-mdc-menu-item-text {
+  flex: 1;
+}
+
+.app-autocomplete {
+  --mat-autocomplete-background-color: var(--mat-sys-surface-container-low);
+  --mat-autocomplete-container-elevation-shadow:
+    0 12px 32px rgb(15 42 46 / 0.14), 0 2px 6px rgb(15 42 46 / 0.08);
+  --mat-option-label-text-size: 0.875rem;
+  --mat-option-label-text-weight: 600;
+  --mat-option-label-text-color: var(--mat-sys-on-surface);
+  --mat-option-hover-state-layer-color: rgb(15 148 136 / 0.08);
+  --mat-option-focus-state-layer-color: rgb(15 148 136 / 0.12);
+  --mat-option-selected-state-layer-color: rgb(15 148 136 / 0.12);
+  --mat-optgroup-label-text-color: var(--mat-sys-outline);
+  margin-top: 4px;
+  padding: 6px !important;
+  border: 1px solid var(--mat-sys-outline-variant) !important;
+}
+
+.cdk-overlay-pane div.mat-mdc-autocomplete-panel.app-autocomplete {
+  border-radius: 16px !important;
+}
+
+.unicorn-dark-theme .app-autocomplete {
+  --mat-autocomplete-background-color: var(--mat-sys-surface-container-high);
+  --mat-autocomplete-container-elevation-shadow: 0 12px 32px rgb(0 0 0 / 0.45);
+  --mat-option-hover-state-layer-color: rgb(127 216 195 / 0.1);
+  --mat-option-focus-state-layer-color: rgb(127 216 195 / 0.14);
+  --mat-option-selected-state-layer-color: rgb(127 216 195 / 0.14);
+}
+
+/* This file sits in a cascade layer, so overriding Material's unlayered
+   option styles needs `!important`. */
+.app-autocomplete .mat-mdc-option {
+  min-height: 52px !important;
+  padding-inline: 4px 8px !important;
+  border-radius: 10px !important;
+}
+
+.app-autocomplete .mat-mdc-option + .mat-mdc-option {
+  margin-top: 2px !important;
+}
+
+.app-autocomplete .mat-mdc-option .mdc-list-item__primary-text {
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+.app-autocomplete .mat-mdc-optgroup-label {
+  min-height: 32px !important;
+  margin-top: 4px !important;
+  padding-inline: 4px 8px !important;
+}
+
+.cdk-overlay-pane .mat-mdc-select-panel.app-select-panel {
+  margin-top: 6px;
+  background-color: var(--mat-sys-surface-container-lowest) !important;
+  border: 1px solid rgb(127 216 195 / 0.7) !important;
+  border-radius: 16px !important;
+  padding: 6px !important;
+  box-shadow:
+    0 16px 36px rgb(15 42 46 / 0.12),
+    0 2px 6px rgb(15 42 46 / 0.06) !important;
+  --mat-option-label-text-size: 0.9375rem;
+  --mat-option-label-text-weight: 600;
+  --mat-option-label-text-color: var(--mat-sys-on-surface);
+  --mat-option-hover-state-layer-color: rgb(15 148 136 / 0.1);
+  --mat-option-focus-state-layer-color: rgb(15 148 136 / 0.14);
+  --mat-option-selected-state-layer-color: rgb(15 148 136 / 0.16);
+}
+
+.unicorn-dark-theme .cdk-overlay-pane .mat-mdc-select-panel.app-select-panel {
+  border-color: rgb(127 216 195 / 0.35) !important;
+  box-shadow: 0 16px 36px rgb(0 0 0 / 0.45) !important;
+  --mat-option-hover-state-layer-color: rgb(127 216 195 / 0.12);
+  --mat-option-focus-state-layer-color: rgb(127 216 195 / 0.16);
+  --mat-option-selected-state-layer-color: rgb(127 216 195 / 0.16);
+}
+
+.app-select-panel .mat-mdc-option {
+  min-height: 44px !important;
+  padding-inline: 10px !important;
+  border-radius: 12px !important;
+}
+
+.app-select-panel .mat-mdc-option + .mat-mdc-option {
+  margin-top: 2px !important;
+}
+
+.app-select-panel .mat-mdc-option .mat-mdc-option-ripple {
+  border-radius: 12px !important;
+}
+
+.app-select-panel .mat-mdc-option .mdc-list-item__primary-text {
+  width: 100% !important;
+  font-weight: 600 !important;
+  letter-spacing: normal !important;
+}
+
+.app-select-panel {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(15 148 136 / 0.45) transparent;
+}
+
+.app-select-panel::-webkit-scrollbar {
+  width: 8px;
+}
+
+.app-select-panel::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background-color: rgb(15 148 136 / 0.45);
+  background-clip: padding-box;
+}
+
+.app-autocomplete .mat-mdc-optgroup-label .mdc-list-item__primary-text {
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+}
+
+.app-menu-switch {
+  position: relative;
+  flex-shrink: 0;
+  width: 34px;
+  height: 20px;
+  border-radius: 999px;
+  background-color: var(--mat-sys-outline-variant);
+  transition: background-color 200ms ease;
+}
+
+.app-menu-switch::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background-color: var(--mat-sys-surface);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.2);
+  transition: transform 200ms ease;
+}
+
+.app-menu-switch.is-on {
+  background-color: var(--mat-sys-primary);
+}
+
+.app-menu-switch.is-on::after {
+  transform: translateX(14px);
+  background-color: var(--mat-sys-on-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-menu-switch,
+  .app-menu-switch::after {
+    transition: none;
+  }
+}
+
+.app-menu-divider {
+  height: 1px;
+  margin: 4px 6px;
+  background-color: var(--mat-sys-outline-variant);
+}
+
+.app-menu .app-menu-danger {
+  --mat-menu-item-label-text-color: var(--mat-sys-error);
+  --mat-menu-item-icon-color: var(--mat-sys-error);
+  --mat-menu-item-hover-state-layer-color: rgb(186 26 26 / 0.08);
+  --mat-menu-item-focus-state-layer-color: rgb(186 26 26 / 0.12);
+}
+
+.unicorn-dark-theme .chat-presence-online {
+  color: #4ade80;
+}

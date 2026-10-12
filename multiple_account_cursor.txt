@@ -1,0 +1,5 @@
+nano ~/.zshrc 
+
+alias cursorpersonal='open -n -a "Cursor" --args --user-data-dir="$HOME/.cursor-profile-personal" --extensions-dir="$HOME/.cursor-profile-per$
+
+source ~/.zshrc 

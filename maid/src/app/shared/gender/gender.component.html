@@ -1,0 +1,30 @@
+<div>
+  <mat-button-toggle-group
+    class="role-toggle w-full"
+    [formField]="gender()"
+    [attr.aria-label]="'role.question' | translate"
+    [ngClass]="{
+      'outline-1 outline-(--mat-sys-error)':
+        hasKind(gender(), 'required') && gender()().touched(),
+    }"
+  >
+    <mat-button-toggle class="flex-1" value="Client">
+      <span class="flex flex-col items-center gap-1 py-3 leading-tight">
+        <mat-icon aria-hidden="true">home</mat-icon>
+        <span class="font-semibold">{{ "role.client" | translate }}</span>
+        <span class="text-xs text-(--mat-sys-on-surface-variant)">{{
+          "role.clientHint" | translate
+        }}</span>
+      </span>
+    </mat-button-toggle>
+    <mat-button-toggle class="flex-1" value="Cleaner">
+      <span class="flex flex-col items-center gap-1 py-3 leading-tight">
+        <mat-icon aria-hidden="true">cleaning_services</mat-icon>
+        <span class="font-semibold">{{ "role.cleaner" | translate }}</span>
+        <span class="text-xs text-(--mat-sys-on-surface-variant)">{{
+          "role.cleanerHint" | translate
+        }}</span>
+      </span>
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+</div>

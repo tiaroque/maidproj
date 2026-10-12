@@ -1,0 +1,244 @@
+<div class="relative flex min-w-0 flex-1 flex-col gap-2">
+  <div class="flex min-w-0 flex-wrap items-center gap-2">
+    <button
+      type="button"
+      class="flex cursor-pointer items-center gap-2 group whitespace-nowrap rounded-full border px-4 py-2 text-sm font-medium text-(--mat-sys-on-surface) transition-colors hover:border-[#7fd8c3] hover:bg-[#7fd8c3]/10"
+      [ngClass]="chipClasses('location', ['location'])"
+      (click)="toggle('location')"
+    >
+      <svg
+        class="shrink-0 text-(--mat-sys-on-surface-variant) group-[.is-active]:text-(--ad-accent)"
+        width="14"
+        height="14"
+        fill="currentColor"
+        viewBox="0 0 384 512"
+        aria-hidden="true"
+      >
+        <path
+          d="M0 188.6C0 84.4 86 0 192 0S384 84.4 384 188.6c0 119.3-120.2 262.3-170.4 316.8-11.8 12.8-31.5 12.8-43.3 0-50.2-54.5-170.4-197.5-170.4-316.8zM192 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128z"
+        />
+      </svg>
+      {{ chipLabel(["location"], "listFiltering.location") }}
+      <ng-container *ngTemplateOutlet="chevron"></ng-container>
+    </button>
+
+    <button
+      type="button"
+      class="flex cursor-pointer items-center gap-2 group whitespace-nowrap rounded-full border px-4 py-2 text-sm font-medium text-(--mat-sys-on-surface) transition-colors hover:border-[#7fd8c3] hover:bg-[#7fd8c3]/10"
+      [ngClass]="chipClasses('services', ['services'])"
+      (click)="toggle('services')"
+    >
+      <mat-icon
+        class="size-4! text-base! leading-none! text-(--mat-sys-on-surface-variant)! group-[.is-active]:text-(--ad-accent)!"
+        aria-hidden="true"
+        >cleaning_services</mat-icon
+      >
+      {{ chipLabel(['services'], "listFiltering.services") }}
+      <ng-container *ngTemplateOutlet="chevron"></ng-container>
+    </button>
+
+    <button
+      type="button"
+      class="flex cursor-pointer items-center gap-2 group whitespace-nowrap rounded-full border px-4 py-2 text-sm font-medium text-(--mat-sys-on-surface) transition-colors hover:border-[#7fd8c3] hover:bg-[#7fd8c3]/10"
+      [ngClass]="chipClasses('rate', ['rate'])"
+      (click)="toggle('rate')"
+    >
+      <mat-icon
+        class="size-4! text-base! leading-none! text-(--mat-sys-on-surface-variant)! group-[.is-active]:text-(--ad-accent)!"
+        aria-hidden="true"
+        >payments</mat-icon
+      >
+      {{ chipLabel(['rate'], "listFiltering.rate") }}
+      <ng-container *ngTemplateOutlet="chevron"></ng-container>
+    </button>
+
+    <button
+      type="button"
+      class="flex cursor-pointer items-center gap-2 group whitespace-nowrap rounded-full border px-4 py-2 text-sm font-medium text-(--mat-sys-on-surface) transition-colors hover:border-[#7fd8c3] hover:bg-[#7fd8c3]/10"
+      [ngClass]="chipClasses('availability', ['days', 'slots'])"
+      (click)="toggle('availability')"
+    >
+      <mat-icon
+        class="size-4! text-base! leading-none! text-(--mat-sys-on-surface-variant)! group-[.is-active]:text-(--ad-accent)!"
+        aria-hidden="true"
+        >calendar_month</mat-icon
+      >
+      {{ chipLabel(['days', 'slots'], "listFiltering.availability") }}
+      <ng-container *ngTemplateOutlet="chevron"></ng-container>
+    </button>
+
+    <button
+      type="button"
+      class="flex cursor-pointer items-center gap-2 group whitespace-nowrap rounded-full border px-4 py-2 text-sm font-medium text-(--mat-sys-on-surface) transition-colors hover:border-[#7fd8c3] hover:bg-[#7fd8c3]/10"
+      [ngClass]="chipClasses('languages', ['languages'])"
+      (click)="toggle('languages')"
+    >
+      <mat-icon
+        class="size-4! text-base! leading-none! text-(--mat-sys-on-surface-variant)! group-[.is-active]:text-(--ad-accent)!"
+        aria-hidden="true"
+        >translate</mat-icon
+      >
+      {{ chipLabel(['languages'], "listFiltering.languages") }}
+      <ng-container *ngTemplateOutlet="chevron"></ng-container>
+    </button>
+
+    <button
+      type="button"
+      class="flex items-center cursor-pointer gap-2 group whitespace-nowrap rounded-full border px-4 py-2 text-sm font-medium text-(--mat-sys-on-surface) transition-colors hover:border-[#7fd8c3] hover:bg-[#7fd8c3]/10"
+      [ngClass]="chipClasses('online', ['online'])"
+      [attr.aria-pressed]="listFilterService.isToggleFilterApplied('online')"
+      (click)="toggleFilter('online')"
+    >
+      <span class="size-2.5 rounded-full bg-green-400"></span>
+      {{ "listFiltering.onlineNow" | translate }}
+    </button>
+
+    <button
+      type="button"
+      class="flex items-center cursor-pointer gap-2 group whitespace-nowrap rounded-full border px-4 py-2 text-sm font-medium text-(--mat-sys-on-surface) transition-colors hover:border-[#7fd8c3] hover:bg-[#7fd8c3]/10"
+      [ngClass]="chipClasses('verified', ['verified'])"
+      [attr.aria-pressed]="listFilterService.isToggleFilterApplied('verified')"
+      (click)="toggleFilter('verified')"
+    >
+      <mat-icon
+        class="size-4! text-base! leading-none! text-(--mat-sys-on-surface-variant)! group-[.is-active]:text-(--ad-accent)!"
+        aria-hidden="true"
+        >verified</mat-icon
+      >
+      {{ "listFiltering.verified" | translate }}
+    </button>
+
+    <div class="ml-auto flex shrink-0 items-center gap-3 pl-2">
+      <button
+        type="button"
+        class="text-sm cursor-pointer text-(--mat-sys-on-surface-variant) hover:text-(--mat-sys-primary)"
+        (click)="resetFilters()"
+      >
+        {{ "listFiltering.reset" | translate }}
+      </button>
+      <button
+        type="button"
+        class="rounded-full cursor-pointer  bg-[#0f9488] px-6 py-2 text-sm font-bold tracking-wide text-white shadow-sm hover:bg-[#0f766e] disabled:opacity-50"
+        [disabled]="storeChat.synced()"
+        (click)="filterList()"
+      >
+        {{ "listFiltering.applyShort" | translate }}
+      </button>
+    </div>
+  </div>
+
+  @if (openPanel()) {
+    <div
+      class="filter-panel absolute top-full left-0 z-50 mt-2 w-full rounded-2xl border border-(--mat-sys-outline-variant) bg-(--mat-sys-surface) px-5 py-3 shadow-lg sm:w-[28rem] [&_.mat-mdc-form-field-subscript-wrapper]:hidden"
+    >
+      @switch (openPanel()) {
+        @case ("location") {
+          <app-location-search
+            class="block w-full"
+            [form]="filterForm"
+            [compact]="true" />
+        }
+        @case ("services") {
+          <mat-chip-listbox
+            multiple
+            class="work-chips"
+            [formField]="filterForm.services"
+            [attr.aria-label]="'listFiltering.services' | translate"
+          >
+            @for (service of services; track service) {
+              <mat-chip-option [value]="service">
+                <mat-icon matChipAvatar aria-hidden="true">{{
+                  serviceIcons[service]
+                }}</mat-icon>
+                {{ "services." + service | translate }}
+              </mat-chip-option>
+            }
+          </mat-chip-listbox>
+        }
+        @case ("rate") {
+          <div class="mb-1 flex max-w-md items-center justify-between text-sm">
+            <span class="font-semibold">{{
+              "listFiltering.rate" | translate
+            }}</span>
+            <span>
+              {{ filterForm.rateMin().value() }} -
+              {{ filterForm.rateMax().value()
+              }}{{ filterForm.rateMax().value() === sliders.rate.max ? "+" : "" }}
+              / {{ "work.hour" | translate }}
+            </span>
+          </div>
+          <mat-slider
+            class="max-w-md w-full!"
+            [min]="sliders.rate.min"
+            [max]="sliders.rate.max"
+          >
+            <input [formField]="filterForm.rateMin" matSliderStartThumb />
+            <input [formField]="filterForm.rateMax" matSliderEndThumb />
+          </mat-slider>
+          <p class="text-xs text-(--mat-sys-on-surface-variant)">
+            {{ "listFiltering.rateHint" | translate }}
+          </p>
+        }
+        @case ("availability") {
+          <div class="space-y-3">
+            <div>
+              <p class="mb-1.5 text-sm font-semibold">
+                {{ "work.availableDays" | translate }}
+              </p>
+              <mat-chip-listbox
+                multiple
+                class="work-chips"
+                [formField]="filterForm.days"
+                [attr.aria-label]="'work.availableDays' | translate"
+              >
+                @for (day of days; track day) {
+                  <mat-chip-option [value]="day">{{
+                    "daysShort." + day | translate
+                  }}</mat-chip-option>
+                }
+              </mat-chip-listbox>
+            </div>
+            <div>
+              <p class="mb-1.5 text-sm font-semibold">
+                {{ "work.timeOfDay" | translate }}
+              </p>
+              <mat-chip-listbox
+                multiple
+                class="work-chips"
+                [formField]="filterForm.slots"
+                [attr.aria-label]="'work.timeOfDay' | translate"
+              >
+                @for (slot of slots; track slot) {
+                  <mat-chip-option [value]="slot">{{
+                    "slots." + slot | translate
+                  }}</mat-chip-option>
+                }
+              </mat-chip-listbox>
+            </div>
+          </div>
+        }
+        @case ("languages") {
+          <div class="max-w-md">
+            <app-languages
+              [languages]="filterForm.languages"
+              [isFilter]="true" />
+          </div>
+        }
+      }
+    </div>
+  }
+</div>
+
+<ng-template #chevron>
+  <svg
+    class="text-(--mat-sys-on-surface-variant)"
+    width="14"
+    height="14"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+  >
+    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+</ng-template>

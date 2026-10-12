@@ -1,0 +1,271 @@
+import {
+  AngularNodeAppEngine,
+  createNodeRequestHandler,
+  isMainModule,
+  writeResponseToNodeResponse,
+} from '@angular/ssr/node';
+import express from 'express';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { AsyncLocalStorage } from 'node:async_hooks';
+import compression from 'compression';
+import cors from 'cors';
+import { createProxyMiddleware } from 'http-proxy-middleware';
+
+const serverDistFolder = dirname(fileURLToPath(import.meta.url));
+const browserDistFolder = resolve(serverDistFolder, '../browser');
+
+const apiProxyTarget =
+  process.env['API_PROXY_TARGET'] ?? 'http://127.0.0.1:3011';
+const meridianApiUpstream =
+  process.env['MERIDIAN_API_UPSTREAM'] ?? 'http://127.0.0.1:3000';
+
+const app = express();
+app.set('trust proxy', 1);
+app.use((req, res, next) => {
+  if (req.hostname === 'sugrit.com') {
+    res.redirect(308, `https://www.sugrit.com${req.originalUrl}`);
+    return;
+  }
+  next();
+});
+app.use(compression({ level: 8 }));
+app.use(cors());
+
+const allowedHosts = [
+  'localhost',
+  '127.0.0.1',
+  'sugrit.com',
+  'www.sugrit.com',
+  ...(process.env['NG_ALLOWED_HOSTS'] ?? '')
+    .split(',')
+    .map((host) => host.trim())
+    .filter(Boolean),
+];
+
+const angularApp = new AngularNodeAppEngine({
+  allowedHosts,
+});
+
+const apiProxy = createProxyMiddleware({
+  pathFilter: '/api',
+  target: apiProxyTarget,
+  changeOrigin: true,
+  ws: true,
+});
+
+// Browser calls same-origin /meridian/api/...; meridian-be serves /locations/search.
+const meridianProxy = createProxyMiddleware({
+  pathFilter: '/meridian/api',
+  target: meridianApiUpstream,
+  changeOrigin: true,
+  pathRewrite: { '^/meridian/api': '' },
+});
+
+app.use(meridianProxy);
+app.use(apiProxy);
+
+const locales = new Set(['en', 'pt', 'fr', 'de', 'it', 'es', 'nl']);
+
+export const ssrLocaleStorage = new AsyncLocalStorage<string>();
+(globalThis as any).__SSR_LOCALE_STORAGE__ = ssrLocaleStorage;
+
+const publicPages = ['', 'browse', 'register', 'terms-conditions', 'privacy'];
+
+interface SitemapProfile {
+  uid: string;
+  creationDate?: string;
+}
+
+const SITEMAP_PROFILES_TTL_MS = 60 * 60 * 1000;
+let sitemapProfilesCache: { at: number; profiles: SitemapProfile[] } | null =
+  null;
+
+// Profile ids come from the API and are cached for an hour. If the API is
+// unreachable the last good list (or none) is used, so the sitemap still serves.
+async function loadSitemapProfiles(): Promise<SitemapProfile[]> {
+  if (
+    sitemapProfilesCache &&
+    Date.now() - sitemapProfilesCache.at < SITEMAP_PROFILES_TTL_MS
+  ) {
+    return sitemapProfilesCache.profiles;
+  }
+  try {
+    const response = await fetch(
+      `${apiProxyTarget}/api/list/sitemap-profiles`,
+      { signal: AbortSignal.timeout(5000) },
+    );
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+    const profiles = ((await response.json()) as SitemapProfile[]).filter(
+      (profile) => /^[\w-]+$/.test(profile.uid ?? ''),
+    );
+    sitemapProfilesCache = { at: Date.now(), profiles };
+    return profiles;
+  } catch (error) {
+    console.error('Sitemap: could not load profiles', error);
+    return sitemapProfilesCache?.profiles ?? [];
+  }
+}
+
+function sitemapEntries(origin: string, suffix: string, lastmod?: string) {
+  const localeList = [...locales];
+  const alternates = localeList
+    .map(
+      (locale) =>
+        `    <xhtml:link rel="alternate" hreflang="${locale}" href="${origin}/${locale}${suffix}"/>`,
+    )
+    .concat(
+      `    <xhtml:link rel="alternate" hreflang="x-default" href="${origin}/en${suffix}"/>`,
+    )
+    .join('\n');
+  const lastmodTag = lastmod ? `\n    <lastmod>${lastmod}</lastmod>` : '';
+  return localeList.map(
+    (locale) => `  <url>
+    <loc>${origin}/${locale}${suffix}</loc>${lastmodTag}
+${alternates}
+  </url>`,
+  );
+}
+
+app.get('/sitemap.xml', async (_req, res) => {
+  const origin = 'https://www.sugrit.com';
+  const profiles = await loadSitemapProfiles();
+  const urls = [
+    ...publicPages.flatMap((page) =>
+      sitemapEntries(origin, page ? `/${page}` : '/'),
+    ),
+    ...profiles.flatMap((profile) => {
+      const created = profile.creationDate
+        ? new Date(profile.creationDate)
+        : undefined;
+      const lastmod =
+        created && !isNaN(created.getTime())
+          ? created.toISOString().slice(0, 10)
+          : undefined;
+      return sitemapEntries(origin, `/profile-view/${profile.uid}`, lastmod);
+    }),
+  ];
+
+  res.type('application/xml').send(`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${urls.join('\n')}
+</urlset>
+`);
+});
+
+app.get(['/favicon.ico', '/robots.txt', '/llms.txt'], (req, res, next) => {
+  res.sendFile(resolve(browserDistFolder, 'en', req.path.slice(1)), (error) => {
+    if (error) {
+      next();
+    }
+  });
+});
+
+// Assets are identical across locales. Serving root /assets directly avoids a
+// 302 to /en/assets on the font preload, @font-face and logo requests.
+app.use(
+  '/assets',
+  express.static(resolve(browserDistFolder, 'en', 'assets'), {
+    maxAge: '1y',
+    index: false,
+    redirect: false,
+  }),
+);
+
+/**
+ * Serve static files from /browser
+ */
+app.use(
+  express.static(browserDistFolder, {
+    maxAge: '1y',
+    index: false,
+    redirect: false,
+  }),
+);
+
+app.use((req, res, next) => {
+  if (req.method !== 'GET' && req.method !== 'HEAD') {
+    next();
+    return;
+  }
+
+  const parts = req.path.split('/').filter(Boolean);
+  // `/pt` does not match `<base href="/pt/">`. Serving it paints the page,
+  // then the client rewrites the URL to `/pt/` and loads it again.
+  if (parts.length === 1 && locales.has(parts[0]) && !req.path.endsWith('/')) {
+    const query = req.url.includes('?')
+      ? req.url.slice(req.url.indexOf('?'))
+      : '';
+    res.redirect(308, `/${parts[0]}/${query}`);
+    return;
+  }
+
+  // `/pt/en/...` would render Portuguese text under an English canonical.
+  // The second prefix is the language the visitor asked for.
+  if (parts.length >= 2 && locales.has(parts[0]) && locales.has(parts[1])) {
+    const query = req.url.includes('?')
+      ? req.url.slice(req.url.indexOf('?'))
+      : '';
+    res.redirect(308, `/${parts[1]}/${parts.slice(2).join('/')}${query}`);
+    return;
+  }
+
+  const first = parts[0];
+  if (locales.has(first) || first?.includes('.')) {
+    next();
+    return;
+  }
+
+  const cookie = req.headers.cookie ?? '';
+  const cookieLang = /(?:^|;\s*)lang=([^;]+)/.exec(cookie)?.[1];
+  const requested = decodeURIComponent(cookieLang ?? '');
+  const header = req.headers['accept-language'] ?? '';
+  const headerLang = header
+    .split(',')
+    .map((part) => part.trim().slice(0, 2).toLowerCase())
+    .find((tag) => locales.has(tag));
+  const lang = locales.has(requested) ? requested : (headerLang ?? 'en');
+  const targetPath = req.path === '/' ? '/' : req.path;
+  const query = req.url.includes('?') ? req.url.slice(req.url.indexOf('?')) : '';
+  res.redirect(302, `/${lang}${targetPath}${query}`);
+});
+
+/**
+ * Handle all other requests by rendering the Angular application.
+ */
+app.use((req, res, next) => {
+  console.log('ANGULAR SERVER - originalUrl: ', req.originalUrl);
+  const pathLocale = req.path.split('/').filter(Boolean)[0];
+  const activeLocale = locales.has(pathLocale) ? pathLocale : '';
+
+  ssrLocaleStorage.run(activeLocale, () => {
+    angularApp
+      .handle(req)
+      .then((response) =>
+        response ? writeResponseToNodeResponse(response, res) : next(),
+      )
+      .catch(next);
+  });
+});
+
+/**
+ * Start the server if this module is the main entry point.
+ * The server listens on the port defined by the `PORT` environment variable, or defaults to 4000.
+ */
+if (isMainModule(import.meta.url)) {
+  const port = Number(process.env['PORT'] ?? 4000);
+  const server = app.listen(port, '0.0.0.0', () => {
+    console.log(`Node Express server listening on http://0.0.0.0:${port}`);
+    console.log(`Proxying /api to ${apiProxyTarget}`);
+  });
+
+  server.on('upgrade', apiProxy.upgrade);
+}
+
+/**
+ * The request handler used by the Angular CLI (dev-server and during build).
+ */
+export const reqHandler = createNodeRequestHandler(app);
+export default reqHandler;

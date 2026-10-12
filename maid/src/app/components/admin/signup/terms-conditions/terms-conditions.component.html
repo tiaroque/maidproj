@@ -1,0 +1,63 @@
+<div class="sg-page">
+  <section class="sg-band px-6 py-10">
+    <div class="mx-auto flex max-w-6xl items-center justify-between gap-4">
+      <a class="flex items-center text-[#7fd8c3] no-underline" [routerLink]="'/'">
+        <span class="logo-mark mr-2 h-10 w-10" aria-hidden="true"></span>
+        <span
+          class="font-[Albert_Sans,sans-serif] text-3xl font-semibold tracking-tighter"
+        >
+          sugrit
+        </span>
+      </a>
+      <p class="sg-kicker hidden sm:block">
+        {{ "footer.legal" | translate }}
+      </p>
+    </div>
+  </section>
+
+  <main class="grow px-4 pb-14">
+    <div class="sg-card mx-auto -mt-6 max-w-4xl px-2 py-4 sm:px-6">
+      <!-- Rendered on the server and never hydrated: the legal text is static, so
+           crawlers get the full content and the browser skips the chunk. -->
+      @switch (languageService.defaultLang()) {
+        @case ("pt") {
+          @defer (on immediate; hydrate never) {
+            <app-terms-pt />
+          }
+        }
+        @case ("fr") {
+          @defer (on immediate; hydrate never) {
+            <app-terms-fr />
+          }
+        }
+        @case ("de") {
+          @defer (on immediate; hydrate never) {
+            <app-terms-de />
+          }
+        }
+        @case ("it") {
+          @defer (on immediate; hydrate never) {
+            <app-terms-it />
+          }
+        }
+        @case ("es") {
+          @defer (on immediate; hydrate never) {
+            <app-terms-es />
+          }
+        }
+        @case ("nl") {
+          @defer (on immediate; hydrate never) {
+            <app-terms-nl />
+          }
+        }
+        @default {
+          @defer (on immediate; hydrate never) {
+            <app-terms-en />
+          }
+        }
+      }
+    </div>
+  </main>
+
+  <app-footer />
+</div>

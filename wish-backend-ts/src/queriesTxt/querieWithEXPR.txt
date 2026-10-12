@@ -1,0 +1,41 @@
+db.residents.aggregate([
+
+    {
+        $lookup: {
+            from: "payments",
+            foreignField: "residentId",
+            localField: "email",     
+            as: "payments"
+        }
+    },
+    
+ 
+    {
+        $unwind: { path: "$costs", preserveNullAndEmptyArrays: true }
+    },
+    
+    {
+        $unwind: { path: "$payments", preserveNullAndEmptyArrays: true }
+    },
+
+    {
+        $match: { 
+            "$or": [
+              {
+                 "$expr": {
+                    "$eq": [
+                       "$costs.id",
+                       "$payments.costId"
+                    ]
+                 }
+              },
+              {
+                 "payments": {
+                    "$exists": true
+                 }
+              }
+           ]
+        }  
+    },
+])
+    

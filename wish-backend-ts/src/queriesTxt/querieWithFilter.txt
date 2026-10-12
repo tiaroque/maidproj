@@ -1,0 +1,51 @@
+db.residents.aggregate([
+
+    {
+        $lookup: {
+            from: "payments",
+            foreignField: "residentId",
+            localField: "_id",     
+            as: "payments"
+        }
+    },
+
+   {
+        $addFields: {
+            costs: {
+                $filter: {
+                    input: "$costs",
+                    as: "cost",
+                    cond: {
+                        $or: [
+                            { $eq: [{ $year: "$$cost.date" }, 2021] },
+                            { $eq: [{  $year: "$$cost.date" }, null] }
+                        ]
+                    }
+                }
+
+            }
+
+        }
+    },
+    
+    {
+        $addFields: {
+            payments: {
+                $filter: {
+                    input: "$payments",
+                    as: "payment",
+                    cond: {
+                        $or: [
+                            { $eq: [{ $year: "$$payment.date" }, 2021] },
+                            { $eq: [{  $year: "$$payment.date" }, null]
+                            }
+                        ]
+                    }
+                }
+
+            }
+
+        }
+    },
+
+])

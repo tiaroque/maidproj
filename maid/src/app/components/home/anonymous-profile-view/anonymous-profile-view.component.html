@@ -1,0 +1,53 @@
+<div class="sg-page">
+  <app-header-landing class="sg-header" />
+
+  <section class="sg-band pt-28 pb-24">
+    <div class="container mx-auto max-w-5xl px-4">
+      <a
+        class="inline-flex items-center gap-2 text-sm font-semibold text-white/70 no-underline hover:text-[#7fd8c3]"
+        [routerLink]="['/', lang(), 'browse']"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          width="16"
+          height="16"
+          aria-hidden="true"
+          focusable="false"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M15 6 9 12l6 6" />
+        </svg>
+        {{ "browse.pageTitle" | translate }}
+      </a>
+    </div>
+  </section>
+
+  <main class="container mx-auto -mt-16 max-w-5xl grow px-4 pb-16">
+    <app-profile-view
+      [isAnonymous]="true"
+      [userProfileDetails]="userProfileDetails()" />
+
+    <section class="sg-band mt-8 overflow-hidden rounded-3xl px-7 py-9 text-center">
+      <p class="sg-kicker">{{ "landing.kicker" | translate }}</p>
+      <h2 class="mt-2 text-2xl font-bold text-white md:text-3xl">
+        {{ "landing.ctaTitle" | translate }}
+      </h2>
+      <p class="mx-auto mt-2 max-w-md text-white/75">
+        {{ "landing.ctaSubtitle" | translate }}
+      </p>
+      <a class="sg-cta mt-6 px-9 py-3.5" [routerLink]="['/', lang(), 'register']">
+        {{ "landing.joinFree" | translate }}
+      </a>
+    </section>
+
+    <div class="mt-10 flex justify-center">
+      <app-quick-search />
+    </div>
+  </main>
+
+  <app-footer />
+</div>

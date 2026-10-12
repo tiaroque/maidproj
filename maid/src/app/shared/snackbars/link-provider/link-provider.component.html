@@ -1,0 +1,19 @@
+<div class="flex items-center justify-between" style="color: #3e50b3">
+  <span style="margin-right: 5px"> Do you want to add </span>
+  <span *ngIf="provider === 'google.com'" style="color: #da4e36">
+    <strong>Google </strong>
+    <i class="fab fa-google"></i>
+  </span>
+  <span *ngIf="provider === 'facebook.com'" style="color: #3a589b">
+    <strong>Facebook </strong>
+    <i class="fab fa-facebook"></i>
+  </span>
+  <span *ngIf="provider === 'twitter.com'" style="color: #44b1e5">
+    <strong>Twitter </strong>
+    <i class="fab fa-google"></i>
+  </span>
+  <span style="margin-left: 5px; margin-right: 15px"> to sign in! </span>
+
+  <button mat-stroked-button (click)="ok()">Ok</button>
+  <button mat-button (click)="close()">Dismiss</button>
+</div>

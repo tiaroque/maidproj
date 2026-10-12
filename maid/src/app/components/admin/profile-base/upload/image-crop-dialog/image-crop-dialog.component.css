@@ -1,0 +1,41 @@
+.crop-hint {
+  margin: 0 0 0.75rem;
+  opacity: 0.75;
+}
+
+.crop-area {
+  --crop-panel-bg: var(--mat-sys-surface-container-high);
+  position: relative;
+  min-height: 240px;
+  overflow: hidden;
+  border-radius: 1rem;
+  background-color: var(--crop-panel-bg);
+}
+
+.crop-area image-cropper {
+  max-height: 60vh;
+  --cropper-overlay-color: var(--crop-panel-bg);
+  --cropper-outline-color: rgb(0 0 0 / 0.45);
+  --cropper-border: 1px solid rgb(255 255 255 / 0.7);
+  --cropper-focus-border: 2px solid var(--ad-accent);
+  --cropper-resize-square-bg: var(--ad-accent);
+  --cropper-resize-square-border: 1px solid rgb(255 255 255 / 0.8);
+}
+
+.unicorn-dark-theme .crop-area {
+  --crop-panel-bg: rgb(13 21 23);
+}
+
+.unicorn-dark-theme .crop-area image-cropper {
+  --cropper-outline-color: rgb(6 12 13 / 0.7);
+  --cropper-border: 1px solid rgb(127 216 195 / 0.6);
+  --cropper-resize-square-border: 1px solid rgb(13 21 23);
+}
+
+.crop-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

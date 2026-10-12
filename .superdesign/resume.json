@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "targets": {
+    "/admin/list": {
+      "targetKind": "existing-ui",
+      "projectId": "417499d6-09d1-40a6-b9f6-dbf2d8009872",
+      "baselineDraftId": "9764c4bf-5ff8-4691-bbae-90ffdc080811",
+      "activeDraftId": "2c06943d-d42a-4aa3-be01-a26c3e751a64",
+      "designSystemPath": ".superdesign/design-system.md",
+      "referenceIds": ["sugar-src-assets-images-logo4_no_fill.svg"],
+      "brandAssets": {
+        "logo": {
+          "assetKey": "sugar-src-assets-images-logo4_no_fill.svg",
+          "url": "https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/projects/417499d6-09d1-40a6-b9f6-dbf2d8009872/brand-assets/sugar-src-assets-images-logo4_no_fill.svg/logo-sugrit.svg",
+          "sourcePath": "maid/src/assets/images/logo4_no_fill.svg"
+        }
+      },
+      "contextFiles": [
+        ".superdesign/design-system.md",
+        ".superdesign/init/theme.md",
+        "maid/src/app/components/admin/admin.component.html",
+        "maid/src/app/components/admin/header-admin/header-admin.component.html",
+        "maid/src/app/components/admin/main.component.html",
+        "maid/src/app/components/admin/left-nav/left-nav.component.html",
+        "maid/src/app/components/admin/left-nav/list-filtering/list-filtering.component.html",
+        "maid/src/app/components/admin/list/list.component.html",
+        "maid/src/app/components/admin/list/filtering/filtering.component.html",
+        "maid/src/app/components/admin/list/dating-card/dating-card.component.html",
+        "maid/src/app/components/admin/right-content/right-content.component.html",
+        "maid/src/styles/material-overwrite.css:195:214",
+        "maid/src/styles/m3_theme.css:1:50",
+        "maid/src/styles/styles.css:1:81"
+      ],
+      "fingerprints": {
+        ".superdesign/design-system.md": "b4697adec5c8cac0ea4bad61a33a5ccc8f454188fc87d1b82a5c48aabeb4a888",
+        ".superdesign/init/theme.md": "8bd7f890a981e4cefec0ddd513626684b175c7b626d225c9b18814b39dcb1d09",
+        "maid/src/app/components/admin/admin.component.html": "ded89a86a8a42d2bc26171f282374155c442c705fd7cf3635efed2f42f703580",
+        "maid/src/app/components/admin/header-admin/header-admin.component.html": "785ebad32dd72b0f9814de9441f108864091c581c1cebb469c24c6a43d4558ec",
+        "maid/src/app/components/admin/main.component.html": "c0ea4d3bb01fa38377edea31cc715eb203fb3c0a32bf56f3917d9fdbbcf7a787",
+        "maid/src/app/components/admin/left-nav/left-nav.component.html": "5479116420a30fd54162da3fcad834897c5bdec8dff3edc4e1ca9a29370907b6",
+        "maid/src/app/components/admin/left-nav/list-filtering/list-filtering.component.html": "8c02b3b092086e61ef88646d03acf11a7c73bd653360ef65442643e1662c6a22",
+        "maid/src/app/components/admin/list/list.component.html": "87d7f2aabad08aaa5cadec1333799cac64474fb7361e9665545ad9df31392ccf",
+        "maid/src/app/components/admin/list/filtering/filtering.component.html": "8d20197671ab2213b2cabee74f41feb9da733761870049e4e0472919ceeef888",
+        "maid/src/app/components/admin/list/dating-card/dating-card.component.html": "5ddf8508bc5637078eb1a7d6b6c8fe17fd6749ca95fa53487b1c0574adc4b5da",
+        "maid/src/app/components/admin/right-content/right-content.component.html": "af895f4f93d3e052b5b4b696c6005ebf9d2edc7fb3643cce14b88262ed6cd7c1",
+        "maid/src/styles/material-overwrite.css": "3ca5eaad854586b1f7b1ac22e5095f0a2605bd421901f2e763df80f779670ea2",
+        "maid/src/styles/m3_theme.css": "26d8b129ca543a60bb651b7685a03b7acf5377d6b9b225450279d8901595e536",
+        "maid/src/styles/styles.css": "0041193129f476c63797738241dbfff34e08b20d9c0458be0a5cdfa1966821de"
+      },
+      "components": [
+        {
+          "name": "HeaderAdmin",
+          "id": "4af5fd6e-3fd7-4d56-ba3a-0b8fcc56e15c",
+          "sourcePath": "maid/src/app/components/admin/header-admin/header-admin.component.html",
+          "logoAssetKey": "sugar-src-assets-images-logo4_no_fill.svg"
+        }
+      ],
+      "drafts": {
+        "9764c4bf-5ff8-4691-bbae-90ffdc080811": {
+          "title": "Current /admin/list",
+          "visualDirection": "pixel-perfect current search page",
+          "currentVersion": 1
+        },
+        "2c06943d-d42a-4aa3-be01-a26c3e751a64": {
+          "title": "Search Discovery - Editorial Redesign",
+          "visualDirection": "editorial luxury discovery with chip filters",
+          "parentDraftId": "9764c4bf-5ff8-4691-bbae-90ffdc080811",
+          "currentVersion": 1
+        },
+        "8257cd3b-7740-4fbe-af37-f113dbc9218c": {
+          "title": "Sugrit Search Page Redesign",
+          "visualDirection": "refined three-pane member app shell",
+          "parentDraftId": "9764c4bf-5ff8-4691-bbae-90ffdc080811",
+          "currentVersion": 1
+        }
+      },
+      "updatedAt": "2026-09-11T10:05:00.000Z"
+    }
+  }
+}

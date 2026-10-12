@@ -1,0 +1,27 @@
+<app-header-landing class="sg-header" />
+<div class="sg-page">
+  <main class="sg-band grow pt-36 pb-32 text-center">
+    <div class="container mx-auto max-w-2xl px-6">
+      <p class="sg-kicker">404</p>
+      <h1 class="mt-5 text-4xl font-bold leading-tight text-white md:text-5xl">
+        {{ "notFound.title" | translate }}
+      </h1>
+      <p class="mx-auto mt-5 mb-10 max-w-xl text-lg text-white/75">
+        {{ "notFound.text" | translate }}
+      </p>
+      <div class="flex flex-col justify-center gap-3 sm:flex-row">
+        <a [routerLink]="['/', lang()]" class="sg-cta px-10 py-4 text-lg">
+          {{ "notFound.backHome" | translate }}
+        </a>
+        <a
+          [routerLink]="['/', lang(), 'browse']"
+          class="sg-cta-ghost px-10 py-4 text-lg"
+        >
+          {{ "landing.browseProfiles" | translate }}
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <app-footer />
+</div>

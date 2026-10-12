@@ -1,0 +1,413 @@
+html {
+  /* scroll-behavior: smooth; */
+  font-family: Nunito, "Nunito Fallback", sans-serif !important;
+  height: 100%;
+}
+
+
+/* *:focus {
+  outline: none;
+} */
+
+.gradient {
+  background: linear-gradient(120deg, #0a2024 0%, #155e63 50%, #0f9488 100%);
+}
+
+/* .text-border {
+  color: white;
+  text-shadow:
+    -1px -1px 0 white,
+    1px -1px 0 white,
+    -1px 1px 0 white,
+    1px 1px 0 white;
+}
+
+svg {
+  filter: drop-shadow(0px 0px 1px #fff) drop-shadow(0px 0px 1px #fff)
+    drop-shadow(0px 0px 1px #fff);
+} */
+
+/* * {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-decoration: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+} */
+
+/* Browser autofill paints its own background and text color. Cover it with the field color.
+   Keep the selectors split: an unknown pseudo-class drops the whole rule. */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--mat-sys-on-surface) !important;
+  caret-color: var(--mat-sys-on-surface);
+  -webkit-box-shadow: 0 0 0 1000px var(--mat-sys-background) inset !important;
+  box-shadow: 0 0 0 1000px var(--mat-sys-background) inset !important;
+  transition: background-color 9999s ease-out;
+}
+
+input:autofill,
+input:autofill:hover,
+input:autofill:focus,
+input:autofill:active {
+  -webkit-text-fill-color: var(--mat-sys-on-surface) !important;
+  caret-color: var(--mat-sys-on-surface);
+  box-shadow: 0 0 0 1000px var(--mat-sys-background) inset !important;
+  transition: background-color 9999s ease-out;
+}
+
+/* // header {
+// height: 100px;
+// transition: all 0.25s, transform 0.25s;
+// position: fixed;
+// top: 0px;
+// left: 0;
+// right: 0; */
+
+/* // .container {
+//   max-width: 1100px;
+//   margin: 0 auto;
+// }
+// } */
+
+/* $footerHeight: 75px; */
+
+/* // .main-container {
+//   min-height: calc(100vh - 75px);
+//   width: 100%;
+
+//   .margin-container {
+//     max-width: 1100px;
+//     margin: 0 auto;
+//   }
+// } */
+
+/* // Authentication */
+.forgotten-pass {
+  text-align: center;
+  margin: 8px auto;
+}
+
+.microsoft {
+  background-color: #737373;
+  .icon-container {
+    /* // filter: brightness(85%);
+    // background-color: #737373; */
+    background-color: rgb(98, 98, 98, 0.9);
+  }
+}
+
+/* /////// New way for centering images */
+/* .container-img {
+  width: 100%;
+} */
+
+.container-img img,
+.container-img svg {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+/* // .container img {
+//   width: 100%;
+//   aspect-ratio: 1 / 1;
+//   object-fit: cover;
+// }
+// <div class="container">
+//   <img src="https://images.pexels.com/photos/1249588/pexels-photo-1249588.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
+// </div> */
+
+/* // // // // // // // // // // // // // // // // // // //
+// // // // // // /* Hamburger Menu */
+.hamburger {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  transition: all 0.25s;
+  position: relative;
+}
+
+.hamburger-top,
+.hamburger-middle,
+.hamburger-bottom {
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  top: 0;
+  left: 0;
+  transform: rotate(0);
+  transition: all 0.5s;
+}
+
+.hamburger-middle {
+  transform: translateY(7px);
+}
+
+.hamburger-bottom {
+  transform: translateY(14px);
+}
+
+.open {
+  transform: rotate(90deg);
+}
+
+.open .hamburger-top {
+  transform: rotate(45deg) translateY(6px) translateX(6px);
+}
+
+.open .hamburger-middle {
+  display: none;
+}
+
+.open .hamburger-bottom {
+  transform: rotate(-45deg) translateY(6px) translateX(-6px);
+}
+
+/* // // // // // // // // // // // //// // // // // // // //
+// // // // // // // // // Scroller // // // // // // //// */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--mat-sys-surface-variant);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--mat-sys-secondary);
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* // // // // // // Light / Dark - Styles // // // // // //
+//-----------------------------------------------------------
+
+// .search-box {
+//   border: 1px solid rgb(63, 81, 181);
+// }
+// .unicorn-dark-theme .search-box {
+//   border: 2px solid $dark-light;
+// } */
+
+/* // //-----------------------------------------------------------
+// .search-txt {
+//   color: rgb(122, 122, 122);
+// }
+// .unicorn-dark-theme .search-txt {
+//   color: white;
+// } */
+
+/* //-----------------------------------------------------------
+// .search-btn {
+//   color: rgb(63, 81, 181);
+// }
+// .search-box.highlight > .search-btn {
+//   background: rgb(63, 81, 181);
+//   color: mat.get-color-from-palette($dark-primary, 300);
+// }
+// .unicorn-dark-theme .search-btn {
+//   color: $dark-light;
+// } */
+
+/* //----------------------------------------------------------- */
+
+/* // // Cards
+// .cards-background {
+//   background-color: var(--dark-p-10);
+//   color: var(--dark-strong-700);
+
+//   & > div:hover {
+//     background-color: var(--dark-p-20);
+//   }
+// }
+// .unicorn-dark-theme .cards-background {
+//   background-color: var(--dark-p-30);
+//   color: white;
+
+//   & > div:hover {
+//     background-color: var(--dark-p-30);
+//   }
+// } */
+
+.floating-labels {
+  color: var(--mat-sys-on-secondary-container);
+}
+
+.mobile-menu {
+  background-color: var(--mat-sys-surface-dim);
+}
+
+.mobile-btn > span {
+  background: var(--mat-sys-secondary);
+}
+
+@keyframes passwordRulesIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.password-rules-in {
+  animation: passwordRulesIn 280ms ease-out both;
+}
+
+@keyframes featured-button-pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--mat-sys-secondary-fixed-dim);
+  }
+  100% {
+    box-shadow: 0 0 0 0.5em transparent;
+  }
+}
+
+.pulse {
+  animation: featured-button-pulse 2s ease infinite;
+}
+
+.emoji-mart-anchor svg {
+  margin: auto;
+}
+
+em-emoji-picker {
+  width: 100%;
+  height: 345px;
+}
+
+/* The mobile panel clips its overflow, which would cut off the rounded corners and shadow. */
+.emoji-panel-mobile em-emoji-picker {
+  height: 260px;
+  --border-radius: 0;
+  --shadow: none;
+}
+
+.light {
+  /* emoji-mart only accepts "r, g, b" triplets, so these mirror the light
+     --mat-sys-* values in m3_theme.css and must be kept in sync with it. */
+  em-emoji-picker {
+    --rgb-background: 245, 243, 240; /* --mat-sys-background */
+    --rgb-color: 78, 72, 67; /* --mat-sys-on-surface */
+    --rgb-accent: 180, 74, 106; /* --mat-sys-primary */
+    --rgb-input: 255, 255, 255; /* --mat-sys-surface-container-lowest */
+    --color-border: rgba(200, 214, 211, 0.6); /* --mat-sys-outline-variant */
+    --color-border-over: rgba(200, 214, 211, 1);
+  }
+}
+
+/* IMAGE VIEWER */
+#overlay-wrapper {
+  z-index: 5000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.84);
+}
+
+/* Cookies Consent  */
+#cc-main {
+  /** Change font **/
+  --cc-font-family: Nunito;
+
+  --cc-bg: var(--mat-sys-background);
+  --cc-cookie-category-block-bg: var(--mat-sys-inverse-on-surface);
+  --cc-cookie-category-block-hover-bg: var(--mat-sys-secondary-container);
+  --cc-toggle-readonly-bg: var(--mat-sys-surface-container-highest);
+  --cc-toggle-on-bg: var(--mat-sys-on-secondary-fixed-variant);
+  --cc-toggle-off-bg: var(--mat-sys-secondary-fixed-dim);
+  --cc-footer-bg: var(--mat-sys-surface-container);
+
+  --cc-btn-secondary-bg: var(--mat-sys-surface-variant);
+  --cc-btn-secondary-hover-bg: var(--mat-sys-secondary-fixed-dim);
+  /** Change button primary color to black **/
+  /* --cc-btn-primary-border-color: #000000;
+  --cc-btn-primary-hover-bg: #444444;
+  --cc-btn-primary-hover-border-color: #444444; */
+  /** Also make toggles the same color as the button **/
+  /* --cc-toggle-on-bg: var(--cc-btn-primary-bg); */
+  /** Make the buttons a bit rounder **/
+  --cc-btn-border-radius: 10px;
+}
+
+.chat-bg {
+  height: 100%;
+  background-color: var(--mat-sys-background);
+  background-image: url("../assets/images/chat/pattern-1.svg");
+  background-repeat: repeat;
+  background-position: center;
+  background-size: 380px;
+}
+
+.unicorn-dark-theme .chat-bg {
+  background-image: url("../assets/images/chat/pattern-1_d.svg");
+}
+
+.chat-typing-dots {
+  display: inline-flex;
+  width: 1.1em;
+  height: 0.35em;
+  background:
+    radial-gradient(circle closest-side, currentColor 90%, transparent) 0% 50%,
+    radial-gradient(circle closest-side, currentColor 90%, transparent) 50% 50%,
+    radial-gradient(circle closest-side, currentColor 90%, transparent) 100% 50%;
+  background-size: 25% 100%;
+  background-repeat: no-repeat;
+  animation: chat-typing-dots 1s infinite linear;
+}
+
+@keyframes chat-typing-dots {
+  0% {
+    background-size:
+      25% 40%,
+      25% 40%,
+      25% 40%;
+  }
+  33% {
+    background-size:
+      25% 100%,
+      25% 40%,
+      25% 40%;
+  }
+  66% {
+    background-size:
+      25% 40%,
+      25% 100%,
+      25% 40%;
+  }
+  100% {
+    background-size:
+      25% 40%,
+      25% 40%,
+      25% 100%;
+  }
+}
+
+.menu-active {
+  background-color: var(--mat-sys-surface-variant) !important;
+}
+
+/* .chat-bg {
+  background-image: url("data:image/svg+xml, svg_code ");
+} */
+
+/* .highlight {
+  filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg)
+    brightness(118%) contrast(119%);
+} */

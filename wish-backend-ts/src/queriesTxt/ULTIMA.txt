@@ -1,0 +1,146 @@
+db.residents.aggregate([
+        {
+            $unwind: { path: "$costs", preserveNullAndEmptyArrays: true }
+        },
+
+        {
+            $lookup: {
+                from: "recurrentCosts",
+                let: { residentId: "$_id", costId: "$costs.id" }, // base collection fields
+                pipeline: [{
+                    $match: {
+                        $expr: {
+                            $and: [
+                                { $eq: ["$residentId", "$$residentId"] },
+                                { $eq: ["$costId", "$$costId"] },
+                            ]
+                        }
+                    }
+                },
+                { $project: { _id: 0, resident: 0, costId: 0 } } // hide fileds comming from the foreign collection
+                ],
+                as: "recurrentRanges"
+            }
+        },
+
+        {
+            $set: { recurrentRanges: { $first: "$recurrentRanges" } }
+        },
+        {
+            $set: { recurrentRanges: "$recurrentRanges.costRanges" }
+        },
+
+        {
+            $set: {
+
+                costByYear: {
+
+                    $cond: {
+                        if: { $ne: ["$costs.periodicity", "one-off"] },
+                        then: {
+
+                            $map: {
+                                input: yearsList,
+                                as: "year", // creating the variable alias
+                                in: {  /* this is the returned object being built */
+
+                                    year: { $toInt: "$$year" },
+                                    cost: {
+
+                                        $first: {
+                                            $filter: {
+                                                input: "$recurrentRanges",
+                                                as: "costRangeValue",
+                                                cond: {
+                                                    $and: [
+                                                        { $gte: ["$$year", "$$costRangeValue.yearStart"] },
+                                                        { $lt: ["$$year", "$$costRangeValue.yearEnd"] }
+                                                    ]
+                                                }
+                                            }
+                                        }
+
+                                    }
+
+                                }
+                            }
+
+                        },
+                        else: {
+                            year: { $year: "$costs.date" },
+                            cost: {
+                                totalAnual: "$costs.totalAnual"
+                            }
+
+                        }
+                    }
+
+
+                }
+            }
+        },
+
+        { $project: { "recurrentRanges": 0, "costByYear.cost.residentId": 0, "costByYear.cost.yearStart": 0, "costByYear.cost.yearEnd": 0 } },
+
+        { $unwind: { path: "$costByYear", preserveNullAndEmptyArrays: true } },
+
+        {
+            $lookup: {
+                from: "payments",
+                let: { resResidentId: "$_id", resCostId: "$costs.id", resYear: "$costByYear.year" },
+                pipeline: [{
+                    $match: {
+                        $expr: {
+                            $and: [
+                                { $eq: ["$residentId", "$$resResidentId"] },
+                                { $eq: ["$costId", "$$resCostId"] },
+                                { $eq: [{ $year: "$date" }, "$$resYear"] }
+                            ]
+                        }
+                    }
+                },
+                { $project: { residentId: 0, _id: 0 } }
+                ],
+                as: "payments"
+            }
+        },
+
+        {
+            $set: {
+                debt: { $toDouble: { $subtract: ["$costByYear.cost.totalAnual", { $sum: "$payments.value" }] } },
+                paid: { $toDouble: { $sum: "$payments.value" } }
+            }
+        },
+
+        {
+
+            $project: { "payments": 0 }
+        },
+
+        {
+            $group:
+            {
+                _id: "$_id",
+                email: { $first: "$email" },
+                name: { $first: "$name" },
+                address: { $first: "$address" },
+                phoneNumber: { $first: "$phoneNumber" },
+                costs: {
+                    $push: {
+                        id: "$costs.id",
+                        name: "$costs.name",
+                        periodicity: "$costs.periodicity",
+                        date: "$costs.date",
+                        costByYear: "$costByYear.year",
+                        totalAnual: "$costByYear.cost.totalAnual",
+                        costValue: "$costByYear.cost.value",
+                        debt: "$debt",
+                        paid: "$paid"
+                    }
+                },
+
+                /*items: { $push: "$$ROOT"} */
+
+            }
+        }
+    ])

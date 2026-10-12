@@ -1,0 +1,40 @@
+<div [class.unicorn-dark-theme]="data.isDark">
+  <h2 mat-dialog-title>{{ "upload.cropTitle" | translate }}</h2>
+  <div mat-dialog-content>
+    <p class="crop-hint">{{ "upload.cropHint" | translate }}</p>
+    <div class="crop-area">
+      <image-cropper
+        [imageFile]="data.file"
+        [autoCrop]="false"
+        [maintainAspectRatio]="true"
+        [aspectRatio]="1"
+        format="jpeg"
+        [imageQuality]="85"
+        backgroundColor="#ffffff"
+        [resizeToWidth]="maxOutputSize"
+        [onlyScaleDown]="true"
+        [cropperFrameAriaLabel]="'upload.cropTitle' | translate"
+        (cropperReady)="ready.set(true)"
+        (loadImageFailed)="loadFailed()"
+      />
+      @if (!ready()) {
+        <div class="crop-loading">
+          <mat-spinner diameter="36"></mat-spinner>
+        </div>
+      }
+    </div>
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-button [mat-dialog-close]="undefined" [disabled]="saving()">
+      {{ "cancel" | translate }}
+    </button>
+    <button
+      mat-button
+      cdkFocusInitial
+      [disabled]="!ready() || saving()"
+      (click)="save()"
+    >
+      {{ "save" | translate }}
+    </button>
+  </div>
+</div>

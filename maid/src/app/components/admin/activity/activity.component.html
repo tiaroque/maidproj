@@ -1,0 +1,59 @@
+<div class="w-full px-4 pt-6 sm:px-6 lg:px-8">
+  <div class="ad-head mb-0">
+    <div>
+      <p class="ad-eyebrow">{{ "tabs.activity" | translate }}</p>
+      <h1 class="ad-title">{{ "activity.title" | translate }}</h1>
+    </div>
+  </div>
+</div>
+
+@if (activity(); as activity) {
+  <div
+    class="sticky top-0 z-10 bg-(--mat-sys-background) px-4 py-3 sm:px-6 lg:px-8"
+  >
+    <mat-button-toggle-group
+      class="w-full max-w-xl [--mat-button-toggle-divider-color:color-mix(in_srgb,var(--mat-sys-outline-variant)_45%,transparent)] max-sm:[--mat-button-toggle-height:60px] max-sm:[&_.mat-button-toggle-label-content]:px-1.5!"
+      [hideSingleSelectionIndicator]="true"
+      [value]="selectedSection()"
+      (change)="selectedSection.set($event.value)"
+    >
+      @for (section of sections; track section.key) {
+        <mat-button-toggle class="min-w-0 flex-1" [value]="section.key">
+          <span
+            class="flex flex-col items-center justify-center h-(--mat-button-toggle-height) gap-0.5 leading-tight sm:flex-row sm:gap-1"
+          >
+            <span
+              class="max-w-full text-center text-xs text-balance whitespace-normal line-clamp-2 sm:line-clamp-none sm:truncate sm:text-sm sm:whitespace-nowrap"
+            >
+              {{ section.label | translate }}
+            </span>
+            <span class="text-xs opacity-70 sm:text-sm">
+              <span class="sm:hidden">{{ activity[section.key].length }}</span>
+              <span class="max-sm:hidden">({{ activity[section.key].length }})</span>
+            </span>
+          </span>
+        </mat-button-toggle>
+      }
+    </mat-button-toggle-group>
+  </div>
+
+  @if (currentSection(); as section) {
+    <section class="px-4 pt-2 pb-12 sm:px-6 lg:px-8">
+      @if (activity[section.key].length) {
+        <div
+          class="mt-2 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4"
+        >
+          @for (user of activity[section.key]; track user.user.uid) {
+            <app-dating-card [isAnonymous]="false" [userDating]="user" />
+          }
+        </div>
+      } @else {
+        <p class="ad-empty mt-2">
+          <span class="ad-empty-title">{{ section.empty | translate }}</span>
+        </p>
+      }
+    </section>
+  }
+}
+
+<ng-template cdkPortal></ng-template>

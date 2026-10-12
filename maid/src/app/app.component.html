@@ -1,0 +1,22 @@
+@defer (when imageViewerService.showViewer().index >= 0) {
+  <app-image-viewer
+    [album]="imageViewerService.listPhotos()"
+    [showViewer]="imageViewerService.showViewer()" />
+}
+
+<!-- Same box as the former mat-drawer-container/content: page scrolls here. -->
+<div
+  cdkScrollable
+  class="relative z-1 block h-full overflow-auto overflow-x-hidden bg-(--mat-sys-background) text-(--mat-sys-on-surface)"
+>
+  @if (showPatternLayer()) {
+    <div class="floral-layer" aria-hidden="true"></div>
+  }
+  <main class="h-full relative z-1">
+    <router-outlet />
+  </main>
+</div>
+
+@defer (on idle; when menuOpen()) {
+  <app-mobile-menu />
+}

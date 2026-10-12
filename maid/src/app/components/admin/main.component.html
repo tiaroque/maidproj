@@ -1,0 +1,28 @@
+<main class="flex h-full min-w-[375px] overflow-hidden">
+  <!-- LEFT NAV -->
+  <app-left-nav
+    [ngClass]="{
+      'w-64': menu() === 'opened',
+      'w-16 left-nav-compact': menu() === 'closed',
+      'translate-x-0': hasSideMenu(),
+      'pointer-events-none invisible': !hasSideMenu(),
+    }"
+    class="fixed top-14.25 z-30 h-[calc(100%-55px)] -translate-x-full overflow-x-hidden overflow-y-auto border-r border-(--mat-sys-outline-variant) bg-(--left-nav-bg) transition-[width,translate,visibility] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] motion-reduce:transition-none overscroll-contain" />
+
+  <!-- MAIN CONTENT -->
+  <div
+    data-scroll-container
+    class="min-w-0 flex-1 overflow-y-auto border-color pt-15 md:border-r-2"
+    [class.pl-2]="!hasSideMenu()"
+    [class.pr-2]="!hasSideMenu()"
+    [class.pl-16]="hasSideMenu()"
+    [class.md:pl-64]="hasSideMenu() && menu() === 'opened'"
+  >
+    <app-verification-banner />
+    <router-outlet />
+  </div>
+
+  <!-- RIGHT CONTENT -->
+  <app-right-content
+    class="hidden h-full w-70 shrink-0 overflow-hidden border-l border-[#7fd8c3]/30 pt-16.25 pr-4 pb-8 pl-8 lg:flex lg:flex-col" />
+</main>

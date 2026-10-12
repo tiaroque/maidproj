@@ -1,0 +1,21 @@
+npm run purge:user -- <uid|email>              # dry run: shows what would be deleted
+npm run purge:user -- <uid|email> --yes        # actually deletes
+npm run purge:user -- --all-deleted [--yes]    # every account flagged deleted
+
+
+
+Locally there's nothing to do: AWSBucketName is already set on line 3 of wish-backend-ts/.env. The dry run I ran earlier used it. It checked your real bucket and found 0 files for that test user, and it didn't print the "AWSBucketName not set" warning.
+
+The script reads the backend's config, which loads .env from the folder you run the command in. So run it from wish-backend-ts/, which npm run purge:user does if you start it there. Deleting files also needs AWSAccessKeyId and AWSSecretKey from the same .env.
+
+To point it at a different bucket, either edit the value in .env:
+
+
+AWSBucketName=your-bucket-name
+
+or override it for a single run. Values already set in your shell take priority over .env:
+
+
+AWSBucketName=your-bucket-name npm run purge:user -- someone@example.com
+
+On the production server, use whatever environment the API already runs with, either its .env file or the variables set on the host. Run the script from the same directory, so it uses the same bucket and credentials as the API.

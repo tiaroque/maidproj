@@ -1,0 +1,16 @@
+<div class="language">
+  <button mat-mini-fab disableRipple [matMenuTriggerFor]="menu">
+    {{ selectedLanguage() | uppercase }}
+  </button>
+  <mat-menu #menu="matMenu">
+    @for (language of languages(); track language.value) {
+      <button
+        disableRipple
+        (click)="selectLanguage(language.value)"
+        mat-menu-item
+      >
+        {{ language.name }}
+      </button>
+    }
+  </mat-menu>
+</div>

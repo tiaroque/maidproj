@@ -1,0 +1,123 @@
+<div
+  class="mx-auto w-full min-h-full max-w-7xl flex justify-center px-4 py-8 sm:py-12 xprofile"
+>
+  <div
+    class="w-full max-w-md self-start rounded-3xl border border-(--mat-sys-outline-variant) bg-(--mat-sys-surface)/90 backdrop-blur-sm shadow-xl px-5 py-8 sm:px-8"
+  >
+    <div class="flex flex-col items-center">
+      <svg class="w-16 h-16 fill-current text-(--mat-sys-primary)/80">
+        <use href="assets/images/logo4_no_fill.svg#Capa_1"></use>
+      </svg>
+      <div
+        class="text-2xl -translate-y-3 font-[Albert_Sans,sans-serif] tracking-tighter font-semibold text-(--mat-sys-primary)/80"
+      >
+        clara
+      </div>
+      <h1
+        class="mt-1 text-xl font-semibold text-center text-(--mat-sys-on-surface)"
+      >
+        {{ "auth.createAccountTitle" | translate }}
+      </h1>
+    </div>
+
+    <mat-vertical-stepper linear #stepper class="mt-6 bg-transparent!">
+      <mat-step [completed]="profileForm.gender().valid()" [editable]="true">
+        <ng-template matStepLabel>{{ "gender" | translate }}</ng-template>
+        <app-gender [gender]="profileForm.gender" />
+        <div class="mt-6 flex justify-end">
+          <button
+            mat-flat-button
+            matStepperNext
+            (click)="markGenderAsToutched()"
+          >
+            {{ "next" | translate }}
+          </button>
+        </div>
+      </mat-step>
+
+      <mat-step [completed]="profileForm.birthDate().valid()" [editable]="true">
+        <ng-template matStepLabel>{{ "dob" | translate }}</ng-template>
+        <app-birthdate [isSignup]="true" [birthDate]="profileForm.birthDate" />
+        <div class="mt-6 flex items-center justify-between gap-2">
+          <button mat-button matStepperPrevious>
+            {{ "previous" | translate }}
+          </button>
+          <button
+            mat-flat-button
+            matStepperNext
+            (click)="markBirthDateAsToutched()"
+          >
+            {{ "next" | translate }}
+          </button>
+        </div>
+      </mat-step>
+
+      <mat-step [completed]="profileForm.details().valid()" [editable]="true">
+        <ng-template matStepLabel>{{
+          "profileDetails" | translate
+        }}</ng-template>
+        <app-profile-name [profileName]="profileForm.details.profileName" />
+        <app-details
+          [isSignup]="true"
+          class="mt-2 block"
+          [showUnrequiredFields]="false"
+          [form]="profileForm.details"
+        />
+        <div class="mt-6 flex items-center justify-between gap-2">
+          <button mat-button matStepperPrevious>
+            {{ "previous" | translate }}
+          </button>
+          <button
+            mat-flat-button
+            matStepperNext
+            (click)="markDetailsAsTouched()"
+          >
+            {{ "next" | translate }}
+          </button>
+        </div>
+      </mat-step>
+
+      <mat-step [completed]="conditionsForm.agreeTermsConditions().valid()">
+        <ng-template matStepLabel>{{
+          "termsConditions" | translate
+        }}</ng-template>
+        <section class="checkboxes-top flex flex-col gap-2">
+          <mat-card appearance="outlined">
+            <mat-card-content>
+              <mat-checkbox [formField]="conditionsForm.marketing">{{
+                "noMarktingMsg" | translate
+              }}</mat-checkbox>
+            </mat-card-content>
+          </mat-card>
+          <mat-card appearance="outlined">
+            <mat-card-content>
+              <mat-checkbox [formField]="conditionsForm.agreeTermsConditions"
+                >{{ "agreeWith" | translate }}
+                <a
+                  [routerLink]="['/', lang(), 'admin', 'terms-conditions']"
+                  target="_blank"
+                  class="text-sm border-dotted border-b border-gray-500 font-normal text-(--mat-button-protected-label-text-color)"
+                  >{{ "termsConditionsUse" | translate }}
+                </a>
+              </mat-checkbox>
+            </mat-card-content>
+          </mat-card>
+        </section>
+
+        <div class="mt-6 flex items-center justify-between gap-2">
+          <button mat-button matStepperPrevious>
+            {{ "previous" | translate }}
+          </button>
+          <button mat-flat-button [disabled]="!canFinish()" (click)="submit()">
+            <span class="inline-flex items-center gap-2">
+              @if (loading()) {
+                <mat-spinner diameter="16" class="[--mat-progress-spinner-active-indicator-color:currentColor]" />
+              }
+              {{ "finish" | translate }}
+            </span>
+          </button>
+        </div>
+      </mat-step>
+    </mat-vertical-stepper>
+  </div>
+</div>

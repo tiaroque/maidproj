@@ -1,0 +1,114 @@
+<div class="flex flex-col gap-6">
+  <div>
+    <h3 class="mb-2 text-sm font-semibold text-(--mat-sys-on-surface)">
+      {{ (isCleaner() ? "work.servicesOffered" : "work.servicesNeeded") | translate }}
+    </h3>
+    <mat-chip-listbox
+      multiple
+      class="work-chips"
+      [formField]="form().services"
+      [attr.aria-label]="
+        (isCleaner() ? 'work.servicesOffered' : 'work.servicesNeeded') | translate
+      "
+    >
+      @for (service of services; track service) {
+        <mat-chip-option [value]="service">
+          <mat-icon matChipAvatar aria-hidden="true">{{
+            serviceIcons[service]
+          }}</mat-icon>
+          {{ "services." + service | translate }}
+        </mat-chip-option>
+      }
+    </mat-chip-listbox>
+  </div>
+
+  <mat-form-field [appearance]="utilsService.inputType()" class="w-full sm:max-w-xs">
+    <mat-label>{{
+      (isCleaner() ? "work.hourlyRate" : "work.budget") | translate
+    }}</mat-label>
+    <input
+      matInput
+      type="number"
+      inputmode="decimal"
+      step="0.5"
+      [formField]="form().hourlyRate"
+    />
+    <span matTextSuffix>&nbsp;{{ currency() }} / {{ "work.hour" | translate }}</span>
+    <mat-hint>{{ "optional" | translate }}</mat-hint>
+    @if (hasKind(form().hourlyRate(), "min") || hasKind(form().hourlyRate(), "max")) {
+      <mat-error>{{
+        "work.rateRange" | translate: { min: minRate, max: maxRate, currency: currency() }
+      }}</mat-error>
+    }
+  </mat-form-field>
+
+  <div>
+    <h3 class="mb-2 text-sm font-semibold text-(--mat-sys-on-surface)">
+      {{ (isCleaner() ? "work.availableDays" : "work.preferredDays") | translate }}
+    </h3>
+    <mat-chip-listbox
+      multiple
+      class="work-chips"
+      [formField]="form().availability.days"
+      [attr.aria-label]="'work.availableDays' | translate"
+    >
+      @for (day of days; track day) {
+        <mat-chip-option [value]="day">{{ "days." + day | translate }}</mat-chip-option>
+      }
+    </mat-chip-listbox>
+  </div>
+
+  <div>
+    <h3 class="mb-2 text-sm font-semibold text-(--mat-sys-on-surface)">
+      {{ "work.timeOfDay" | translate }}
+    </h3>
+    <mat-chip-listbox
+      multiple
+      class="work-chips"
+      [formField]="form().availability.slots"
+      [attr.aria-label]="'work.timeOfDay' | translate"
+    >
+      @for (slot of slots; track slot) {
+        <mat-chip-option [value]="slot">{{ "slots." + slot | translate }}</mat-chip-option>
+      }
+    </mat-chip-listbox>
+  </div>
+
+  @if (isCleaner()) {
+    <div>
+      <h3 class="text-sm font-semibold text-(--mat-sys-on-surface)">
+        {{ "work.areasCovered" | translate }}
+      </h3>
+      <p class="mb-3 text-sm text-(--mat-sys-on-surface-variant)">
+        {{ "work.areasHint" | translate: { max: maxAreas } }}
+      </p>
+
+      @if (form().areasCovered().value().length) {
+        <mat-chip-set class="mb-3 block" [attr.aria-label]="'work.areasCovered' | translate">
+          @for (area of form().areasCovered().value(); track area.location) {
+            <mat-chip (removed)="removeArea(area.location)">
+              <mat-icon matChipAvatar aria-hidden="true">place</mat-icon>
+              {{ area.locationName }} · {{ area.country }}
+              <button matChipRemove [attr.aria-label]="'offer.remove' | translate">
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip>
+          }
+        </mat-chip-set>
+      }
+
+      <app-location [isSignup]="false" [form]="draft" />
+      <div class="mt-2 flex justify-end">
+        <button
+          type="button"
+          mat-stroked-button
+          [disabled]="!canAddArea()"
+          (click)="addArea()"
+        >
+          <mat-icon>add</mat-icon>
+          {{ "work.addArea" | translate }}
+        </button>
+      </div>
+    </div>
+  }
+</div>

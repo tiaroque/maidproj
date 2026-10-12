@@ -1,0 +1,60 @@
+<div
+  class="quick-search w-full rounded-3xl border border-[#7fd8c3]/55 bg-white/90 px-5 pt-5 pb-4 shadow-[0_16px_36px_rgb(15_42_46/0.08)] md:w-[22.5rem] [&_.mat-mdc-form-field-subscript-wrapper]:hidden [&_.location-search-compact]:gap-4"
+>
+  <h2 class="mb-5 text-center text-lg font-semibold tracking-tight text-[#0f2a2e]">
+    {{ "browse.quickSearch" | translate }}
+  </h2>
+
+  <div class="flex flex-col gap-4">
+    <mat-form-field
+      class="w-full"
+      subscriptSizing="dynamic"
+      [appearance]="utilsService.inputType()"
+    >
+      <mat-label>{{ "browse.searchFor" | translate }}</mat-label>
+      <mat-select
+        panelClass="app-select-panel"
+        [formField]="filterForm.gender"
+        (selectionChange)="genderChanged($event)"
+      >
+        <mat-option [value]="null">--</mat-option>
+        <mat-option value="Cleaner">{{ "browse.cleaners" | translate }}</mat-option>
+        <mat-option value="Client">{{ "browse.clients" | translate }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field
+      class="w-full"
+      subscriptSizing="dynamic"
+      [appearance]="utilsService.inputType()"
+    >
+      <mat-label>{{ "browse.service" | translate }}</mat-label>
+      <mat-select
+        panelClass="app-select-panel"
+        [formField]="filterForm.service"
+        (selectionChange)="serviceChanged($event)"
+      >
+        <mat-option [value]="null">{{ "browse.anyService" | translate }}</mat-option>
+        @for (service of services; track service) {
+          <mat-option [value]="service">{{
+            "services." + service | translate
+          }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <app-location-search
+      class="block"
+      [showLabel]="false"
+      [compact]="true"
+      [form]="filterForm" />
+  </div>
+
+  <a
+    class="mt-4 flex h-11 w-full items-center justify-center rounded-full bg-[#0f9488] text-sm font-bold text-white shadow-sm hover:bg-[#0f766e]"
+    [routerLink]="['/', this.lang(), 'browse']"
+    (click)="filterList()"
+  >
+    {{ "listFiltering.filter" | translate }}
+  </a>
+</div>

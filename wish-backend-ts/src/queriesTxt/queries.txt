@@ -1,0 +1,128 @@
+
+//// Add existing cost to all residents
+db.residents.updateMany(
+    {  },
+    { $push: { costs: { name: 'elevators', periodicity: 'monthly' } } }
+ )
+
+///// Remove existing cost from resident
+ db.residents.update(
+    { '_id': ObjectId("603f6b71756c211d30ac275a") }, 
+    { $pull: { costs: { name: "membership" } } },
+    false,
+    true
+);
+
+///// Update existing cost of a resident
+db.residents.updateMany(
+    { _id: ObjectId("603f6b71756c211d30ac275a"), "costs.name": "membership" },
+    { $set: { "costs.$.value" : 34.5 } }
+ )
+
+
+
+//////// Add payments
+db.payments.insertOne({
+    residentId: "anagomesquintas234@gmail.com",
+    costId: "membership",
+    value: 240.8,
+    date: ISODate("2021-12-01T12:00:00.000Z")
+})
+
+
+db.residents.updateMany(
+    { 
+        _id: ObjectId("603f6b71756c211d30ac275a"),
+    },
+    { 
+        /*$set: { 
+            "costs.$[cost].values.$[value].picas" : 34.5, 
+        },*/
+        $push: {
+            "costs.$[cost].values": { teste: 2}
+        }
+             
+    },
+    {
+      arrayFilters: [
+         {"cost.id": "membership"}
+         /*{"value.interval.yearEnd": 2020}*/
+      ]   
+    }
+ )
+
+
+ db.residents.updateMany(
+    { 
+        _id: ObjectId("603f6b71756c211d30ac275a"),
+    },
+    { 
+        $set: { 
+            "costs.$[cost].values": [ 
+                {
+                    "value" : 50,
+                    "totalAnual" : 600,
+                    "interval" : {
+                        "yearStart" : 1900,
+                        "yearEnd" : 3000
+                    }
+                }
+            ], 
+        }
+     
+             
+    },
+    {
+      arrayFilters: [
+         {"cost.id": "membership"}
+         /*{"value.interval.yearEnd": 2020}*/
+      ]   
+    }
+    
+ )
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  

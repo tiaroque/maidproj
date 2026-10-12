@@ -1,0 +1,50 @@
+.close-btn {
+  right: -24px;
+  position: absolute;
+  top: -16px;
+}
+
+.divider-content {
+  margin-top: 2px;
+  margin-bottom: 7px;
+  font-size: 0.8rem;
+  line-height: 16px;
+}
+
+.divider-inner {
+  overflow: hidden;
+  text-align: center;
+}
+
+.divider-span {
+  padding: 16px;
+  position: relative;
+}
+
+.divider-span::before {
+  border-bottom-width: 1px;
+  border-bottom-color: #e4e4e4;
+}
+
+.divider-span::before {
+  content: "";
+  position: absolute;
+  border-bottom: 1px solid rgb(228, 228, 228);
+  top: 50%;
+  right: 100%;
+  width: 5000px;
+}
+
+.divider-span::after {
+  border-bottom-width: 1px;
+  border-bottom-color: #e4e4e4;
+}
+
+.divider-span::after {
+  content: "";
+  position: absolute;
+  border-bottom: 1px solid rgb(228, 228, 228);
+  top: 50%;
+  left: 100%;
+  width: 5000px;
+}

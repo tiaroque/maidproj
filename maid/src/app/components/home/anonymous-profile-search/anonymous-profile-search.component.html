@@ -1,0 +1,101 @@
+<div class="sg-page">
+  <app-header-landing class="sg-header" />
+
+  <section class="sg-band pt-28 pb-24 text-center">
+    <div class="container mx-auto max-w-3xl px-6">
+      <p class="sg-kicker">{{ "list.discover" | translate }}</p>
+      <h1 class="mt-3 text-4xl font-bold leading-tight text-white md:text-5xl">
+        {{ "browse.pageTitle" | translate }}
+      </h1>
+      <p class="mt-4 text-lg leading-relaxed text-white/75">
+        {{ "landing.peopleLookingHint" | translate }}
+      </p>
+      @if (list().length) {
+        <p
+          class="mt-6 inline-flex rounded-full border border-[#7fd8c3]/35 bg-white/8 px-4 py-1.5 text-sm font-semibold text-[#7fd8c3]"
+        >
+          {{ "list.showingMembers" | translate: { count: list().length } }}
+        </p>
+      }
+    </div>
+
+    <svg
+      class="sg-wave"
+      viewBox="0 0 1440 120"
+      preserveAspectRatio="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        d="M0,44 C220,116 470,4 720,44 C970,84 1220,8 1440,52 L1440,120 L0,120 Z"
+      ></path>
+    </svg>
+  </section>
+
+  <main class="grow pt-8 pb-16">
+    <div class="container mx-auto max-w-6xl px-4">
+      <!-- Reversed on small screens so the profiles, not the filter panel,
+           are what a visitor sees first. -->
+      <div class="flex flex-col-reverse gap-8 md:flex-row md:items-start">
+        <div class="w-full shrink-0 md:sticky md:top-24 md:w-auto">
+          <app-quick-search />
+        </div>
+
+        <div class="min-w-0 flex-1">
+          @if (list().length) {
+            <div
+              class="grid grid-cols-1 gap-4 min-[360px]:grid-cols-2 sm:gap-5 lg:grid-cols-3"
+            >
+              @for (user of list(); track user.user.uid; let index = $index) {
+                <app-dating-card
+                  [isAnonymous]="true"
+                  [imagePriority]="index < 3"
+                  [userDating]="user" />
+              }
+            </div>
+
+            <div
+              class="sg-card mt-8 flex flex-col items-center gap-4 p-7 text-center sm:flex-row sm:justify-between sm:text-left"
+            >
+              <div>
+                <p class="text-xl font-bold text-[#0f2a2e]">
+                  {{ "landing.ctaTitle" | translate }}
+                </p>
+                <p class="mt-1 text-sm text-[#12292c]/70">
+                  {{ "landing.ctaSubtitle" | translate }}
+                </p>
+              </div>
+              <a
+                class="sg-cta shrink-0 px-8 py-3"
+                [routerLink]="['/', lang(), 'register']"
+              >
+                {{ "landing.joinFree" | translate }}
+              </a>
+            </div>
+          } @else {
+            <div
+              class="sg-card flex flex-col items-center justify-center gap-3 px-6 py-16 text-center"
+            >
+              <img
+                alt=""
+                ngSrc="/assets/images/no-results.svg"
+                width="144"
+                height="99"
+                class="h-auto w-36 max-w-full"
+              />
+              <p class="text-lg font-semibold text-[#0f2a2e]">
+                {{ "noResults" | translate }}
+              </p>
+              <p class="max-w-md text-sm text-[#12292c]/70">
+                {{ "list.noResultsHint" | translate }}
+              </p>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <app-footer />
+</div>

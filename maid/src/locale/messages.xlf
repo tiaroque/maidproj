@@ -1,0 +1,3738 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="fieldRequired" datatype="html">
+        <source>&lt;span class=&apos;text-xs&apos;&gt; Field is &lt;strong&gt;required&lt;/strong&gt;&lt;/span&gt;</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fieldMaxLength" datatype="html">
+        <source>Maximum &lt;strong&gt;{{max}} characters&lt;/strong&gt;</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fieldSelectValidValue" datatype="html">
+        <source>Please select a &lt;strong&gt;valid&lt;/strong&gt; value</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="save" datatype="html">
+        <source>Save</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="noResults" datatype="html">
+        <source>No results</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="location" datatype="html">
+        <source>location</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="languages" datatype="html">
+        <source>languages</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="buttonClose" datatype="html">
+        <source>close</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="editProfile" datatype="html">
+        <source>Edit profile</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="photos" datatype="html">
+        <source>Photos</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferences" datatype="html">
+        <source>Preferences</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="details" datatype="html">
+        <source>Details</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dob" datatype="html">
+        <source>Date of birth</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dateFormat" datatype="html">
+        <source>dd/mm/yyyy</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="invalidDateFormat" datatype="html">
+        <source>&lt;strong&gt;Invalid&lt;/strong&gt; date</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="invalidDate" datatype="html">
+        <source>&lt;strong&gt;Invalid&lt;/strong&gt; date</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ageInvalid" datatype="html">
+        <source>Minimum age &lt;strong&gt;18 years&lt;/strong&gt;</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="additional" datatype="html">
+        <source>Additional</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="imageSent" datatype="html">
+        <source>image sent</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="description" datatype="html">
+        <source>Description</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="uploadImage" datatype="html">
+        <source>Upload image</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="saved" datatype="html">
+        <source>Saved!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="saveError" datatype="html">
+        <source>Error saving</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gender" datatype="html">
+        <source>Your role</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="next" datatype="html">
+        <source>Next</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="previous" datatype="html">
+        <source>Previous</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileDetails" datatype="html">
+        <source>Profile details</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="finish" datatype="html">
+        <source>Finish</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="termsConditions" datatype="html">
+        <source>Terms and Conditions</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="termsConditionsUse" datatype="html">
+        <source>Terms and Conditions of Use</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="agreeWith" datatype="html">
+        <source>I agree with the</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="noMarktingMsg" datatype="html">
+        <source>I prefer not to receive marketing messages</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userUnavaliable" datatype="html">
+        <source>user unavailable</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="pleaseTryLater" datatype="html">
+        <source>Error, Please try again later!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="invalidData" datatype="html">
+        <source>Invalid Data!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="saveData" datatype="html">
+        <source>Do you want to save the data?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="confirm" datatype="html">
+        <source>Confirm</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cancel" datatype="html">
+        <source>Cancel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="today" datatype="html">
+        <source>Today</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="yesterday" datatype="html">
+        <source>Yesterday</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="add" datatype="html">
+        <source>Add</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="messagesEncrypted" datatype="html">
+        <source>Your personal messages are end-to-end encrypted.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="followUs" datatype="html">
+        <source>Follow us:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="subtitle" datatype="html">
+        <source>Trusted home cleaning</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="subscribeFree" datatype="html">
+        <source>Subscribe now and get 3 months free. Then €6 a month.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="browse.quickSearch" datatype="html">
+        <source>Quick Search</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="browse.searchFor" datatype="html">
+        <source>Looking for</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="browse.browseAll" datatype="html">
+        <source>Browse All</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="browse.pageTitle" datatype="html">
+        <source>Find a cleaner</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="browse.cleaners" datatype="html">
+        <source>Cleaners</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="browse.clients" datatype="html">
+        <source>Job requests</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="browse.service" datatype="html">
+        <source>Service</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="browse.anyService" datatype="html">
+        <source>Any service</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tabs.profile" datatype="html">
+        <source>Profile</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">62</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tabs.search" datatype="html">
+        <source>Search</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">63</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tabs.chat" datatype="html">
+        <source>Chat</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tabs.chatUnread" datatype="html">
+        <source>{{count}} unread messages</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">65</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tabs.activity" datatype="html">
+        <source>Activity</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">66</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="activity.title" datatype="html">
+        <source>Who noticed you</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="activity.likedYou" datatype="html">
+        <source>Liked you</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">70</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="activity.youLiked" datatype="html">
+        <source>You liked</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="activity.visitedYou" datatype="html">
+        <source>Visited you</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="activity.emptyLikes" datatype="html">
+        <source>No likes yet.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">73</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="activity.emptyYouLiked" datatype="html">
+        <source>You haven&apos;t liked anyone yet.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">74</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="activity.emptyVisits" datatype="html">
+        <source>No visits yet.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">75</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.enter" datatype="html">
+        <source>Sign in</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">78</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.register" datatype="html">
+        <source>Register</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">79</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.googleRegister" datatype="html">
+        <source>Continue with Google</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">80</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.googleEnter" datatype="html">
+        <source>Continue with Google</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">81</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.welcomeBack" datatype="html">
+        <source>Welcome back</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">82</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.createAccountTitle" datatype="html">
+        <source>Create your account</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">83</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.resetTitle" datatype="html">
+        <source>Reset your password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">84</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.resetHint" datatype="html">
+        <source>Enter your email and we will send you a reset link.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">85</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.orContinue" datatype="html">
+        <source>or</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">86</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.heroTitle" datatype="html">
+        <source>Help at home, from people you can trust</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">87</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.heroLine" datatype="html">
+        <source>Verified cleaners and households across Europe.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">88</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.orEnterEmail" datatype="html">
+        <source>or enter with your email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">89</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.email" datatype="html">
+        <source>Email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">90</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.emailInvalid" datatype="html">
+        <source>Email is &lt;strong&gt;invalid&lt;/strong&gt;</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">91</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.emailUsed" datatype="html">
+        <source>Email has already been &lt;strong&gt;used&lt;/strong&gt;</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">92</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.password" datatype="html">
+        <source>Password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">93</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.passwordMinChars" datatype="html">
+        <source>minimum &lt;strong&gt;6 characters&lt;/strong&gt;</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">94</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.passwordMinLength" datatype="html">
+        <source>At least 6 characters</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">95</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.passwordUppercase" datatype="html">
+        <source>One uppercase letter</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">96</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.passwordLowercase" datatype="html">
+        <source>One lowercase letter</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">97</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.passwordNumber" datatype="html">
+        <source>One number</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">98</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.passwordSpecial" datatype="html">
+        <source>One special character</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">99</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.passwordWeak" datatype="html">
+        <source>Choose a stronger password.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">100</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.forgotPassword" datatype="html">
+        <source>Forgot your password?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">101</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.joinUs" datatype="html">
+        <source>Join us today!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">102</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.orRegisterEmail" datatype="html">
+        <source>or register with email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">103</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.siteProtected" datatype="html">
+        <source>This site is protected by the following&apos;s &lt;a href=&apos;/terms-conditions&apos; target=&apos;_blank&apos; class=&apos;dotted-link&apos;&gt;Terms of Service&lt;/a&gt; and  &lt;a href=&apos;/privacy&apos; target=&apos;_blank&apos; class=&apos;dotted-link&apos;&gt;Privacy Policy&lt;/a&gt;</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">104</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.doYourLogin" datatype="html">
+        <source>Log in</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">105</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.loginHere" datatype="html">
+        <source>here</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">106</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.orRecoverAccount" datatype="html">
+        <source>or recover your password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">107</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.recoverAccount" datatype="html">
+        <source>Send reset link</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">108</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.profileName" datatype="html">
+        <source>Profile name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">109</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.useGoogleToLogin" datatype="html">
+        <source>Please use &lt;strong&gt;Google&lt;/strong&gt; &lt;i class=&apos;fab fa-google&apos;&gt;&lt;/i&gt; to log in!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">110</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.pleaseSelectAccount" datatype="html">
+        <source>Please select an account!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">111</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.authenticationError" datatype="html">
+        <source>Error authenticating, please try again in a moment!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">112</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.pleaseVerifyAccount" datatype="html">
+        <source>Please check your email!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">113</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.userOrPassInvalid" datatype="html">
+        <source>Username or password are incorrect</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">114</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.errorSendingValidation" datatype="html">
+        <source>Error sending email validation</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">115</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.emailAlreadyExists" datatype="html">
+        <source>The email address already exists!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">116</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.captchaLabel" datatype="html">
+        <source>Characters from the image</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">117</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.captchaRequired" datatype="html">
+        <source>Enter the characters from the image</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">118</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.captchaInvalid" datatype="html">
+        <source>Those characters do not match. Please try again.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">119</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.captchaRefresh" datatype="html">
+        <source>Show a new image</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">120</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.passkeyEnter" datatype="html">
+        <source>Sign in with a passkey</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">121</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.passkeyUnavailable" datatype="html">
+        <source>Passkeys are not available in this browser.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">122</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.passkeyError" datatype="html">
+        <source>Could not sign in with a passkey. Try again, or use your password or Google.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">123</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.showPassword" datatype="html">
+        <source>Show password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">124</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userManagement.orRedefinePass" datatype="html">
+        <source>or reset your password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">127</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userManagement.redefinePass" datatype="html">
+        <source>Reset password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">128</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userManagement.orVerifyEmail" datatype="html">
+        <source>Confirm your email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">129</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userManagement.verifyEmailTitle" datatype="html">
+        <source>Confirm your email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">130</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userManagement.verifyEmailSuccessTitle" datatype="html">
+        <source>Email confirmed</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">131</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userManagement.resetSuccessTitle" datatype="html">
+        <source>Password updated</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">132</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userManagement.verifyCodeExpired" datatype="html">
+        <source>This reset link is invalid or has expired. Please request a new one.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">133</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userManagement.validatingEmailError" datatype="html">
+        <source>We could not confirm your email. The link may be invalid or has expired.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">134</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userManagement.redefinePasswordSuccess" datatype="html">
+        <source>Your password has been changed. You can now sign in with your new password.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">135</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userManagement.resetPasswordError" datatype="html">
+        <source>We could not update your password. The link may be invalid or has expired.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">136</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userManagement.accountCreated" datatype="html">
+        <source>Your account has been created successfully.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">137</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userManagement.emailVerifiedSuccess" datatype="html">
+        <source>Your email address has been verified. You can now sign in to your account.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">138</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userManagement.recoverPasswordSuccess" datatype="html">
+        <source>We have sent a password reset link to your email. Follow the instructions in the message to choose a new password. The link expires in 1 hour.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">139</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userManagement.recoverPasswordError" datatype="html">
+        <source>We could not send the password reset email. Please try again in a moment.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">140</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.darkTheme" datatype="html">
+        <source>Dark mode</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">143</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.theme" datatype="html">
+        <source>Theme</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">144</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.themeLight" datatype="html">
+        <source>Light</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">145</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.themeDark" datatype="html">
+        <source>Dark</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">146</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.exit" datatype="html">
+        <source>Exit</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">147</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.viewProfile" datatype="html">
+        <source>View profile</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">148</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.browse" datatype="html">
+        <source>Browse</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">149</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.openMenu" datatype="html">
+        <source>Open menu</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">150</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="listFiltering.location" datatype="html">
+        <source>Location</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">153</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="listFiltering.filter" datatype="html">
+        <source>Filter</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">154</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="listFiltering.apply" datatype="html">
+        <source>Apply filters</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">155</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="listFiltering.applyShort" datatype="html">
+        <source>Apply</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">156</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="listFiltering.remove" datatype="html">
+        <source>Remove</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">157</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="listFiltering.reset" datatype="html">
+        <source>Reset</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">158</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="listFiltering.languages" datatype="html">
+        <source>Languages</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">159</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="listFiltering.onlineNow" datatype="html">
+        <source>Online now</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">160</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="listFiltering.verified" datatype="html">
+        <source>Verified</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">161</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="listFiltering.services" datatype="html">
+        <source>Services</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">162</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="listFiltering.rate" datatype="html">
+        <source>Hourly rate</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">163</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="listFiltering.rateHint" datatype="html">
+        <source>Rates are in the currency of each profile&apos;s country.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">164</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="listFiltering.availability" datatype="html">
+        <source>Availability</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">165</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="offer.remove" datatype="html">
+        <source>Remove</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">168</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="offer.removed" datatype="html">
+        <source>Removed!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">169</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="offer.removeError" datatype="html">
+        <source>Error removing!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">170</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="offer.saved" datatype="html">
+        <source>Saved!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">171</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="offer.saveError" datatype="html">
+        <source>Error saving!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">172</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="upload.setAsProfilePhoto" datatype="html">
+        <source>Select as profile picture</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">175</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="upload.delete" datatype="html">
+        <source>Remove</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">176</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="upload.profilePhotoChanged" datatype="html">
+        <source>Changed profile photo!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">177</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="upload.errorChangingPhoto" datatype="html">
+        <source>Error changing image</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">178</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="upload.imageDeleted" datatype="html">
+        <source>Image deleted!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">179</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="upload.imageDeleteError" datatype="html">
+        <source>Error deleting image!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">180</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="upload.imageMaxSizError" datatype="html">
+        <source>Image exceeds the maximum limit of 1Mb</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">181</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="upload.imageTooBig" datatype="html">
+        <source>Image exceeds maximum limit</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">182</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="upload.cropTitle" datatype="html">
+        <source>Position your photo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">183</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="upload.cropHint" datatype="html">
+        <source>Drag and resize the square to frame your photo.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">184</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="upload.imageUploadError" datatype="html">
+        <source>Error loading image!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">185</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="upload.deletePhoto" datatype="html">
+        <source>Do you want to delete the photo?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">186</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="upload.profilePicture" datatype="html">
+        <source>Profile picture</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">187</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="upload.profilePictureHint" datatype="html">
+        <source>Use one of your photos or pick an avatar.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">188</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="upload.usingAvatar" datatype="html">
+        <source>You&apos;re using an avatar as your profile picture.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">189</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="upload.chooseAvatar" datatype="html">
+        <source>Choose avatar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">190</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="upload.hideAvatars" datatype="html">
+        <source>Hide avatars</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">191</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="upload.avatarOption" datatype="html">
+        <source>Avatar {{number}}</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">192</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="upload.avatarChanged" datatype="html">
+        <source>Avatar set as profile picture!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">193</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="upload.errorChangingAvatar" datatype="html">
+        <source>Error changing avatar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">194</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.blockedProfile" datatype="html">
+        <source>Blocked profiles</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">197</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.noBlockedUsers" datatype="html">
+        <source>No blocked users</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">198</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.intendToUnblockUser" datatype="html">
+        <source>Do you want to unblock the user?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">199</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.passkeysTitle" datatype="html">
+        <source>Passkeys</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">200</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.passkeysHint" datatype="html">
+        <source>Sign in on this device without typing your password.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">201</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.addPasskey" datatype="html">
+        <source>Add a passkey</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">202</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.noPasskeys" datatype="html">
+        <source>You have not added a passkey yet.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">203</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.removePasskey" datatype="html">
+        <source>Remove</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">204</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.passkeyAdded" datatype="html">
+        <source>Passkey saved.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">205</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.passkeyAddError" datatype="html">
+        <source>Could not save a passkey. Try again.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">206</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.passkeyRemoveConfirm" datatype="html">
+        <source>Remove this passkey? You will no longer be able to sign in with it.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">207</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.passkeyAddedOn" datatype="html">
+        <source>Added {{date}}</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">208</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.passkeyLastUsed" datatype="html">
+        <source>Last used {{date}}</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">209</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.passkeySynced" datatype="html">
+        <source>Available on your devices</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">210</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.passkeyThisDevice" datatype="html">
+        <source>This device only</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">211</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.passkeyLimit" datatype="html">
+        <source>You can save up to 10 passkeys.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">212</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.chatAlertsTitle" datatype="html">
+        <source>Chat alerts</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">213</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.chatAlertsHint" datatype="html">
+        <source>Play a sound and flash the browser tab when a new message arrives. Conversations you muted individually stay muted.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">214</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.deleteAccountTitle" datatype="html">
+        <source>Delete account</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">215</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.deleteAccountHint" datatype="html">
+        <source>Permanently close your account. Your profile will no longer be visible to anyone.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">216</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.deleteAccount" datatype="html">
+        <source>Delete account</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">217</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.deleteAccountConfirm" datatype="html">
+        <source>Delete your account? You will be signed out and will no longer be able to sign in. This cannot be undone.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">218</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chatScreen.block" datatype="html">
+        <source>Block</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">221</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chatScreen.moreMessage" datatype="html">
+        <source>more messages</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">222</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chatScreen.newMessage" datatype="html">
+        <source>new message!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">223</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chatScreen.isTyping" datatype="html">
+        <source> is writing...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">224</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chatScreen.selectConversation" datatype="html">
+        <source>Please select a conversation</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">225</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chatScreen.noContacts" datatype="html">
+        <source>You have not contacted anyone yet.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">226</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chatScreen.blockUser" datatype="html">
+        <source>Do you want to block the user?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">227</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chatScreen.writeMessage" datatype="html">
+        <source>Write a message</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">228</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chatScreen.disableAlert" datatype="html">
+        <source>Disable alert</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">229</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chatScreen.enableAlerts" datatype="html">
+        <source>Enable alert</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">230</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chatScreen.online" datatype="html">
+        <source>Online</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">231</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chatScreen.offline" datatype="html">
+        <source>Offline</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">232</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chatScreen.all" datatype="html">
+        <source>All</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">233</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chatScreen.favorites" datatype="html">
+        <source>Favorites</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">234</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chatScreen.noFavorites" datatype="html">
+        <source>No favorite conversations yet.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">235</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chatScreen.addFavorite" datatype="html">
+        <source>Add to favorites</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">236</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chatScreen.removeFavorite" datatype="html">
+        <source>Remove from favorites</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">237</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chatScreen.deletePhoto" datatype="html">
+        <source>Delete photo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">238</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chatScreen.deletePhotoConfirm" datatype="html">
+        <source>Delete this photo? It will be removed for both of you.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">239</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chatScreen.photoDeleted" datatype="html">
+        <source>Photo deleted</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">240</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="optional" datatype="html">
+        <source>Optional</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">242</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="noInformation" datatype="html">
+        <source>Not added yet</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">243</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="connect" datatype="html">
+        <source>Connect</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">244</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="likeProfile" datatype="html">
+        <source>Like</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">245</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unlikeProfile" datatype="html">
+        <source>Unlike</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">246</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="likeFailed" datatype="html">
+        <source>Could not save your like</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">247</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="visitedProfile" datatype="html">
+        <source>Visited</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">248</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="latestUsers" datatype="html">
+        <source>Latest users</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">249</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="latestUsersHint" datatype="html">
+        <source>People who joined recently</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">250</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="latestUsersEmpty" datatype="html">
+        <source>No recent members to show yet.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">251</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="newThisWeek" datatype="html">
+        <source>New this week</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">252</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="newArrivals" datatype="html">
+        <source>New Arrivals</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">253</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="viewAllNew" datatype="html">
+        <source>View all new members</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">254</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="privacyPolicy" datatype="html">
+        <source>Privacy Policy</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">255</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cookiePreferences" datatype="html">
+        <source>Cookie Preferences</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">256</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="filters" datatype="html">
+        <source>Filters</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">257</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="charsCount" datatype="html">
+        <source>{{used}} / {{max}}</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">258</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileEdit.completeness" datatype="html">
+        <source>Profile completeness</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">260</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileEdit.fieldsFilled" datatype="html">
+        <source>{{filled}} of {{total}} fields filled</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">261</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileEdit.requiredMissing" datatype="html">
+        <source>{{count}} required fields still empty</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">262</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileEdit.allRequired" datatype="html">
+        <source>Required details are complete</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">263</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileEdit.unsaved" datatype="html">
+        <source>You have unsaved changes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">264</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileEdit.detailsHint" datatype="html">
+        <source>Where you are based.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">265</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileEdit.dobHint" datatype="html">
+        <source>Only used to confirm you are 18 or over. It is never shown on your profile.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">266</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileEdit.sectionFilled" datatype="html">
+        <source>{{filled}} of {{total}} filled</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">267</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileEdit.photoCount" datatype="html">
+        <source>{{count}} photos</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">268</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileEdit.completePercent" datatype="html">
+        <source>{{percent}}% complete</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">269</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileEdit.managePhotos" datatype="html">
+        <source>Manage photos</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">270</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileEdit.workHint" datatype="html">
+        <source>What clients see first when they search.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">271</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileEdit.workHintClient" datatype="html">
+        <source>Helps cleaners see if they are a good fit.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">272</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileEdit.aboutHint" datatype="html">
+        <source>Languages you speak and a short introduction.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">273</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="photosCount" datatype="html">
+        <source>{{count}} of {{max}} photos</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">275</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="photosEmptyTitle" datatype="html">
+        <source>No photos yet</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">276</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="photosEmptyHint" datatype="html">
+        <source>Add up to 5 photos. Profiles with a photo get more conversations.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">277</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="photosRemaining" datatype="html">
+        <source>{{count}} slots left</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">278</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="photosSlot" datatype="html">
+        <source>Add a photo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">279</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="photosEmptyOnProfile" datatype="html">
+        <source>This member has not added photos yet.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">280</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="blockedCount" datatype="html">
+        <source>{{count}} blocked</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">281</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesEmptyHint" datatype="html">
+        <source>You have not blocked anyone. Blocked members will appear here.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">282</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.about" datatype="html">
+        <source>About</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">284</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.atAGlance" datatype="html">
+        <source>At a glance</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">285</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.message" datatype="html">
+        <source>Message</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">286</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.registerToContact" datatype="html">
+        <source>Join to contact</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">287</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.yourProfile" datatype="html">
+        <source>Your profile</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">288</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.completePercent" datatype="html">
+        <source>{{percent}}% complete</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">289</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.scoreHint" datatype="html">
+        <source>{{filled}} of {{total}} profile items filled</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">290</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.nextToAdd" datatype="html">
+        <source>Still missing</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">291</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.addPhotos" datatype="html">
+        <source>Add photos</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">292</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.addBio" datatype="html">
+        <source>Write a bio</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">293</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.addDetails" datatype="html">
+        <source>Complete details</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">294</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.photoSlot" datatype="html">
+        <source>Photo {{n}}</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">295</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.aboutHintOwn" datatype="html">
+        <source>A short introduction helps people decide to get in touch. Say how you work and what matters to you.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">296</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.aboutHintOther" datatype="html">
+        <source>No introduction yet.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">297</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.aboutWrite" datatype="html">
+        <source>Write a bio</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">298</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.addField" datatype="html">
+        <source>Add</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">299</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.missingCount" datatype="html">
+        <source>{{count}} still empty</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">300</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.statPhotos" datatype="html">
+        <source>Photos</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">301</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.statDetails" datatype="html">
+        <source>Details</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">302</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.roleCleaner" datatype="html">
+        <source>Cleaner</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">303</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.roleClient" datatype="html">
+        <source>Client</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">304</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.addServices" datatype="html">
+        <source>Add your services</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">305</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.addAnnouncement" datatype="html">
+        <source>Add an announcement</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">306</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.addJobRequest" datatype="html">
+        <source>Add a job request</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">307</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.statServices" datatype="html">
+        <source>Services</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">308</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.availability" datatype="html">
+        <source>Availability</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">309</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.availabilityHintOwn" datatype="html">
+        <source>Add the days and times that suit you.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">310</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.availabilityHintOther" datatype="html">
+        <source>No availability added yet.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">311</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.workDetails" datatype="html">
+        <source>Work details</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">312</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.availabilityAreas" datatype="html">
+        <source>Availability and areas</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">313</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.yearsCount" datatype="html">
+        <source>{{count}} years</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">314</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="profileView.experienceLine" datatype="html">
+        <source>{{count}} years of experience</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">315</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="list.discover" datatype="html">
+        <source>Discovery</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">318</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="list.showing" datatype="html">
+        <source>Showing</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">319</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="list.of" datatype="html">
+        <source>of</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">320</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="list.members" datatype="html">
+        <source>members</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">321</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="list.showingMembers" datatype="html">
+        <source>Showing {{count}} members</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">322</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="list.showingMatching" datatype="html">
+        <source>Showing {{count}} of {{total}} members matching your preferences</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">323</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="list.searchPlaceholder" datatype="html">
+        <source>Announcements, job requests, keywords...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">324</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="list.filtersActive" datatype="html">
+        <source>{{count}} filters on</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">325</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="list.recent" datatype="html">
+        <source>Recent</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">326</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="list.view" datatype="html">
+        <source>View</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">327</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="list.noResultsHint" datatype="html">
+        <source>No members match your search right now. Try a different search term.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">328</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="list.noResultsFiltered" datatype="html">
+        <source>No members match your current filters. Try removing one or widening your search.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">329</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="footer.legal" datatype="html">
+        <source>Legal</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">332</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="footer.terms" datatype="html">
+        <source>Terms</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">333</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="footer.privacy" datatype="html">
+        <source>Privacy</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">334</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="footer.cookies" datatype="html">
+        <source>Cookies</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">335</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="footer.manageCookies" datatype="html">
+        <source>Manage Cookies</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">336</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="footer.social" datatype="html">
+        <source>Social</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">337</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="footer.company" datatype="html">
+        <source>Company</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">338</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="footer.contact" datatype="html">
+        <source>Contact</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">339</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="contact.title" datatype="html">
+        <source>Contact us</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">342</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="contact.name" datatype="html">
+        <source>Name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">343</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="contact.message" datatype="html">
+        <source>Message</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">344</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.kicker" datatype="html">
+        <source>Home cleaning, made simple</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">347</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.heroTitle" datatype="html">
+        <source>Find a trusted cleaner near you.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">348</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.heroSubtitle" datatype="html">
+        <source>Compare verified cleaners by service, hourly rate and availability, then agree the details in a private chat.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">349</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.trustBadge" datatype="html">
+        <source>Every badge checked by our team</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">350</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.verifyKicker" datatype="html">
+        <source>Trust first</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">351</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.verifyTitle" datatype="html">
+        <source>Know who is coming into your home</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">352</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.verifyLead" datatype="html">
+        <source>Every verified badge is earned through a selfie check reviewed by a real person on our team, so you can tell genuine profiles apart at a glance.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">353</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.verifyStep1Title" datatype="html">
+        <source>Copy a random pose</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">354</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.verifyStep1Body" datatype="html">
+        <source>We ask for a selfie copying a pose we pick at random, so an old or borrowed photo won&apos;t pass.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">355</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.verifyStep2Title" datatype="html">
+        <source>Checked by a person</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">356</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.verifyStep2Body" datatype="html">
+        <source>A member of our team compares the selfie with the profile photo. No automated guesswork.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">357</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.verifyStep3Title" datatype="html">
+        <source>Earn the badge</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">358</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.verifyStep3Body" datatype="html">
+        <source>Approved profiles show a verified badge, so you know who&apos;s real before you invite them in.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">359</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.verifyPrivacy" datatype="html">
+        <source>Your selfie stays private: it&apos;s never shown to other members and is deleted once the review is done.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">360</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.joinFree" datatype="html">
+        <source>Join free</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">361</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.browseProfiles" datatype="html">
+        <source>Browse cleaners</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">362</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.countries" datatype="html">
+        <source>Countries</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">363</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.verified" datatype="html">
+        <source>Verified</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">364</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.private" datatype="html">
+        <source>Private</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">365</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.chat" datatype="html">
+        <source>Chat</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">366</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.peopleLooking" datatype="html">
+        <source>Cleaners near you</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">367</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.peopleLookingHint" datatype="html">
+        <source>See services, rates and availability before you write. Sign up to start a conversation.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">368</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.whyTitle" datatype="html">
+        <source>Why people choose Clara</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">369</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.europeTitle" datatype="html">
+        <source>Cleaners across Europe</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">370</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.partnerCountryPt" datatype="html">
+        <source>Portugal</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">371</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.partnerCountryDe" datatype="html">
+        <source>Germany</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">372</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.partnerCountryFr" datatype="html">
+        <source>France</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">373</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.partnerCountryEs" datatype="html">
+        <source>Spain</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">374</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.partnerCountryIt" datatype="html">
+        <source>Italy</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">375</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.partnerCountryCh" datatype="html">
+        <source>Switzerland</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">376</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.partnerCountryNl" datatype="html">
+        <source>Netherlands</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">377</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.partnerCountryGb" datatype="html">
+        <source>United Kingdom</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">378</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.europeSubtitle" datatype="html">
+        <source>Local help, wherever you live</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">379</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.europeBody" datatype="html">
+        <source>Clara connects households and independent cleaners in 8 countries, with more cities joining soon.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">380</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.createProfile" datatype="html">
+        <source>Create your profile</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">381</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.priceKicker" datatype="html">
+        <source>Pricing</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">382</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.priceTitle" datatype="html">
+        <source>Subscribe now and get 3 months free</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">383</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.priceLead" datatype="html">
+        <source>After that, €6 a month.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">384</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.priceFree" datatype="html">
+        <source>3 months free</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">385</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.pricePerMonth" datatype="html">
+        <source>per month</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">386</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.priceCta" datatype="html">
+        <source>Subscribe now</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">387</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.ctaTitle" datatype="html">
+        <source>Your cleaner is a few clicks away</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">388</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.ctaSubtitle" datatype="html">
+        <source>Join Clara and find help for your home this week.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">389</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.step1" datatype="html">
+        <source>Search</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">390</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.step1Title" datatype="html">
+        <source>Find the right fit</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">391</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.step1Body" datatype="html">
+        <source>Filter by service, hourly rate, the days you need and the area you live in.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">392</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.step2" datatype="html">
+        <source>Chat</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">393</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.step2Title" datatype="html">
+        <source>Agree the details</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">394</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.step2Body" datatype="html">
+        <source>Message cleaners privately to agree on tasks, timing and price before anyone comes over.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">395</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.step3" datatype="html">
+        <source>Relax</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">396</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.step3Title" datatype="html">
+        <source>Come home to a clean space</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">397</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.step3Body" datatype="html">
+        <source>Whether it&apos;s a weekly clean, a move-out or a one-off deep clean, get the help that suits you.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">398</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.reason1Title" datatype="html">
+        <source>Clear prices</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">399</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.reason1Body" datatype="html">
+        <source>Hourly rates are on every cleaner&apos;s profile, so there are no surprises.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">400</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.reason2Title" datatype="html">
+        <source>Verified profiles</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">401</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.reason2Body" datatype="html">
+        <source>Selfie checks reviewed by our team help you know who you are inviting in.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">402</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.reason3Title" datatype="html">
+        <source>Real availability</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">403</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.reason3Body" datatype="html">
+        <source>See which days and times each cleaner works and the areas they cover.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">404</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.reason4Title" datatype="html">
+        <source>Fair for cleaners</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">405</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.reason4Body" datatype="html">
+        <source>Cleaners set their own rates, choose their areas and decide which jobs to take.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">406</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.findCleanerIn" datatype="html">
+        <source>Find a cleaner in</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">407</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.postsKicker" datatype="html">
+        <source>Announcements and job requests</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">408</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.postsTitle" datatype="html">
+        <source>Say what you need, or what you offer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">409</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.postsBody" datatype="html">
+        <source>Cleaners post short announcements. Clients post job requests. Both appear on the profile, and anyone can search them.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">410</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.announcementsLabel" datatype="html">
+        <source>Announcements</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">411</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.announcementsBody" datatype="html">
+        <source>Cleaners share free slots, special services or offers. The latest one also appears on their card.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">412</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.requestsLabel" datatype="html">
+        <source>Job requests</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">413</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.requestsBody" datatype="html">
+        <source>Clients describe the jobs they need done. Cleaners search them and write when they can help.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">414</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.postsExamples" datatype="html">
+        <source>Examples</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">415</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.announcementChip1" datatype="html">
+        <source>Free on Friday mornings</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">416</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.announcementChip2" datatype="html">
+        <source>Eco products only</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">417</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.announcementChip3" datatype="html">
+        <source>Ironing included</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">418</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.requestChip1" datatype="html">
+        <source>Weekly 3-hour clean</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">419</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.requestChip2" datatype="html">
+        <source>Move-out deep clean</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">420</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.requestChip3" datatype="html">
+        <source>Windows before the holidays</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">421</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.postsSearch" datatype="html">
+        <source>Search uses the same words. Type a service or a keyword and the list filters to it.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">422</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.latestPostsTitle" datatype="html">
+        <source>Latest announcements and job requests</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">423</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.announcementTag" datatype="html">
+        <source>Announcement</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">424</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.requestTag" datatype="html">
+        <source>Job request</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">425</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="country" datatype="html">
+        <source>Country</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">427</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="locationPlaceholder" datatype="html">
+        <source>Start typing after selecting a country</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">428</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="locationSearchError" datatype="html">
+        <source>Location search is temporarily unavailable.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">429</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="clearLocation" datatype="html">
+        <source>Clear location</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">430</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="searchLabel" datatype="html">
+        <source>Search</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">431</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="searchTypePlaceholder" datatype="html">
+        <source>Type to search</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">432</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="notFound.title" datatype="html">
+        <source>Page not found</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">434</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="notFound.text" datatype="html">
+        <source>The page you are looking for does not exist or is no longer available.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">435</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="notFound.backHome" datatype="html">
+        <source>Back to home</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">436</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seo.termsDescription" datatype="html">
+        <source>Read the terms that apply when you use Clara: your account, membership, conduct and payments.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">439</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seo.privacyDescription" datatype="html">
+        <source>How Clara collects, uses and protects your personal data, and the choices and rights you have.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">440</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminMenu" datatype="html">
+        <source>Admin</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">442</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.cardTitle" datatype="html">
+        <source>Profile verification</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">444</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.dialogTitle" datatype="html">
+        <source>Verify your profile</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">445</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.intro" datatype="html">
+        <source>Take a selfie copying a pose we show you. A member of our team compares it with your profile photo and, if it matches, your profile gets a verified badge.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">446</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.privacyNote" datatype="html">
+        <source>Your selfie is stored privately, never shown to other members, and deleted as soon as the review is done.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">447</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.consent" datatype="html">
+        <source>I agree that Clara uses this selfie only to verify my profile.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">448</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.continue" datatype="html">
+        <source>Continue</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">449</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.poseIntro" datatype="html">
+        <source>Take a selfie doing this:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">450</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.poseHint" datatype="html">
+        <source>Make sure your face is clearly visible, well lit and not covered. This pose expires in 10 minutes.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">451</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.takeSelfie" datatype="html">
+        <source>Take selfie</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">452</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.retake" datatype="html">
+        <source>Retake</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">453</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.submit" datatype="html">
+        <source>Send for review</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">454</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.submitted" datatype="html">
+        <source>Selfie sent. We will review it soon.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">455</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.verifyMe" datatype="html">
+        <source>Verify me</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">456</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.tryAgain" datatype="html">
+        <source>Try again</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">457</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.moderationLink" datatype="html">
+        <source>Review queue</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">458</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.hintNone" datatype="html">
+        <source>Show other members you are real. Verified profiles get a badge next to their name.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">459</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.hintNeedsPhoto" datatype="html">
+        <source>Choose a profile photo of yourself before verifying.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">460</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.hintPending" datatype="html">
+        <source>Your selfie is waiting for review.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">461</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.hintVerified" datatype="html">
+        <source>Your profile is verified. Changing your profile photo removes the badge.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">462</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.hintRejected" datatype="html">
+        <source>Your last verification was not approved.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">463</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.badgeTooltip" datatype="html">
+        <source>Verified profile</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">464</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.banner.none" datatype="html">
+        <source>Your profile is not verified yet. Verify it to get a badge and show other members you are real.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">466</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.banner.pending" datatype="html">
+        <source>Your profile verification is in review. Your badge will appear once it is approved.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">467</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.banner.rejected" datatype="html">
+        <source>Your profile verification was not approved. You can try again with a new selfie.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">468</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.banner.cta" datatype="html">
+        <source>Verify now</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">469</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.banner.dismiss" datatype="html">
+        <source>Dismiss</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">470</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.status.pending" datatype="html">
+        <source>In review</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">473</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.status.approved" datatype="html">
+        <source>Verified</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">474</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.pose.thumbs_up_left" datatype="html">
+        <source>Give a thumbs up with your left hand</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">477</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.pose.thumbs_up_right" datatype="html">
+        <source>Give a thumbs up with your right hand</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">478</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.pose.peace_sign_left" datatype="html">
+        <source>Make a peace sign with your left hand</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">479</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.pose.peace_sign_right" datatype="html">
+        <source>Make a peace sign with your right hand</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">480</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.pose.touch_nose" datatype="html">
+        <source>Touch your nose with one finger</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">481</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.pose.hand_on_head" datatype="html">
+        <source>Put one hand on top of your head</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">482</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.pose.three_fingers" datatype="html">
+        <source>Hold up three fingers next to your face</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">483</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.pose.point_at_camera" datatype="html">
+        <source>Point at the camera</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">484</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.errors.CHALLENGE_EXPIRED" datatype="html">
+        <source>This pose expired. Please start again.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">487</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.errors.PROFILE_PHOTO_REQUIRED" datatype="html">
+        <source>Choose a profile photo before verifying.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">488</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.errors.ALREADY_PENDING" datatype="html">
+        <source>You already have a selfie waiting for review.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">489</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.errors.TOO_MANY_ATTEMPTS" datatype="html">
+        <source>Too many attempts today. Please try again tomorrow.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">490</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.errors.generic" datatype="html">
+        <source>Something went wrong. Please try again.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">491</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.moderation.title" datatype="html">
+        <source>Verification queue</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">494</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.moderation.lead" datatype="html">
+        <source>Approve only when the selfie shows the requested pose and the same person as the profile photo.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">495</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.moderation.refresh" datatype="html">
+        <source>Refresh</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">496</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.moderation.emptyTitle" datatype="html">
+        <source>Nothing to review</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">497</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.moderation.emptyText" datatype="html">
+        <source>New selfies will appear here.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">498</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.moderation.openProfile" datatype="html">
+        <source>Open profile</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">499</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.moderation.selfie" datatype="html">
+        <source>Selfie</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">500</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.moderation.profilePhoto" datatype="html">
+        <source>Profile photo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">501</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.moderation.approve" datatype="html">
+        <source>Approve</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">502</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.moderation.reject" datatype="html">
+        <source>Reject</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">503</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.moderation.reasonPlaceholder" datatype="html">
+        <source>Reason shown to the user</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">504</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.moderation.reasonRequired" datatype="html">
+        <source>Add a reason before rejecting.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">505</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.moderation.approved" datatype="html">
+        <source>Approved.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">506</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.moderation.rejected" datatype="html">
+        <source>Rejected.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">507</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.moderation.photoChanged" datatype="html">
+        <source>Approved, but the user has changed their profile photo since, so no badge was given.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">508</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.cameraError" datatype="html">
+        <source>We couldn&apos;t open your camera. Allow camera access in your browser and try again, or upload a selfie instead.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">510</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.cameraRetry" datatype="html">
+        <source>Try camera again</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">511</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verification.uploadInstead" datatype="html">
+        <source>Upload a photo instead</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">512</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Client.title" datatype="html">
+        <source>Your job requests</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">515</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Client.addKeyword" datatype="html">
+        <source>Add a job request</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">516</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Client.inputLabel" datatype="html">
+        <source>Job requests</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">517</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Client.lastOffersDreams" datatype="html">
+        <source>Latest announcements</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">518</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Client.example" datatype="html">
+        <source>e.g. Weekly 3-hour clean, 2-bedroom flat</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">519</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Cleaner.title" datatype="html">
+        <source>Your announcements</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">522</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Cleaner.addKeyword" datatype="html">
+        <source>Add an announcement</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">523</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Cleaner.inputLabel" datatype="html">
+        <source>Announcements</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">524</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Cleaner.lastOffersDreams" datatype="html">
+        <source>Latest job requests</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">525</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="Cleaner.example" datatype="html">
+        <source>e.g. Free on Friday mornings in Lausanne</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">526</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="role.question" datatype="html">
+        <source>How will you use Clara?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">529</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="role.client" datatype="html">
+        <source>I need a cleaner</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">530</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="role.clientHint" datatype="html">
+        <source>Find help for my home</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">531</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="role.cleaner" datatype="html">
+        <source>I offer cleaning</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">532</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="role.cleanerHint" datatype="html">
+        <source>Find clients near me</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">533</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="services.regular" datatype="html">
+        <source>Regular cleaning</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">536</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="services.deep" datatype="html">
+        <source>Deep cleaning</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">537</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="services.ironing" datatype="html">
+        <source>Ironing</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">538</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="services.laundry" datatype="html">
+        <source>Laundry</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">539</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="services.windows" datatype="html">
+        <source>Windows</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">540</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="services.moveInOut" datatype="html">
+        <source>Move-in / move-out</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">541</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="services.afterParty" datatype="html">
+        <source>After-party cleaning</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">542</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="services.kitchenAppliances" datatype="html">
+        <source>Oven and fridge</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">543</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="services.office" datatype="html">
+        <source>Office cleaning</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">544</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="services.ecoProducts" datatype="html">
+        <source>Eco-friendly products</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">545</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="days.mon" datatype="html">
+        <source>Monday</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">548</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="days.tue" datatype="html">
+        <source>Tuesday</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">549</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="days.wed" datatype="html">
+        <source>Wednesday</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">550</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="days.thu" datatype="html">
+        <source>Thursday</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">551</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="days.fri" datatype="html">
+        <source>Friday</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">552</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="days.sat" datatype="html">
+        <source>Saturday</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">553</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="days.sun" datatype="html">
+        <source>Sunday</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">554</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="daysShort.mon" datatype="html">
+        <source>Mon</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">557</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="daysShort.tue" datatype="html">
+        <source>Tue</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">558</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="daysShort.wed" datatype="html">
+        <source>Wed</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">559</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="daysShort.thu" datatype="html">
+        <source>Thu</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">560</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="daysShort.fri" datatype="html">
+        <source>Fri</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">561</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="daysShort.sat" datatype="html">
+        <source>Sat</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">562</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="daysShort.sun" datatype="html">
+        <source>Sun</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">563</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="slots.morning" datatype="html">
+        <source>Morning</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">566</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="slots.afternoon" datatype="html">
+        <source>Afternoon</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">567</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="slots.evening" datatype="html">
+        <source>Evening</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">568</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="work.title" datatype="html">
+        <source>Services and availability</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">571</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="work.titleClient" datatype="html">
+        <source>What you need</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">572</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="work.servicesOffered" datatype="html">
+        <source>Services you offer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">573</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="work.servicesNeeded" datatype="html">
+        <source>Services you need</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">574</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="work.hourlyRate" datatype="html">
+        <source>Hourly rate</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">575</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="work.budget" datatype="html">
+        <source>Budget per hour</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">576</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="work.hour" datatype="html">
+        <source>hour</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">577</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="work.perHour" datatype="html">
+        <source>per hour</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">578</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="work.from" datatype="html">
+        <source>From</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">579</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="work.budgetUpTo" datatype="html">
+        <source>Budget up to</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">580</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="work.rateRange" datatype="html">
+        <source>Enter an amount between {{min}} and {{max}} {{currency}}.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">581</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="work.availableDays" datatype="html">
+        <source>Days you are available</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">582</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="work.preferredDays" datatype="html">
+        <source>Preferred days</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">583</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="work.timeOfDay" datatype="html">
+        <source>Time of day</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">584</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="work.areasCovered" datatype="html">
+        <source>Areas you cover</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">585</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="work.areasHint" datatype="html">
+        <source>Add the towns or districts you are happy to travel to (up to {{max}}).</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">586</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="work.addArea" datatype="html">
+        <source>Add area</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">587</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="work.experienceYears" datatype="html">
+        <source>Years of experience</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">588</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="work.experienceRange" datatype="html">
+        <source>Enter a number between 0 and 60.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">589</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.title" datatype="html">
+        <source>About you</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">592</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.cleanerPlaceholder" datatype="html">
+        <source>Tell clients how you work, what you bring, and anything they should know.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">593</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="about.clientPlaceholder" datatype="html">
+        <source>Describe your home and the help you are looking for: size, pets, how often.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">594</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="posts.cleanerTitle" datatype="html">
+        <source>Announcements</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">597</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="posts.clientTitle" datatype="html">
+        <source>Job requests</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">598</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="posts.count" datatype="html">
+        <source>{{count}} listed</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">599</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="posts.cleanerHint" datatype="html">
+        <source>Short notes clients can search, such as free slots or special offers.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">600</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="posts.clientHint" datatype="html">
+        <source>Describe the jobs you need done so cleaners can find you.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">601</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="posts.cleanerEmpty" datatype="html">
+        <source>Nothing listed yet. Start with one or two short announcements.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">602</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="posts.clientEmpty" datatype="html">
+        <source>Nothing listed yet. Start with one clear job request.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">603</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="posts.cleanerHintOwn" datatype="html">
+        <source>Post short announcements, such as free slots, so clients can find you.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">604</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="posts.cleanerHintOther" datatype="html">
+        <source>No announcements yet.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">605</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="posts.clientHintOwn" datatype="html">
+        <source>Post the jobs you need done so cleaners can find you.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">606</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="posts.clientHintOther" datatype="html">
+        <source>No job requests yet.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">607</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

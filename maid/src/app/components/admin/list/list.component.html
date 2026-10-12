@@ -1,0 +1,160 @@
+<div class="w-full px-4 sm:px-6 lg:px-8 pt-6">
+  <div class="ad-head mb-0">
+    <div>
+      <p class="ad-eyebrow">{{ "tabs.search" | translate }}</p>
+      <h1 class="ad-title">
+        {{ "list.discover" | translate }}
+      </h1>
+    </div>
+    @if (shownCount()) {
+      <span class="ad-badge">
+        {{ "list.showingMembers" | translate: { count: shownCount() } }}
+      </span>
+    }
+  </div>
+</div>
+
+<div
+  class="sticky top-[calc(56px-3.75rem)] z-20 mb-4 bg-(--mat-sys-background) px-4 sm:px-6 lg:px-8"
+>
+  <div class="space-y-3 border-b border-(--ad-card-line) py-4">
+    <div class="relative max-w-[280px]">
+      <app-filtering
+        [userProfile]="userProfile()"
+        (searchTerms)="searchTerms($event)"
+      />
+    </div>
+
+    <app-list-filtering (searchChange)="searchUsers()" />
+  </div>
+</div>
+
+@if (storeChat.appliedFiltersList().length > 0) {
+  <ul class="mb-4 flex flex-wrap gap-2 px-4 sm:px-6 lg:px-8">
+    @for (filter of storeChat.appliedFiltersList(); track filter.value) {
+      @let label =
+        filter.type === "online"
+          ? ("listFiltering.onlineNow" | translate)
+          : filter.type === "verified"
+            ? ("listFiltering.verified" | translate)
+            : filter.name;
+      <li class="filter-chip">
+        <span class="filter-chip-icon" aria-hidden="true">
+          @switch (filter.type) {
+            @case ("location") {
+              <svg
+                width="12px"
+                height="12px"
+                fill="currentColor"
+                viewBox="0 0 384 512"
+              >
+                <path
+                  d="M0 188.6C0 84.4 86 0 192 0S384 84.4 384 188.6c0 119.3-120.2 262.3-170.4 316.8-11.8 12.8-31.5 12.8-43.3 0-50.2-54.5-170.4-197.5-170.4-316.8zM192 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128z"
+                />
+              </svg>
+            }
+            @case ("services") {
+              <mat-icon class="size-3! text-xs! leading-none!">{{ filtersIcon.services }}</mat-icon>
+            }
+            @case ("rate") {
+              <mat-icon class="size-3! text-xs! leading-none!">{{ filtersIcon.rate }}</mat-icon>
+            }
+            @case ("days") {
+              <mat-icon class="size-3! text-xs! leading-none!">{{ filtersIcon.days }}</mat-icon>
+            }
+            @case ("slots") {
+              <mat-icon class="size-3! text-xs! leading-none!">{{ filtersIcon.slots }}</mat-icon>
+            }
+            @case ("languages") {
+              <mat-icon class="size-3! text-xs! leading-none!">translate</mat-icon>
+            }
+            @case ("online") {
+              <span class="size-2 rounded-full bg-green-400"></span>
+            }
+            @case ("verified") {
+              <mat-icon class="size-3! text-xs! leading-none!">verified</mat-icon>
+            }
+          }
+        </span>
+
+        <span class="min-w-0 truncate">{{ label }}</span>
+
+        <button
+          type="button"
+          class="filter-chip-remove"
+          [attr.aria-label]="('listFiltering.remove' | translate) + ' ' + label"
+          (click)="removedChip(filter)"
+        >
+          <svg
+            width="10"
+            height="10"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
+          </svg>
+        </button>
+      </li>
+    }
+  </ul>
+}
+
+@defer (when !storeChat.listIsLoading()) {
+  @if (list() && list()!.length > 0) {
+    <app-infinite-scroll2
+      [loading]="storeChat.listIsLoading()"
+      [hasMore]="storeChat.listHasMore()"
+      (fetchMore)="fetchMore()"
+    >
+      <div
+        id="discovery-grid"
+        class="w-full px-4 sm:px-6 lg:px-8 pb-12 pt-2 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4"
+      >
+        @for (user of list(); track user.user.uid; let index = $index) {
+          <app-dating-card
+            [isAnonymous]="false"
+            [imagePriority]="index < 4"
+            [userDating]="user"
+          />
+        }
+      </div>
+    </app-infinite-scroll2>
+  } @else {
+    <div class="px-4 pb-12 sm:px-6 lg:px-8">
+      <div class="ad-empty">
+        <img
+          alt=""
+          ngSrc="/assets/images/no-results.svg"
+          width="320"
+          height="220"
+          class="mb-1 h-auto w-36 max-w-full sm:w-44"
+        />
+        <p class="ad-empty-title text-lg">
+          {{ "noResults" | translate }}
+        </p>
+        <p class="ad-empty-text">
+          @if (storeChat.appliedFiltersList().length) {
+            {{ "list.noResultsFiltered" | translate }}
+            <span class="mt-1 block">
+              {{
+                "list.filtersActive"
+                  | translate: { count: storeChat.appliedFiltersList().length }
+              }}
+            </span>
+          } @else {
+            {{ "list.noResultsHint" | translate }}
+          }
+        </p>
+      </div>
+    </div>
+  }
+} @placeholder (minimum 0ms) {
+  @if (showSkeleton()) {
+    <app-list-skeleton [numeOfTiles]="12" />
+  }
+}
+
+<ng-template cdkPortal></ng-template>

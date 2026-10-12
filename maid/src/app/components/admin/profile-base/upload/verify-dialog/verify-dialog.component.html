@@ -1,0 +1,120 @@
+<div [class.unicorn-dark-theme]="data.isDark">
+  <h2 mat-dialog-title>{{ "verification.dialogTitle" | translate }}</h2>
+  <div mat-dialog-content>
+    @if (step() === "consent") {
+      <p class="verify-text">{{ "verification.intro" | translate }}</p>
+      <p class="verify-text verify-muted">
+        {{ "verification.privacyNote" | translate }}
+      </p>
+      <mat-checkbox
+        [checked]="consent()"
+        (change)="consent.set($event.checked)"
+      >
+        {{ "verification.consent" | translate }}
+      </mat-checkbox>
+    } @else {
+      <p class="verify-text">{{ "verification.poseIntro" | translate }}</p>
+      <p class="verify-pose">
+        <mat-icon aria-hidden="true">front_hand</mat-icon>
+        <span>{{ "verification.pose." + challengeId() | translate }}</span>
+      </p>
+      <p class="verify-text verify-muted">
+        {{ "verification.poseHint" | translate }}
+      </p>
+
+      <input
+        #selfieInput
+        type="file"
+        accept="image/jpeg,image/png"
+        capture="user"
+        class="inputfile"
+        (change)="chooseSelfie($event)"
+      />
+
+      @if (previewUrl(); as url) {
+        <img class="verify-preview" alt="" [src]="url" />
+        <button
+          type="button"
+          class="ad-btn-ghost mt-3"
+          [disabled]="loading()"
+          (click)="retake()"
+        >
+          {{ "verification.retake" | translate }}
+        </button>
+      } @else if (stream()) {
+        <video
+          #video
+          class="verify-video"
+          autoplay
+          playsinline
+          muted
+        ></video>
+        <button
+          type="button"
+          class="ad-btn mt-3"
+          [disabled]="loading()"
+          (click)="capture()"
+        >
+          <mat-icon aria-hidden="true">photo_camera</mat-icon>
+          {{ "verification.takeSelfie" | translate }}
+        </button>
+      } @else if (cameraFailed()) {
+        <p class="verify-text verify-muted" role="alert">
+          {{ "verification.cameraError" | translate }}
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <button
+            type="button"
+            class="ad-btn-ghost"
+            [disabled]="loading()"
+            (click)="startCamera()"
+          >
+            {{ "verification.cameraRetry" | translate }}
+          </button>
+          <button
+            type="button"
+            class="ad-btn-ghost"
+            [disabled]="loading()"
+            (click)="selfieInput.click()"
+          >
+            {{ "verification.uploadInstead" | translate }}
+          </button>
+        </div>
+      } @else {
+        <div class="verify-video verify-video-loading">
+          <mat-spinner diameter="32"></mat-spinner>
+        </div>
+      }
+    }
+
+    @if (errorKey(); as key) {
+      <p class="verify-error" role="alert">{{ key | translate }}</p>
+    }
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-button [mat-dialog-close]="false" [disabled]="loading()">
+      {{ "cancel" | translate }}
+    </button>
+    @if (step() === "consent") {
+      <button
+        mat-button
+        cdkFocusInitial
+        [disabled]="!consent() || loading()"
+        (click)="start()"
+      >
+        {{ "verification.continue" | translate }}
+      </button>
+    } @else {
+      <button
+        mat-button
+        [disabled]="!selfie() || loading()"
+        (click)="submit()"
+      >
+        {{ "verification.submit" | translate }}
+      </button>
+    }
+    @if (loading()) {
+      <mat-spinner diameter="20"></mat-spinner>
+    }
+  </div>
+</div>

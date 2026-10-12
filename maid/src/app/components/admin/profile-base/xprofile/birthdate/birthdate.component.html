@@ -1,0 +1,17 @@
+<mat-form-field class="w-full" [appearance]="utilsService.inputType()">
+  <mat-label>{{ "dob" | translate }}</mat-label>
+
+  <input
+    matInput
+    [formField]="birthDate()"
+    [placeholder]="'dateFormat' | translate"
+    [mask]="localeDate.mask"
+    [dropSpecialCharacters]="false"
+    [showMaskTyped]="false"
+  />
+  <mat-hint class="text-xs">{{ "dateFormat" | translate }}</mat-hint>
+
+  @if (birthDate()().invalid()) {
+    <mat-error [innerHTML]="errorMessage()"></mat-error>
+  }
+</mat-form-field>

@@ -1,0 +1,67 @@
+<h2 mat-dialog-title>{{ "contact.title" | translate }}</h2>
+<form (ngSubmit)="onSubmit($event)" novalidate>
+  <div mat-dialog-content class="flex flex-col">
+    <mat-form-field class="w-full" appearance="outline">
+      <mat-label>{{ "contact.name" | translate }}</mat-label>
+      <input
+        matInput
+        [formField]="contactForm.username"
+        id="username"
+        autocomplete="off"
+      />
+      @if (
+        contactForm.username().invalid() && contactForm.username().touched()
+      ) {
+        <mat-error [innerHTML]="'fieldRequired' | translate"></mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="w-full" appearance="outline">
+      <mat-label>{{ "auth.email" | translate }}</mat-label>
+      <input
+        matInput
+        type="email"
+        autocomplete="email"
+        [formField]="contactForm.email"
+        id="email"
+      />
+      @if (hasKind(contactForm.email(), "required")) {
+        <mat-error [innerHTML]="'fieldRequired' | translate"></mat-error>
+      }
+      @if (hasKind(contactForm.email(), "email")) {
+        <mat-error [innerHTML]="'auth.emailInvalid' | translate"></mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="w-full" appearance="outline">
+      <mat-label>{{ "contact.message" | translate }}</mat-label>
+      <textarea
+        matInput
+        [formField]="contactForm.message"
+        id="message"
+        rows="5"
+      ></textarea>
+      @if (
+        contactForm.message().invalid() && contactForm.message().touched()
+      ) {
+        <mat-error [innerHTML]="'fieldRequired' | translate"></mat-error>
+      }
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-button type="button" (click)="closeForm()">
+      {{ "cancel" | translate }}
+    </button>
+    <button
+      mat-flat-button
+      type="submit"
+      [disabled]="contactForm().submitting()"
+    >
+      @if (contactForm().submitting()) {
+        <mat-spinner diameter="20"></mat-spinner>
+      } @else {
+        {{ "save" | translate }}
+      }
+    </button>
+  </div>
+</form>

@@ -1,0 +1,621 @@
+<div class="mx-auto w-full max-w-5xl">
+  <section
+    class="overflow-hidden rounded-3xl border border-(--mat-sys-outline-variant) bg-(--mat-sys-surface-container-low)"
+  >
+    <div class="flex flex-col gap-6 p-5 sm:flex-row sm:items-start md:p-7">
+      <div class="mx-auto w-full max-w-56 shrink-0 sm:mx-0">
+        @if (profilePic(); as image) {
+          @for (photo of [image]; track photo.key) {
+            @if (isAnonymous()) {
+              <img
+                alt=""
+                priority
+                [width]="photo.thumbWidth"
+                [height]="photo.thumbHeight"
+                [ngSrc]="photo.keyBlured | s3Url"
+                class="aspect-[4/5] w-full rounded-2xl object-cover"
+              />
+            } @else {
+              <img
+                alt=""
+                priority
+                [width]="photo.thumbWidth"
+                [height]="photo.thumbHeight"
+                [ngSrc]="photo.keyRezised | s3Url"
+                class="aspect-[4/5] w-full rounded-2xl object-cover"
+              />
+            }
+          }
+        } @else {
+          <div
+            class="aspect-4/5 overflow-hidden rounded-2xl bg-(--mat-sys-surface-container)"
+          >
+            <app-profile-avatar
+              class="block size-full [&_svg]:size-full [&_svg]:aspect-auto [&_svg]:rounded-none [&_svg]:border-0"
+              [user]="user()" />
+          </div>
+        }
+      </div>
+
+      <div class="min-w-0 flex-1">
+        <div class="flex flex-wrap items-center gap-2">
+          @if (isOwnProfile()) {
+            <span
+              class="rounded-full bg-(--mat-sys-secondary-container) px-2.5 py-0.5 text-[11px] font-semibold tracking-wide text-(--mat-sys-on-secondary-container) uppercase"
+            >
+              {{ "profileView.yourProfile" | translate }}
+            </span>
+          }
+          @if (memberTypeKey()) {
+            <span
+              class="rounded-full border border-(--mat-sys-outline-variant) px-2.5 py-0.5 text-[11px] font-semibold tracking-wide text-(--mat-sys-on-surface-variant) uppercase"
+            >
+              {{ memberTypeKey() | translate }}
+            </span>
+          }
+        </div>
+
+        <h1
+          class="mt-2 text-3xl font-semibold tracking-tight text-(--mat-sys-on-surface) md:text-4xl"
+        >
+          {{ user().name }}
+          @if (user().verified) {
+            <app-verified-badge [size]="28" />
+          }
+        </h1>
+
+        @if (locationLine()) {
+          <p class="mt-2 text-base text-(--mat-sys-on-surface-variant)">
+            {{ locationLine() }}
+          </p>
+        }
+
+        @if (rateLabel() || (isCleaner() && user().experienceYears != null)) {
+          <p class="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
+            @if (rateLabel()) {
+              <span class="font-semibold text-(--mat-sys-primary)">
+                {{ (isCleaner() ? "work.from" : "work.budgetUpTo") | translate }}
+                {{ rateLabel() }}
+              </span>
+            }
+            @if (isCleaner() && user().experienceYears != null) {
+              <span class="text-(--mat-sys-on-surface-variant)">
+                {{
+                  "profileView.experienceLine"
+                    | translate: { count: user().experienceYears }
+                }}
+              </span>
+            }
+          </p>
+        }
+
+        @if (isOwnProfile()) {
+          <div class="mt-4">
+            <div class="flex items-baseline justify-between gap-3">
+              <p class="text-sm font-medium text-(--mat-sys-on-surface)">
+                {{
+                  "profileView.completePercent"
+                    | translate: { percent: completeness().percent }
+                }}
+              </p>
+              <p
+                class="shrink-0 text-xs tabular-nums text-(--mat-sys-on-surface-variant)"
+              >
+                {{ completeness().filled }}/{{ completeness().total }}
+              </p>
+            </div>
+            <div
+              class="mt-2 h-1.5 overflow-hidden rounded-full bg-(--mat-sys-surface-container-highest)"
+            >
+              <div
+                class="h-full rounded-full bg-[#0f9488]"
+                [style.width.%]="completeness().percent"
+              ></div>
+            </div>
+          </div>
+        }
+
+        @if (showProgress()) {
+        <div class="mt-4 grid grid-cols-2 gap-2">
+          <div
+            class="rounded-xl border border-(--mat-sys-outline-variant) bg-(--mat-sys-surface-container) px-3 py-2.5"
+          >
+            <p
+              class="text-lg font-semibold tabular-nums text-(--mat-sys-on-surface)"
+            >
+              {{ listPhotos().length }}/{{ maxPhotos }}
+            </p>
+            <p class="text-[11px] text-(--mat-sys-on-surface-variant)">
+              {{ "profileView.statPhotos" | translate }}
+            </p>
+          </div>
+          <div
+            class="rounded-xl border border-(--mat-sys-outline-variant) bg-(--mat-sys-surface-container) px-3 py-2.5"
+          >
+            <p
+              class="text-lg font-semibold tabular-nums text-(--mat-sys-on-surface)"
+            >
+              {{ services().length }}
+            </p>
+            <p class="text-[11px] text-(--mat-sys-on-surface-variant)">
+              {{ "profileView.statServices" | translate }}
+            </p>
+          </div>
+          <div
+            class="rounded-xl border border-(--mat-sys-outline-variant) bg-(--mat-sys-surface-container) px-3 py-2.5"
+          >
+            <p
+              class="text-lg font-semibold tabular-nums text-(--mat-sys-on-surface)"
+            >
+              {{ factsFilled() }}/{{ facts().length }}
+            </p>
+            <p class="text-[11px] text-(--mat-sys-on-surface-variant)">
+              {{ "profileView.statDetails" | translate }}
+            </p>
+          </div>
+          <div
+            class="rounded-xl border border-(--mat-sys-outline-variant) bg-(--mat-sys-surface-container) px-3 py-2.5"
+          >
+            <p
+              class="text-lg font-semibold tabular-nums text-(--mat-sys-on-surface)"
+            >
+              {{ user().languagesNames.length || 0 }}
+            </p>
+            <p class="text-[11px] text-(--mat-sys-on-surface-variant)">
+              {{ "languages" | translate | titlecase }}
+            </p>
+          </div>
+        </div>
+        }
+
+        <div class="mt-4 flex flex-wrap gap-2">
+          @if (user().languagesNames.length) {
+            <span
+              class="rounded-full border border-(--mat-sys-outline-variant) bg-(--mat-sys-surface-container-lowest) px-3 py-1 text-xs font-medium text-(--mat-sys-on-surface-variant)"
+            >
+              {{ user().languagesNames.join(", ") }}
+            </span>
+          }
+          @for (service of services(); track service) {
+            <span
+              class="inline-flex items-center gap-1 rounded-full bg-(--mat-sys-secondary-container) px-3 py-1 text-xs font-medium text-(--mat-sys-on-secondary-container)"
+            >
+              <!-- The icon font only loads in the member area. -->
+              @if (!isAnonymous()) {
+                <mat-icon class="size-4! text-base! leading-none!" aria-hidden="true">{{
+                  serviceIcons[service]
+                }}</mat-icon>
+              }
+              {{ "services." + service | translate }}
+            </span>
+          }
+        </div>
+
+        <div class="mt-6 flex flex-wrap items-center gap-3">
+          @if (isOwnProfile()) {
+            <a
+              mat-flat-button
+              class="rounded-full!"
+              [routerLink]="['/', lang(), 'admin', 'profile']"
+            >
+              {{ "editProfile" | translate }}
+            </a>
+            @if (!listPhotos().length) {
+              <a
+                mat-stroked-button
+                class="rounded-full!"
+                [routerLink]="['/', lang(), 'admin', 'upload']"
+              >
+                {{ "profileView.addPhotos" | translate }}
+              </a>
+            }
+          } @else if (isAnonymous()) {
+            <a
+              mat-flat-button
+              class="rounded-full! bg-[#0f9488]! text-white!"
+              [routerLink]="['/', lang(), 'register']"
+            >
+              {{ "profileView.registerToContact" | translate }}
+            </a>
+          } @else {
+            <button
+              mat-flat-button
+              class="rounded-full! bg-[#0f9488]! text-white!"
+              type="button"
+              (click)="openChat()"
+            >
+              {{ "profileView.message" | translate }}
+            </button>
+          }
+        </div>
+      </div>
+
+      <div
+        class="hidden min-w-44 max-w-xs shrink-0 border-l border-(--mat-sys-outline-variant) pl-5 lg:block"
+      >
+        <p
+          class="text-xs font-medium tracking-wide text-(--mat-sys-on-surface-variant) uppercase"
+        >
+          {{ "profileView.atAGlance" | translate }}
+        </p>
+        @if (showProgress()) {
+          <p
+            class="mt-1 text-2xl font-semibold tabular-nums text-(--mat-sys-on-surface)"
+          >
+            {{ completeness().percent }}%
+          </p>
+          <p class="text-xs text-(--mat-sys-on-surface-variant)">
+            {{
+              "profileView.missingCount"
+                | translate: { count: completeness().missing }
+            }}
+          </p>
+        }
+
+        @if (nextSteps().length) {
+          <p
+            class="mt-4 text-xs font-medium tracking-wide text-(--mat-sys-on-surface-variant) uppercase"
+          >
+            {{ "profileView.nextToAdd" | translate }}
+          </p>
+          <ul class="mt-2 space-y-2">
+            @for (step of nextSteps(); track step.labelKey) {
+              <li>
+                <a
+                  class="text-sm font-medium text-[#0f9488] hover:underline"
+                  [routerLink]="step.link"
+                >
+                  {{ step.labelKey | translate }}
+                </a>
+              </li>
+            }
+          </ul>
+        } @else {
+          <div class="mt-4 space-y-3">
+            @for (fact of facts(); track fact.labelKey) {
+              @if (fact.value) {
+                <div>
+                  <p class="text-xs text-(--mat-sys-on-surface-variant)">
+                    {{ fact.labelKey | translate | titlecase }}
+                  </p>
+                  <p
+                    class="mt-0.5 text-sm font-medium text-(--mat-sys-on-surface)"
+                  >
+                    {{ fact.value }}
+                  </p>
+                </div>
+              }
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-6">
+    <div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+      <h2 class="text-lg font-semibold text-(--mat-sys-on-surface)">
+        {{ "photos" | translate }}
+      </h2>
+      @if (showProgress()) {
+        <div
+          class="flex flex-wrap items-baseline gap-x-3 text-sm tabular-nums text-(--mat-sys-on-surface-variant)"
+        >
+          <span>
+            {{
+              "photosCount"
+                | translate: { count: listPhotos().length, max: maxPhotos }
+            }}
+          </span>
+          @if (photosRemaining() > 0) {
+            <span>
+              {{ "photosRemaining" | translate: { count: photosRemaining() } }}
+            </span>
+          }
+        </div>
+      }
+    </div>
+
+    <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5">
+      @for (slot of visiblePhotoSlots(); track slot.photo?.key ?? 'empty-' + slot.index) {
+        @if (slot.photo; as photo) {
+          <button
+            type="button"
+            class="overflow-hidden rounded-2xl p-0 text-left"
+            [class.cursor-pointer]="!isAnonymous()"
+            [class.cursor-default]="isAnonymous()"
+            (click)="open(photo, slot.index)"
+          >
+            <img
+              alt=""
+              [priority]="slot.index === 0"
+              [width]="photo.thumbWidth"
+              [height]="photo.thumbHeight"
+              [ngSrc]="
+                isAnonymous()
+                  ? (photo.keyBlured | s3Url)
+                  : (photo.keyRezised | s3Url)
+              "
+              class="aspect-square w-full object-cover"
+            />
+          </button>
+        } @else if (isOwnProfile() && slot.index === listPhotos().length) {
+          <a
+            class="flex aspect-square flex-col items-center justify-center gap-1 rounded-2xl border border-dashed border-(--mat-sys-outline) bg-(--mat-sys-surface-container-low) px-3 text-center text-sm font-medium text-(--mat-sys-on-surface) hover:bg-(--mat-sys-surface-container)"
+            [routerLink]="['/', lang(), 'admin', 'upload']"
+          >
+            {{ "photosSlot" | translate }}
+            <span class="text-xs font-normal text-(--mat-sys-on-surface-variant)">
+              {{ "profileView.photoSlot" | translate: { n: slot.index + 1 } }}
+            </span>
+          </a>
+        } @else {
+          <div
+            class="flex aspect-square flex-col items-center justify-center rounded-2xl border border-dashed border-(--mat-sys-outline-variant) bg-(--mat-sys-surface-container-low) px-3 text-center text-xs text-(--mat-sys-on-surface-variant)"
+          >
+            {{ "profileView.photoSlot" | translate: { n: slot.index + 1 } }}
+          </div>
+        }
+      }
+    </div>
+
+    @if (!listPhotos().length) {
+      <p class="mt-3 text-sm text-(--mat-sys-on-surface-variant)">
+        {{
+          (isOwnProfile()
+            ? "photosEmptyHint"
+            : "photosEmptyOnProfile"
+          ) | translate
+        }}
+      </p>
+    }
+  </section>
+
+  <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <section
+      class="rounded-2xl border border-(--mat-sys-outline-variant) bg-(--mat-sys-surface-container-low) p-5"
+    >
+      <div class="flex items-baseline justify-between gap-3">
+        <h2 class="text-lg font-semibold text-(--mat-sys-on-surface)">
+          {{ "profileView.about" | translate }}
+        </h2>
+        @if (showProgress()) {
+          <p class="text-sm tabular-nums text-(--mat-sys-on-surface-variant)">
+            {{
+              "charsCount"
+                | translate: { used: descriptionChars(), max: maxBioChars }
+            }}
+          </p>
+        }
+      </div>
+
+      @if (user().description) {
+        <p class="mt-3 text-sm leading-relaxed text-(--mat-sys-on-surface)">
+          {{ user().description }}
+        </p>
+      } @else {
+        <p class="mt-3 text-sm leading-relaxed text-(--mat-sys-on-surface-variant)">
+          {{
+            (isOwnProfile()
+              ? "profileView.aboutHintOwn"
+              : "profileView.aboutHintOther"
+            ) | translate
+          }}
+        </p>
+        @if (isOwnProfile()) {
+          <a
+            class="mt-3 inline-flex text-sm font-medium text-[#0f9488] hover:underline"
+            [routerLink]="['/', lang(), 'admin', 'profile']"
+          >
+            {{ "profileView.aboutWrite" | translate }}
+          </a>
+        }
+      }
+
+      <div class="mt-6">
+        <h3 class="text-sm font-semibold text-(--mat-sys-on-surface-variant)">
+          {{ "profileView.availability" | translate }}
+        </h3>
+        @if (days().length || slots().length) {
+          <div class="mt-2 grid grid-cols-7 gap-1" role="list">
+            @for (day of allDays; track day) {
+              <span
+                role="listitem"
+                class="rounded-lg py-1.5 text-center text-xs font-semibold"
+                [class.bg-(--mat-sys-primary-container)]="days().includes(day)"
+                [class.text-(--mat-sys-on-primary-container)]="days().includes(day)"
+                [class.text-(--mat-sys-outline)]="!days().includes(day)"
+                [class.line-through]="!days().includes(day)"
+                [attr.aria-label]="
+                  ('days.' + day | translate) +
+                  (days().includes(day) ? '' : ' ✕')
+                "
+                >{{ "daysShort." + day | translate }}</span
+              >
+            }
+          </div>
+          @if (slots().length) {
+            <p class="mt-2 text-sm text-(--mat-sys-on-surface)">
+              @for (slot of slots(); track slot; let last = $last) {
+                {{ "slots." + slot | translate }}{{ last ? "" : " · " }}
+              }
+            </p>
+          }
+        } @else {
+          <p class="mt-2 text-sm text-(--mat-sys-on-surface-variant)">
+            {{
+              (isOwnProfile()
+                ? "profileView.availabilityHintOwn"
+                : "profileView.availabilityHintOther"
+              ) | translate
+            }}
+          </p>
+        }
+      </div>
+    </section>
+
+    <section
+      class="rounded-2xl border border-(--mat-sys-outline-variant) bg-(--mat-sys-surface-container-low) p-5"
+    >
+      <div class="flex items-baseline justify-between gap-3">
+        <h2 class="text-lg font-semibold text-(--mat-sys-on-surface)">
+          {{ postsLabelKey() | translate }}
+        </h2>
+        @if (showProgress()) {
+          <p class="text-sm tabular-nums text-(--mat-sys-on-surface-variant)">
+            {{ "posts.count" | translate: { count: offerItems().length } }}
+          </p>
+        }
+      </div>
+
+      @if (offerItems().length) {
+        <div class="mt-4 flex flex-wrap gap-2">
+          @for (offer of offerItems(); track offer) {
+            <span
+              class="rounded-full border border-(--mat-sys-outline-variant) bg-(--mat-sys-surface-container-lowest) px-3 py-1.5 text-sm text-(--mat-sys-on-surface)"
+            >
+              {{ offer }}
+            </span>
+          }
+        </div>
+      } @else {
+        <p class="mt-4 text-sm leading-relaxed text-(--mat-sys-on-surface-variant)">
+          {{
+            (isOwnProfile()
+              ? isCleaner()
+                ? "posts.cleanerHintOwn"
+                : "posts.clientHintOwn"
+              : isCleaner()
+                ? "posts.cleanerHintOther"
+                : "posts.clientHintOther"
+            ) | translate
+          }}
+        </p>
+        @if (isOwnProfile()) {
+          <a
+            class="mt-3 inline-flex text-sm font-medium text-[#0f9488] hover:underline"
+            [routerLink]="['/', lang(), 'admin', 'offer-dreams']"
+          >
+            {{
+              (isCleaner()
+                ? "profileView.addAnnouncement"
+                : "profileView.addJobRequest"
+              ) | translate
+            }}
+          </a>
+        }
+      }
+    </section>
+  </div>
+
+  <section
+    class="mt-4 rounded-2xl border border-(--mat-sys-outline-variant) bg-(--mat-sys-surface-container-low) p-5"
+  >
+    <div class="mb-4 flex flex-wrap items-baseline justify-between gap-3">
+      <h2 class="text-lg font-semibold text-(--mat-sys-on-surface)">
+        {{ "profileView.atAGlance" | translate }}
+      </h2>
+      @if (showProgress()) {
+        <p class="text-sm tabular-nums text-(--mat-sys-on-surface-variant)">
+          {{
+            "profileEdit.sectionFilled"
+              | translate: { filled: factsFilled(), total: facts().length }
+          }}
+          ·
+          {{
+            "profileView.missingCount"
+              | translate: { count: facts().length - factsFilled() }
+          }}
+        </p>
+      }
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      <div>
+        <h3
+          class="mb-3 text-xs font-semibold tracking-wide text-(--mat-sys-on-surface-variant) uppercase"
+        >
+          {{ "profileView.workDetails" | translate }}
+        </h3>
+        <div class="grid gap-3 sm:grid-cols-2">
+          @for (fact of workFacts(); track fact.labelKey) {
+            <div
+              class="rounded-xl px-4 py-3"
+              [class.border]="true"
+              [class.border-(--mat-sys-outline-variant)]="!!fact.value"
+              [class.bg-(--mat-sys-surface-container)]="!!fact.value"
+              [class.border-dashed]="!fact.value"
+              [class.border-(--mat-sys-outline)]="!fact.value"
+            >
+              <p
+                class="text-xs font-medium tracking-wide text-(--mat-sys-on-surface-variant) uppercase"
+              >
+                {{ fact.labelKey | translate | titlecase }}
+              </p>
+              @if (fact.value) {
+                <p class="mt-1 text-sm font-medium text-(--mat-sys-on-surface)">
+                  {{ fact.value }}
+                </p>
+              } @else {
+                <p class="mt-1 text-sm text-(--mat-sys-on-surface-variant)">
+                  {{ "noInformation" | translate }}
+                </p>
+                @if (isOwnProfile()) {
+                  <a
+                    class="mt-1 inline-flex text-xs font-medium text-[#0f9488] hover:underline"
+                    [routerLink]="['/', lang(), 'admin', 'profile']"
+                  >
+                    {{ "profileView.addField" | translate }}
+                  </a>
+                }
+              }
+            </div>
+          }
+        </div>
+      </div>
+
+      <div>
+        <h3
+          class="mb-3 text-xs font-semibold tracking-wide text-(--mat-sys-on-surface-variant) uppercase"
+        >
+          {{ "profileView.availabilityAreas" | translate }}
+        </h3>
+        <div class="grid gap-3 sm:grid-cols-2">
+          @for (fact of scheduleFacts(); track fact.labelKey) {
+            <div
+              class="rounded-xl px-4 py-3"
+              [class.border]="true"
+              [class.border-(--mat-sys-outline-variant)]="!!fact.value"
+              [class.bg-(--mat-sys-surface-container)]="!!fact.value"
+              [class.border-dashed]="!fact.value"
+              [class.border-(--mat-sys-outline)]="!fact.value"
+            >
+              <p
+                class="text-xs font-medium tracking-wide text-(--mat-sys-on-surface-variant) uppercase"
+              >
+                {{ fact.labelKey | translate | titlecase }}
+              </p>
+              @if (fact.value) {
+                <p class="mt-1 text-sm font-medium text-(--mat-sys-on-surface)">
+                  {{ fact.value }}
+                </p>
+              } @else {
+                <p class="mt-1 text-sm text-(--mat-sys-on-surface-variant)">
+                  {{ "noInformation" | translate }}
+                </p>
+                @if (isOwnProfile()) {
+                  <a
+                    class="mt-1 inline-flex text-xs font-medium text-[#0f9488] hover:underline"
+                    [routerLink]="['/', lang(), 'admin', 'profile']"
+                  >
+                    {{ "profileView.addField" | translate }}
+                  </a>
+                }
+              }
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

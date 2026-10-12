@@ -1,0 +1,136 @@
+db.residents.aggregate([
+    {
+        $unwind: { path: "$costs", preserveNullAndEmptyArrays: true }
+    },
+    
+    {
+        $addFields: { 
+            "costs.years": { 
+                 $cond: [ 
+                     { $ne: ["$costs.periodicity", "one-off"] },
+                     ["2018", "2019", "2020", "2021"], 
+                     [ {$toString: {$year: "$costs.date"}} ]
+                 ] 
+             },
+        }
+    },
+
+    {
+        $unwind: { path: "$costs.years", preserveNullAndEmptyArrays: true }
+    },
+   
+    {
+        $lookup: {
+           from: "payments",
+           let: { resResidentId: "$email", resCostId: "$costs.id", resYear: "$costs.years" },
+           pipeline: [
+              { 
+                $match:
+                { 
+                    $expr:
+                    { 
+                       $and:
+                       [
+                         { $eq: [ "$residentId",  "$$resResidentId" ] },
+                         { $eq: [ "$costId",  "$$resCostId" ] },
+                         { $eq: [ {$toString: {$year: "$date"} }, "$$resYear" ] },
+                       ]
+                    }
+                 }
+              },
+              { $project: {residentId: 0, _id: 0} }
+           ],
+           as: "payments"
+        }
+    },
+    
+    {
+       $set: {
+            debt: { $subtract: [ {$sum: "$payments.value"}, "$costs.totalAnual" ] },
+            paid: {$sum: "$payments.value"},
+            yearInt: {$toInt: "$costs.years"}
+       }
+    },
+    
+    {       
+        
+        $project: { "payments": 0 }
+    },
+    
+   
+    {
+        $group:
+        {
+          _id: { 
+              id: "$_id",
+              email: "$email",
+              costId: "$costs.id"       
+          }, 
+          
+         
+           /* item: { $push: "$$ROOT"},
+         
+          debtPreviousYears: {
+            $push: {
+                $cond:[{$in:[ "$costs.years", [ "2018", "2019", "2020"]]}, {year: "$costs.years", debt:"$debt"}, "$$REMOVE" ]
+            }
+          },
+          debtCurrentYear: {
+            $push: {
+                $cond:[ {$in:[ "$costs.years", [ "2021"]]}, {year: "$costs.years", debt:"$debt"}, "$$REMOVE"]
+            }
+          }, */
+               
+          
+          costName: { $first:  "$costs.name" },
+          
+          periodicity: { $first: "$costs.periodicity" },
+          
+          costTotalAnual: { $first:  "$costs.totalAnual" },
+          
+          costValue: { $first:  "$costs.value"  },
+          
+          oneOffYear: {
+              $first: {
+                  $cond:{ if:{ $eq:[ "$costs.periodicity", "one-off" ]}, then:"$costs.years", else:"$$REMOVE" }
+              }
+          },
+          
+           oneOffYearInt: {
+              $first: {
+                  $cond:{ if:{ $eq:[ "$costs.periodicity", "one-off" ]}, then: "$yearInt", else:  "$$REMOVE" }
+              }
+          },
+          
+          debtPreviousYearsValue: {
+            $sum: {
+                $cond:{ if:{ $in:[ "$costs.years", [ "2018", "2019", "2020"]]}, then: "$debt", else: "$$REMOVE" }
+            }
+          },
+          debtCurrentYearValue: {      
+            $sum: { 
+                $cond:{ if:{ $in:[ "$costs.years", [ "2021"]]}, then: "$debt", else: "$$REMOVE" }
+            }
+          },
+          
+          paidCurrentYearValue: {
+           $sum: { 
+                $cond: {  if:{ $in:[ "$costs.years", [ "2021"]] },  then: "$paid", else: "$$REMOVE"  }
+            }
+          }
+       
+        }
+     },
+     
+    {
+        $group:
+        {
+            _id: "$_id.email",
+            costs: { $push: "$$ROOT"}
+        }
+    },
+     
+    { $sort: {"_id.email": 1 }},
+    
+    
+])

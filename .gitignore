@@ -1,0 +1,6 @@
+.DS_Store
+**/.DS_Store
+.superdesign/tmp/
+.env
+.env.*
+!.env.example

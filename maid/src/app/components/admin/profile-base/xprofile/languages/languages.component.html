@@ -1,0 +1,31 @@
+<div>
+  <mat-form-field [appearance]="utilsService.inputType()" class="w-full">
+    <mat-label>{{ "languages" | translate | titlecase }}</mat-label>
+    <mat-select [formField]="languages()" multiple>
+      <mat-select-trigger>
+        {{
+          languages()().value().length
+            ? languagesObj[languages()().value()[0]]
+            : ""
+        }}
+
+        @if (languages()().value().length > 1) {
+          <span class="example-additional-selection">
+            (+{{ languages()().value().length - 1 }})
+          </span>
+        }
+      </mat-select-trigger>
+
+      @for (language of languageOptions; track language.value) {
+        <mat-option
+          [value]="language.value"
+          (onSelectionChange)="selectionChange($event, language)"
+          >{{ language.name }}
+        </mat-option>
+      }
+    </mat-select>
+    @if (hasKind(languages(), "required")) {
+      <mat-error [innerHTML]="'fieldRequired' | translate"></mat-error>
+    }
+  </mat-form-field>
+</div>

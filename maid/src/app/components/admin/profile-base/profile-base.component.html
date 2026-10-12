@@ -1,0 +1,108 @@
+<router-outlet />
+
+<!-- Left Side Menu  -->
+<ng-template cdkPortal>
+  <nav class="side-nav p-2" aria-label="Profile">
+    <a
+      [routerLinkActive]="['menu-active']"
+      [routerLinkActiveOptions]="{ exact: true }"
+      (click)="toggleMenu()"
+      [routerLink]="['/', lang(), 'admin', 'profile']"
+      class="side-nav-item"
+      [title]="'editProfile' | translate"
+    >
+      <svg
+        width="22px"
+        height="22px"
+        fill="currentColor"
+        viewBox="0 0 448 512"
+        aria-hidden="true"
+      >
+        <path
+          d="M224 248a120 120 0 1 0 0-240 120 120 0 1 0 0 240zm-29.7 56C95.8 304 16 383.8 16 482.3 16 498.7 29.3 512 45.7 512l356.6 0c16.4 0 29.7-13.3 29.7-29.7 0-98.5-79.8-178.3-178.3-178.3l-59.4 0z"
+        />
+      </svg>
+      <span>{{ "editProfile" | translate }}</span>
+    </a>
+    <a
+      [routerLinkActive]="['menu-active']"
+      (click)="toggleMenu()"
+      [routerLink]="['/', lang(), 'admin', 'offer-dreams']"
+      class="side-nav-item"
+      [title]="offersDreamsKey() | translate"
+    >
+      <svg
+        width="22px"
+        height="22px"
+        fill="currentColor"
+        viewBox="0 0 384 512"
+        aria-hidden="true"
+      >
+        <path
+          d="M144 24c0-4.4 3.6-8 8-8l80 0c4.4 0 8 3.6 8 8l0 72-96 0 0-72zM320 96l-32 0 0-72c0-30.9-25.1-56-56-56l-80 0C121.1-32 96-6.9 96 24l0 72-32 0C28.7 96 0 124.7 0 160L0 448c0 35.3 28.7 64 64 64 0 17.7 14.3 32 32 32s32-14.3 32-32l128 0c0 17.7 14.3 32 32 32s32-14.3 32-32c35.3 0 64-28.7 64-64l0-288c0-35.3-28.7-64-64-64zM120 208l144 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-144 0c-13.3 0-24-10.7-24-24s10.7-24 24-24zm0 128l144 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-144 0c-13.3 0-24-10.7-24-24s10.7-24 24-24z"
+        />
+      </svg>
+      <span>{{ offersDreamsKey() | translate }}</span>
+    </a>
+    <a
+      [routerLinkActive]="['menu-active']"
+      (click)="toggleMenu()"
+      [routerLink]="['/', lang(), 'admin', 'upload']"
+      class="side-nav-item"
+      [title]="'photos' | translate"
+    >
+      <svg
+        width="22px"
+        height="22px"
+        fill="currentColor"
+        viewBox="0 0 512 512"
+        aria-hidden="true"
+      >
+        <path
+          d="M0 416l0-208 136.2 0c13.5-20.2 32-36.8 53.7-48L0 160 0 125.7c0-35.3 28.7-64 64-64l.1 0C65.3 45.1 79.1 32 96 32l32 0c16.9 0 30.7 13.1 31.9 29.7l32.1 0 51.2-23.8c8.4-3.9 17.6-6 26.9-6L448 32c35.3 0 64 28.7 64 64l0 64-190 0c21.7 11.2 40.2 27.8 53.7 48l136.2 0 0 208c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64zM256 192a96.1 96.1 0 1 0 0 192.1 96.1 96.1 0 1 0 0-192.1z"
+        />
+      </svg>
+      <span>{{ "photos" | translate }}</span>
+    </a>
+    <a
+      [routerLinkActive]="['menu-active']"
+      (click)="toggleMenu()"
+      [routerLink]="['/', lang(), 'admin', 'preferences']"
+      class="side-nav-item"
+      [title]="'preferences' | translate"
+    >
+      <svg
+        width="22px"
+        height="22px"
+        fill="currentColor"
+        viewBox="0 0 512 512"
+        aria-hidden="true"
+      >
+        <path
+          d="M195.1 9.5C198.1-5.3 211.2-16 226.4-16l59.8 0c15.2 0 28.3 10.7 31.3 25.5L332 79.5c14.1 6 27.3 13.7 39.3 22.8l67.8-22.5c14.4-4.8 30.2 1.2 37.8 14.4l29.9 51.8c7.6 13.2 4.9 29.8-6.5 39.9L447 233.3c.9 7.4 1.3 15 1.3 22.7s-.5 15.3-1.3 22.7l53.4 47.5c11.4 10.1 14 26.8 6.5 39.9l-29.9 51.8c-7.6 13.1-23.4 19.2-37.8 14.4l-67.8-22.5c-12.1 9.1-25.3 16.7-39.3 22.8l-14.4 69.9c-3.1 14.9-16.2 25.5-31.3 25.5l-59.8 0c-15.2 0-28.3-10.7-31.3-25.5l-14.4-69.9c-14.1-6-27.2-13.7-39.3-22.8L73.5 432.3c-14.4 4.8-30.2-1.2-37.8-14.4L5.8 366.1c-7.6-13.2-4.9-29.8 6.5-39.9l53.4-47.5c-.9-7.4-1.3-15-1.3-22.7s.5-15.3-1.3-22.7L12.3 185.8c-11.4-10.1-14-26.8-6.5-39.9L35.7 94.1c7.6-13.2 23.4-19.2 37.8-14.4l67.8 22.5c12.1-9.1 25.3-16.7 39.3-22.8L195.1 9.5zM256.3 336a80 80 0 1 0 -.6-160 80 80 0 1 0 .6 160z"
+        />
+      </svg>
+      <span>{{ "preferences" | translate }}</span>
+    </a>
+    <a
+      [routerLinkActive]="['menu-active']"
+      (click)="toggleMenu()"
+      [routerLink]="['/', lang(), 'admin', 'account']"
+      class="side-nav-item"
+      [title]="'adminMenu' | translate"
+    >
+      <svg
+        width="22px"
+        height="22px"
+        fill="currentColor"
+        viewBox="0 0 512 512"
+        aria-hidden="true"
+      >
+        <path
+          d="M336 352c97.2 0 176-78.8 176-176S433.2 0 336 0 160 78.8 160 176c0 18.7 2.9 36.8 8.3 53.7L7 391c-4.5 4.5-7 10.6-7 17v80c0 13.3 10.7 24 24 24h80c13.3 0 24-10.7 24-24v-40h40c13.3 0 24-10.7 24-24v-40h40c6.4 0 12.5-2.5 17-7l33.3-33.3c16.9 5.4 35 8.3 53.7 8.3zm40-176a40 40 0 1 1 0-80 40 40 0 1 1 0 80z"
+        />
+      </svg>
+      <span>{{ "adminMenu" | translate }}</span>
+    </a>
+  </nav>
+</ng-template>

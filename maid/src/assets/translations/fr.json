@@ -1,0 +1,55 @@
+{
+  "consentModal": {
+    "title": "Nous utilisons des cookies",
+    "description": "Ce site web utilise des cookies pour améliorer l'expérience utilisateur. Nous utilisons des cookies pour analyser le trafic et les performances de notre site web. Nous ne collectons jamais de données personnelles.",
+    "acceptAllBtn": "Accepter tout",
+    "acceptNecessaryBtn": "Rejeter tout",
+    "showPreferencesBtn": "Gérer les préférences individuelles",
+    "footer": "<a href=\"#path-to-privacy-policy.html\" target=\"_blank\">politique de confidentialité</a>"
+  },
+  "preferencesModal": {
+    "title": "Gérer les préférences de cookies",
+    "acceptAllBtn": "Accepter tout",
+    "acceptNecessaryBtn": "Rejeter tout",
+    "savePreferencesBtn": "Accepter la sélection actuelle",
+    "closeIconLabel": "Close modal",
+    "sections": [
+      {
+        "title": "Vos choix en matière de confidentialité",
+        "description": "Dans ce panneau, vous pouvez exprimer certaines préférences relatives au traitement de vos informations personnelles. Vous pouvez revoir et modifier les choix exprimés à tout moment en réapparaissant dans ce panneau via le lien fourni. Pour refuser votre consentement aux activités de traitement spécifiques décrites ci-dessous, désactivez les boutons de sélection ou utilisez le bouton « Rejeter tout » et confirmez que vous souhaitez sauvegarder vos choix."
+      },
+      {
+        "title": "Strictement nécessaire",
+        "description": "Ces cookies sont essentiels au bon fonctionnement du site web et ne peuvent pas être désactivés.",
+        "linkedCategory": "necessary"
+      },
+      {
+        "title": "Performance et analyse",
+        "description": "Ces cookies recueillent des informations sur la manière dont vous utilisez notre site web. Toutes les données sont anonymes et ne peuvent être utilisées pour vous identifier.",
+        "linkedCategory": "analytics",
+        "cookieTable": {
+          "caption": "Cookie table",
+          "headers": {
+            "name": "Cookie",
+            "desc": "Description"
+          },
+          "body": [
+            {
+              "name": "_ga",
+              "desc": "Google Analytics est un service d'analyse du Web proposé par Google qui permet de suivre et de rendre compte du trafic sur un site Web."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Ciblage et publicité",
+        "description": "Ces cookies sont utilisés pour rendre les messages publicitaires plus pertinents et adaptés à vos centres d'intérêt. L'objectif est d'afficher des publicités pertinentes et attrayantes pour chaque utilisateur, et donc plus utiles pour les éditeurs et les annonceurs tiers.",
+        "linkedCategory": "ads"
+      },
+      {
+        "title": "Plus d'informations",
+        "description": "Pour toute question relative à notre politique en matière de cookies et à vos choix, veuillez <a href='#contact-page'>nous contacter</a>."
+      }
+    ]
+  }
+}

@@ -1,0 +1,113 @@
+<div class="ad-page xprofile">
+  <div class="ad-col">
+    <div class="ad-head">
+      <div>
+        <p class="ad-eyebrow">{{ "tabs.profile" | translate }}</p>
+        <h1 class="ad-title">
+          {{ storeChat.userType() + ".title" | translate }}
+        </h1>
+        <p class="ad-lead">
+          @if (storeChat.userType() === "Cleaner") {
+            {{ "posts.cleanerHint" | translate }}
+          } @else {
+            {{ "posts.clientHint" | translate }}
+          }
+        </p>
+      </div>
+      <span class="ad-badge">
+        {{ "posts.count" | translate: { count: offersKeywords().length } }}
+      </span>
+    </div>
+
+    <section class="ad-card">
+      <div class="ad-card-head">
+        <div>
+          <h2 class="ad-card-title">
+            {{ storeChat.userType() + ".inputLabel" | translate }}
+          </h2>
+          <p class="ad-card-hint">
+            {{ storeChat.userType() + ".example" | translate }}
+          </p>
+        </div>
+        <button
+          type="button"
+          class="ad-btn-ghost shrink-0"
+          (click)="openAdd()"
+        >
+          {{ storeChat.userType() + ".addKeyword" | translate }}
+        </button>
+      </div>
+
+      @if (loading()) {
+        <mat-spinner diameter="32"></mat-spinner>
+      } @else if (offersKeywords().length === 0) {
+        <p class="text-sm text-(--mat-sys-on-surface-variant)">
+          @if (storeChat.userType() === "Cleaner") {
+            {{ "posts.cleanerEmpty" | translate }}
+          } @else {
+            {{ "posts.clientEmpty" | translate }}
+          }
+        </p>
+      } @else {
+        <ul class="flex flex-col gap-2.5">
+          @for (keyword of offersKeywords(); track keyword) {
+            <li
+              class="flex items-center justify-between gap-3 rounded-2xl border border-(--ad-card-line) bg-(--mat-sys-surface-container-low) px-4 py-3"
+            >
+              <p class="min-w-0 text-sm font-semibold text-(--mat-sys-on-surface)">
+                {{ keyword }}
+              </p>
+              <button
+                type="button"
+                mat-button
+                (click)="removeReactiveKeyword(keyword)"
+              >
+                {{ "offer.remove" | translate }}
+              </button>
+            </li>
+          }
+        </ul>
+      }
+    </section>
+  </div>
+</div>
+
+<ng-template #addOfferDialog>
+  <h2 mat-dialog-title>
+    {{ storeChat.userType() + ".addKeyword" | translate }}
+  </h2>
+  <div mat-dialog-content class="!pt-3">
+    <mat-form-field [appearance]="utilsService.inputType()" class="w-full">
+      <mat-label>{{
+        storeChat.userType() + ".inputLabel" | translate
+      }}</mat-label>
+      <input
+        matInput
+        [formField]="offerForm.offer"
+        [placeholder]="storeChat.userType() + '.example' | translate"
+        autocomplete="off"
+        cdkFocusInitial
+        (keydown.enter)="confirmAdd()"
+      />
+    </mat-form-field>
+    @if (hasKind(offerForm.offer(), "maxLength")) {
+      <p
+        class="text-sm text-(--mat-sys-error)"
+        [innerHTML]="'fieldMaxLength' | translate: { max: offerMaxLength }"
+      ></p>
+    }
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-button type="button" [mat-dialog-close]="false">
+      {{ "cancel" | translate }}
+    </button>
+    <button
+      mat-button
+      type="button"
+      [disabled]="!offerForm.offer().value().trim() || !offerForm().valid()"
+      (click)="confirmAdd()"
+    >
+      {{ "add" | translate }}
+    </button>
+  </div>
+</ng-template>

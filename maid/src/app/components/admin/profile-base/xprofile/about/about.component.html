@@ -1,0 +1,29 @@
+<div class="flex flex-col gap-4">
+  <app-languages [languages]="form().languages" [isFilter]="false" />
+
+  <mat-form-field [appearance]="utilsService.inputType()" class="w-full">
+    <mat-label>{{ "description" | translate }}</mat-label>
+    <textarea
+      matInput
+      [formField]="form().description"
+      [placeholder]="
+        (isCleaner() ? 'about.cleanerPlaceholder' : 'about.clientPlaceholder')
+          | translate
+      "
+      rows="8"
+    ></textarea>
+    <mat-hint>{{ "optional" | translate }}</mat-hint>
+    <mat-hint align="end">
+      {{
+        "charsCount"
+          | translate
+            : { used: form().description().value().length, max: maxDescription }
+      }}
+    </mat-hint>
+    @if (hasKind(form().description(), "maxLength")) {
+      <mat-error
+        [innerHTML]="'fieldMaxLength' | translate: { max: maxDescription }"
+      ></mat-error>
+    }
+  </mat-form-field>
+</div>

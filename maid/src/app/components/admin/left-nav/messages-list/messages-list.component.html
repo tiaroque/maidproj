@@ -1,0 +1,274 @@
+@defer {
+  @if (!storeChat.inboxLoaded()) {
+    <ng-container *ngTemplateOutlet="conversationSkeleton"></ng-container>
+  } @else {
+  @if (isMenuOpen() && storeChat.sortedConversations().length > 0) {
+    <app-conversation-filters class="hidden px-2 pt-2 md:flex" />
+  }
+
+  @if (visibleConversations().length === 0 && isMenuOpen()) {
+    <div class="px-4 py-10 text-center">
+      <p class="text-sm text-(--mat-sys-on-surface-variant)">
+        {{
+          (storeChat.favoritesOnly()
+            ? "chatScreen.noFavorites"
+            : "chatScreen.noContacts")
+            | translate
+        }}
+      </p>
+    </div>
+  } @else {
+  <app-infinite-scroll2
+    [root]="host.nativeElement"
+    [loading]="storeChat.conversationsLoading()"
+    [hasMore]="
+      !storeChat.favoritesOnly() && storeChat.conversationsListCount() > 0
+    "
+    (fetchMore)="loadMoreUsers()"
+  >
+    <nav class="side-nav p-2" aria-label="Conversations">
+      @for (cv of visibleConversations(); track cv._id) {
+        @let lastMsg = cv.lastMsg;
+        @let msg = $safeNavigationMigration(lastMsg?.message);
+        @let showUnread =
+          storeChat.currentConversationId() !== cv._id &&
+          lastMsg?.sender !== cv.meUserId &&
+          !!cv.unreadCount;
+        @let count = cv.unreadCount > 99 ? "99+" : cv.unreadCount;
+
+        @let showBadgeUnread = showUnread && isMobile() && !isMenuOpen();
+
+        <a
+          class="side-nav-item conversation-item"
+          [routerLink]="['/', lang(), 'admin', 'chat']"
+          [queryParams]="{ uid: cv.userTo.uid }"
+          [routerLinkActive]="['menu-active']"
+          (click)="toggleMenu(false)"
+          [title]="cv.userTo.name"
+        >
+          <div
+            class="conversation-avatar relative size-10 justify-self-center"
+            [matBadge]="count"
+            matBadgePosition="after"
+            [matBadgeHidden]="!showBadgeUnread"
+          >
+            @if (cv.userTo.images && cv.userTo.images[0]) {
+              <span
+                class="conversation-photo relative block size-10 overflow-hidden rounded-full border border-neutral-400 dark:border-neutral-500"
+              >
+                <img
+                  alt=""
+                  [ngSrc]="cv.userTo.images[0].keyRezised | s3Url"
+                  fill
+                  class="object-cover object-center"
+                />
+              </span>
+            } @else {
+              <div
+                class="conversation-photo flex size-10 items-center justify-center overflow-hidden rounded-full border border-neutral-400 dark:border-neutral-500 p-1"
+              >
+                <app-profile-avatar [user]="cv.userTo" />
+              </div>
+            }
+
+            <div
+              class="conversation-presence absolute right-0 bottom-0 size-3 rounded-full border-2 border-(--left-nav-bg)"
+              [ngClass]="{
+                'bg-green-400': cv.connected,
+                'bg-slate-300': !cv.connected,
+              }"
+            ></div>
+
+            @if (isFavorite(cv) && !isMenuOpen()) {
+              <span
+                class="conversation-favorite-badge absolute top-0 left-0 z-1 flex size-3.5 items-center justify-center rounded-full bg-(--left-nav-bg)"
+              >
+                <svg
+                  class="size-2.5"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.7l1.2-6.6L2.5 9.5l6.6-.9L12 2.5z"
+                  />
+                </svg>
+              </span>
+            }
+          </div>
+
+          <div class="conversation-copy min-w-0 text-left">
+            <div
+              class="truncate text-sm font-semibold"
+              [ngClass]="{
+                'font-bold': showUnread,
+              }"
+            >
+              {{ cv.userTo.name }}
+            </div>
+            <div
+              class="truncate text-xs font-medium text-(--mat-sys-outline)"
+              [ngClass]="{
+                'font-bold text-(--mat-sys-on-background)!': showUnread,
+              }"
+            >
+              @if (lastMsg?.deleted) {
+                {{ "chatScreen.photoDeleted" | translate }}
+              } @else if (msg) {
+                @if (lastMsg.type === "message") {
+                  {{ msg }}
+                }
+                @if (lastMsg.type === "media") {
+                  {{ "imageSent" | translate }}
+                }
+              }
+            </div>
+          </div>
+
+          <div
+            class="conversation-meta flex flex-col items-end justify-center gap-1 pr-3"
+          >
+            <div
+              class="text-[11px] font-semibold"
+              [ngClass]="
+                showUnread
+                  ? 'text-(--mat-sys-primary)'
+                  : 'text-(--mat-sys-outline)'
+              "
+            >
+              {{
+                cv.lastMsg
+                  ? (cv.lastMsg.updateDate | datetransform: lang() : "date")
+                  : ""
+              }}
+            </div>
+
+            <div class="flex h-4 items-center justify-end gap-1">
+              <button
+                type="button"
+                class="conversation-favorite flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent p-0"
+                [class.is-favorite]="isFavorite(cv)"
+                [attr.aria-pressed]="isFavorite(cv)"
+                [attr.aria-label]="
+                  (isFavorite(cv)
+                    ? 'chatScreen.removeFavorite'
+                    : 'chatScreen.addFavorite'
+                  ) | translate
+                "
+                [title]="
+                  (isFavorite(cv)
+                    ? 'chatScreen.removeFavorite'
+                    : 'chatScreen.addFavorite'
+                  ) | translate
+                "
+                (click)="toggleFavorite($event, cv)"
+              >
+                @if (isFavorite(cv)) {
+                  <svg
+                    class="size-3.5"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.7l1.2-6.6L2.5 9.5l6.6-.9L12 2.5z"
+                    />
+                  </svg>
+                } @else {
+                  <svg
+                    class="size-3.5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M12 3.2l2.6 5.4 5.9.8-4.3 4.1 1 5.9L12 16.6 6.8 19.4l1-5.9L3.5 9.4l5.9-.8L12 3.2z"
+                    />
+                  </svg>
+                }
+              </button>
+              @let muted = alertsDisabled(cv);
+              @let alertLabel =
+                (muted
+                  ? "chatScreen.enableAlerts"
+                  : "chatScreen.disableAlert"
+                ) | translate;
+              <button
+                type="button"
+                class="conversation-alert flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent p-0"
+                [attr.aria-pressed]="muted"
+                [attr.aria-label]="alertLabel"
+                [title]="alertLabel"
+                (click)="toggleAlerts($event, cv)"
+              >
+                @if (muted) {
+                  <svg
+                    class="size-3.5"
+                    fill="currentColor"
+                    viewBox="0 0 576 512"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M41-24.9c-9.4-9.4-24.6-9.4-33.9 0S-2.3-.3 7 9.1l528 528c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-87.5-87.5c17.2-2.4 30.5-17.3 30.5-35.2 0-8.1-2.7-15.9-7.8-22.2l-9.8-12.2C464.4 308.5 448 261.8 448 213.7l0-21.7c0-77.4-55-142-128-156.8l0-3.2c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 3.2c-38.6 7.8-72.2 29.6-95.2 59.7L41-24.9zm87 238.5c0 48.1-16.4 94.8-46.4 132.4l-9.8 12.2c-5 6.3-7.8 14.1-7.8 22.2 0 19.6 15.9 35.5 35.5 35.5l235.3 0-206.9-206.9 0 4.5zM288 512c29.8 0 54.9-20.4 62-48l-124 0c7.1 27.6 32.2 48 62 48z"
+                    />
+                  </svg>
+                } @else {
+                  <svg
+                    class="size-3.5"
+                    fill="currentColor"
+                    viewBox="0 0 448 512"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M224 0c-17.7 0-32 14.3-32 32l0 3.2C119 50 64 114.6 64 192l0 21.7c0 48.1-16.4 94.8-46.4 132.4L7.8 358.3C2.7 364.6 0 372.4 0 380.5 0 400.1 15.9 416 35.5 416l376.9 0c19.6 0 35.5-15.9 35.5-35.5 0-8.1-2.7-15.9-7.8-22.2l-9.8-12.2C400.4 308.5 384 261.8 384 213.7l0-21.7c0-77.4-55-142-128-156.8l0-3.2c0-17.7-14.3-32-32-32zM162 464c7.1 27.6 32.2 48 62 48s54.9-20.4 62-48l-124 0z"
+                    />
+                  </svg>
+                }
+              </button>
+
+              @if (showUnread) {
+                <div
+                  class="flex h-4.5 min-w-4.5 shrink-0 items-center justify-center rounded-full bg-(--mat-sys-primary) px-1 text-[11px] leading-none font-bold text-(--mat-sys-on-primary)"
+                  [attr.aria-label]="
+                    'tabs.chatUnread' | translate: { count: cv.unreadCount }
+                  "
+                >
+                  {{ count }}
+                </div>
+              }
+            </div>
+          </div>
+        </a>
+      }
+    </nav>
+  </app-infinite-scroll2>
+  }
+  }
+} @placeholder (minimum 150ms) {
+  <ng-container *ngTemplateOutlet="conversationSkeleton"></ng-container>
+}
+
+<ng-template #conversationSkeleton>
+  <div role="status" class="animate-pulse space-y-3 p-3">
+    @for (tile of [1, 2, 3]; track tile) {
+      <div class="flex items-center gap-3 rounded-xl px-1 py-1">
+        <div
+          class="size-10 shrink-0 rounded-full bg-(--mat-sys-surface-container-high)"
+        ></div>
+        <div class="min-w-0 flex-1">
+          <div
+            class="mb-2 h-2.5 w-24 rounded-full bg-(--mat-sys-surface-container-high)"
+          ></div>
+          <div
+            class="h-2 w-28 rounded-full bg-(--mat-sys-surface-container)"
+          ></div>
+        </div>
+      </div>
+    }
+
+    <span class="sr-only">Loading...</span>
+  </div>
+</ng-template>

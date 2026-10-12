@@ -1,0 +1,106 @@
+<div class="ad-page">
+  <div class="ad-head">
+    <div>
+      <p class="ad-eyebrow">{{ "verification.cardTitle" | translate }}</p>
+      <h1 class="ad-title">{{ "verification.moderation.title" | translate }}</h1>
+      <p class="ad-lead">
+        {{ "verification.moderation.lead" | translate }}
+      </p>
+    </div>
+    <button
+      type="button"
+      class="ad-btn-ghost shrink-0"
+      [disabled]="loading()"
+      (click)="load()"
+    >
+      {{ "verification.moderation.refresh" | translate }}
+    </button>
+  </div>
+
+  @if (loading()) {
+    <div class="flex justify-center py-10">
+      <mat-spinner diameter="36"></mat-spinner>
+    </div>
+  } @else if (items().length === 0) {
+    <div class="ad-empty">
+      <p class="ad-empty-title">
+        {{ "verification.moderation.emptyTitle" | translate }}
+      </p>
+      <p class="ad-empty-text">
+        {{ "verification.moderation.emptyText" | translate }}
+      </p>
+    </div>
+  } @else {
+    <div class="grid gap-5">
+      @for (item of items(); track item.id) {
+        <section class="ad-card">
+          <div class="ad-card-head">
+            <div>
+              <h2 class="ad-card-title">
+                {{ "verification.pose." + item.challengeId | translate }}
+              </h2>
+              <p class="ad-card-hint">
+                {{ item.createdAt | date: "medium" }} ·
+                <a [routerLink]="['../profile-view', item.uid]" target="_blank">
+                  {{ "verification.moderation.openProfile" | translate }}
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <figure class="m-0">
+              <figcaption class="ad-card-hint mb-2">
+                {{ "verification.moderation.selfie" | translate }}
+              </figcaption>
+              @if (item.selfieUrl) {
+                <img
+                  alt=""
+                  class="w-full max-h-[60vh] object-contain rounded-2xl border border-(--ad-card-line)"
+                  [src]="item.selfieUrl"
+                />
+              }
+            </figure>
+            <figure class="m-0">
+              <figcaption class="ad-card-hint mb-2">
+                {{ "verification.moderation.profilePhoto" | translate }}
+              </figcaption>
+              <img
+                alt=""
+                class="w-full max-h-[60vh] object-contain rounded-2xl border border-(--ad-card-line)"
+                [src]="item.photoKey | s3Url"
+              />
+            </figure>
+          </div>
+
+          <div class="mt-4 flex flex-wrap items-center gap-2">
+            <button
+              type="button"
+              class="ad-btn"
+              [disabled]="busyId() === item.id"
+              (click)="approve(item)"
+            >
+              {{ "verification.moderation.approve" | translate }}
+            </button>
+            <input
+              type="text"
+              maxlength="200"
+              class="min-w-0 flex-1 rounded-full border border-(--ad-card-line) bg-transparent px-4 py-2 text-sm"
+              [placeholder]="'verification.moderation.reasonPlaceholder' | translate"
+              [value]="reasons()[item.id] ?? ''"
+              (input)="setReason(item.id, $event)"
+            />
+            <button
+              type="button"
+              class="ad-btn-ghost"
+              [disabled]="busyId() === item.id"
+              (click)="reject(item)"
+            >
+              {{ "verification.moderation.reject" | translate }}
+            </button>
+          </div>
+        </section>
+      }
+    </div>
+  }
+</div>

@@ -1,0 +1,62 @@
+@if (showImageViewer()) {
+  <div id="overlay-wrapper">
+    <div class="h-screen py-7 px-2 relative">
+      <div
+        #leftBtn
+        class="absolute top-1/2 -translate-y-1/2 left-5 text-cyan-50 move-images z-[600]"
+      >
+        <button
+          type="button"
+          mat-mini-fab
+          (click)="previousImage()"
+          [disabled]="imageIndex().index === 0"
+        >
+          <mat-icon> chevron_left </mat-icon>
+        </button>
+      </div>
+
+      <div
+        [hidden]="!imageLoading()"
+        class="flex items-center justify-center h-full w-full absolute"
+      >
+        <mat-spinner diameter="60"></mat-spinner>
+      </div>
+
+      <!-- flex  to center te image-->
+      <div
+        [ngStyle]="{ visibility: imageLoading() ? 'hidden' : '' }"
+        class="h-full flex"
+      >
+        <img
+          #image
+          alt=""
+          class="max-h-full m-auto z-[500] rounded-2xl"
+          [src]="showImage().key | s3Url"
+          (error)="imageError($event)"
+          (load)="imageLoaded(image)"
+        />
+        <!-- appClickOutside
+          (clickOutside)="closeImageViwer()"
+          [exception]="[leftBtn, rightBtn]" -->
+      </div>
+      <div
+        #rightBtn
+        class="absolute top-1/2 -translate-y-1/2 right-5 text-cyan-50 move-images z-[600]"
+      >
+        <button
+          type="button"
+          mat-mini-fab
+          (click)="nextImage()"
+          [disabled]="imageIndex().index === album().length - 1"
+        >
+          <mat-icon> chevron_right </mat-icon>
+        </button>
+      </div>
+      <div class="absolute top-4 right-4 z-[600]">
+        <button type="button" mat-mini-fab (click)="closeImageViwer()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+}

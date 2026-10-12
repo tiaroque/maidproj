@@ -1,0 +1,54 @@
+   let collection = getDb().collection('residents');
+
+    return await collection.aggregate([
+
+        { $match: { adminId: "dbL3V296WNRoM7HMrfSmgJLQgpZ2" } },
+        {
+            $lookup:
+            {
+                from: "costs",
+                localField: "_id",
+                foreignField: "residentId",
+                as: "costs"
+            }
+        },
+
+        {
+            $lookup:
+            {
+                from: "payments",
+                localField: "_id",
+                foreignField: "residentId",
+                as: "payments"
+            }
+        },
+
+
+        {
+            $set: {
+                costPayments: {
+                    $map: {
+                        input: '$costs',
+                        as: "cost", // creating the variable alias
+                        in: {
+
+                            cost: "$$cost",
+                            payment: {
+                                $filter: {
+                                    input: "$payments",
+                                    as: "payment",
+                                    cond: {
+                                        $eq: ['$$cost._id', '$$payment.costId']
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        { $unset: ["costs", "payments"] }
+
+    ]).toArray();

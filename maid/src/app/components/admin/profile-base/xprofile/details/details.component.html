@@ -1,0 +1,20 @@
+<div class="flex flex-col gap-4">
+  <app-location [isSignup]="isSignup()" [form]="place()" />
+
+  @if (showUnrequiredFields() && isCleaner()) {
+    <mat-form-field [appearance]="utilsService.inputType()" class="w-full sm:max-w-xs">
+      <mat-label>{{ "work.experienceYears" | translate }}</mat-label>
+      <input
+        matInput
+        type="number"
+        inputmode="numeric"
+        [formField]="form().experienceYears"
+        autocomplete="off"
+      />
+      <mat-hint>{{ "optional" | translate }}</mat-hint>
+      @if (hasKind(form().experienceYears(), "min") || hasKind(form().experienceYears(), "max")) {
+        <mat-error>{{ "work.experienceRange" | translate }}</mat-error>
+      }
+    </mat-form-field>
+  }
+</div>

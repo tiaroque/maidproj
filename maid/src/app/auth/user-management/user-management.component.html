@@ -1,0 +1,119 @@
+@if (mode() === "resetPassword") {
+  @if (resetPasswordSuccessMessage()) {
+    <h2 class="text-2xl sm:text-[1.75rem] font-semibold tracking-tight text-(--mat-sys-on-surface) mb-3">
+      {{ "userManagement.resetSuccessTitle" | translate }}
+    </h2>
+    <p class="text-base text-(--mat-sys-on-surface-variant) leading-relaxed">
+      {{ resetPasswordSuccessMessage() }}
+    </p>
+  } @else {
+    <h2 class="text-2xl sm:text-[1.75rem] font-semibold tracking-tight text-(--mat-sys-on-surface) mb-8">
+      {{ "auth.resetTitle" | translate }}
+    </h2>
+  }
+}
+
+@if (mode() === "verifyEmail") {
+  @if (verifiedEmailSuccessMessage()) {
+    <h2 class="text-2xl sm:text-[1.75rem] font-semibold tracking-tight text-(--mat-sys-on-surface) mb-3">
+      {{ "userManagement.verifyEmailSuccessTitle" | translate }}
+    </h2>
+    <p class="text-base text-(--mat-sys-on-surface-variant) leading-relaxed">
+      {{ verifiedEmailSuccessMessage() }}
+    </p>
+  } @else if (!loading()) {
+    <h2 class="text-2xl sm:text-[1.75rem] font-semibold tracking-tight text-(--mat-sys-on-surface) mb-3">
+      {{ "userManagement.verifyEmailTitle" | translate }}
+    </h2>
+  }
+}
+
+@if (mode() === "resetPassword") {
+  @if (!loading() && !errorMessage() && !resetPasswordSuccessMessage()) {
+    <form novalidate (ngSubmit)="onSubmitResetPassword($event)">
+      <div>
+        <mat-form-field [appearance]="'outline'" class="w-full">
+          <mat-label> {{ "auth.password" | translate }} </mat-label>
+          <input
+            matInput
+            [formField]="resetForm.pass"
+            [type]="hide ? 'password' : 'text'"
+            type="password"
+            [placeholder]="'auth.password' | translate"
+            autocomplete="new-password"
+          />
+          <button
+            class="mr-3"
+            matIconSuffix
+            mat-icon-button
+            (click)="hide = !hide"
+            type="button"
+          >
+            <mat-icon [ngStyle]="{ color: '#9B9B9B' }">{{
+              hide ? "visibility_off" : "visibility"
+            }}</mat-icon>
+          </button>
+
+          @if (hasKind(resetForm.pass(), "maxLength")) {
+            <mat-error
+              [innerHTML]="'fieldMaxLength' | translate: { max: 55 }"
+            ></mat-error>
+          }
+          @if (hasKind(resetForm.pass(), "required")) {
+            <mat-error [innerHTML]="'fieldRequired' | translate"></mat-error>
+          }
+        </mat-form-field>
+      </div>
+      @if (resetModel().pass) {
+        <ul class="password-rules-in mt-2 mb-4 flex flex-col gap-1 text-xs" aria-live="polite">
+          @for (rule of passwordRules(); track rule.id) {
+            <li [class]="rule.met ? 'text-emerald-600' : 'text-(--mat-sys-error)'">
+              <span class="mr-1" aria-hidden="true">{{ rule.met ? "✓" : "•" }}</span>
+              {{ rule.key | translate }}
+            </li>
+          }
+        </ul>
+      }
+      <app-captcha />
+      <button
+        type="submit"
+        [disabled]="resetForm().invalid() || loadingResetSubmit() || !captcha()?.code()?.trim()"
+        class="mt-2 auth-buttons w-full py-3.5 text-base"
+      >
+        <span>{{ "userManagement.redefinePass" | translate }}</span>
+        @if (loadingResetSubmit()) {
+          <mat-spinner diameter="22" class="absolute! right-4"></mat-spinner>
+        }
+      </button>
+    </form>
+  }
+}
+
+@if (errorMessage()) {
+  <p
+    class="text-base text-(--mat-sys-error) leading-relaxed"
+    [innerHtml]="errorMessage()"
+  ></p>
+}
+
+@if (resetPasswordSuccessMessage() || verifiedEmailSuccessMessage()) {
+  <a
+    [routerLink]="'../login'"
+    class="mt-8 auth-buttons w-full py-3.5 text-base text-center no-underline"
+  >
+    {{ "auth.enter" | translate }}
+  </a>
+} @else if (!loading()) {
+  <p class="mt-6 text-center text-sm text-(--mat-sys-on-surface-variant)">
+    {{ "auth.doYourLogin" | translate }}
+    <a [routerLink]="'../login'" class="font-semibold text-(--mat-sys-primary) hover:underline">{{
+      "auth.loginHere" | translate
+    }}</a>
+  </p>
+}
+
+@if (loading()) {
+  <div class="spinner-position">
+    <mat-spinner diameter="80" class="m-auto"></mat-spinner>
+  </div>
+}

@@ -1,0 +1,74 @@
+<section class="ad-card">
+  <div class="ad-card-head">
+    <div>
+      <h2 class="ad-card-title">
+        {{ "preferencesScreen.passkeysTitle" | translate }}
+      </h2>
+      <p class="ad-card-hint">
+        {{ "preferencesScreen.passkeysHint" | translate }}
+      </p>
+    </div>
+    <button
+      type="button"
+      class="ad-btn-ghost shrink-0"
+      [disabled]="adding()"
+      (click)="addPasskey()"
+    >
+      <span>{{ "preferencesScreen.addPasskey" | translate }}</span>
+      @if (adding()) {
+        <mat-spinner diameter="16"></mat-spinner>
+      }
+    </button>
+  </div>
+
+  @if (loading()) {
+    <mat-spinner diameter="32"></mat-spinner>
+  } @else if (passkeys().length === 0) {
+    <p class="text-sm text-(--mat-sys-on-surface-variant)">
+      {{ "preferencesScreen.noPasskeys" | translate }}
+    </p>
+  } @else {
+    <ul class="flex flex-col gap-2.5">
+      @for (passkey of passkeys(); track passkey.credentialId) {
+        <li
+          class="flex items-center justify-between gap-3 rounded-2xl border border-(--ad-card-line) bg-(--mat-sys-surface-container-low) px-4 py-3"
+        >
+          <div class="min-w-0">
+            <p class="text-sm font-semibold text-(--mat-sys-on-surface)">
+              {{ label(passkey) | translate }}
+            </p>
+            <p class="text-xs text-(--mat-sys-on-surface-variant)">
+              {{ addedOn(passkey) }}
+              @if (lastUsed(passkey)) {
+                · {{ lastUsed(passkey) }}
+              }
+            </p>
+          </div>
+          <button
+            type="button"
+            mat-button
+            [disabled]="removingId() === passkey.credentialId"
+            (click)="askRemove(passkey.credentialId)"
+          >
+            {{ "preferencesScreen.removePasskey" | translate }}
+          </button>
+        </li>
+      }
+    </ul>
+  }
+</section>
+
+<ng-template #confirmRemove>
+  <h2 mat-dialog-title>{{ "confirm" | translate }}</h2>
+  <div mat-dialog-content>
+    {{ "preferencesScreen.passkeyRemoveConfirm" | translate }}
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-button [mat-dialog-close]="false">
+      {{ "cancel" | translate }}
+    </button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>
+      {{ "preferencesScreen.removePasskey" | translate }}
+    </button>
+  </div>
+</ng-template>

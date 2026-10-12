@@ -1,0 +1,136 @@
+@if (!showLabel() && !compact()) {
+  <p class="px-2 py-1 font-bold">{{ "location" | translate | titlecase }}</p>
+}
+
+<div [class]="compact() ? 'location-search-compact' : null">
+  <mat-form-field class="w-full" [appearance]="utilsService.inputType()">
+    <mat-label>{{ "country" | translate }}</mat-label>
+    <mat-select
+      panelClass="app-select-panel"
+      [formField]="form().country"
+      (selectionChange)="countryChanged()"
+    >
+      <mat-select-trigger>
+        @if (form().country().value(); as code) {
+          <span class="inline-flex items-center gap-1.5">
+            <span class="leading-none" aria-hidden="true">{{
+              countryFlag(code)
+            }}</span>
+            <span>{{ countryName(code) }}</span>
+          </span>
+        }
+      </mat-select-trigger>
+      @for (country of countries; track country.code) {
+        <mat-option [value]="country.code">
+          <span class="flex w-full items-center gap-2.5">
+            <span class="text-xl leading-none" aria-hidden="true">{{
+              countryFlag(country.code)
+            }}</span>
+            <span class="truncate">{{ country.name }}</span>
+          </span>
+        </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="w-full" [appearance]="utilsService.inputType()">
+    @if (showLabel() || compact()) {
+      <mat-label>{{ "location" | translate | titlecase }}</mat-label>
+    }
+    <input
+      type="text"
+      matInput
+      [formField]="form().location"
+      [matAutocomplete]="autoDistricts"
+      #inputLocation
+      #triggerLocation="matAutocompleteTrigger"
+      autocomplete="off"
+      (input)="search(inputLocation.value)"
+      placeholder="{{ 'locationPlaceholder' | translate }}"
+    />
+
+    @if (loading()) {
+      <mat-spinner matSuffix [diameter]="18" class="mr-2"></mat-spinner>
+    }
+
+    @if (form().location().value() && !loading()) {
+      <button
+        type="button"
+        matSuffix
+        mat-icon-button
+        aria-label="{{ 'clearLocation' | translate }}"
+        (click)="clearInput($event, triggerLocation, inputLocation)"
+      >
+        <svg
+          class="m-auto h-5 w-5"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <path d="M18 6 6 18M6 6l12 12" />
+        </svg>
+      </button>
+    }
+
+    <mat-autocomplete
+      class="app-autocomplete"
+      requireSelection
+      #autoDistricts="matAutocomplete"
+      [displayWith]="displayValue.bind(this)"
+      (optionSelected)="selectLocation($event)"
+    >
+      @for (result of results(); track result.location.id) {
+        <mat-option [value]="result">
+          <span class="flex min-w-0 items-center gap-3 py-0.5">
+            <span
+              class="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#dff2ee] text-[#0f766e]"
+            >
+              <svg
+                class="size-4"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"
+                />
+              </svg>
+            </span>
+            <span class="flex min-w-0 flex-1 flex-col leading-tight">
+              <span class="truncate">{{ result.location.name }}</span>
+              @if (result.region_type || result.subtitle) {
+                <span
+                  class="truncate text-xs font-medium text-(--mat-sys-on-surface-variant)"
+                >
+                  @if (result.region_type) {
+                    {{ result.region_type }}
+                  }
+                  @if (result.region_type && result.subtitle) {
+                    {{ " · " }}
+                  }
+                  @if (result.subtitle) {
+                    {{ result.subtitle }}
+                  }
+                </span>
+              }
+            </span>
+          </span>
+        </mat-option>
+      }
+    </mat-autocomplete>
+    @if (hasKind(form().location(), "required")) {
+      <mat-error [innerHTML]="'fieldRequired' | translate"> </mat-error>
+    }
+    @if (hasKind(form().location(), "maxLength")) {
+      <mat-error
+        [innerHTML]="'fieldMaxLength' | translate: { max: 80 }"
+      ></mat-error>
+    }
+    @if (searchError()) {
+      <mat-error>{{ "locationSearchError" | translate }}</mat-error>
+    }
+  </mat-form-field>
+</div>

@@ -1,0 +1,61 @@
+<div class="search-position" #panelsearch>
+  <div
+    #overlayRef
+    [ngClass]="{ highlight: isOpen, 'mat-elevation-z3': isOpen }"
+    cdkOverlayOrigin
+    #trigger="cdkOverlayOrigin"
+  >
+    <mat-form-field
+      [appearance]="'outline'"
+      class="w-full [&_.mat-mdc-form-field-subscript-wrapper]:hidden"
+    >
+      <mat-label>{{ "searchLabel" | translate }}</mat-label>
+      <input
+        matInput
+        class="search-txt"
+        appInputMonitor
+        #input
+        (inputState)="inputState($event)"
+        [placeholder]="'searchTypePlaceholder' | translate"
+      />
+      <span
+        matSuffix
+        class="search-btn mr-2 flex size-8 items-center justify-center text-(--mat-sys-on-surface-variant)"
+        aria-hidden="true"
+      >
+        <svg
+          width="18"
+          height="18"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.75"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          viewBox="0 0 24 24"
+        >
+          <circle cx="11" cy="11" r="6.5" />
+          <path d="M16 16.5 20 20.5" />
+        </svg>
+      </span>
+    </mat-form-field>
+  </div>
+
+  <!-- cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop" -->
+  <!-- cdkConnectedOverlayHasBackdrop -->
+  <ng-template
+    cdkConnectedOverlay
+    [cdkConnectedOverlayOffsetY]="0"
+    [cdkConnectedOverlayOrigin]="trigger"
+    [cdkConnectedOverlayOpen]="isOpen"
+  >
+    <div
+      [style.width.px]="overlayRef.offsetWidth"
+      class="advanced-filter mat-elevation-z3 bg-(--mat-sys-surface-container) rounded-2xl shadow-2xl p-5"
+      appClickOutside
+      (clickOutside)="closeDropdown()"
+      [exception]="[panelsearch]"
+    >
+      vfdvfvdfv
+    </div>
+  </ng-template>
+</div>

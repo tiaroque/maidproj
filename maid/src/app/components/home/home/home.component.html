@@ -1,0 +1,690 @@
+<app-header-landing class="sg-header" />
+<div class="sg-page">
+  <section class="sg-band pt-36 pb-32 text-center">
+    <div class="container max-w-3xl mx-auto px-6">
+      <p class="sg-kicker">{{ "landing.kicker" | translate }}</p>
+      <h1
+        class="mt-5 text-[2.5rem] md:text-6xl font-bold leading-[1.08] tracking-tight text-white"
+      >
+        {{ "landing.heroTitle" | translate }}
+      </h1>
+      <p
+        class="mt-5 mx-auto max-w-xl text-lg leading-relaxed text-white/75"
+      >
+        {{ "landing.heroSubtitle" | translate }}
+      </p>
+      <button
+        type="button"
+        class="trust-badge mt-6 mb-10"
+        (click)="scrollToVerification()"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          width="18"
+          height="18"
+          aria-hidden="true"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M12 3 5 6v5.5c0 4.3 3 7.9 7 9.5 4-1.6 7-5.2 7-9.5V6z" />
+          <path d="m9 12 2.2 2.2L15.5 10" />
+        </svg>
+        {{ "landing.trustBadge" | translate }}
+      </button>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a
+          [routerLink]="['/', lang(), 'register']"
+          class="sg-cta px-10 py-4 text-lg"
+        >
+          {{ "landing.joinFree" | translate }}
+        </a>
+        <a
+          [routerLink]="['/', lang(), 'browse']"
+          class="sg-cta-ghost px-10 py-4 text-lg"
+        >
+          {{ "landing.browseProfiles" | translate }}
+        </a>
+      </div>
+      <ul
+        class="mt-12 flex flex-wrap items-center justify-center gap-2.5 list-none"
+      >
+        <li class="sg-stat">
+          <strong>18+</strong>
+          {{ "landing.verified" | translate }}
+        </li>
+        <li class="sg-stat">
+          <strong>7</strong>
+          {{ "landing.countries" | translate }}
+        </li>
+        <li class="sg-stat">
+          <strong>{{ "landing.private" | translate }}</strong>
+          {{ "landing.chat" | translate }}
+        </li>
+      </ul>
+    </div>
+
+    <svg
+      class="sg-wave"
+      viewBox="0 0 1440 120"
+      preserveAspectRatio="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        d="M0,44 C220,116 470,4 720,44 C970,84 1220,8 1440,52 L1440,120 L0,120 Z"
+      ></path>
+    </svg>
+  </section>
+
+  <div>
+    @if (list()?.length) {
+      <section class="sg-section">
+        <div class="container max-w-6xl mx-auto px-4">
+          <div class="sg-section-head">
+            <p class="sg-kicker sg-kicker-wine">
+              {{ "newThisWeek" | translate }}
+            </p>
+            <h2 class="sg-section-title">
+              {{ "landing.peopleLooking" | translate }}
+            </h2>
+            <p class="sg-section-lead">
+              {{ "landing.peopleLookingHint" | translate }}
+            </p>
+          </div>
+
+          <div
+            class="mt-12 w-full flex flex-col-reverse md:flex-row items-start justify-center gap-6"
+          >
+            @defer (on viewport) {
+              <app-quick-search class="w-full md:w-auto" />
+            } @placeholder {
+              <div class="w-full md:w-auto"></div>
+            }
+
+            <div class="profile-slider-wrap w-full min-w-0">
+              <button
+                type="button"
+                class="profile-slider-nav"
+                [class.is-idle]="!profilesScrollable()"
+                [disabled]="!canPrevProfiles()"
+                [attr.aria-label]="'previous' | translate"
+                (click)="scrollProfiles(-1)"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="20"
+                  height="20"
+                  aria-hidden="true"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M15 6 9 12l6 6" />
+                </svg>
+              </button>
+
+              <div
+                #profileSlider
+                class="profile-slider"
+                [class.fade-start]="canPrevProfiles()"
+                [class.fade-end]="canNextProfiles()"
+                (scroll)="onProfileSliderScroll($event)"
+              >
+                @for (user of list(); track user._id; let index = $index) {
+                  <div class="profile-slide">
+                    <app-dating-card
+                      [isAnonymous]="true"
+                      [imagePriority]="false"
+                      [userDating]="user" />
+                  </div>
+                }
+              </div>
+
+              <button
+                type="button"
+                class="profile-slider-nav"
+                [class.is-idle]="!profilesScrollable()"
+                [disabled]="!canNextProfiles()"
+                [attr.aria-label]="'next' | translate"
+                (click)="scrollProfiles(1)"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="20"
+                  height="20"
+                  aria-hidden="true"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m9 6 6 6-6 6" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="mt-10 text-center">
+            <a
+              class="sg-cta-outline px-7 py-3"
+              [routerLink]="['/', lang(), 'browse']"
+            >
+              {{ "landing.browseProfiles" | translate }}
+            </a>
+          </div>
+        </div>
+      </section>
+    }
+
+  <section class="sg-section verify-panel" id="verification">
+    <div class="container max-w-6xl mx-auto px-6">
+      <div class="sg-section-head">
+        <p class="sg-kicker sg-kicker-wine">
+          {{ "landing.verifyKicker" | translate }}
+        </p>
+        <h2 class="sg-section-title">
+          {{ "landing.verifyTitle" | translate }}
+        </h2>
+        <p class="sg-section-lead">
+          {{ "landing.verifyLead" | translate }}
+        </p>
+      </div>
+
+      <ol class="mt-12 grid md:grid-cols-3 gap-5 list-none">
+        <li class="sg-card p-7">
+          <span class="sg-icon" aria-hidden="true">
+            <svg
+              viewBox="0 0 24 24"
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2" />
+              <circle cx="12" cy="10" r="2.5" />
+              <path d="M8 17c.6-2 2.1-3 4-3s3.4 1 4 3" />
+            </svg>
+          </span>
+          <h3 class="text-xl font-bold mt-5 mb-2">
+            {{ "landing.verifyStep1Title" | translate }}
+          </h3>
+          <p class="text-[#12292c]/75 leading-relaxed">
+            {{ "landing.verifyStep1Body" | translate }}
+          </p>
+        </li>
+        <li class="sg-card p-7">
+          <span class="sg-icon" aria-hidden="true">
+            <svg
+              viewBox="0 0 24 24"
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="9" cy="8" r="3.5" />
+              <path d="M3 20c.8-3.3 3.1-5 6-5 1.4 0 2.7.4 3.7 1.2" />
+              <path d="m15 18 2 2 4-4.5" />
+            </svg>
+          </span>
+          <h3 class="text-xl font-bold mt-5 mb-2">
+            {{ "landing.verifyStep2Title" | translate }}
+          </h3>
+          <p class="text-[#12292c]/75 leading-relaxed">
+            {{ "landing.verifyStep2Body" | translate }}
+          </p>
+        </li>
+        <li class="sg-card p-7">
+          <span class="sg-icon" aria-hidden="true">
+            <svg
+              viewBox="0 0 24 24"
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 3 5 6v5.5c0 4.3 3 7.9 7 9.5 4-1.6 7-5.2 7-9.5V6z" />
+              <path d="m9 12 2.2 2.2L15.5 10" />
+            </svg>
+          </span>
+          <h3 class="text-xl font-bold mt-5 mb-2">
+            {{ "landing.verifyStep3Title" | translate }}
+          </h3>
+          <p class="text-[#12292c]/75 leading-relaxed">
+            {{ "landing.verifyStep3Body" | translate }}
+          </p>
+        </li>
+      </ol>
+
+      <p
+        class="mt-8 mx-auto max-w-2xl flex items-start justify-center gap-2 text-center text-sm text-[#12292c]/65"
+      >
+        <svg
+          class="mt-0.5 shrink-0"
+          viewBox="0 0 24 24"
+          width="16"
+          height="16"
+          aria-hidden="true"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <rect x="5" y="11" width="14" height="9" rx="2" />
+          <path d="M8 11V8a4 4 0 0 1 8 0v3" />
+        </svg>
+        {{ "landing.verifyPrivacy" | translate }}
+      </p>
+    </div>
+  </section>
+
+  <section class="sg-band sg-section px-6">
+    <div class="container max-w-6xl mx-auto">
+      <div class="sg-section-head">
+        <p class="sg-kicker">
+          {{ "landing.postsKicker" | translate }}
+        </p>
+        <h2 class="sg-section-title text-white">
+          {{ "landing.postsTitle" | translate }}
+        </h2>
+        <p class="sg-section-lead">
+          {{ "landing.postsBody" | translate }}
+        </p>
+      </div>
+
+      <div class="mt-12 grid md:grid-cols-2 gap-5">
+        <article class="sg-card-dark p-7">
+          <div class="flex items-center gap-3">
+            <span class="sg-icon shrink-0" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 12v7a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-7" />
+                <path d="M2 8.5h20V12H2z" />
+                <path d="M12 8.5V20M12 8.5S10.5 4 8 4a2.5 2.5 0 0 0 0 5h4zM12 8.5S13.5 4 16 4a2.5 2.5 0 0 1 0 5h-4z" />
+              </svg>
+            </span>
+            <p class="sg-kicker">
+              {{ "landing.announcementsLabel" | translate }}
+            </p>
+          </div>
+          <p class="mt-4 text-white/80 leading-relaxed">
+            {{ "landing.announcementsBody" | translate }}
+          </p>
+          <p
+            class="mt-5 text-xs font-semibold uppercase tracking-wide text-[#7fd8c3]/80"
+          >
+            {{ "landing.postsExamples" | translate }}
+          </p>
+          <ul class="mt-2.5 flex flex-wrap gap-2 list-none">
+            <li class="sg-chip-dark px-3 py-1 text-sm font-semibold">
+              {{ "landing.announcementChip1" | translate }}
+            </li>
+            <li class="sg-chip-dark px-3 py-1 text-sm font-semibold">
+              {{ "landing.announcementChip2" | translate }}
+            </li>
+            <li class="sg-chip-dark px-3 py-1 text-sm font-semibold">
+              {{ "landing.announcementChip3" | translate }}
+            </li>
+          </ul>
+        </article>
+        <article class="sg-card-dark p-7">
+          <div class="flex items-center gap-3">
+            <span class="sg-icon shrink-0" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="m12 3 2.2 5.1 5.3.5-4 3.6 1.2 5.3L12 14.7 7.3 17.5l1.2-5.3-4-3.6 5.3-.5z" />
+                <path d="M19 19.5h3M20.5 18v3" />
+              </svg>
+            </span>
+            <p class="sg-kicker">
+              {{ "landing.requestsLabel" | translate }}
+            </p>
+          </div>
+          <p class="mt-4 text-white/80 leading-relaxed">
+            {{ "landing.requestsBody" | translate }}
+          </p>
+          <p
+            class="mt-5 text-xs font-semibold uppercase tracking-wide text-[#7fd8c3]/80"
+          >
+            {{ "landing.postsExamples" | translate }}
+          </p>
+          <ul class="mt-2.5 flex flex-wrap gap-2 list-none">
+            <li class="sg-chip-dark px-3 py-1 text-sm font-semibold">
+              {{ "landing.requestChip1" | translate }}
+            </li>
+            <li class="sg-chip-dark px-3 py-1 text-sm font-semibold">
+              {{ "landing.requestChip2" | translate }}
+            </li>
+            <li class="sg-chip-dark px-3 py-1 text-sm font-semibold">
+              {{ "landing.requestChip3" | translate }}
+            </li>
+          </ul>
+        </article>
+      </div>
+
+      <p class="mt-6 text-center text-sm text-white/70">
+        {{ "landing.postsSearch" | translate }}
+      </p>
+
+      @if (latestOffers().length) {
+        <h3
+          class="mt-16 text-center text-sm font-semibold uppercase tracking-[0.18em] text-[#7fd8c3]"
+        >
+          {{ "landing.latestPostsTitle" | translate }}
+        </h3>
+        <ul class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 list-none">
+          @for (item of latestOffers(); track item._id) {
+            @let user = item.user;
+            <li class="flex">
+              <a
+                class="sg-card-dark offer-card flex w-full flex-col gap-4 p-5"
+                [routerLink]="['/', lang(), 'profile-view', user.uid]"
+              >
+                <div class="flex items-center gap-3">
+                  <span class="offer-card-photo" aria-hidden="true">
+                    @if (!user.avatar && user.images?.[0]?.keyBlured) {
+                      <img
+                        alt=""
+                        class="object-cover"
+                        sizes="3rem"
+                        [ngSrc]="user.images[0].keyBlured | s3Url"
+                        fill
+                      />
+                    } @else {
+                      <img alt="" [ngSrc]="offerAvatar(user)" fill />
+                    }
+                  </span>
+                  <span class="min-w-0 flex-1">
+                    <span class="block truncate font-semibold text-white">
+                      {{ user.name | slicedescription: 16 }}
+                    </span>
+                    @if (user.locationName) {
+                      <span class="block truncate text-xs text-white/60">
+                        {{ user.locationName }}
+                        @if (user.country) {
+                          , {{ user.country }}
+                        }
+                      </span>
+                    }
+                  </span>
+                  <span
+                    class="sg-chip-dark shrink-0 px-2 py-0.5 text-xs font-semibold"
+                  >
+                    {{
+                      (user.userType === "Client"
+                        ? "landing.requestTag"
+                        : "landing.announcementTag"
+                      ) | translate
+                    }}
+                  </span>
+                </div>
+                <p class="line-clamp-3 leading-relaxed text-white/85">
+                  “{{ user.offer?.offer }}”
+                </p>
+              </a>
+            </li>
+          }
+        </ul>
+      }
+    </div>
+  </section>
+
+  <section class="sg-section">
+    <div class="container max-w-6xl mx-auto px-4">
+      <div class="grid md:grid-cols-3 gap-5">
+        <article class="sg-card sg-lift p-7">
+          <span class="sg-icon" aria-hidden="true">
+            <svg
+              viewBox="0 0 24 24"
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="11" cy="11" r="6.5" />
+              <path d="m20 20-4.4-4.4" />
+            </svg>
+          </span>
+          <p
+            class="mt-5 text-[#0f766e] font-semibold uppercase tracking-widest text-xs"
+          >
+            {{ "landing.step1" | translate }}
+          </p>
+          <h3 class="text-2xl font-bold mt-2 mb-3">
+            {{ "landing.step1Title" | translate }}
+          </h3>
+          <p class="text-[#12292c]/75 leading-relaxed">
+            {{ "landing.step1Body" | translate }}
+          </p>
+        </article>
+        <article class="sg-card sg-lift p-7">
+          <span class="sg-icon" aria-hidden="true">
+            <svg
+              viewBox="0 0 24 24"
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4A8 8 0 1 1 20 12z" />
+              <path d="M8.5 11h7M8.5 14h4.5" />
+            </svg>
+          </span>
+          <p
+            class="mt-5 text-[#0f766e] font-semibold uppercase tracking-widest text-xs"
+          >
+            {{ "landing.step2" | translate }}
+          </p>
+          <h3 class="text-2xl font-bold mt-2 mb-3">
+            {{ "landing.step2Title" | translate }}
+          </h3>
+          <p class="text-[#12292c]/75 leading-relaxed">
+            {{ "landing.step2Body" | translate }}
+          </p>
+        </article>
+        <article class="sg-card sg-lift p-7">
+          <span class="sg-icon" aria-hidden="true">
+            <svg
+              viewBox="0 0 24 24"
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 3c.8 4.2 2.8 6.2 7 7-4.2.8-6.2 2.8-7 7-.8-4.2-2.8-6.2-7-7 4.2-.8 6.2-2.8 7-7z" />
+              <path d="M19 15.5c.3 1.6 1 2.2 2.5 2.5-1.5.3-2.2 1-2.5 2.5-.3-1.5-1-2.2-2.5-2.5 1.5-.3 2.2-.9 2.5-2.5z" />
+            </svg>
+          </span>
+          <p
+            class="mt-5 text-[#0f766e] font-semibold uppercase tracking-widest text-xs"
+          >
+            {{ "landing.step3" | translate }}
+          </p>
+          <h3 class="text-2xl font-bold mt-2 mb-3">
+            {{ "landing.step3Title" | translate }}
+          </h3>
+          <p class="text-[#12292c]/75 leading-relaxed">
+            {{ "landing.step3Body" | translate }}
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sg-band sg-section px-6">
+    <div class="container max-w-6xl mx-auto">
+      <div class="sg-section-head">
+        <h2 class="sg-section-title text-white">
+          {{ "landing.whyTitle" | translate }}
+        </h2>
+      </div>
+      <div class="mt-12 grid gap-5 md:grid-cols-2">
+        @for (reason of whyReasons; track reason.titleKey; let i = $index) {
+          <article class="sg-card-dark flex gap-4 p-6">
+            <span
+              class="sg-icon shrink-0 font-bold tabular-nums"
+              aria-hidden="true"
+            >
+              {{ i + 1 }}
+            </span>
+            <div class="min-w-0">
+              <h3 class="text-xl font-bold text-[#7fd8c3]">
+                {{ reason.titleKey | translate }}
+              </h3>
+              <p class="mt-2 leading-relaxed text-white/80">
+                {{ reason.bodyKey | translate }}
+              </p>
+            </div>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="sg-section">
+    <div class="container max-w-4xl mx-auto px-6">
+      <div class="sg-section-head">
+        <p class="sg-kicker sg-kicker-wine">
+          {{ "landing.europeSubtitle" | translate }}
+        </p>
+        <h2 class="sg-section-title">
+          {{ "landing.europeTitle" | translate }}
+        </h2>
+        <p class="sg-section-lead">
+          {{ "landing.europeBody" | translate }}
+        </p>
+      </div>
+
+      <p
+        class="mt-12 text-center text-sm font-semibold uppercase tracking-[0.18em] text-[#155e63]"
+      >
+        {{ "landing.findCleanerIn" | translate }}
+      </p>
+      <!-- Wrapping pills rather than a fixed grid, so eight countries do not
+           leave a lone item stranded on the last row. -->
+      <ul class="mt-4 flex flex-wrap justify-center gap-3 list-none">
+        @for (country of partnerCountries; track country) {
+          <li class="sg-pill">{{ country | translate }}</li>
+        }
+      </ul>
+
+      <div class="mt-10 text-center">
+        <a
+          [routerLink]="['/', lang(), 'register']"
+          class="sg-cta px-9 py-3.5"
+        >
+          {{ "landing.createProfile" | translate }}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sg-section sg-price" id="pricing">
+    <div class="container max-w-xl mx-auto px-6">
+      <div class="sg-section-head">
+        <p class="sg-kicker sg-kicker-wine">
+          {{ "landing.priceKicker" | translate }}
+        </p>
+        <h2 class="sg-section-title">
+          {{ "landing.priceTitle" | translate }}
+        </h2>
+        <p class="sg-section-lead">
+          {{ "landing.priceLead" | translate }}
+        </p>
+      </div>
+
+      <article class="sg-card sg-lift mx-auto mt-10 max-w-md p-8 text-center">
+        <p
+          class="text-sm font-semibold uppercase tracking-[0.18em] text-[#0f766e]"
+        >
+          {{ "landing.priceFree" | translate }}
+        </p>
+        <p class="mt-3 text-5xl font-bold tracking-tight text-[#155e63]">
+          €6
+        </p>
+        <p class="mt-1 text-[#12292c]/70">
+          {{ "landing.pricePerMonth" | translate }}
+        </p>
+        <a
+          [routerLink]="['/', lang(), 'register']"
+          class="sg-cta mt-8 px-9 py-3.5"
+        >
+          {{ "landing.priceCta" | translate }}
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <section class="sg-band sg-section px-6 text-center">
+    <div class="container max-w-3xl mx-auto">
+      <h2 class="sg-section-title text-white">
+        {{ "landing.ctaTitle" | translate }}
+      </h2>
+      <p class="mt-4 text-xl text-white/80">
+        {{ "landing.ctaSubtitle" | translate }}
+      </p>
+      <div class="mt-9 flex flex-col sm:flex-row gap-3 justify-center">
+        <a
+          [routerLink]="['/', lang(), 'register']"
+          class="sg-cta px-10 py-4 text-lg"
+        >
+          {{ "landing.joinFree" | translate }}
+        </a>
+        <a
+          [routerLink]="['/', lang(), 'browse']"
+          class="sg-cta-ghost px-10 py-4 text-lg"
+        >
+          {{ "landing.browseProfiles" | translate }}
+        </a>
+      </div>
+      <p class="mt-7 text-sm text-white/55">
+        18+ · {{ "landing.verified" | translate }} ·
+        {{ "landing.private" | translate }} {{ "landing.chat" | translate }}
+      </p>
+    </div>
+  </section>
+
+  <app-footer />
+  </div>
+</div>

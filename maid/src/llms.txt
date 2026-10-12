@@ -1,0 +1,19 @@
+# Clara
+
+> Clara is a marketplace for home cleaning. Cleaners publish the services they offer, their hourly rate, when they are available and the areas they cover. Households (clients) browse cleaners, post job requests and agree the details in a private chat.
+
+The site is available in English, Portuguese, French, German, Italian, Spanish and Dutch. Every page lives under a language prefix (`/en`, `/pt`, `/fr`, `/de`, `/it`, `/es`, `/nl`), and each page lists its translations with `hreflang` links. Clara is active in 8 countries: Portugal, Germany, France, Spain, Italy, Switzerland, the Netherlands and the United Kingdom.
+
+Browsing public profiles does not require an account. Contacting someone requires registering, verifying an email address and solving an image captcha. Account areas under `/{lang}/admin` are private and must not be crawled.
+
+## Public pages
+
+- [Home](https://www.sugrit.com/en): What Clara is and how announcements and job requests work
+- [Browse profiles](https://www.sugrit.com/en/browse): Search public profiles. Accepts the query parameters `type` (`Cleaner` or `Client`, default `Cleaner`), `service` (`regular`, `deep`, `ironing`, `laundry`, `windows`, `moveInOut`, `afterParty`, `kitchenAppliances`, `office`, `ecoProducts`), `country` and `location`
+- [Create an account](https://www.sugrit.com/en/register): Register with an email address and password, or with Google
+- [Sitemap](https://www.sugrit.com/sitemap.xml): Every public page and public profile in all languages
+
+## Legal
+
+- [Terms and conditions](https://www.sugrit.com/en/terms-conditions)
+- [Privacy policy](https://www.sugrit.com/en/privacy)

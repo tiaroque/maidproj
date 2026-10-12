@@ -1,0 +1,132 @@
+<div class="w-full">
+  <div class="relative">
+    <svg
+      class="pointer-events-none absolute top-1/2 left-3.5 -translate-y-1/2 text-(--mat-sys-on-surface-variant)"
+      width="16"
+      height="16"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+    >
+      <circle cx="11" cy="11" r="7"></circle>
+      <path d="M20 20l-3-3" stroke-linecap="round"></path>
+    </svg>
+    <input
+      #compactInput
+      type="text"
+      class="w-full rounded-full border border-(--mat-sys-outline-variant) bg-white/50 py-2 pr-4 pl-10 text-sm text-(--mat-sys-on-surface) outline-none transition-shadow focus:border-[#0f9488] focus:ring-1 focus:ring-[#0f9488] dark:bg-transparent"
+      [placeholder]="'list.searchPlaceholder' | translate"
+      [formField]="offerForm.currentOffer"
+      [matAutocomplete]="auto"
+      autocomplete="off"
+      (keydown.enter)="addFromCompact($event, compactInput)"
+    />
+  </div>
+  @if (offersDreams().length) {
+    <div class="mt-2 flex flex-wrap gap-1">
+      @for (fruit of offersDreams(); track $index) {
+        <button
+          type="button"
+          class="rounded-full border border-(--mat-sys-outline-variant) bg-white/80 px-2.5 py-0.5 text-xs text-(--mat-sys-on-surface)"
+          (click)="remove(fruit)"
+        >
+          {{ fruit }} ×
+        </button>
+      }
+    </div>
+  }
+</div>
+
+<mat-autocomplete
+  #auto="matAutocomplete"
+  class="app-autocomplete"
+  (optionSelected)="selected($event)"
+>
+  @if (loading()) {
+    <mat-option class="pointer-events-none">
+      <div class="flex justify-center py-1">
+        <mat-spinner [diameter]="32"></mat-spinner>
+      </div>
+    </mat-option>
+  }
+
+  @if (!loading()) {
+    @for (user of search(); track user) {
+      <mat-option
+        [value]="user"
+        [routerLink]="['/', lang(), 'admin', 'profile-view', user.uid]"
+      >
+        <div class="flex min-w-0 items-center gap-3 py-1">
+          <span
+            class="relative flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-full"
+          >
+            @if (user.images && user.images[0]) {
+              <img
+                alt=""
+                [ngSrc]="user.images[0].keyRezised | s3Url"
+                fill
+                class="object-cover"
+              />
+            } @else {
+              <app-profile-avatar [user]="user" />
+            }
+          </span>
+
+          <span class="flex min-w-0 flex-1 flex-col">
+            <span class="truncate">{{ user.name }}</span>
+            @if (user.offer?.offer) {
+              <span
+                class="line-clamp-2 text-xs leading-snug font-medium text-(--mat-sys-on-surface-variant)"
+              >
+                {{ user.offer?.offer }}
+              </span>
+            }
+          </span>
+        </div>
+      </mat-option>
+    } @empty {
+      @if (offerForm.currentOffer().value().length >= 3) {
+        <mat-option class="pointer-events-none">
+          <span class="text-(--mat-sys-on-surface-variant)">
+            {{ "noResults" | translate }}
+          </span>
+        </mat-option>
+      }
+    }
+  }
+
+  @if (getLatestOffers().length > 0) {
+    <mat-optgroup
+      [label]="storeChat.userType() + '.lastOffersDreams' | translate"
+    >
+      @for (offer of getLatestOffers(); track offer.offer?._id) {
+        <mat-option
+          [value]="offer"
+          [routerLink]="['/', lang(), 'admin', 'profile-view', offer.uid]"
+        >
+          <div class="flex min-w-0 items-center gap-3 py-1">
+            <span
+              class="relative flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-full"
+            >
+              @if (offer.images && offer.images[0]) {
+                <img
+                  alt=""
+                  [ngSrc]="offer.images[0].keyRezised | s3Url"
+                  fill
+                  class="object-cover"
+                />
+              } @else {
+                <app-profile-avatar [user]="offer" />
+              }
+            </span>
+
+            <span class="line-clamp-2 min-w-0 flex-1 leading-snug">
+              {{ offer.offer?.offer }}
+            </span>
+          </div>
+        </mat-option>
+      }
+    </mat-optgroup>
+  }
+</mat-autocomplete>

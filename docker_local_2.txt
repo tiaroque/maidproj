@@ -1,0 +1,32 @@
+docker network create sugrit
+docker build -t wish-backend ./wish-backend-ts
+docker build -t maid ./maid
+
+docker run --rm --name wish-backend --network sugrit \
+  -p 3011:3011 \
+  --env-file ./wish-backend-ts/.env \
+  -e MONGO_URL=mongodb://host.docker.internal:27017/ \
+  wish-backend
+
+ Or 
+ 
+docker run --name maid-api --network maid -p 3011:3011 \
+  --env-file ./wish-backend-ts/.env \
+  -e MONGO_URL=mongodb://host.docker.internal:27017/ \
+  -e COOKIE_SECURE=false \
+  -e CORS_ORIGINS=http://localhost:4000 \
+  -e returnUrlEmail=http://localhost:4000 \
+  -e GOOGLE_REDIRECT_URI=http://localhost:4000/api/users/google/callback \
+  -e MAILGUN_API_KEY="$MAILGUN_API_KEY" \
+  -e MAILGUN_DOMAIN=sugrit.com \
+  -e emailfrom='Sugrit <noreply@sugrit.com>' \
+  maid-api
+
+
+
+
+docker run --rm --name maid --network sugrit \
+  -p 4000:4000 \
+  -e PORT=4000 \
+  -e API_PROXY_TARGET=http://wish-backend:3011 \
+  maid

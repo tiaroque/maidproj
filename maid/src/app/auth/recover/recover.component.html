@@ -1,0 +1,51 @@
+<form
+  class="w-full"
+  novalidate
+  toolname="requestPasswordReset"
+  tooldescription="Email a password reset link to the address of an existing Clara account. Requires solving the image captcha."
+  (ngSubmit)="onSubmit($event)"
+>
+  <div>
+    <mat-form-field [appearance]="'outline'" class="w-full">
+      <mat-label> {{ "auth.email" | translate }}</mat-label>
+      <input
+        matInput
+        [placeholder]="'auth.email' | translate"
+        [formField]="recoverPasswordForm.email"
+        type="email"
+        autocomplete="email"
+      />
+
+      @if (hasKind(recoverPasswordForm.email(), "required")) {
+        <mat-error [innerHTML]="'fieldRequired' | translate"> </mat-error>
+      }
+      @if (hasKind(recoverPasswordForm.email(), "email")) {
+        <mat-error [innerHTML]="'auth.emailInvalid' | translate"> </mat-error>
+      }
+      @if (hasKind(recoverPasswordForm.email(), "maxLength")) {
+        <mat-error
+          [innerHTML]="'fieldMaxLength' | translate: { max: 35 }"
+        ></mat-error>
+      }
+    </mat-form-field>
+  </div>
+
+  <app-captcha />
+
+  <button
+    type="submit"
+    [disabled]="recoverPasswordForm().invalid() || loading() || !captcha()?.code()?.trim()"
+    class="mt-2 auth-buttons w-full py-3.5 text-base"
+  >
+    <span>{{ "auth.recoverAccount" | translate }}</span>
+    @if (loading()) {
+      <mat-spinner diameter="22" class="absolute! right-4"></mat-spinner>
+    }
+  </button>
+</form>
+
+<p class="mt-6 text-center text-sm text-(--mat-sys-on-surface-variant)">
+  <a [routerLink]="'../login'" class="font-semibold text-(--mat-sys-primary) hover:underline"
+    >{{ "auth.doYourLogin" | translate }} {{ "auth.loginHere" | translate }}</a
+  >
+</p>

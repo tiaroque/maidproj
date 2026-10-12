@@ -1,0 +1,5 @@
+<svg class="profile-img-border aspect-square w-full">
+  @if (user()?.userType) {
+    <image [attr.href]="avatarSrc()" width="100%" height="100%" />
+  }
+</svg>

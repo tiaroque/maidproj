@@ -1,0 +1,108 @@
+<div class="ad-page xprofile preferences">
+  <div class="ad-col">
+    <div class="ad-head">
+      <div>
+        <p class="ad-eyebrow">{{ "tabs.profile" | translate }}</p>
+        <h1 class="ad-title">
+          {{ "preferencesScreen.blockedProfile" | translate }}
+        </h1>
+      </div>
+      <span class="ad-badge">
+        {{ "blockedCount" | translate: { count: blockedUsers().length } }}
+      </span>
+    </div>
+
+    <!-- The empty state carries its own dashed frame, so it replaces the card
+         rather than sitting inside one. -->
+    @if (blockedUsers().length === 0) {
+      <div class="ad-empty">
+        <span class="ad-empty-icon">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="8.5" />
+            <path d="M6 6 18 18" />
+          </svg>
+        </span>
+        <p class="ad-empty-title">
+          {{ "preferencesScreen.noBlockedUsers" | translate }}
+        </p>
+        <p class="ad-empty-text">
+          {{ "preferencesEmptyHint" | translate }}
+        </p>
+      </div>
+    } @else {
+      <section class="ad-card">
+        <mat-chip-set aria-label="Blocked profiles">
+          @for (user of blockedUsers(); track user.blockedUser.uid) {
+            <mat-chip>
+              @if (user.blockedUser.profileImage?.keyRezised) {
+                <span
+                  matChipAvatar
+                  class="relative overflow-hidden rounded-full"
+                >
+                  <img
+                    alt="image avatar "
+                    [ngSrc]="user.blockedUser.profileImage.keyRezised | s3Url"
+                    fill
+                    class="object-cover"
+                  />
+                </span>
+              }
+
+              {{ user.blockedUser.name }}
+              <button
+                matChipRemove
+                (click)="removeBlockedUser(user.blockedUser.uid!)"
+              >
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip>
+          }
+        </mat-chip-set>
+      </section>
+    }
+
+    <section class="ad-card mt-6 flex items-center justify-between gap-4">
+      <div class="min-w-0">
+        <h2 id="chat-alerts-title" class="ad-card-title">
+          {{ "preferencesScreen.chatAlertsTitle" | translate }}
+        </h2>
+        <p class="ad-card-hint">
+          {{ "preferencesScreen.chatAlertsHint" | translate }}
+        </p>
+      </div>
+      <mat-slide-toggle
+        id="toggle-chat-alerts"
+        aria-labelledby="chat-alerts-title"
+        [checked]="chatAlertsEnabled()"
+        [disabled]="savingChatAlerts()"
+        (change)="toggleChatAlerts($event.checked)"
+      />
+    </section>
+  </div>
+</div>
+
+<ng-template #templateConfirmUnblock>
+  <div [class.unicorn-dark-theme]="isDark()">
+    <h2 mat-dialog-title>{{ "confirm" | translate }}</h2>
+    <div mat-dialog-content>
+      {{ "preferencesScreen.intendToUnblockUser" | translate }}
+    </div>
+    <div mat-dialog-actions align="end">
+      <button mat-button [mat-dialog-close]="false">
+        {{ "cancel" | translate }}
+      </button>
+      <button mat-button [mat-dialog-close]="true" cdkFocusInitial>
+        {{ "confirm" | translate }}
+      </button>
+    </div>
+  </div>
+</ng-template>

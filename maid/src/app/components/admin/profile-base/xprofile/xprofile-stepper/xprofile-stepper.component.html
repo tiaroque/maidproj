@@ -1,0 +1,49 @@
+<!-- <mat-stepper orientation="vertical" [linear]="true" #stepper>
+  <mat-step [stepControl]="detailsComponent.detailsForm" [editable]="false">
+    <ng-template matStepLabel>Fill out your details</ng-template>
+    <app-details [isStepperMode]="true" #detailsComponent />
+    <div>
+      <button mat-button matStepperNext (click)="detailsComponent.onSubmit()">
+        Next
+      </button>
+    </div>
+  </mat-step>
+
+  <mat-step [stepControl]="measureComponent.registerForm" [editable]="false">
+    <ng-template matStepLabel>Fill out your address</ng-template>
+    <app-measurements
+      [isStepperMode]="true"
+      #measureComponent />
+    <div>
+      <button mat-button matStepperNext (click)="measureComponent.onSubmit()">
+        Next
+      </button>
+    </div>
+  </mat-step>
+
+  <mat-step [stepControl]="additionalComponent.registerForm" [editable]="false">
+    <ng-template matStepLabel>Fill additional details</ng-template>
+    <app-additional
+      [isStepperMode]="true"
+      #additionalComponent />
+    <div>
+      <button
+        mat-button
+        matStepperNext
+        (click)="additionalComponent.onSubmit()"
+      >
+        Next
+      </button>
+    </div>
+  </mat-step>
+
+  <mat-step [editable]="false">
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button (click)="closeDialog()">fechar</button>
+    </div>
+  </mat-step>
+</mat-stepper>
+
+<button mat-button matStepperPrevious>Back</button> -->

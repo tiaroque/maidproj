@@ -1,0 +1,41 @@
+<div [class.unicorn-dark-theme]="isDark" class="relative">
+  <!-- <h2 *ngIf="data.name" class="p-4">{{ data.name }}</h2> -->
+
+  <div
+    [hidden]="!imageLoading()"
+    class="flex items-center justify-center h-full w-full absolute"
+  >
+    <mat-spinner diameter="60"></mat-spinner>
+  </div>
+
+  <div
+    #timelineStrip
+    class="relative"
+    [ngStyle]="{ visibility: imageLoading() ? 'hidden' : '' }"
+  >
+    <!-- (load)="imageLoaded(image)" -->
+    <!-- {{ data.height }} -->
+
+    <!-- set "--mat-dialog-container-max-width" dynamically -->
+    <img
+      #image
+      alt="image"
+      (load)="imageLoaded(image)"
+      ngSrc="{{ data.imageSrc }}"
+      loading="lazy"
+      class="object-cover w-full h-auto"
+      fetchpriority="auto"
+      [width]="data.width"
+      [height]="data.height"
+    />
+
+    <div class="absolute bottom-2 right-2">
+      <button mat-flat-button mat-dialog-close>
+        {{ "buttonClose" | translate }}
+      </button>
+    </div>
+  </div>
+  <!-- <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>fechar</button>
+  </mat-dialog-actions> -->
+</div>

@@ -1,0 +1,55 @@
+{
+  "consentModal": {
+    "title": "Wir verwenden Cookies",
+    "description": "Diese Website verwendet Cookies, um ein besseres Benutzererlebnis zu bieten. <br/> Wir verwenden Cookies, um den Verkehr und die Leistung unserer Website zu analysieren. Wir erfassen niemals personenbezogene Daten.",
+    "acceptAllBtn": "Alle akzeptieren",
+    "acceptNecessaryBtn": "Alle ablehnen",
+    "showPreferencesBtn": "Individuelle Präferenzen verwalten",
+    "footer": "<a href=\"#path-to-privacy-policy.html\" target=\"_blank\">Datenschutzbestimmungen</a>"
+  },
+  "preferencesModal": {
+    "title": "Cookie-Einstellungen verwalten",
+    "acceptAllBtn": "Alle akzeptieren",
+    "acceptNecessaryBtn": "Alle ablehnen",
+    "savePreferencesBtn": "Aktuelle Auswahl akzeptieren",
+    "closeIconLabel": "Modal schließen",
+    "sections": [
+      {
+        "title": "unsere Datenschutzoptionen",
+        "description": "In diesem Bereich können Sie einige Präferenzen in Bezug auf die Verarbeitung Ihrer persönlichen Daten angeben. Sie können die von Ihnen getroffenen Entscheidungen jederzeit überprüfen und ändern, indem Sie dieses Feld über den angegebenen Link erneut aufrufen. Um Ihre Zustimmung zu den unten beschriebenen Verarbeitungsaktivitäten zu verweigern, schalten Sie die Kippschalter aus oder verwenden Sie die Schaltfläche „Alle ablehnen“ und bestätigen Sie, dass Sie Ihre Auswahl speichern möchten."
+      },
+      {
+        "title": "Streng Notwendig",
+        "description": "Diese Cookies sind für das reibungslose Funktionieren der Website unerlässlich und können nicht deaktiviert werden.",
+        "linkedCategory": "necessary"
+      },
+      {
+        "title": "Leistung und Analysen",
+        "description": "Diese Cookies sammeln Informationen darüber, wie Sie unsere Website nutzen. Alle Daten sind anonymisiert und können nicht dazu verwendet werden, Sie zu identifizieren.",
+        "linkedCategory": "analytics",
+        "cookieTable": {
+          "caption": "Cookie-Tabelle",
+          "headers": {
+            "name": "Cookie",
+            "desc": "Beschreibung"
+          },
+          "body": [
+            {
+              "name": "_ga",
+              "desc": "Google Analytics ist ein von Google angebotener Webanalysedienst, der den Website-Verkehr verfolgt und berichtet."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Targeting und Werbung",
+        "description": "Diese Cookies werden verwendet, um Werbebotschaften besser auf Sie und Ihre Interessen abzustimmen. Ziel ist es, Anzeigen zu schalten, die für den einzelnen Nutzer relevant und ansprechend sind und damit für die Verlage und Drittanbieter wertvoller sind.",
+        "linkedCategory": "ads"
+      },
+      {
+        "title": "Weitere Informationen",
+        "description": "Bei Fragen zu unserer Cookie-Politik und Ihren Wahlmöglichkeiten wenden Sie sich bitte an <a href='#contact-page'>Kontaktieren Sie uns</a>."
+      }
+    ]
+  }
+}

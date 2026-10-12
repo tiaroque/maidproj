@@ -1,0 +1,42 @@
+<section class="ad-card">
+  <div class="ad-card-head">
+    <div>
+      <h2 class="ad-card-title">
+        {{ "preferencesScreen.deleteAccountTitle" | translate }}
+      </h2>
+      <p class="ad-card-hint">
+        {{ "preferencesScreen.deleteAccountHint" | translate }}
+      </p>
+    </div>
+    <button
+      type="button"
+      class="ad-btn-ghost shrink-0 border-(--mat-sys-error)! text-(--mat-sys-error)!"
+      [disabled]="deleting()"
+      (click)="askDelete()"
+    >
+      <span>{{ "preferencesScreen.deleteAccount" | translate }}</span>
+      @if (deleting()) {
+        <mat-spinner diameter="16"></mat-spinner>
+      }
+    </button>
+  </div>
+</section>
+
+<ng-template #confirmDelete>
+  <h2 mat-dialog-title>{{ "preferencesScreen.deleteAccountTitle" | translate }}</h2>
+  <div mat-dialog-content>
+    {{ "preferencesScreen.deleteAccountConfirm" | translate }}
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-button [mat-dialog-close]="false" cdkFocusInitial>
+      {{ "cancel" | translate }}
+    </button>
+    <button
+      mat-button
+      class="text-(--mat-sys-error)!"
+      [mat-dialog-close]="true"
+    >
+      {{ "preferencesScreen.deleteAccount" | translate }}
+    </button>
+  </div>
+</ng-template>

@@ -1,0 +1,168 @@
+/* Horizontal profile carousel. The shared public design tokens and bands
+   live in src/styles/public.css. */
+
+.profile-slider-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.profile-slider {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  gap: 1rem;
+  padding: 0.25rem 0 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overscroll-behavior-x: contain;
+  /* Fades whichever edge still has cards behind it, so a half-visible card
+     reads as "more to come" rather than as a clipped layout. */
+  --fade-start: 0px;
+  --fade-end: 0px;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--fade-start),
+    #000 calc(100% - var(--fade-end)),
+    transparent 100%
+  );
+}
+
+.profile-slider.fade-start {
+  --fade-start: 3rem;
+}
+
+.profile-slider.fade-end {
+  --fade-end: 3rem;
+}
+
+.profile-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.profile-slide {
+  display: flex;
+  flex: 0 0 min(18rem, 78%);
+  scroll-snap-align: start;
+}
+
+.profile-slider-nav {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  border: 1px solid rgb(18 41 44 / 0.08);
+  background: white;
+  color: var(--sg-deep);
+  box-shadow: 0 8px 20px rgb(15 42 46 / 0.12);
+  cursor: pointer;
+}
+
+.profile-slider-nav:hover:not(:disabled) {
+  color: var(--sg-teal);
+}
+
+.profile-slider-nav:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* Kept in the layout, not removed, so revealing them after hydration
+   measures the slider does not shift the cards sideways. */
+.profile-slider-nav.is-idle {
+  visibility: hidden;
+}
+
+.offer-card {
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.offer-card:hover,
+.offer-card:focus-visible {
+  border-color: rgb(127 216 195 / 0.55);
+  background: rgb(255 255 255 / 0.1);
+}
+
+.offer-card-photo {
+  position: relative;
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  overflow: hidden;
+  border-radius: 9999px;
+  border: 1px solid rgb(127 216 195 / 0.4);
+  background: rgb(255 255 255 / 0.08);
+}
+
+/* Mint-rimmed pill in the hero pointing down to the verification section. */
+.trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  padding: 0.5rem 1.1rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--sg-mint);
+  background: rgb(127 216 195 / 0.12);
+  border: 1px solid rgb(127 216 195 / 0.45);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.trust-badge:hover,
+.trust-badge:focus-visible {
+  background: rgb(127 216 195 / 0.2);
+}
+
+/* The profiles section above is also on the cream page, so this one gets a
+   soft mint wash to read as its own block. */
+.verify-panel {
+  scroll-margin-top: 5rem;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgb(15 148 136 / 0.07) 30%,
+    rgb(15 148 136 / 0.07) 70%,
+    transparent 100%
+  );
+}
+
+/* Inset champagne panel. The section above sits on the cream page and the
+   one below is a full-bleed dark band, so this needs its own shape and color
+   or the three read as one stretch. */
+.sg-price {
+  margin-inline: 1rem;
+  margin-bottom: 3rem;
+  border-radius: 1.75rem;
+  background:
+    radial-gradient(
+      ellipse 70% 80% at 50% 0%,
+      rgb(127 216 195 / 0.5),
+      transparent 58%
+    ),
+    linear-gradient(165deg, #f7fcfb 0%, #dcf0eb 55%, #cdebe4 100%);
+  border: 1px solid rgb(21 94 99 / 0.12);
+  box-shadow: 0 16px 36px rgb(15 42 46 / 0.07);
+}
+
+.sg-price .sg-card {
+  border-color: rgb(127 216 195 / 0.85);
+  box-shadow: 0 18px 40px rgb(21 94 99 / 0.12);
+}
+
+@media (min-width: 768px) {
+  .sg-price {
+    width: min(72rem, calc(100% - 3rem));
+    margin-inline: auto;
+    margin-bottom: 4rem;
+  }
+}

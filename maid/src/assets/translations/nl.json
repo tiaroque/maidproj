@@ -1,0 +1,55 @@
+{
+  "consentModal": {
+    "title": "Wij gebruiken cookies",
+    "description": "Deze website gebruikt cookies om je een betere gebruikerservaring te bieden. <br/> We verzamelen cookies om het verkeer en de prestaties van onze website te analyseren; we verzamelen nooit persoonsgegevens",
+    "acceptAllBtn": "Alles accepteren",
+    "acceptNecessaryBtn": "Alles weigeren",
+    "showPreferencesBtn": "Voorkeuren afzonderlijk beheren",
+    "footer": "<a href=\"#path-to-privacy-policy.html\" target=\"_blank\">Privacybeleid</a>"
+  },
+  "preferencesModal": {
+    "title": "Cookievoorkeuren beheren",
+    "acceptAllBtn": "Alles accepteren",
+    "acceptNecessaryBtn": "Alles weigeren",
+    "savePreferencesBtn": "Huidige selectie accepteren",
+    "closeIconLabel": "Venster sluiten",
+    "sections": [
+      {
+        "title": "Jouw privacykeuzes",
+        "description": "In dit venster kun je voorkeuren aangeven over de verwerking van je persoonsgegevens. Je kunt je keuzes op elk moment bekijken en wijzigen door dit venster opnieuw te openen via de aangeboden link. Wil je geen toestemming geven voor de specifieke verwerkingen hieronder, zet de schakelaars dan uit of gebruik de knop “Alles weigeren” en bevestig dat je je keuzes wilt opslaan."
+      },
+      {
+        "title": "Strikt noodzakelijk",
+        "description": "Deze cookies zijn essentieel voor de goede werking van de website en kunnen niet worden uitgeschakeld.",
+        "linkedCategory": "necessary"
+      },
+      {
+        "title": "Prestaties en analyse",
+        "description": "Deze cookies verzamelen informatie over hoe je onze website gebruikt. Alle gegevens zijn geanonimiseerd en kunnen niet worden gebruikt om je te identificeren.",
+        "linkedCategory": "analytics",
+        "cookieTable": {
+          "caption": "Cookietabel",
+          "headers": {
+            "name": "Cookie",
+            "desc": "Beschrijving"
+          },
+          "body": [
+            {
+              "name": "_ga",
+              "desc": "Google Analytics is een webanalysedienst van Google die websiteverkeer bijhoudt en rapporteert."
+            }
+          ]
+        }
+      },
+      {
+        "title": "Targeting en advertenties",
+        "description": "Deze cookies worden gebruikt om advertenties relevanter te maken voor jou en je interesses. Het doel is advertenties te tonen die relevant en aantrekkelijk zijn voor de individuele gebruiker en daardoor waardevoller voor uitgevers en externe adverteerders.",
+        "linkedCategory": "ads"
+      },
+      {
+        "title": "Meer informatie",
+        "description": "Voor vragen over ons cookiebeleid en je keuzes kun je <a href=\"#contact-page\">contact met ons opnemen</a>"
+      }
+    ]
+  }
+}

@@ -1,0 +1,703 @@
+<!-- <app-image-viewer
+  [album]="album()"
+  [showViewer]="showViewer()" /> -->
+
+<div class="relative flex h-full flex-col chat-bg">
+  <!-- Chat Header -->
+  @if (storeChat.userTo()) {
+    @let userTo = storeChat.userTo()!;
+    @let conversation = storeChat.selectCurrentConversation();
+
+    <div
+      id="chat-title"
+      class="flex h-[55px] shrink-0 items-center justify-between overflow-hidden border-b border-(--mat-sys-outline-variant) bg-(--mat-sys-background) px-3"
+    >
+      <a
+        class="flex min-w-0 items-center gap-3 rounded-full py-1 pr-3 transition-colors hover:bg-(--mat-sys-surface-container)"
+        [routerLink]="['/', lang(), 'admin', 'profile-view', userTo.uid]"
+      >
+        <div class="relative size-11 shrink-0">
+          @if (!profilePicUrlOther()) {
+            <div
+              class="size-11 overflow-hidden rounded-full border border-(--mat-sys-outline-variant)"
+            >
+              <app-profile-avatar [user]="userTo" />
+            </div>
+          } @else if (profilePicUrlOther()) {
+            <div
+              class="relative size-11 overflow-hidden rounded-full border border-(--mat-sys-outline-variant)"
+            >
+              <img
+                alt=""
+                [ngSrc]="profilePicUrlOther()"
+                fill
+                priority
+                class="object-cover"
+              />
+            </div>
+          }
+          <span
+            class="absolute right-0 bottom-0 size-2.5 rounded-full border-2 border-(--mat-sys-background)"
+            [class.bg-green-400]="conversation?.connected"
+            [class.bg-slate-300]="!conversation?.connected"
+          ></span>
+        </div>
+        <span class="min-w-0 text-left">
+          <span
+            class="block truncate text-sm font-bold tracking-tight text-(--mat-sys-on-surface)"
+          >
+            {{ userTo.name }}
+          </span>
+          <span
+            class="mt-0.5 block truncate text-[11px] font-medium text-(--mat-sys-on-surface-variant)"
+          >
+            @if (conversation?.connected) {
+              <span class="chat-presence-online">{{
+                "chatScreen.online" | translate
+              }}</span>
+            } @else if (userTo.locationName) {
+              {{ userTo.locationName }}
+            } @else {
+              {{ "chatScreen.offline" | translate }}
+            }
+          </span>
+        </span>
+      </a>
+      <button
+        id="chat-settings"
+        aria-label="chat settings toggle"
+        title="chat settings"
+        role="button"
+        mat-icon-button
+        #menuTrigger="matMenuTrigger"
+        [matMenuTriggerFor]="menu"
+      >
+        <div class="flex items-center justify-center">
+          <mat-icon>more_vert</mat-icon>
+        </div>
+      </button>
+      <mat-menu #menu="matMenu" xPosition="before" class="app-menu">
+        @let alertsMuted =
+          conversation?.alertsDisabled?.includes(storeChat.me().user.uid);
+        <button
+          id="toggle-alerts"
+          role="menuitemcheckbox"
+          [attr.aria-checked]="!alertsMuted"
+          mat-menu-item
+          (click)="toggleAlerts($event, menuTrigger)"
+        >
+          @if (alertsMuted) {
+            <svg
+              matMenuItemIcon
+              fill="currentColor"
+              viewBox="0 0 448 512"
+              aria-hidden="true"
+            >
+              <path
+                d="M224 0c-17.7 0-32 14.3-32 32l0 3.2C119 50 64 114.6 64 192l0 21.7c0 48.1-16.4 94.8-46.4 132.4L7.8 358.3C2.7 364.6 0 372.4 0 380.5 0 400.1 15.9 416 35.5 416l376.9 0c19.6 0 35.5-15.9 35.5-35.5 0-8.1-2.7-15.9-7.8-22.2l-9.8-12.2C400.4 308.5 384 261.8 384 213.7l0-21.7c0-77.4-55-142-128-156.8l0-3.2c0-17.7-14.3-32-32-32zM162 464c7.1 27.6 32.2 48 62 48s54.9-20.4 62-48l-124 0z"
+              />
+            </svg>
+          } @else {
+            <svg
+              matMenuItemIcon
+              fill="currentColor"
+              viewBox="0 -32 576 576"
+              aria-hidden="true"
+            >
+              <path
+                d="M41-24.9c-9.4-9.4-24.6-9.4-33.9 0S-2.3-.3 7 9.1l528 528c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-87.5-87.5c17.2-2.4 30.5-17.3 30.5-35.2 0-8.1-2.7-15.9-7.8-22.2l-9.8-12.2C464.4 308.5 448 261.8 448 213.7l0-21.7c0-77.4-55-142-128-156.8l0-3.2c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 3.2c-38.6 7.8-72.2 29.6-95.2 59.7L41-24.9zm87 238.5c0 48.1-16.4 94.8-46.4 132.4l-9.8 12.2c-5 6.3-7.8 14.1-7.8 22.2 0 19.6 15.9 35.5 35.5 35.5l235.3 0-206.9-206.9 0 4.5zM288 512c29.8 0 54.9-20.4 62-48l-124 0c7.1 27.6 32.2 48 62 48z"
+              />
+            </svg>
+          }
+          <span class="flex w-full items-center justify-between gap-6">
+            {{ "preferencesScreen.chatAlertsTitle" | translate }}
+            <span
+              class="app-menu-switch"
+              [class.is-on]="!alertsMuted"
+              aria-hidden="true"
+            ></span>
+          </span>
+        </button>
+        <button
+          id="toggle-favorite"
+          aria-label="toggle favorite"
+          title="toggle favorite"
+          role="menuitem"
+          mat-menu-item
+          (click)="toggleFavorite()"
+        >
+          @let isFavorite =
+            conversation?.favoritedBy?.includes(storeChat.me().user.uid);
+          @if (isFavorite) {
+            <svg
+              matMenuItemIcon
+              class="conversation-favorite is-favorite"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.8 6.1 20.7l1.2-6.6L2.5 9.5l6.6-.9L12 2.5z"
+              />
+            </svg>
+          } @else {
+            <svg
+              matMenuItemIcon
+              class="conversation-favorite"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 3.2l2.6 5.4 5.9.8-4.3 4.1 1 5.9L12 16.6 6.8 19.4l1-5.9L3.5 9.4l5.9-.8L12 3.2z"
+              />
+            </svg>
+          }
+          <span>
+            {{
+              (isFavorite
+                ? "chatScreen.removeFavorite"
+                : "chatScreen.addFavorite"
+              ) | translate
+            }}
+          </span>
+        </button>
+        <div class="app-menu-divider" role="separator"></div>
+        <button
+          id="block-user"
+          aria-label="block user"
+          title="block user"
+          role="menuitem"
+          mat-menu-item
+          class="app-menu-danger"
+          (click)="blockUser()"
+        >
+          <mat-icon>block</mat-icon>
+          <span>{{ "chatScreen.block" | translate }}</span>
+        </button>
+      </mat-menu>
+    </div>
+  }
+
+  <!-- Shown while the selected person is still being resolved -->
+  @if (storeChat.messagesLoading() && !storeChat.userTo()) {
+    <div
+      class="absolute top-1/2 left-1/2 z-20 -translate-x-1/2 -translate-y-1/2 transform p-4"
+    >
+      <mat-spinner diameter="50"></mat-spinner>
+    </div>
+  }
+
+  @if (storeChat.userTo()) {
+    @if (storeChat.messagesLoading()) {
+      <div
+        class="absolute top-1/2 left-1/2 z-20 -translate-x-1/2 -translate-y-1/2 transform p-4"
+      >
+        <mat-spinner diameter="50"></mat-spinner>
+      </div>
+    }
+    <!-- Messages List Container -->
+    @defer {
+      <div
+        #chatContainer
+        intersectionWatcher
+        (elementEntry)="elementEntry2($event)"
+        (scroll)="onScroll($event)"
+        class="static w-full basis-0 grow flex flex-col-reverse justify-between overflow-y-scroll overscroll-contain px-3 pb-3 sm:px-5"
+      >
+        <!-- <div
+          class="text-zinc-800 absolute left-0 bottom-0 flex w-full h-full -z-50"
+        >
+          <svg class="aspect-square w-full">
+            <use href="/assets/images/chat/pattern-15.svg"></use>
+          </svg>
+        </div> -->
+
+        @for (message of storeChat.groupedMessages(); track message._id) {
+          <!-- ngFor Message Block  -->
+          @let isCurrentUser = userProfile()!.user.uid === message.sender;
+          @let isStart =
+            message.groupType?.includes("start") &&
+            !message.groupType?.includes("end");
+          @let isEnd =
+            message.groupType?.includes("end") &&
+            !message.groupType?.includes("start");
+          @let isSingle =
+            message.groupType?.includes("start") &&
+            message.groupType?.includes("end");
+          @let isMiddle = message.groupType?.length === 0;
+          @let dailyMessageGroup = message.groupDaily;
+
+          <div class="flex" [ngClass]="{ 'justify-end': isCurrentUser }">
+            <div
+              [ngClass]="{
+                'text-right flex flex-col items-end': isCurrentUser,
+              }"
+              class="max-w-[min(78%,28rem)]"
+            >
+              @if (isStart || isSingle) {
+                @if (!isCurrentUser) {
+                  <div
+                    class="mx-1 mb-1 text-[11px] font-semibold tracking-wide text-(--mat-sys-on-surface-variant)"
+                  >
+                    {{ storeChat.userTo()!.name }}
+                  </div>
+                }
+              }
+
+              <!--------------------------------------------------------->
+              <!--------------------String MESSAGE----------------------->
+              @if (message.type === "message") {
+                <div
+                  [ngClass]="{
+                    'bg-(--mat-sys-surface-container-high) text-(--mat-sys-on-surface)':
+                      !isCurrentUser,
+                    'bg-(--mat-sys-primary) text-(--mat-sys-on-primary)':
+                      isCurrentUser,
+
+                    'rounded-bl-md': isStart && !isCurrentUser,
+                    'rounded-tl-md': isEnd && !isCurrentUser,
+                    'rounded-l-md': isMiddle && !isCurrentUser,
+
+                    'rounded-br-md': isStart && isCurrentUser,
+                    'rounded-tr-md': isEnd && isCurrentUser,
+                    'rounded-r-md': isMiddle && isCurrentUser,
+                  }"
+                  class="mb-1 w-fit max-w-full rounded-[1.15rem] px-3.5 py-2 text-[15px] leading-snug break-words shadow-[0_1px_2px_rgb(28_16_22/0.08)]"
+                >
+                  <div>
+                    {{ message.message }}
+                    <!-- - {{ message.groupType | json }} -->
+                  </div>
+                </div>
+              }
+
+              <!--------------------------------------------------------->
+              <!--------------------Image MESSAGE------------------------>
+              @if (message.type === "media") {
+                <div
+                  class="container-img mb-1 flex flex-row items-center justify-center py-0.5"
+                >
+                  @if (message.loading) {
+                    <mat-spinner diameter="40"></mat-spinner>
+                  } @else if (message.deleted) {
+                    <div
+                      class="flex h-36 w-[220px] flex-col items-center justify-center gap-2 rounded-2xl bg-(--mat-sys-surface-container-high) px-4 text-(--mat-sys-on-surface-variant)"
+                    >
+                      <svg
+                        width="24px"
+                        height="24px"
+                        fill="currentColor"
+                        viewBox="0 0 448 512"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zm64 80a48 48 0 1 1 0 96 48 48 0 1 1 0-96zM272 224c8.4 0 16.1 4.4 20.5 11.5l88 144c4.5 7.4 4.7 16.7 .5 24.3S368.7 416 360 416L88 416c-8.9 0-17.2-5-21.3-12.9s-3.5-17.5 1.6-24.8l56-80c4.5-6.4 11.8-10.2 19.7-10.2s15.2 3.8 19.7 10.2l26.4 37.8 61.4-100.5c4.4-7.1 12.1-11.5 20.5-11.5z"
+                        />
+                      </svg>
+                      <span class="text-xs font-medium">{{
+                        "chatScreen.photoDeleted" | translate
+                      }}</span>
+                    </div>
+                  } @else if (message.message) {
+                    <div class="relative inline-flex">
+                      <img
+                        alt=""
+                        (click)="open(0, message)"
+                        [ngSrc]="$any(message.message).keyRezised | s3Url"
+                        [width]="$any(message.message).thumbWidth"
+                        [height]="$any(message.message).thumbHeight"
+                        class="inline max-h-64 max-w-[220px] cursor-pointer rounded-2xl object-cover shadow-sm"
+                        (error)="imageError($event)"
+                      />
+                      @if (isCurrentUser) {
+                        <button
+                          type="button"
+                          class="absolute top-2 right-2 flex size-8 cursor-pointer items-center justify-center rounded-full bg-black/55 text-white hover:bg-black/75 disabled:opacity-60"
+                          [disabled]="deletingPhotoId() === message._id"
+                          [attr.aria-label]="'chatScreen.deletePhoto' | translate"
+                          [title]="'chatScreen.deletePhoto' | translate"
+                          (click)="confirmDeletePhoto(message)"
+                        >
+                          <svg
+                            width="16"
+                            height="16"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                            />
+                          </svg>
+                        </button>
+                      }
+                    </div>
+                  } @else {
+                    <svg
+                      width="24px"
+                      height="24px"
+                      fill="currentColor"
+                      viewBox="0 0 448 512"
+                    >
+                      <path
+                        d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zm64 80a48 48 0 1 1 0 96 48 48 0 1 1 0-96zM272 224c8.4 0 16.1 4.4 20.5 11.5l88 144c4.5 7.4 4.7 16.7 .5 24.3S368.7 416 360 416L88 416c-8.9 0-17.2-5-21.3-12.9s-3.5-17.5 1.6-24.8l56-80c4.5-6.4 11.8-10.2 19.7-10.2s15.2 3.8 19.7 10.2l26.4 37.8 61.4-100.5c4.4-7.1 12.1-11.5 20.5-11.5z"
+                      />
+                    </svg>
+                  }
+                </div>
+              }
+
+              <!---------------------------------------------------------->
+              <!--------------------Date Container------------------------>
+
+              <!-- {{ message.date | json }}
+              {{ locals | json }} -->
+              @if (message.date && (isEnd || isSingle)) {
+                <div
+                  class="message-time mx-2 mb-3 text-[10px] font-medium tracking-wide text-(--mat-sys-outline)"
+                >
+                  {{ message.date | date: "HH:mm" }} <br />
+                  <!-- {{ message.date | date: "EEEE, dd MMM yyyy" }} <br /> -->
+                </div>
+              }
+            </div>
+          </div>
+
+          <!-- Daily grouping -->
+          <!-- [ngClass]="{
+            ' relative top-0 border border-gray-700':
+              showTimeHEader() === message._id,
+          }" -->
+          @if (dailyMessageGroup) {
+            <div
+              [ngClass]="{
+                'z-0': stickyHeaderMessage() === message._id,
+                'z-10': stickyHeaderMessage() !== message._id,
+              }"
+              [attr.data-msgId]="message._id"
+              intersectionItem
+              (elementEntryRemoved)="elementEntryRemoved($event, message)"
+              class="message-item mb-2 flex h-[45px] w-full shrink-0 items-start justify-center pt-[5px] text-sm font-semibold"
+            >
+              <div
+                [ngClass]="{
+                  'absolute top-[60px] -z-10 bg-(--mat-sys-surface-container-high)':
+                    stickyHeaderMessage() === message._id,
+                }"
+                class="flex h-10 items-center justify-center rounded-full border border-(--mat-sys-outline-variant) bg-(--mat-sys-background) px-3 text-[11px] font-semibold tracking-wide text-(--mat-sys-on-surface-variant)"
+              >
+                {{
+                  dailyMessageGroup
+                    | datetransform: translateService.currentLang
+                }}
+              </div>
+            </div>
+          }
+          <!-- ngFor END  -->
+        }
+
+        <!-- load more messages && Loading indicator -->
+        <div class="mb-auto flex w-full items-center justify-center">
+          @if (
+            storeChat.currentConversationMessagesCount() !== 0 &&
+            !storeChat.pastMessagesLoading()
+          ) {
+            <button
+              type="button"
+              (click)="loadPastMessages()"
+              class="my-2 cursor-pointer rounded-full border border-[#7fd8c3] px-5 py-1.5 text-xs font-bold text-(--mat-sys-on-surface) hover:bg-[#7fd8c3]/10"
+            >
+              {{ "chatScreen.moreMessage" | translate }}
+            </button>
+          }
+
+          @if (storeChat.pastMessagesLoading()) {
+            <mat-spinner diameter="50"></mat-spinner>
+          }
+        </div>
+      </div>
+    } @placeholder {
+      <div
+        class="static h-full w-full basis-0 grow flex flex-col-reverse justify-between pl-2"
+      ></div>
+    }
+
+    <!-- On OVER messages and content -->
+    <div class="pointer-events-none relative z-10 h-0 w-full">
+      <!-- down arrow for scroll -->
+      <div
+        [ngClass]="{ 'opacity-100 translate-y-0!': isScrolledUp() }"
+        class="absolute -top-14 left-0 right-0 flex items-center justify-center text-sm opacity-0 translate-y-11 transition-all duration-700"
+      >
+        <button
+          id="scroll-to-bottom"
+          aria-label="scroll to bottom"
+          title="scroll to bottom"
+          role="button"
+          mat-fab
+          extended
+          (click)="scrollToBottom()"
+          class="pointer-events-auto px-[6px]!"
+        >
+          <div
+            [ngClass]="{ 'w-36!': hasNewMessage() }"
+            class="flex w-6 items-center justify-around overflow-hidden transition-width duration-200 ease-in"
+          >
+            <div class="flex items-center justify-between">
+              <mat-icon>arrow_circle_down</mat-icon>
+            </div>
+
+            <div
+              [ngClass]="{ 'opacity-100': hasNewMessage() }"
+              class="ml-1 cursor-pointer whitespace-nowrap opacity-0 transition-opacity duration-700"
+            >
+              {{ "chatScreen.newMessage" | translate }}
+            </div>
+          </div>
+        </button>
+      </div>
+
+      <!-- User is Typing -->
+      <div
+        [ngClass]="{
+          'opacity-100 translate-y-0!': (userIsTyping$ | async) === true,
+        }"
+        class="absolute -top-8 flex w-full items-center justify-center text-sm opacity-0 translate-y-11 transition-all duration-700"
+      >
+        @if (storeChat.userTo()) {
+          <label
+            class="flex items-center gap-2 rounded-full border border-(--mat-sys-outline-variant) bg-(--mat-sys-surface)/95 px-3 py-1 text-[11px] font-medium text-(--mat-sys-on-surface-variant) shadow-sm backdrop-blur-sm"
+          >
+            {{ storeChat.userTo()!.name }}
+            {{ "chatScreen.isTyping" | translate }}
+            <span class="chat-typing-dots" aria-hidden="true"></span>
+          </label>
+        }
+      </div>
+    </div>
+
+    <!-- Messages Typing -->
+    <div
+      #messageSenderContainer
+      class="relative z-2 flex items-center justify-start border-t border-(--mat-sys-outline-variant) bg-(--mat-sys-background)/90 p-2.5 backdrop-blur-md sm:p-3"
+      id="chat-form"
+      [ngClass]="{ 'pointer-events-none opacity-75': !setEmojisContainer() }"
+    >
+      <div
+        class="flex w-full items-center gap-1 rounded-full border border-(--mat-sys-outline-variant) bg-(--mat-sys-surface-container-low) py-0.5 pr-1 pl-0.5 shadow-[0_1px_2px_rgb(28_16_22/0.06)] transition-[border-color,box-shadow] duration-200 focus-within:border-(--mat-sys-primary)/50 focus-within:shadow-[0_0_10px_2px_color-mix(in_oklab,var(--mat-sys-primary)_45%,transparent)]"
+      >
+        <div class="z-20 flex items-center justify-center">
+          <button
+            id="upload-chat-photo"
+            aria-label="upload chat photo"
+            title="upload chat photo"
+            role="button"
+            mat-icon-button
+            (click)="uploader.click()"
+          >
+            <div class="flex items-center justify-center">
+              <mat-icon class="">photo_camera</mat-icon>
+            </div>
+          </button>
+          <!-- Hidden for image uplaod -->
+          <input
+            #uploader
+            [disabled]="uploadLoading"
+            type="file"
+            accept="image/png, image/gif, image/jpeg"
+            hidden
+            (change)="chooseFile($event)"
+          />
+        </div>
+        <mat-form-field
+          [appearance]="utilsService.inputType()"
+          class="chat-composer-field no-validation [&_.mat-mdc-form-field-subscript-wrapper]:hidden z-20 w-full"
+        >
+          <input
+            #messageInput
+            id="chat-message-input"
+            appInputMonitor
+            matInput
+            autocomplete="off"
+            enterkeyhint="send"
+            [formField]="chatForm.message"
+            (inputState)="inputStateChanged($any($event))"
+            (keydown.enter)="sendMessage()"
+            [placeholder]="'chatScreen.writeMessage' | translate"
+          />
+
+          <button
+            (mouseenter)="isHoverEmojiButton = true"
+            (mouseleave)="isHoverEmojiButton = false"
+            mat-icon-button
+            matIconSuffix
+            (click)="showEmojiPanel($event)"
+            cdkOverlayOrigin
+            #trigger="cdkOverlayOrigin"
+          >
+            <div class="flex items-center justify-center">
+              @if (isHoverEmojiButton) {
+                <mat-icon>sentiment_very_satisfied</mat-icon>
+              } @else {
+                <mat-icon>add_reaction</mat-icon>
+              }
+            </div>
+          </button>
+          <ng-template
+            (overlayOutsideClick)="clickedOusideEmojiPanel($event)"
+            cdkConnectedOverlay
+            [cdkConnectedOverlayOrigin]="trigger"
+            [cdkConnectedOverlayOpen]="isOpenEmojisDesktop()"
+          >
+            <!-- @if (setEmojisContainer()) { -->
+            <ng-container *ngTemplateOutlet="emojiMart"> </ng-container>
+            <!-- } -->
+          </ng-template>
+        </mat-form-field>
+
+        <div class="z-20 flex items-center justify-center">
+          <button
+            type="button"
+            [disabled]="
+              chatForm.message().value().trim().length === 0 ||
+              !chatForm().valid()
+            "
+            class="chat-send-btn flex size-10 items-center justify-center rounded-full transition-colors duration-200"
+            [ngClass]="{
+              'bg-(--mat-sys-primary) text-(--mat-sys-on-primary)':
+                chatForm.message().value().trim().length > 0 &&
+                chatForm().valid(),
+              'text-(--mat-sys-outline)':
+                chatForm.message().value().trim().length === 0 ||
+                !chatForm().valid(),
+            }"
+            (click)="sendMessage()"
+          >
+            <svg
+              class="self-center justify-self-center"
+              width="16px"
+              height="16px"
+              fill="currentColor"
+              viewBox="0 0 576 512"
+            >
+              <path
+                d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9L229.2 276.1c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8l496.9-178z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMOJI closed Mobile panel -->
+    @defer {
+      <div
+        [ngClass]="{ 'h-[260px]': isOpenEmojisMobile() }"
+        class="block h-0 overflow-hidden transition-height duration-300 ease-in-out md:hidden"
+        appClickOutside
+        [exception]="[messageSenderContainer]"
+        (clickOutside)="closeMobielEmojis()"
+      >
+        <div
+          class="emoji-panel-mobile w-full"
+          appEmojiMart
+          (clickedEmoji)="addEmoji($event)"
+          [locale]="selectedLang()"
+          [theme]="isDark() ? 'dark' : 'light'"
+        ></div>
+      </div>
+    }
+  } @else if (!storeChat.messagesLoading()) {
+    <div
+      class="relative z-1 flex h-full w-full flex-col items-center justify-center gap-3 px-8 text-center"
+    >
+      <div class="ad-empty-icon size-16 rounded-2xl">
+        <svg width="28" height="28" fill="currentColor" viewBox="0 0 512 512">
+          <path
+            d="M64 0C28.7 0 0 28.7 0 64L0 352c0 35.3 28.7 64 64 64l96 0 0 80c0 6.1 3.4 11.6 8.8 14.3s11.9 2.1 16.8-1.5L309.3 416 448 416c35.3 0 64-28.7 64-64l0-288c0-35.3-28.7-64-64-64L64 0z"
+          />
+        </svg>
+      </div>
+      <p class="ad-empty-title text-base">
+        {{ "chatScreen.selectConversation" | translate }}
+      </p>
+    </div>
+  }
+</div>
+
+<ng-template #loader>
+  <mat-spinner diameter="40"></mat-spinner>
+</ng-template>
+
+<ng-template #templateConfirmDeletePhoto>
+  <div [class.unicorn-dark-theme]="isDark()">
+    <h2 mat-dialog-title>{{ "chatScreen.deletePhoto" | translate }}</h2>
+    <div mat-dialog-content>
+      {{ "chatScreen.deletePhotoConfirm" | translate }}
+    </div>
+    <div mat-dialog-actions align="end">
+      <button type="button" mat-button [mat-dialog-close]="false">
+        {{ "cancel" | translate }}
+      </button>
+      <button
+        type="button"
+        mat-button
+        [mat-dialog-close]="true"
+        cdkFocusInitial
+      >
+        {{ "confirm" | translate }}
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #templateConfirmBlock>
+  <div [class.unicorn-dark-theme]="isDark()">
+    <h2 mat-dialog-title>{{ "confirm" | translate }}</h2>
+    <div mat-dialog-content>{{ "chatScreen.blockUser" | translate }}</div>
+    <div mat-dialog-actions align="end">
+      <button
+        id="cancel-block-user"
+        aria-label="cancel block user"
+        title="cancel block user"
+        role="button"
+        mat-button
+        [mat-dialog-close]="false"
+      >
+        {{ "cancel" | translate }}
+      </button>
+      <button
+        id="confirm-block-user"
+        aria-label="confirm block user"
+        title="confirm block user"
+        role="button"
+        mat-button
+        [mat-dialog-close]="true"
+        cdkFocusInitial
+      >
+        {{ "confirm" | translate }}
+      </button>
+    </div>
+  </div>
+</ng-template>
+<ng-template #emojiMart>
+  <div
+    class="h-[345px] w-[350px]"
+    (clickedEmoji)="addEmoji($event)"
+    [locale]="selectedLang()"
+    [theme]="isDark() ? 'dark' : 'light'"
+    appEmojiMart
+  ></div>
+</ng-template>
+
+<ng-template cdkPortal>
+  <app-messages-list />
+</ng-template>

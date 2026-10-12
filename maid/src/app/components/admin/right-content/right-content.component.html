@@ -1,0 +1,96 @@
+
+  <h3 class="ad-eyebrow mb-4">
+    {{ "newArrivals" | translate }}
+  </h3>
+
+  @if (usersList$ | async; as users) {
+    @if (users.length) {
+      <div class="ad-card flex flex-col gap-4 p-4! sm:p-4!">
+        @for (user of users; track user._id) {
+          <a
+            class="group flex items-center gap-3.5"
+            [routerLink]="[
+              '/',
+              lang(),
+              'admin',
+              'profile-view',
+              user.user.uid,
+            ]"
+          >
+            <div class="shrink-0">
+              @if (user.user.images && user.user.images[0]) {
+                <div
+                  class="relative h-12 w-12 overflow-hidden rounded-full border border-(--mat-sys-outline-variant) shadow-sm transition-colors group-hover:border-[#7fd8c3]"
+                >
+                  <img
+                    alt=""
+                    [ngSrc]="user.user.images[0].keyRezised | s3Url"
+                    fill
+                    class="object-cover"
+                  />
+                </div>
+              } @else {
+                <div
+                  class="h-12 w-12 overflow-hidden rounded-full border border-(--mat-sys-outline-variant) group-hover:border-[#7fd8c3]"
+                >
+                  <app-profile-avatar [user]="user.user" />
+                </div>
+              }
+            </div>
+            <div class="min-w-0">
+              <p
+                class="truncate text-sm font-bold text-(--mat-sys-on-surface) transition-colors group-hover:text-[#0f9488]"
+              >
+                {{ user.user.name | slicedescription: 12 }}
+              </p>
+              @if (user.user.locationName) {
+                <p
+                  class="truncate text-[11px] font-medium text-(--mat-sys-on-surface-variant)"
+                >
+                  {{ user.user.locationName | slicedescription: 18 }}
+                </p>
+              }
+            </div>
+          </a>
+        }
+      </div>
+
+      <button
+        type="button"
+        class="ad-btn-ghost mt-4 w-full text-xs"
+        (click)="viewAllNew()"
+      >
+        {{ "viewAllNew" | translate }}
+      </button>
+    } @else {
+      <div class="ad-card px-3! py-6! text-center">
+        <p class="text-sm text-(--mat-sys-on-surface-variant)">
+          {{ "latestUsersEmpty" | translate }}
+        </p>
+      </div>
+    }
+  }
+
+  <div
+    class="mt-auto flex shrink-0 flex-col gap-3 pt-8 text-xs font-medium text-(--mat-sys-on-surface-variant)"
+  >
+    <a
+      [routerLink]="['/', lang(), 'privacy']"
+      target="_blank"
+      class="hover:text-[#7fd8c3]"
+    >
+      {{ "privacyPolicy" | translate }}
+    </a>
+    <a
+      [routerLink]="['/', lang(), 'terms-conditions']"
+      target="_blank"
+      class="hover:text-[#7fd8c3]"
+    >
+      {{ "termsConditions" | translate }}
+    </a>
+    <a (click)="openCookiePrefs()" class="cursor-pointer hover:text-[#7fd8c3]">
+      {{ "cookiePreferences" | translate }}
+    </a>
+    <span class="mt-2 opacity-70">© 2026 Clara</span>
+  </div>
+

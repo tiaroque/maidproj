@@ -1,0 +1,18 @@
+<div>
+  <mat-form-field [appearance]="utilsService.inputType()" class="mt-2 w-full">
+    <mat-label>{{ "auth.profileName" | translate }} </mat-label>
+    <input
+      matInput
+      [formField]="profileName()"
+      autocomplete="off"
+    />
+    @if (hasKind(profileName(), "required")) {
+    <mat-error [innerHTML]="'fieldRequired' | translate"> </mat-error>
+    }
+    @if (hasKind(profileName(), "maxLength")) {
+      <mat-error
+        [innerHTML]="'fieldMaxLength' | translate: { max: 35 }"
+      ></mat-error>
+    }
+  </mat-form-field>
+</div>

@@ -1,0 +1,41 @@
+@if (visible()) {
+  <div
+    class="verification-banner"
+    [class.is-pending]="status() === 'pending'"
+    role="status"
+  >
+    <mat-icon class="verification-banner-icon" aria-hidden="true">
+      {{ status() === "pending" ? "hourglass_top" : "gpp_maybe" }}
+    </mat-icon>
+
+    <p class="verification-banner-text">
+      @switch (status()) {
+        @case ("pending") {
+          {{ "verification.banner.pending" | translate }}
+        }
+        @case ("rejected") {
+          {{ "verification.banner.rejected" | translate }}
+        }
+        @default {
+          {{ "verification.banner.none" | translate }}
+        }
+      }
+    </p>
+
+    <div class="verification-banner-actions">
+      @if (status() !== "pending") {
+        <a class="ad-btn verification-banner-cta" [routerLink]="['/', lang(), 'admin', 'upload']">
+          {{ "verification.banner.cta" | translate }}
+        </a>
+      }
+      <button
+        type="button"
+        class="verification-banner-close"
+        [attr.aria-label]="'verification.banner.dismiss' | translate"
+        (click)="dismiss()"
+      >
+        <mat-icon aria-hidden="true">close</mat-icon>
+      </button>
+    </div>
+  </div>
+}

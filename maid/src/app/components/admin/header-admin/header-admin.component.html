@@ -1,0 +1,370 @@
+<header
+  class="admin-chrome fixed top-0 right-0 left-0 z-50 block border-b"
+  [class.unicorn-dark-theme]="isDark()"
+>
+  <!-- DESKTOP HEADER -->
+  <div
+    class="relative mx-auto grid h-[55px] w-full max-w-7xl grid-cols-[1fr_auto_1fr] items-center px-2"
+  >
+    <div
+      class="admin-logo col-start-1 flex justify-start items-center font-bold md:w-[220px]"
+    >
+      <div>
+        <svg class="w-15 h-15 pt-1 fill-current -translate-y-1">
+          <use xlink:href="assets/images/logo4_no_fill.svg#Capa_1"></use>
+        </svg>
+      </div>
+      <div
+        class="hidden sm:block text-2xl font-[Albert_Sans,sans-serif] font-semibold tracking-tighter -translate-x-2"
+      >
+        clara
+      </div>
+    </div>
+
+    <!-- Central Tabs -->
+    <!-- [&_.mat-mdc-tab-labels>*:first-child]:hidden -->
+    <div class="absolute bottom-0 left-1/2 flex -translate-x-1/2 items-end">
+      <nav
+        mat-tab-nav-bar
+        [animationDuration]="tabAnimation"
+        [tabPanel]="tabPanel"
+      >
+        <!-- <a
+          class="hidden!"
+          mat-tab-link
+          [routerLink]="['/', lang(), 'admin', 'profile-view']"
+          [active]="otherActive()"
+        >
+        </a> -->
+
+        <!-- Browsing comes first, then conversations, then your own account
+             last: the order people move through the app, and the one every
+             other dating app puts the profile tab in. -->
+        <a
+          [matTooltip]="'tabs.search' | translate"
+          [matTooltipShowDelay]="300"
+          mat-tab-link
+          [routerLink]="['/', lang(), 'admin', 'list']"
+          routerLinkActive
+          #searchActive="routerLinkActive"
+          [active]="searchActive.isActive"
+          class="min-w-16! w-16 px-1! sm:min-w-20! sm:w-22"
+        >
+          <span class="flex flex-col items-center justify-center gap-0.5">
+            <svg
+              width="22px"
+              height="22px"
+              fill="currentColor"
+              viewBox="0 0 512 512"
+            >
+              <path
+                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+              />
+            </svg>
+            <span class="text-xs font-medium leading-tight tracking-normal">
+              {{ "tabs.search" | translate }}
+            </span>
+          </span>
+        </a>
+
+        @let unread = storeChat.unreadTotal();
+        <a
+          [matTooltip]="'tabs.chat' | translate"
+          [matTooltipShowDelay]="300"
+          mat-tab-link
+          [routerLink]="['/', lang(), 'admin', 'chat']"
+          routerLinkActive
+          #chatActive="routerLinkActive"
+          [active]="chatActive.isActive"
+          class="min-w-16! w-16 px-1! sm:min-w-20! sm:w-22"
+        >
+          <span class="flex flex-col items-center justify-center gap-0.5">
+            <span
+              class="flex"
+              [matBadge]="unread > 99 ? '99+' : unread"
+              [matBadgeHidden]="!unread"
+              [matBadgeDescription]="
+                'tabs.chatUnread' | translate: { count: unread }
+              "
+            >
+              <svg
+                width="22px"
+                height="22px"
+                fill="currentColor"
+                viewBox="0 0 512 512"
+                aria-hidden="true"
+              >
+                <path
+                  d="M64 0C28.7 0 0 28.7 0 64L0 352c0 35.3 28.7 64 64 64l96 0 0 80c0 6.1 3.4 11.6 8.8 14.3s11.9 2.1 16.8-1.5L309.3 416 448 416c35.3 0 64-28.7 64-64l0-288c0-35.3-28.7-64-64-64L64 0z"
+                />
+              </svg>
+            </span>
+            <span class="text-xs font-medium leading-tight tracking-normal">
+              {{ "tabs.chat" | translate }}
+            </span>
+          </span>
+        </a>
+
+        <a
+          mat-tab-link
+          [matTooltip]="'tabs.profile' | translate"
+          [matTooltipShowDelay]="300"
+          [routerLink]="['/', lang(), 'admin', 'profile']"
+          [active]="profileIsActive()"
+          class="min-w-16! w-16 px-1! sm:min-w-20! sm:w-22"
+        >
+          <span class="flex flex-col items-center justify-center gap-0.5">
+            <svg
+              width="22px"
+              height="22px"
+              fill="currentColor"
+              viewBox="0 0 448 512"
+            >
+              <path
+                d="M224 256a128 128 0 1 0 0-256 128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3 0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7 0-98.5-79.8-178.3-178.3-178.3l-91.4 0z"
+              />
+            </svg>
+            <span class="text-xs font-medium leading-tight tracking-normal">
+              {{ "tabs.profile" | translate }}
+            </span>
+          </span>
+        </a>
+
+        <a
+          [matTooltip]="'tabs.activity' | translate"
+          [matTooltipShowDelay]="300"
+          mat-tab-link
+          [routerLink]="['/', lang(), 'admin', 'activity']"
+          routerLinkActive
+          #activityActive="routerLinkActive"
+          [active]="activityActive.isActive"
+          class="min-w-16! w-16 px-1! sm:min-w-20! sm:w-22"
+        >
+          <span class="flex flex-col items-center justify-center gap-0.5">
+            <svg
+              width="22px"
+              height="22px"
+              fill="currentColor"
+              viewBox="0 0 512 512"
+            >
+              <path
+                d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"
+              />
+            </svg>
+            <span class="text-xs font-medium leading-tight tracking-normal">
+              {{ "tabs.activity" | translate }}
+            </span>
+          </span>
+        </a>
+      </nav>
+      <mat-tab-nav-panel #tabPanel> </mat-tab-nav-panel>
+    </div>
+
+    <!-- Desktop Right Menu buttons -->
+    <div
+      class="col-start-3 hidden justify-self-end md:flex items-center justify-end"
+      style="text-align: right"
+    >
+      <app-profile-icon />
+
+      <div class="mx-1">
+        <app-language-selector />
+      </div>
+      <button
+        mat-icon-button
+        #menuTrigger="matMenuTrigger"
+        [matMenuTriggerFor]="menu"
+      >
+        <div class="flex items-center justify-center">
+          <mat-icon>more_vert</mat-icon>
+        </div>
+      </button>
+      <mat-menu #menu="matMenu" xPosition="before" class="app-menu">
+        <div
+          mat-menu-item
+          role="menuitemcheckbox"
+          [attr.aria-checked]="isDark()"
+          (click)="toggleDarkTheme(!isDark(), $event, menuTrigger)"
+        >
+          <mat-icon>{{ isDark() ? "dark_mode" : "light_mode" }}</mat-icon>
+          <span class="flex w-full items-center justify-between gap-6">
+            {{ "header.darkTheme" | translate }}
+            <span
+              class="app-menu-switch"
+              [class.is-on]="isDark()"
+              aria-hidden="true"
+            ></span>
+          </span>
+        </div>
+
+        <div
+          mat-menu-item
+          [routerLink]="['/', lang(), 'admin', 'profile-view', myUserId]"
+        >
+          <svg
+            matMenuItemIcon
+            fill="currentColor"
+            viewBox="0 0 512 512"
+            aria-hidden="true"
+          >
+            <path
+              d="M399 384.2C376.9 345.8 335.4 320 288 320l-64 0c-47.4 0-88.9 25.8-111 64.2 35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z"
+            />
+          </svg>
+          <span>{{ "header.viewProfile" | translate }}</span>
+        </div>
+
+        <div class="app-menu-divider" role="separator"></div>
+        <div mat-menu-item (click)="logout()">
+          <svg
+            matMenuItemIcon
+            fill="currentColor"
+            viewBox="0 0 512 512"
+            aria-hidden="true"
+          >
+            <path
+              d="M505 273c9.4-9.4 9.4-24.6 0-33.9L361 95c-6.9-6.9-17.2-8.9-26.2-5.2S320 102.3 320 112l0 80-112 0c-26.5 0-48 21.5-48 48l0 32c0 26.5 21.5 48 48 48l112 0 0 80c0 9.7 5.8 18.5 14.8 22.2s19.3 1.7 26.2-5.2L505 273zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"
+            />
+          </svg>
+          <span>{{ "header.exit" | translate }}</span>
+        </div>
+      </mat-menu>
+    </div>
+
+    <!-- Hamburger Button -->
+    <div class="absolute right-4 top-4 z-40 md:hidden">
+      <button
+        id="menu-btn"
+        type="button"
+        [ngClass]="{ open: open() }"
+        (click)="open.set(!open())"
+        class="z-40 block hamburger md:hidden focus:outline-hidden mobile-btn ml-auto"
+      >
+        <span class="hamburger-top"></span>
+        <span class="hamburger-middle"></span>
+        <span class="hamburger-bottom"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    class="menu-backdrop md:hidden fixed inset-0 z-50 bg-(--mat-sys-neutral-variant20)/40"
+    [class.is-open]="open()"
+    aria-hidden="true"
+    (click)="closeMobileMenu()"
+  ></div>
+  <nav
+    id="menu"
+    class="menu-panel md:hidden fixed inset-y-0 left-0 z-50 flex w-[280px] flex-col overflow-y-auto bg-(--mat-sys-surface) text-(--mat-sys-on-surface-variant) shadow-xl"
+    [class.is-open]="open()"
+  >
+    <div
+      class="menu-item flex items-center justify-between px-6 pt-4 shrink-0"
+      style="--i: 0"
+    >
+      <div class="flex items-center justify-center text-(--mat-sys-primary)/80">
+        <span class="logo-mark mr-1 h-7 w-7" aria-hidden="true"></span>
+        <div
+          class="font-[Albert_Sans,sans-serif] text-xl font-semibold tracking-tighter"
+        >
+          clara
+        </div>
+      </div>
+
+      <button
+        type="button"
+        [class.open]="open()"
+        (click)="closeMobileMenu()"
+        class="z-40 hamburger focus:outline-hidden mobile-btn ml-auto"
+      >
+        <span class="hamburger-top"></span>
+        <span class="hamburger-middle"></span>
+        <span class="hamburger-bottom"></span>
+      </button>
+    </div>
+
+    <div class="flex flex-col gap-3 p-4">
+      <div class="menu-item mb-1 flex justify-center" style="--i: 1">
+        <app-profile-icon [formatName]="false" />
+      </div>
+
+      <div
+        class="menu-item theme-switch"
+        [class.is-dark]="isDark()"
+        role="radiogroup"
+        [attr.aria-label]="'header.theme' | translate"
+        style="--i: 2"
+      >
+        <button
+          type="button"
+          role="radio"
+          class="theme-option"
+          [attr.aria-checked]="!isDark()"
+          (click)="setTheme(false)"
+        >
+          <mat-icon aria-hidden="true">light_mode</mat-icon>
+          <span>{{ "header.themeLight" | translate }}</span>
+        </button>
+        <button
+          type="button"
+          role="radio"
+          class="theme-option"
+          [attr.aria-checked]="isDark()"
+          (click)="setTheme(true)"
+        >
+          <mat-icon aria-hidden="true">dark_mode</mat-icon>
+          <span>{{ "header.themeDark" | translate }}</span>
+        </button>
+      </div>
+
+      <button
+        type="button"
+        class="menu-item menu-action"
+        style="--i: 3"
+        (click)="closeMobileMenu()"
+        [routerLink]="['/', lang(), 'admin', 'profile-view', myUserId]"
+      >
+        <svg
+          width="20px"
+          height="20px"
+          fill="currentColor"
+          viewBox="0 0 512 512"
+          aria-hidden="true"
+        >
+          <path
+            d="M399 384.2C376.9 345.8 335.4 320 288 320l-64 0c-47.4 0-88.9 25.8-111 64.2 35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0 256 256 0 1 1 -512 0zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z"
+          />
+        </svg>
+        <span>{{ "header.viewProfile" | translate }}</span>
+      </button>
+
+      <button
+        type="button"
+        class="menu-item menu-action"
+        style="--i: 4"
+        (click)="logout()"
+      >
+        <svg
+          width="20px"
+          height="20px"
+          fill="currentColor"
+          viewBox="0 0 512 512"
+          aria-hidden="true"
+        >
+          <path
+            d="M505 273c9.4-9.4 9.4-24.6 0-33.9L361 95c-6.9-6.9-17.2-8.9-26.2-5.2S320 102.3 320 112l0 80-112 0c-26.5 0-48 21.5-48 48l0 32c0 26.5 21.5 48 48 48l112 0 0 80c0 9.7 5.8 18.5 14.8 22.2s19.3 1.7 26.2-5.2L505 273zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"
+          />
+        </svg>
+        <span>{{ "header.exit" | translate }}</span>
+      </button>
+    </div>
+
+    <div class="menu-item mt-auto" style="--i: 5">
+      <hr class="mb-4 mx-4 border-t border-0 border-surface" />
+      <div class="px-4 pb-3">
+        <app-language-links (clickedLinkEvent)="clickedLinkEvent($event)" />
+      </div>
+    </div>
+  </nav>
+</header>

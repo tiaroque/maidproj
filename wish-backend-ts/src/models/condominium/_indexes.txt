@@ -1,0 +1,1 @@
+db.getCollection('payments').createIndex({ residentName: "text", costName: "text" })
