@@ -87,8 +87,8 @@ export const lookupFromUser = (userMeId: string) => [
       },
       pipeline: [
         { $match: { $expr: { $eq: ["$uid", "$$uid"] } } },
-        { $project: { _id: 0, ...publicRootProjection } },
         ...filterBlockedUsers(userMeId),
+        { $project: { _id: 0, ...publicRootProjection } },
         {
           $set: {
             images: {
