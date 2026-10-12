@@ -32,6 +32,16 @@ export const manageIndexes = async () => {
     await ensureUniqueUidIndex(collection);
 
     collection.createIndex({ "offers.offer": "text" }, { default_language: "portuguese" })
+    collection.createIndex({ canonicalEmail: 1 });
+
+    const userDevices = getDb().collection("user_devices");
+    userDevices.createIndex({ uid: 1, deviceId: 1 }, { unique: true });
+    userDevices.createIndex({ deviceId: 1 });
+    userDevices.createIndex({ fingerprints: 1 });
+    userDevices.createIndex({ ipHashes: 1 });
+
+    const multiAccountReviews = getDb().collection("multi_account_reviews");
+    multiAccountReviews.createIndex({ signal: 1, key: 1 }, { unique: true });
 
     // Search: role first, then the place filters (home or covered area).
     collection.createIndex({ userType: 1, country: 1, location: 1 })

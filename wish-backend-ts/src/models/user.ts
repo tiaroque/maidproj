@@ -1,5 +1,6 @@
 import { getDb } from "../databases/db/mongo";
 import { FindOneAndUpdateOptions } from "mongodb";
+import { canonicalEmail } from "../services/device-tracking.service";
 
 export interface UserInfoCreation {
   name: string;
@@ -74,7 +75,9 @@ export const createUser = async (
     $setOnInsert: {
       creationDate: dateNow,
     },
-    $set: user,
+    $set: user.email
+      ? { ...user, canonicalEmail: canonicalEmail(user.email) }
+      : user,
   };
 
   return collection.findOneAndUpdate(query, update, options);
@@ -155,6 +158,14 @@ const getUser = async (match: { email: string } | { uid: string }): Promise<any>
 export const getUserByEmail = (email: string) => getUser({ email });
 
 export const getUserByUid = (uid: string) => getUser({ uid });
+
+export const canonicalEmailTaken = async (email: string) =>
+  (await getDb()
+    .collection("users")
+    .countDocuments(
+      { canonicalEmail: canonicalEmail(email) },
+      { limit: 1 }
+    )) > 0;
 
 export const getDetailsForUserByUid = async (uid: string): Promise<any> => {
   let collection = getDb().collection("users");
@@ -313,6 +324,34 @@ export const markUserDeleted = async (uid: string) => {
       }
     );
   return result.matchedCount === 1;
+};
+
+export const markUserRemovedByModerator = async (
+  uid: string,
+  moderator: string,
+  reason: string
+) => {
+  const result = await getDb()
+    .collection("users")
+    .updateOne(
+      { uid, deleted: { $ne: true } },
+      {
+        $set: {
+          deleted: true,
+          deletedAt: new Date(),
+          removedByModerator: true,
+          removedBy: moderator,
+          removedReason: reason,
+        },
+        $unset: {
+          emailVerifyToken: "",
+          emailVerifyExpires: "",
+          passwordResetToken: "",
+          passwordResetExpires: "",
+        },
+      }
+    );
+  return result.modifiedCount === 1;
 };
 
 export const blockUser = async (userMeUid: string, userToBlockUid: string) => {

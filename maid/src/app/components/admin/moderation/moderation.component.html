@@ -7,14 +7,19 @@
         {{ "verification.moderation.lead" | translate }}
       </p>
     </div>
-    <button
-      type="button"
-      class="ad-btn-ghost shrink-0"
-      [disabled]="loading()"
-      (click)="load()"
-    >
-      {{ "verification.moderation.refresh" | translate }}
-    </button>
+    <div class="flex shrink-0 gap-2">
+      <a class="ad-btn-ghost" routerLink="multi-accounts">
+        {{ "multiAccounts.title" | translate }}
+      </a>
+      <button
+        type="button"
+        class="ad-btn-ghost"
+        [disabled]="loading()"
+        (click)="load()"
+      >
+        {{ "verification.moderation.refresh" | translate }}
+      </button>
+    </div>
   </div>
 
   @if (loading()) {

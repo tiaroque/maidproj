@@ -4266,6 +4266,214 @@
           <context context-type="linenumber">607</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="multiAccounts.eyebrow" datatype="html">
+        <source>Moderation</source>
+        <target>Moderação</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">550</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="multiAccounts.title" datatype="html">
+        <source>Duplicate accounts</source>
+        <target>Contas duplicadas</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">551</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="multiAccounts.lead" datatype="html">
+        <source>Accounts that signed up or signed in from the same browser or device. Remove the extra accounts, or dismiss the group if they belong to different people.</source>
+        <target>Contas que se registaram ou entraram a partir do mesmo navegador ou dispositivo. Remova as contas a mais, ou descarte o grupo se pertencerem a pessoas diferentes.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">552</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="multiAccounts.verificationLink" datatype="html">
+        <source>Verification queue</source>
+        <target>Fila de verificação</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">553</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="multiAccounts.signal.device" datatype="html">
+        <source>Same browser</source>
+        <target>Mesmo navegador</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">555</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="multiAccounts.signal.fingerprint" datatype="html">
+        <source>Similar device</source>
+        <target>Dispositivo semelhante</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">556</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="multiAccounts.signalHint.device" datatype="html">
+        <source>These accounts were used in the same browser. This is strong evidence that one person owns them.</source>
+        <target>Estas contas foram usadas no mesmo navegador. É um forte indício de que pertencem à mesma pessoa.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">559</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="multiAccounts.signalHint.fingerprint" datatype="html">
+        <source>These accounts were used on devices with identical characteristics. Phones of the same model often match, so check the profiles before removing anything.</source>
+        <target>Estas contas foram usadas em dispositivos com características idênticas. Telemóveis do mesmo modelo coincidem muitas vezes, por isso verifique os perfis antes de remover alguma.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">560</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="multiAccounts.emptyTitle" datatype="html">
+        <source>Nothing to review</source>
+        <target>Nada para rever</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">562</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="multiAccounts.emptyText" datatype="html">
+        <source>Groups of linked accounts will appear here.</source>
+        <target>Os grupos de contas ligadas aparecem aqui.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">563</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="multiAccounts.accountsCount" datatype="html">
+        <source>{{count}} active accounts</source>
+        <target>{{count}} contas ativas</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">564</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="multiAccounts.lastSeen" datatype="html">
+        <source>Last seen</source>
+        <target>Visto pela última vez</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">565</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="multiAccounts.created" datatype="html">
+        <source>created</source>
+        <target>criada</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">566</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="multiAccounts.badge.verified" datatype="html">
+        <source>Verified</source>
+        <target>Verificada</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">568</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="multiAccounts.badge.emailUnverified" datatype="html">
+        <source>Email not verified</source>
+        <target>Email por verificar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">569</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="multiAccounts.badge.removed" datatype="html">
+        <source>Removed</source>
+        <target>Removida</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">570</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="multiAccounts.badge.deleted" datatype="html">
+        <source>Deleted by user</source>
+        <target>Apagada pelo utilizador</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">571</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="multiAccounts.remove" datatype="html">
+        <source>Remove</source>
+        <target>Remover</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">573</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="multiAccounts.confirmRemove" datatype="html">
+        <source>Confirm removal</source>
+        <target>Confirmar remoção</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">574</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="multiAccounts.reasonPlaceholder" datatype="html">
+        <source>Reason for removal, kept for the record</source>
+        <target>Motivo da remoção, guardado para registo</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">575</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="multiAccounts.reasonRequired" datatype="html">
+        <source>Add a reason before removing an account.</source>
+        <target>Indique um motivo antes de remover uma conta.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">576</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="multiAccounts.dismiss" datatype="html">
+        <source>Not the same person</source>
+        <target>Não é a mesma pessoa</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">577</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="multiAccounts.removed" datatype="html">
+        <source>Account removed.</source>
+        <target>Conta removida.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">578</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="multiAccounts.dismissed" datatype="html">
+        <source>Group dismissed. It comes back if another account joins it.</source>
+        <target>Grupo descartado. Volta a aparecer se outra conta se juntar.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">579</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="multiAccounts.errors.generic" datatype="html">
+        <source>Something went wrong. Please try again.</source>
+        <target>Algo correu mal. Tente de novo.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">581</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="multiAccounts.errors.moderator" datatype="html">
+        <source>Moderator accounts can&apos;t be removed.</source>
+        <target>Não é possível remover contas de moderadores.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">582</context>
+        </context-group>
+      </trans-unit>
     </body>
   </file>
 </xliff>

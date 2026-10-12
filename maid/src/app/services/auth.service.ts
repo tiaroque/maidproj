@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
+import { from, switchMap } from 'rxjs';
 import type {
   AuthenticationResponseJSON,
   PublicKeyCredentialCreationOptionsJSON,
@@ -13,12 +14,14 @@ import {
   UserDetailsObject,
 } from './admin/interfaces/user.interface';
 import { CheckAuth } from './admin/signals/user.feature';
+import { DeviceFingerprintService } from './device-fingerprint.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private http = inject(HttpClient);
+  private deviceFingerprint = inject(DeviceFingerprintService);
 
   public isNavigated = false;
 
@@ -94,12 +97,16 @@ export class AuthService {
 
   createUser(user: UserModel, lang: string, captcha: string) {
     const url = `${environment.baseUrl}/api/users/create-user`;
-    return this.http.post<any>(
-      url,
-      { ...user, lang, captcha },
-      {
-        withCredentials: true,
-      },
+    return from(this.deviceFingerprint.get()).pipe(
+      switchMap((fp) =>
+        this.http.post<any>(
+          url,
+          { ...user, lang, captcha, fp },
+          {
+            withCredentials: true,
+          },
+        ),
+      ),
     );
   }
 

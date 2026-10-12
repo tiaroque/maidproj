@@ -131,6 +131,15 @@ export const routesAdminChildren: Routes = [
         title: 'Clara - Moderation',
       },
 
+      {
+        path: 'moderation/multi-accounts',
+        loadComponent: () =>
+          import('./moderation/multi-accounts/multi-accounts.component').then(
+            (cp) => cp.MultiAccountsComponent,
+          ),
+        title: 'Sugrit - Duplicate accounts',
+      },
+
       // { path: 'chat', redirectTo: 'list' },
     ],
   },

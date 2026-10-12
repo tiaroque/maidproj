@@ -1,0 +1,166 @@
+<div class="ad-page">
+  <div class="ad-head">
+    <div>
+      <p class="ad-eyebrow">{{ "multiAccounts.eyebrow" | translate }}</p>
+      <h1 class="ad-title">{{ "multiAccounts.title" | translate }}</h1>
+      <p class="ad-lead">{{ "multiAccounts.lead" | translate }}</p>
+    </div>
+    <div class="flex shrink-0 gap-2">
+      <a class="ad-btn-ghost" routerLink="..">
+        {{ "multiAccounts.verificationLink" | translate }}
+      </a>
+      <button
+        type="button"
+        class="ad-btn-ghost"
+        [disabled]="loading()"
+        (click)="load()"
+      >
+        {{ "verification.moderation.refresh" | translate }}
+      </button>
+    </div>
+  </div>
+
+  <div class="mb-2 flex flex-wrap gap-2" role="group">
+    @for (value of signals; track value) {
+      <button
+        type="button"
+        [class]="value === activeSignal() ? 'ad-btn' : 'ad-btn-ghost'"
+        [attr.aria-pressed]="value === activeSignal()"
+        [disabled]="loading()"
+        (click)="selectSignal(value)"
+      >
+        {{ "multiAccounts.signal." + value | translate }}
+      </button>
+    }
+  </div>
+  <p class="ad-card-hint mb-5">
+    {{ "multiAccounts.signalHint." + activeSignal() | translate }}
+  </p>
+
+  @if (loading()) {
+    <div class="flex justify-center py-10">
+      <mat-spinner diameter="36"></mat-spinner>
+    </div>
+  } @else if (clusters().length === 0) {
+    <div class="ad-empty">
+      <p class="ad-empty-title">{{ "multiAccounts.emptyTitle" | translate }}</p>
+      <p class="ad-empty-text">{{ "multiAccounts.emptyText" | translate }}</p>
+    </div>
+  } @else {
+    <div class="grid gap-5">
+      @for (cluster of clusters(); track cluster.key) {
+        <section class="ad-card">
+          <div class="ad-card-head">
+            <div>
+              <h2 class="ad-card-title">
+                {{
+                  "multiAccounts.accountsCount"
+                    | translate: { count: activeCount(cluster) }
+                }}
+              </h2>
+              <p class="ad-card-hint">
+                {{ "multiAccounts.lastSeen" | translate }}
+                {{ cluster.lastSeenAt | date: "medium" }}
+              </p>
+            </div>
+            <span class="ad-badge">
+              {{ "multiAccounts.signal." + cluster.signal | translate }}
+            </span>
+          </div>
+
+          <ul class="m-0 grid list-none gap-2 p-0">
+            @for (account of cluster.accounts; track account.uid) {
+              <li
+                class="flex flex-wrap items-center gap-x-3 gap-y-2 rounded-2xl border border-(--ad-card-line) px-4 py-3"
+                [class.opacity-50]="account.deleted"
+              >
+                <div class="min-w-0 flex-1">
+                  <p class="m-0 truncate font-semibold">
+                    {{ account.profileName || account.email }}
+                  </p>
+                  <p class="ad-card-hint m-0 truncate">
+                    {{ account.email }}
+                    @if (account.creationDate) {
+                      · {{ "multiAccounts.created" | translate }}
+                      {{ account.creationDate | date: "mediumDate" }}
+                    }
+                  </p>
+                </div>
+
+                <div class="flex flex-wrap gap-1">
+                  @if (account.userType) {
+                    <span class="ad-badge">{{ account.userType }}</span>
+                  }
+                  @if (account.verified) {
+                    <span class="ad-badge">
+                      {{ "multiAccounts.badge.verified" | translate }}
+                    </span>
+                  }
+                  @if (account.emailVerified === false) {
+                    <span class="ad-badge">
+                      {{ "multiAccounts.badge.emailUnverified" | translate }}
+                    </span>
+                  }
+                  @if (account.deleted) {
+                    <span class="ad-badge">
+                      {{
+                        (account.removedByModerator
+                          ? "multiAccounts.badge.removed"
+                          : "multiAccounts.badge.deleted"
+                        ) | translate
+                      }}
+                    </span>
+                  }
+                </div>
+
+                @if (!account.deleted) {
+                  <div class="flex gap-2">
+                    <a
+                      class="ad-btn-ghost"
+                      target="_blank"
+                      [routerLink]="['../../profile-view', account.uid]"
+                    >
+                      {{ "verification.moderation.openProfile" | translate }}
+                    </a>
+                    <button
+                      type="button"
+                      [class]="confirmingUid() === account.uid ? 'ad-btn' : 'ad-btn-ghost'"
+                      [disabled]="busyKey() === cluster.key"
+                      (click)="remove(cluster, account)"
+                    >
+                      {{
+                        (confirmingUid() === account.uid
+                          ? "multiAccounts.confirmRemove"
+                          : "multiAccounts.remove"
+                        ) | translate
+                      }}
+                    </button>
+                  </div>
+                }
+              </li>
+            }
+          </ul>
+
+          <div class="mt-4 flex flex-wrap items-center gap-2">
+            <input
+              type="text"
+              maxlength="200"
+              class="min-w-0 flex-1 rounded-full border border-(--ad-card-line) bg-transparent px-4 py-2 text-sm"
+              [placeholder]="'multiAccounts.reasonPlaceholder' | translate"
+              [value]="reasons()[cluster.key] ?? ''"
+              (input)="setReason(cluster.key, $event)"
+            />
+            <button
+              type="button"
+              class="ad-btn-ghost"
+              [disabled]="busyKey() === cluster.key"
+              (click)="dismiss(cluster)"
+            >
+              {{ "multiAccounts.dismiss" | translate }}
+            </button>
+          </div>
+        </section>
+      }
+    </div>
+  }
+</div>

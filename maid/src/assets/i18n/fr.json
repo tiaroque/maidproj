@@ -601,5 +601,41 @@
     "cleanerHintOther": "Pas encore d'annonces.",
     "clientHintOwn": "Publiez les tâches à effectuer pour que les aides ménagères vous trouvent.",
     "clientHintOther": "Pas encore de demandes."
+  },
+  "multiAccounts": {
+    "eyebrow": "Modération",
+    "title": "Comptes en double",
+    "lead": "Comptes créés ou utilisés depuis le même navigateur ou appareil. Supprimez les comptes en trop, ou ignorez le groupe s'ils appartiennent à des personnes différentes.",
+    "verificationLink": "File de vérification",
+    "signal": {
+      "device": "Même navigateur",
+      "fingerprint": "Appareil similaire"
+    },
+    "signalHint": {
+      "device": "Ces comptes ont été utilisés dans le même navigateur. C'est un indice fort qu'ils appartiennent à une seule personne.",
+      "fingerprint": "Ces comptes ont été utilisés sur des appareils aux caractéristiques identiques. Les téléphones du même modèle se ressemblent souvent, vérifiez donc les profils avant de supprimer quoi que ce soit."
+    },
+    "emptyTitle": "Rien à examiner",
+    "emptyText": "Les groupes de comptes liés apparaîtront ici.",
+    "accountsCount": "{{count}} comptes actifs",
+    "lastSeen": "Vu pour la dernière fois",
+    "created": "créé",
+    "badge": {
+      "verified": "Vérifié",
+      "emailUnverified": "Email non vérifié",
+      "removed": "Supprimé",
+      "deleted": "Supprimé par l'utilisateur"
+    },
+    "remove": "Supprimer",
+    "confirmRemove": "Confirmer la suppression",
+    "reasonPlaceholder": "Motif de la suppression, conservé pour le suivi",
+    "reasonRequired": "Indiquez un motif avant de supprimer un compte.",
+    "dismiss": "Pas la même personne",
+    "removed": "Compte supprimé.",
+    "dismissed": "Groupe ignoré. Il reviendra si un autre compte s'y ajoute.",
+    "errors": {
+      "generic": "Une erreur s'est produite. Veuillez réessayer.",
+      "moderator": "Les comptes de modérateurs ne peuvent pas être supprimés."
+    }
   }
 }

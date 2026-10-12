@@ -12,6 +12,7 @@ import contactRouter from "./contact.routes";
 import locationRouter from "./locations/location.routes";
 import verificationRouter from "./verification.routes";
 import mediaRouter from "./media.routes";
+import moderationRouter from "./moderation.routes";
 
 const routes = Router();
 
@@ -25,6 +26,8 @@ routes.use("/api/media", mediaRouter);
 routes.use("/api/contact", contactRouter);
 
 routes.use("/api/verification", verificationRouter);
+
+routes.use("/api/moderation", moderationRouter);
 
 // Dating
 routes.use("/api/assets", assetsRouter);

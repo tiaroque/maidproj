@@ -12,6 +12,7 @@ import { auth } from "../middleware/auth";
 
 import {
   blockUser,
+  canonicalEmailTaken,
   createSignup,
   createUser,
   getBlockedUsers,
@@ -59,6 +60,7 @@ import {
   loginCaptchaRequired,
   recordLoginFailure,
 } from "../services/login-attempts.service";
+import { readFingerprint, recordDevice } from "../services/device-tracking.service";
 import passkeyRouter from "./passkey.routes";
 import { deleteAllPasskeys } from "../models/passkey";
 import { refreshPresenceBetween } from "../sockets/socketio";
@@ -417,6 +419,15 @@ usersRouter.post(
   }
 );
 
+usersRouter.post("/device", auth, async (req, res, next) => {
+  try {
+    await recordDevice(req, req.uid, "session", readFingerprint(req.body?.fp));
+    res.status(204).send();
+  } catch (error) {
+    next(error);
+  }
+});
+
 usersRouter.get("/me", auth, async (req, res, next) => {
   try {
     //////// to remove in production
@@ -477,6 +488,9 @@ usersRouter.post("/create-user", async (req, res, next) => {
       }
       return res.status(409).send({ error: "EMAIL_EXISTS" });
     }
+    if (await canonicalEmailTaken(email)) {
+      return res.status(409).send({ error: "EMAIL_EXISTS" });
+    }
 
     const passwordHashed = hashSync(password, 12);
 
@@ -494,6 +508,12 @@ usersRouter.post("/create-user", async (req, res, next) => {
     };
 
     await createUser(userObj);
+
+    try {
+      await recordDevice(req, uid, "signup", readFingerprint(user.fp));
+    } catch (error) {
+      console.error("Failed to record signup device", error);
+    }
 
     try {
       await sendVerificationEmail(email, name || "", lang);

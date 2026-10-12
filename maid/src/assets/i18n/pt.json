@@ -601,5 +601,41 @@
     "cleanerHintOther": "Ainda sem anúncios.",
     "clientHintOwn": "Publique os serviços de que precisa para que os profissionais de limpeza o encontrem.",
     "clientHintOther": "Ainda sem pedidos de serviço."
+  },
+  "multiAccounts": {
+    "eyebrow": "Moderação",
+    "title": "Contas duplicadas",
+    "lead": "Contas que se registaram ou entraram a partir do mesmo navegador ou dispositivo. Remova as contas a mais, ou descarte o grupo se pertencerem a pessoas diferentes.",
+    "verificationLink": "Fila de verificação",
+    "signal": {
+      "device": "Mesmo navegador",
+      "fingerprint": "Dispositivo semelhante"
+    },
+    "signalHint": {
+      "device": "Estas contas foram usadas no mesmo navegador. É um forte indício de que pertencem à mesma pessoa.",
+      "fingerprint": "Estas contas foram usadas em dispositivos com características idênticas. Telemóveis do mesmo modelo coincidem muitas vezes, por isso verifique os perfis antes de remover alguma."
+    },
+    "emptyTitle": "Nada para rever",
+    "emptyText": "Os grupos de contas ligadas aparecem aqui.",
+    "accountsCount": "{{count}} contas ativas",
+    "lastSeen": "Visto pela última vez",
+    "created": "criada",
+    "badge": {
+      "verified": "Verificada",
+      "emailUnverified": "Email por verificar",
+      "removed": "Removida",
+      "deleted": "Apagada pelo utilizador"
+    },
+    "remove": "Remover",
+    "confirmRemove": "Confirmar remoção",
+    "reasonPlaceholder": "Motivo da remoção, guardado para registo",
+    "reasonRequired": "Indique um motivo antes de remover uma conta.",
+    "dismiss": "Não é a mesma pessoa",
+    "removed": "Conta removida.",
+    "dismissed": "Grupo descartado. Volta a aparecer se outra conta se juntar.",
+    "errors": {
+      "generic": "Algo correu mal. Tente de novo.",
+      "moderator": "Não é possível remover contas de moderadores."
+    }
   }
 }

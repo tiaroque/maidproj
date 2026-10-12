@@ -601,5 +601,41 @@
     "cleanerHintOther": "Nog geen aankondigingen.",
     "clientHintOwn": "Plaats de klussen die je gedaan wilt hebben, zodat schoonmakers je kunnen vinden.",
     "clientHintOther": "Nog geen klusaanvragen."
+  },
+  "multiAccounts": {
+    "eyebrow": "Moderatie",
+    "title": "Dubbele accounts",
+    "lead": "Accounts die vanuit dezelfde browser of hetzelfde apparaat zijn aangemaakt of gebruikt. Verwijder de extra accounts, of negeer de groep als ze van verschillende mensen zijn.",
+    "verificationLink": "Verificatiewachtrij",
+    "signal": {
+      "device": "Dezelfde browser",
+      "fingerprint": "Vergelijkbaar apparaat"
+    },
+    "signalHint": {
+      "device": "Deze accounts zijn in dezelfde browser gebruikt. Dat wijst sterk op één eigenaar.",
+      "fingerprint": "Deze accounts zijn gebruikt op apparaten met identieke kenmerken. Telefoons van hetzelfde model komen vaak overeen, dus controleer de profielen voordat je iets verwijdert."
+    },
+    "emptyTitle": "Niets te beoordelen",
+    "emptyText": "Groepen gekoppelde accounts verschijnen hier.",
+    "accountsCount": "{{count}} actieve accounts",
+    "lastSeen": "Laatst gezien",
+    "created": "aangemaakt",
+    "badge": {
+      "verified": "Geverifieerd",
+      "emailUnverified": "E-mail niet bevestigd",
+      "removed": "Verwijderd",
+      "deleted": "Verwijderd door gebruiker"
+    },
+    "remove": "Verwijderen",
+    "confirmRemove": "Verwijderen bevestigen",
+    "reasonPlaceholder": "Reden van verwijdering, wordt bewaard",
+    "reasonRequired": "Geef een reden op voordat je een account verwijdert.",
+    "dismiss": "Niet dezelfde persoon",
+    "removed": "Account verwijderd.",
+    "dismissed": "Groep genegeerd. Hij komt terug als er een ander account bijkomt.",
+    "errors": {
+      "generic": "Er ging iets mis. Probeer het opnieuw.",
+      "moderator": "Accounts van moderators kunnen niet worden verwijderd."
+    }
   }
 }

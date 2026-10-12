@@ -11,6 +11,10 @@ import cookieParser from "cookie-parser";
 import config from "./endpoints.config";
 import { sessionCookieName } from "./auth/session";
 import { migrateBlockedToUids } from "./services/migrate-blocked-uids";
+import {
+  backfillCanonicalEmails,
+  ensureDeviceId,
+} from "./services/device-tracking.service";
 // import { wipeProductionUsers } from "./services/wipe-users";
 // // // import Debug from "debug";
 // // // const debug = Debug("express");
@@ -53,6 +57,7 @@ app.use(
 );
 
 app.use(cookieParser());
+app.use(ensureDeviceId);
 
 const port = Number(process.env.PORT ?? process.env.Port ?? 3011);
 
@@ -115,6 +120,13 @@ const start = async () => {
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
     console.error(`Blocked list migration failed: ${message}`);
+  }
+
+  try {
+    await backfillCanonicalEmails();
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    console.error(`Canonical email backfill failed: ${message}`);
   }
 
   const redisUrl = process.env.REDIS_HOST;

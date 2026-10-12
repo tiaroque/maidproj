@@ -601,5 +601,41 @@
     "cleanerHintOther": "Ancora nessun annuncio.",
     "clientHintOwn": "Pubblica i lavori di cui hai bisogno così gli addetti alle pulizie possono trovarti.",
     "clientHintOther": "Ancora nessuna richiesta di lavoro."
+  },
+  "multiAccounts": {
+    "eyebrow": "Moderazione",
+    "title": "Account duplicati",
+    "lead": "Account creati o usati dallo stesso browser o dispositivo. Rimuovi gli account in più, oppure ignora il gruppo se appartengono a persone diverse.",
+    "verificationLink": "Coda di verifica",
+    "signal": {
+      "device": "Stesso browser",
+      "fingerprint": "Dispositivo simile"
+    },
+    "signalHint": {
+      "device": "Questi account sono stati usati nello stesso browser. È un forte indizio che appartengano a una sola persona.",
+      "fingerprint": "Questi account sono stati usati su dispositivi con caratteristiche identiche. I telefoni dello stesso modello spesso coincidono, quindi controlla i profili prima di rimuovere qualcosa."
+    },
+    "emptyTitle": "Niente da rivedere",
+    "emptyText": "I gruppi di account collegati appariranno qui.",
+    "accountsCount": "{{count}} account attivi",
+    "lastSeen": "Visto per ultimo",
+    "created": "creato",
+    "badge": {
+      "verified": "Verificato",
+      "emailUnverified": "Email non verificata",
+      "removed": "Rimosso",
+      "deleted": "Eliminato dall'utente"
+    },
+    "remove": "Rimuovi",
+    "confirmRemove": "Conferma rimozione",
+    "reasonPlaceholder": "Motivo della rimozione, conservato come registro",
+    "reasonRequired": "Aggiungi un motivo prima di rimuovere un account.",
+    "dismiss": "Non è la stessa persona",
+    "removed": "Account rimosso.",
+    "dismissed": "Gruppo ignorato. Ricomparirà se un altro account si aggiunge.",
+    "errors": {
+      "generic": "Qualcosa è andato storto. Riprova.",
+      "moderator": "Gli account dei moderatori non possono essere rimossi."
+    }
   }
 }

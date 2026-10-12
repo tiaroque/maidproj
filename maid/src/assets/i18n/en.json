@@ -601,5 +601,41 @@
     "cleanerHintOther": "No announcements yet.",
     "clientHintOwn": "Post the jobs you need done so cleaners can find you.",
     "clientHintOther": "No job requests yet."
+  },
+  "multiAccounts": {
+    "eyebrow": "Moderation",
+    "title": "Duplicate accounts",
+    "lead": "Accounts that signed up or signed in from the same browser or device. Remove the extra accounts, or dismiss the group if they belong to different people.",
+    "verificationLink": "Verification queue",
+    "signal": {
+      "device": "Same browser",
+      "fingerprint": "Similar device"
+    },
+    "signalHint": {
+      "device": "These accounts were used in the same browser. This is strong evidence that one person owns them.",
+      "fingerprint": "These accounts were used on devices with identical characteristics. Phones of the same model often match, so check the profiles before removing anything."
+    },
+    "emptyTitle": "Nothing to review",
+    "emptyText": "Groups of linked accounts will appear here.",
+    "accountsCount": "{{count}} active accounts",
+    "lastSeen": "Last seen",
+    "created": "created",
+    "badge": {
+      "verified": "Verified",
+      "emailUnverified": "Email not verified",
+      "removed": "Removed",
+      "deleted": "Deleted by user"
+    },
+    "remove": "Remove",
+    "confirmRemove": "Confirm removal",
+    "reasonPlaceholder": "Reason for removal, kept for the record",
+    "reasonRequired": "Add a reason before removing an account.",
+    "dismiss": "Not the same person",
+    "removed": "Account removed.",
+    "dismissed": "Group dismissed. It comes back if another account joins it.",
+    "errors": {
+      "generic": "Something went wrong. Please try again.",
+      "moderator": "Moderator accounts can't be removed."
+    }
   }
 }

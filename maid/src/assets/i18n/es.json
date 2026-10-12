@@ -601,5 +601,41 @@
     "cleanerHintOther": "Aún no hay anuncios.",
     "clientHintOwn": "Publica los trabajos que necesitas para que los profesionales te encuentren.",
     "clientHintOther": "Aún no hay solicitudes."
+  },
+  "multiAccounts": {
+    "eyebrow": "Moderación",
+    "title": "Cuentas duplicadas",
+    "lead": "Cuentas que se registraron o iniciaron sesión desde el mismo navegador o dispositivo. Elimina las cuentas sobrantes o descarta el grupo si pertenecen a personas distintas.",
+    "verificationLink": "Cola de verificación",
+    "signal": {
+      "device": "Mismo navegador",
+      "fingerprint": "Dispositivo similar"
+    },
+    "signalHint": {
+      "device": "Estas cuentas se usaron en el mismo navegador. Es un indicio fuerte de que pertenecen a una sola persona.",
+      "fingerprint": "Estas cuentas se usaron en dispositivos con características idénticas. Los móviles del mismo modelo suelen coincidir, así que revisa los perfiles antes de eliminar nada."
+    },
+    "emptyTitle": "Nada que revisar",
+    "emptyText": "Los grupos de cuentas vinculadas aparecerán aquí.",
+    "accountsCount": "{{count}} cuentas activas",
+    "lastSeen": "Visto por última vez",
+    "created": "creada",
+    "badge": {
+      "verified": "Verificada",
+      "emailUnverified": "Email sin verificar",
+      "removed": "Eliminada",
+      "deleted": "Borrada por el usuario"
+    },
+    "remove": "Eliminar",
+    "confirmRemove": "Confirmar eliminación",
+    "reasonPlaceholder": "Motivo de la eliminación, se guarda como registro",
+    "reasonRequired": "Añade un motivo antes de eliminar una cuenta.",
+    "dismiss": "No es la misma persona",
+    "removed": "Cuenta eliminada.",
+    "dismissed": "Grupo descartado. Volverá si otra cuenta se une a él.",
+    "errors": {
+      "generic": "Algo salió mal. Inténtalo de nuevo.",
+      "moderator": "No se pueden eliminar cuentas de moderadores."
+    }
   }
 }

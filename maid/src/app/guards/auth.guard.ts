@@ -7,6 +7,7 @@ import {
 } from '@angular/router';
 import { LanguageService } from '../services/shared/language-service.service';
 import { AuthService } from '../services/auth.service';
+import { DeviceFingerprintService } from '../services/device-fingerprint.service';
 import { catchError, map, of } from 'rxjs';
 
 export const canActivateUser2: CanActivateFn = (
@@ -16,6 +17,7 @@ export const canActivateUser2: CanActivateFn = (
   const authService = inject(AuthService);
   const router = inject(Router);
   const languageService = inject(LanguageService);
+  const deviceFingerprint = inject(DeviceFingerprintService);
   return authService.checkAuth().pipe(
     map((value) => {
       console.log('auth Guard checkAuth ', value);
@@ -31,6 +33,7 @@ export const canActivateUser2: CanActivateFn = (
         ]);
       }
 
+      void deviceFingerprint.report();
       return true;
     }),
     catchError(() => {

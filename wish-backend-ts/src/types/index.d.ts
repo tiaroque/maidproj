@@ -6,6 +6,7 @@ declare global {
       uid: string;
       name: string;
       email: string;
+      deviceId?: string;
       user: any;
       userObject: any;
       userCred?: {

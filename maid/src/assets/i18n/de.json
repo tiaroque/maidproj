@@ -601,5 +601,41 @@
     "cleanerHintOther": "Noch keine Angebote.",
     "clientHintOwn": "Veröffentlichen Sie die gewünschten Arbeiten, damit Reinigungskräfte Sie finden.",
     "clientHintOther": "Noch keine Aufträge."
+  },
+  "multiAccounts": {
+    "eyebrow": "Moderation",
+    "title": "Doppelte Konten",
+    "lead": "Konten, die im selben Browser oder auf demselben Gerät erstellt oder genutzt wurden. Entferne die überzähligen Konten oder verwirf die Gruppe, wenn sie verschiedenen Personen gehören.",
+    "verificationLink": "Verifizierungswarteschlange",
+    "signal": {
+      "device": "Gleicher Browser",
+      "fingerprint": "Ähnliches Gerät"
+    },
+    "signalHint": {
+      "device": "Diese Konten wurden im selben Browser verwendet. Das spricht stark dafür, dass sie einer Person gehören.",
+      "fingerprint": "Diese Konten wurden auf Geräten mit identischen Merkmalen verwendet. Handys desselben Modells stimmen oft überein, prüfe also die Profile, bevor du etwas entfernst."
+    },
+    "emptyTitle": "Nichts zu prüfen",
+    "emptyText": "Gruppen verknüpfter Konten erscheinen hier.",
+    "accountsCount": "{{count}} aktive Konten",
+    "lastSeen": "Zuletzt gesehen",
+    "created": "erstellt",
+    "badge": {
+      "verified": "Verifiziert",
+      "emailUnverified": "E-Mail nicht bestätigt",
+      "removed": "Entfernt",
+      "deleted": "Vom Nutzer gelöscht"
+    },
+    "remove": "Entfernen",
+    "confirmRemove": "Entfernen bestätigen",
+    "reasonPlaceholder": "Grund für die Entfernung, wird protokolliert",
+    "reasonRequired": "Gib einen Grund an, bevor du ein Konto entfernst.",
+    "dismiss": "Nicht dieselbe Person",
+    "removed": "Konto entfernt.",
+    "dismissed": "Gruppe verworfen. Sie erscheint wieder, wenn ein weiteres Konto hinzukommt.",
+    "errors": {
+      "generic": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+      "moderator": "Moderatorkonten können nicht entfernt werden."
+    }
   }
 }
