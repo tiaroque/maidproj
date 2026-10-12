@@ -1,4 +1,5 @@
 import { getDb } from "../../databases/db/mongo";
+import { otherUserProjection } from "../user";
 import { withLikedByMe } from "./likes";
 import { withVisitedByMe } from "./visits";
 
@@ -75,17 +76,7 @@ const relatedProfiles = (
           visitedUid: 0,
           createdAt: 0,
           lastVisitedAt: 0,
-          "user.password": 0,
-          "user.email": 0,
-          "user.emailVerifyToken": 0,
-          "user.emailVerifyExpires": 0,
-          "user.phoneNumber": 0,
-          "user.lastname": 0,
-          "user.birthDate": 0,
-          "user.birthDateStr": 0,
-          "user.claims": 0,
-          "user.blocked": 0,
-          "user.additionalUserInfo": 0,
+          ...otherUserProjection,
         },
       },
     ])

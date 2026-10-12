@@ -371,15 +371,7 @@ export const getBlockedUsers = async (uid: string) => {
           },
           pipeline: [
             { $match: { $expr: { $eq: ["$uid", "$$blocked"] } } },
-            {
-              $project: {
-                _id: 0,
-                additionalUserInfo: 0,
-                email: 0,
-                offers: 0,
-                claims: 0,
-              },
-            },
+            { $project: { _id: 0, ...publicRootProjection, offers: 0 } },
             {
               $set: {
                 profileImage: {

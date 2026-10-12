@@ -5,6 +5,7 @@ import {
   partialTextPatterns,
 } from "./pipeline-queries-helper";
 import { currencyForCountry, UserType } from "./service-catalog";
+import { publicRootProjection } from "../user";
 
 // // // // // // //  POST // // // // // // // // // // // // //
 export const createDetails = async (uid: string, profile: any) => {
@@ -195,15 +196,7 @@ export const latestOffers = async (userType: string): Promise<any> => {
           },
         },
       },
-      {
-        $project: {
-          email: 0,
-          claims: 0,
-          additionalUserInfo: 0,
-          phoneNumber: 0,
-          offers: 0,
-        },
-      },
+      { $project: { ...publicRootProjection, offers: 0 } },
       { $sort: { "offer.date": -1 } },
       { $limit: 5 },
     ])
@@ -256,15 +249,7 @@ export const getGroupedOffers = async (
           },
         },
       },
-      {
-        $project: {
-          email: 0,
-          claims: 0,
-          additionalUserInfo: 0,
-          phoneNumber: 0,
-          offers: 0,
-        },
-      },
+      { $project: { ...publicRootProjection, offers: 0 } },
       { $limit: 5 },
     ])
     .toArray();
