@@ -2,6 +2,7 @@ import {
   afterNextRender,
   ChangeDetectionStrategy,
   Component,
+  computed,
   inject,
   OnInit,
   signal,
@@ -32,6 +33,7 @@ import { ChatSocketsService } from '../../../services/admin/chat-sockets.service
 import { LanguageService } from '../../../services/shared/language-service.service';
 import { LanguageLinksComponent } from '../../../shared/language-links/language-links.component';
 import { LanguageSelectorComponent } from '../../../shared/language-selector/language-selector.component';
+import { VerificationService } from '../../../services/verification.service';
 
 @Component({
   selector: 'app-header-admin',
@@ -66,6 +68,10 @@ export class HeaderAdminComponent implements OnInit {
   authService = inject(AuthService);
   private chatSocketsService = inject(ChatSocketsService);
   menusService = inject(MenusService);
+  private verificationService = inject(VerificationService);
+  isModerator = computed(
+    () => this.verificationService.current()?.isModerator ?? false,
+  );
   tabSelectedIndex: number = 0;
   isDark = signal(false);
   open = signal(false);

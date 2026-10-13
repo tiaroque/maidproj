@@ -214,6 +214,13 @@
           <span>{{ "header.viewProfile" | translate }}</span>
         </div>
 
+        @if (isModerator()) {
+          <div mat-menu-item [routerLink]="['/', lang(), 'admin', 'moderation']">
+            <mat-icon>shield</mat-icon>
+            <span>{{ "verification.moderationLink" | translate }}</span>
+          </div>
+        }
+
         <div class="app-menu-divider" role="separator"></div>
         <div mat-menu-item (click)="logout()">
           <svg
@@ -339,10 +346,23 @@
         <span>{{ "header.viewProfile" | translate }}</span>
       </button>
 
+      @if (isModerator()) {
+        <button
+          type="button"
+          class="menu-item menu-action"
+          style="--i: 4"
+          (click)="closeMobileMenu()"
+          [routerLink]="['/', lang(), 'admin', 'moderation']"
+        >
+          <mat-icon aria-hidden="true">shield</mat-icon>
+          <span>{{ "verification.moderationLink" | translate }}</span>
+        </button>
+      }
+
       <button
         type="button"
         class="menu-item menu-action"
-        style="--i: 4"
+        style="--i: 5"
         (click)="logout()"
       >
         <svg
@@ -360,7 +380,7 @@
       </button>
     </div>
 
-    <div class="menu-item mt-auto" style="--i: 5">
+    <div class="menu-item mt-auto" style="--i: 6">
       <hr class="mb-4 mx-4 border-t border-0 border-surface" />
       <div class="px-4 pb-3">
         <app-language-links (clickedLinkEvent)="clickedLinkEvent($event)" />

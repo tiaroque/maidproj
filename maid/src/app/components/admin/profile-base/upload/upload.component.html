@@ -157,11 +157,6 @@
           </div>
         </div>
         <div class="flex gap-2 shrink-0 self-start sm:self-auto">
-          @if (v.isModerator) {
-            <a class="ad-btn-ghost" routerLink="../moderation">
-              {{ "verification.moderationLink" | translate }}
-            </a>
-          }
           @if (!v.verified && v.status !== "pending" && v.hasProfilePhoto) {
             <button type="button" class="ad-btn" (click)="openVerify()">
               {{

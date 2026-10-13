@@ -12,7 +12,6 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { RouterLink } from '@angular/router';
 import { UploadService } from '../../../../services/admin/upload.service';
 import { UserService } from '../../../../services/user.service';
 import { UtilsService } from '../../../../services/utils.service';
@@ -66,7 +65,6 @@ import {
     TranslatePipe,
     ProfileAvatarComponent,
     S3UrlPipe,
-    RouterLink,
   ],
 })
 export class UploadComponent implements OnInit {
