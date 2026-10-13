@@ -61,6 +61,7 @@ import {
   recordLoginFailure,
 } from "../services/login-attempts.service";
 import { readFingerprint, recordDevice } from "../services/device-tracking.service";
+import { flagLinks } from "../services/link-detection.service";
 import passkeyRouter from "./passkey.routes";
 import { deleteAllPasskeys } from "../models/passkey";
 import { refreshPresenceBetween } from "../sockets/socketio";
@@ -406,6 +407,7 @@ usersRouter.post(
         user: userType,
       },
     });
+    flagLinks(req.uid, "profile", { profileName });
 
     // if (result.insertedCount !== 1) {
     //     return res.status(400).send(null);

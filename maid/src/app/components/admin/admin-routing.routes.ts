@@ -140,6 +140,15 @@ export const routesAdminChildren: Routes = [
         title: 'Sugrit - Duplicate accounts',
       },
 
+      {
+        path: 'moderation/links',
+        loadComponent: () =>
+          import('./moderation/link-flags/link-flags.component').then(
+            (cp) => cp.LinkFlagsComponent,
+          ),
+        title: 'Sugrit - Shared links',
+      },
+
       // { path: 'chat', redirectTo: 'list' },
     ],
   },

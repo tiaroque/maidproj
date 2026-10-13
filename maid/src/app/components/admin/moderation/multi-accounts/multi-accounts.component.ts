@@ -18,6 +18,19 @@ import {
 } from '../../../../services/multi-account.service';
 import { UtilsService } from '../../../../services/utils.service';
 
+// Mirrors the backend rule in device-tracking.service.ts.
+const hasReturningAccount = (accounts: ClusterAccount[]) => {
+  const removals = accounts
+    .filter((account) => account.removedByModerator && account.deletedAt)
+    .map((account) => Date.parse(account.deletedAt!));
+  return accounts.some(
+    (account) =>
+      !account.deleted &&
+      !!account.creationDate &&
+      removals.some((removedAt) => Date.parse(account.creationDate!) > removedAt),
+  );
+};
+
 @Component({
   selector: 'app-multi-accounts',
   templateUrl: './multi-accounts.component.html',
@@ -131,17 +144,20 @@ export class MultiAccountsComponent implements OnInit {
   // Removing an account can leave one active account in a group, which
   // resolves it, so every group that account belonged to drops off the list.
   private markRemoved(uid: string) {
+    const removedAt = new Date().toISOString();
     this.clusters.update((clusters) =>
       clusters
-        .map((cluster) => ({
-          ...cluster,
-          accounts: cluster.accounts.map((account) =>
+        .map((cluster) => {
+          const accounts = cluster.accounts.map((account) =>
             account.uid === uid
-              ? { ...account, deleted: true, removedByModerator: true }
+              ? { ...account, deleted: true, removedByModerator: true, deletedAt: removedAt }
               : account,
-          ),
-        }))
-        .filter((cluster) => this.activeCount(cluster) >= 2),
+          );
+          return { ...cluster, accounts, returning: hasReturningAccount(accounts) };
+        })
+        .filter(
+          (cluster) => cluster.returning || this.activeCount(cluster) >= 2,
+        ),
     );
   }
 

@@ -14,6 +14,7 @@ export interface ClusterAccount {
   emailVerified?: boolean;
   deleted?: boolean;
   removedByModerator?: boolean;
+  deletedAt?: string;
   creationDate?: string;
 }
 
@@ -21,6 +22,8 @@ export interface MultiAccountCluster {
   signal: ClusterSignal;
   key: string;
   lastSeenAt: string;
+  /** An active account was created after a moderator removed one in this group. */
+  returning: boolean;
   accounts: ClusterAccount[];
 }
 

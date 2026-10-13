@@ -618,6 +618,8 @@
     "emptyTitle": "Niente da rivedere",
     "emptyText": "I gruppi di account collegati appariranno qui.",
     "accountsCount": "{{count}} account attivi",
+    "returningTitle": "Un utente rimosso potrebbe essere tornato",
+    "returningHint": "Un account di questo gruppo è stato creato dopo che un moderatore ha rimosso un altro account sullo stesso browser o dispositivo.",
     "lastSeen": "Visto per ultimo",
     "created": "creato",
     "badge": {
@@ -633,6 +635,41 @@
     "dismiss": "Non è la stessa persona",
     "removed": "Account rimosso.",
     "dismissed": "Gruppo ignorato. Ricomparirà se un altro account si aggiunge.",
+    "errors": {
+      "generic": "Qualcosa è andato storto. Riprova.",
+      "moderator": "Gli account dei moderatori non possono essere rimossi."
+    }
+  },
+  "linkFlags": {
+    "eyebrow": "Moderazione",
+    "title": "Link condivisi",
+    "lead": "Utenti che hanno inserito link, indirizzi email o indirizzi camuffati nel profilo o nei messaggi della chat. Rimuovi l'account, oppure consentilo se il link è innocuo.",
+    "emptyTitle": "Niente da controllare",
+    "emptyText": "Gli utenti che condividono link appariranno qui.",
+    "source": {
+      "profile": "Profilo",
+      "chat": "Chat"
+    },
+    "field": {
+      "profileName": "Nome del profilo",
+      "nationality": "Nazionalità",
+      "qualifications": "Titoli di studio",
+      "profession": "Professione",
+      "country": "Paese",
+      "location": "Località",
+      "locationName": "Località",
+      "eyes": "Occhi",
+      "languages": "Lingue",
+      "description": "Descrizione",
+      "sportHobbies": "Sport e hobby",
+      "offer": "Offerta",
+      "message": "Messaggio"
+    },
+    "count": "{{count}} volte",
+    "dismiss": "Consenti",
+    "reasonRequired": "Aggiungi un motivo prima di rimuovere un account.",
+    "removed": "Account rimosso.",
+    "dismissed": "Segnalazioni cancellate. L'utente verrà segnalato di nuovo se condivide un altro link.",
     "errors": {
       "generic": "Qualcosa è andato storto. Riprova.",
       "moderator": "Gli account dei moderatori non possono essere rimossi."

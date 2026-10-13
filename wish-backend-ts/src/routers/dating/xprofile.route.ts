@@ -19,6 +19,7 @@ import {
   offerRules,
   workRules,
 } from "../../validators/xprofile.validators";
+import { flagLinks } from "../../services/link-detection.service";
 
 const router = Router();
 
@@ -48,6 +49,7 @@ router.post(
       const details = matchedData(req, { locations: ["body"] });
 
       await createDetails(req.uid, details);
+      flagLinks(req.uid, "profile", details);
 
       return res.status(200).send({ valid: true });
     } catch (error) {
@@ -110,6 +112,7 @@ router.post(
       });
 
       await createAbout(req.uid, { languages, description });
+      flagLinks(req.uid, "profile", { languages, description });
 
       return res.status(200).send({ valid: true });
     } catch (error) {
@@ -129,6 +132,7 @@ router.post(
       const { offer } = matchedData(req, { locations: ["body"] });
 
       await createOffer(req.uid, offer);
+      flagLinks(req.uid, "profile", { offer });
 
       return res.status(200).send({ valid: true });
     } catch (error) {

@@ -618,6 +618,8 @@
     "emptyTitle": "Nada para rever",
     "emptyText": "Os grupos de contas ligadas aparecem aqui.",
     "accountsCount": "{{count}} contas ativas",
+    "returningTitle": "Um utilizador removido pode ter voltado",
+    "returningHint": "Uma conta deste grupo foi criada depois de um moderador remover outra conta no mesmo navegador ou dispositivo.",
     "lastSeen": "Visto pela última vez",
     "created": "criada",
     "badge": {
@@ -633,6 +635,41 @@
     "dismiss": "Não é a mesma pessoa",
     "removed": "Conta removida.",
     "dismissed": "Grupo descartado. Volta a aparecer se outra conta se juntar.",
+    "errors": {
+      "generic": "Algo correu mal. Tente de novo.",
+      "moderator": "Não é possível remover contas de moderadores."
+    }
+  },
+  "linkFlags": {
+    "eyebrow": "Moderação",
+    "title": "Links partilhados",
+    "lead": "Utilizadores que colocaram links, endereços de email ou endereços disfarçados no perfil ou em mensagens de chat. Remova a conta, ou permita-a se o link for inofensivo.",
+    "emptyTitle": "Nada para rever",
+    "emptyText": "Os utilizadores que partilham links aparecem aqui.",
+    "source": {
+      "profile": "Perfil",
+      "chat": "Chat"
+    },
+    "field": {
+      "profileName": "Nome de perfil",
+      "nationality": "Nacionalidade",
+      "qualifications": "Habilitações",
+      "profession": "Profissão",
+      "country": "País",
+      "location": "Localização",
+      "locationName": "Localização",
+      "eyes": "Olhos",
+      "languages": "Idiomas",
+      "description": "Descrição",
+      "sportHobbies": "Desporto e passatempos",
+      "offer": "Oferta",
+      "message": "Mensagem"
+    },
+    "count": "{{count}} vezes",
+    "dismiss": "Permitir",
+    "reasonRequired": "Indique um motivo antes de remover uma conta.",
+    "removed": "Conta removida.",
+    "dismissed": "Alertas limpos. O utilizador volta a ser assinalado se partilhar outro link.",
     "errors": {
       "generic": "Algo correu mal. Tente de novo.",
       "moderator": "Não é possível remover contas de moderadores."

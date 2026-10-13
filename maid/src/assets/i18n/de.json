@@ -618,6 +618,8 @@
     "emptyTitle": "Nichts zu prüfen",
     "emptyText": "Gruppen verknüpfter Konten erscheinen hier.",
     "accountsCount": "{{count}} aktive Konten",
+    "returningTitle": "Ein entfernter Nutzer ist vielleicht zurück",
+    "returningHint": "Ein Konto in dieser Gruppe wurde erstellt, nachdem ein Moderator ein anderes Konto im selben Browser oder auf demselben Gerät entfernt hatte.",
     "lastSeen": "Zuletzt gesehen",
     "created": "erstellt",
     "badge": {
@@ -633,6 +635,41 @@
     "dismiss": "Nicht dieselbe Person",
     "removed": "Konto entfernt.",
     "dismissed": "Gruppe verworfen. Sie erscheint wieder, wenn ein weiteres Konto hinzukommt.",
+    "errors": {
+      "generic": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+      "moderator": "Moderatorkonten können nicht entfernt werden."
+    }
+  },
+  "linkFlags": {
+    "eyebrow": "Moderation",
+    "title": "Geteilte Links",
+    "lead": "Nutzer, die Links, E-Mail-Adressen oder verschleierte Adressen in ihr Profil oder in Chatnachrichten geschrieben haben. Entferne das Konto oder erlaube es, wenn der Link harmlos ist.",
+    "emptyTitle": "Nichts zu prüfen",
+    "emptyText": "Nutzer, die Links teilen, erscheinen hier.",
+    "source": {
+      "profile": "Profil",
+      "chat": "Chat"
+    },
+    "field": {
+      "profileName": "Profilname",
+      "nationality": "Nationalität",
+      "qualifications": "Abschlüsse",
+      "profession": "Beruf",
+      "country": "Land",
+      "location": "Ort",
+      "locationName": "Ort",
+      "eyes": "Augen",
+      "languages": "Sprachen",
+      "description": "Beschreibung",
+      "sportHobbies": "Sport und Hobbys",
+      "offer": "Angebot",
+      "message": "Nachricht"
+    },
+    "count": "{{count}}-mal",
+    "dismiss": "Erlauben",
+    "reasonRequired": "Gib einen Grund an, bevor du ein Konto entfernst.",
+    "removed": "Konto entfernt.",
+    "dismissed": "Markierungen entfernt. Der Nutzer wird erneut markiert, wenn er einen weiteren Link teilt.",
     "errors": {
       "generic": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
       "moderator": "Moderatorkonten können nicht entfernt werden."

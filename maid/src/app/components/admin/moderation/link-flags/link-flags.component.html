@@ -1,0 +1,137 @@
+<div class="ad-page">
+  <div class="ad-head">
+    <div>
+      <p class="ad-eyebrow">{{ "linkFlags.eyebrow" | translate }}</p>
+      <h1 class="ad-title">{{ "linkFlags.title" | translate }}</h1>
+      <p class="ad-lead">{{ "linkFlags.lead" | translate }}</p>
+    </div>
+    <div class="flex shrink-0 gap-2">
+      <a class="ad-btn-ghost" routerLink="..">
+        {{ "multiAccounts.verificationLink" | translate }}
+      </a>
+      <button
+        type="button"
+        class="ad-btn-ghost"
+        [disabled]="loading()"
+        (click)="load()"
+      >
+        {{ "verification.moderation.refresh" | translate }}
+      </button>
+    </div>
+  </div>
+
+  @if (loading()) {
+    <div class="flex justify-center py-10">
+      <mat-spinner diameter="36"></mat-spinner>
+    </div>
+  } @else if (users().length === 0) {
+    <div class="ad-empty">
+      <p class="ad-empty-title">{{ "linkFlags.emptyTitle" | translate }}</p>
+      <p class="ad-empty-text">{{ "linkFlags.emptyText" | translate }}</p>
+    </div>
+  } @else {
+    <div class="grid gap-5">
+      @for (user of users(); track user.uid) {
+        <section class="ad-card">
+          <div class="ad-card-head">
+            <div class="min-w-0">
+              <h2 class="ad-card-title truncate">
+                {{ user.account.profileName || user.account.email }}
+              </h2>
+              <p class="ad-card-hint m-0 truncate">
+                {{ user.account.email }}
+                @if (user.account.creationDate) {
+                  · {{ "multiAccounts.created" | translate }}
+                  {{ user.account.creationDate | date: "mediumDate" }}
+                }
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-1">
+              @if (user.account.userType) {
+                <span class="ad-badge">{{ user.account.userType }}</span>
+              }
+              @if (user.account.verified) {
+                <span class="ad-badge">
+                  {{ "multiAccounts.badge.verified" | translate }}
+                </span>
+              }
+            </div>
+          </div>
+
+          <ul class="m-0 grid list-none gap-2 p-0">
+            @for (flag of user.flags; track flag.source + flag.field) {
+              <li class="rounded-2xl border border-(--ad-card-line) px-4 py-3">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="ad-badge">
+                    {{ "linkFlags.source." + flag.source | translate }}
+                  </span>
+                  <span class="font-semibold">
+                    {{ "linkFlags.field." + flag.field | translate }}
+                  </span>
+                  <span class="ad-card-hint">
+                    @if (flag.count > 1) {
+                      {{ "linkFlags.count" | translate: { count: flag.count } }}
+                      ·
+                    }
+                    {{ flag.lastSeenAt | date: "medium" }}
+                  </span>
+                </div>
+                <p class="mt-2 mb-0 text-sm break-words whitespace-pre-line">
+                  {{ flag.excerpt }}
+                </p>
+                <div class="mt-2 flex flex-wrap gap-1">
+                  @for (link of flag.links; track link) {
+                    <code
+                      class="rounded-full border border-(--ad-card-line) px-2 py-0.5 text-xs break-all"
+                    >
+                      {{ link }}
+                    </code>
+                  }
+                </div>
+              </li>
+            }
+          </ul>
+
+          <div class="mt-4 flex flex-wrap items-center gap-2">
+            <input
+              type="text"
+              maxlength="200"
+              class="min-w-0 flex-1 rounded-full border border-(--ad-card-line) bg-transparent px-4 py-2 text-sm"
+              [placeholder]="'multiAccounts.reasonPlaceholder' | translate"
+              [value]="reasons()[user.uid] ?? ''"
+              (input)="setReason(user.uid, $event)"
+            />
+            <a
+              class="ad-btn-ghost"
+              target="_blank"
+              [routerLink]="['../../profile-view', user.uid]"
+            >
+              {{ "verification.moderation.openProfile" | translate }}
+            </a>
+            <button
+              type="button"
+              class="ad-btn-ghost"
+              [disabled]="busyUid() === user.uid"
+              (click)="dismiss(user)"
+            >
+              {{ "linkFlags.dismiss" | translate }}
+            </button>
+            <button
+              type="button"
+              [class]="confirmingUid() === user.uid ? 'ad-btn' : 'ad-btn-ghost'"
+              [disabled]="busyUid() === user.uid"
+              (click)="remove(user)"
+            >
+              {{
+                (confirmingUid() === user.uid
+                  ? "multiAccounts.confirmRemove"
+                  : "multiAccounts.remove"
+                ) | translate
+              }}
+            </button>
+          </div>
+        </section>
+      }
+    </div>
+  }
+</div>

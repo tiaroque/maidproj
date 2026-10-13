@@ -12,7 +12,12 @@ import {
   findMultiAccountClusters,
 } from "../services/device-tracking.service";
 import {
+  dismissLinkFlags,
+  findLinkFlags,
+} from "../services/link-detection.service";
+import {
   dismissClusterRules,
+  dismissLinkFlagsRules,
   listClustersRules,
   removeAccountRules,
 } from "../validators/moderation.validators";
@@ -43,6 +48,29 @@ moderationRouter.post(
     try {
       const { signal, key, uids } = matchedData(req, { locations: ["body"] });
       await dismissCluster(signal, key, uids, req.email);
+      res.status(204).send();
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+moderationRouter.get("/link-flags", async (_req, res, next) => {
+  try {
+    res.status(200).send(await findLinkFlags());
+  } catch (error) {
+    next(error);
+  }
+});
+
+moderationRouter.post(
+  "/link-flags/:uid/dismiss",
+  ...dismissLinkFlagsRules,
+  validateRequest,
+  async (req, res, next) => {
+    try {
+      const { uid } = matchedData(req, { locations: ["params"] });
+      await dismissLinkFlags(uid, req.email);
       res.status(204).send();
     } catch (error) {
       next(error);

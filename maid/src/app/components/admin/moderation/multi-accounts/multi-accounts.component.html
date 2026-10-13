@@ -53,11 +53,20 @@
           <div class="ad-card-head">
             <div>
               <h2 class="ad-card-title">
-                {{
-                  "multiAccounts.accountsCount"
-                    | translate: { count: activeCount(cluster) }
-                }}
+                @if (cluster.returning) {
+                  {{ "multiAccounts.returningTitle" | translate }}
+                } @else {
+                  {{
+                    "multiAccounts.accountsCount"
+                      | translate: { count: activeCount(cluster) }
+                  }}
+                }
               </h2>
+              @if (cluster.returning) {
+                <p class="ad-card-hint">
+                  {{ "multiAccounts.returningHint" | translate }}
+                </p>
+              }
               <p class="ad-card-hint">
                 {{ "multiAccounts.lastSeen" | translate }}
                 {{ cluster.lastSeenAt | date: "medium" }}

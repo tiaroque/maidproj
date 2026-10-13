@@ -22,6 +22,10 @@ export const dismissClusterRules = [
   body("uids.*").isString().withMessage("uids must be strings"),
 ];
 
+export const dismissLinkFlagsRules = [
+  param("uid").isString().isLength({ min: 1, max: 128 }),
+];
+
 export const removeAccountRules = [
   param("uid").isString().isLength({ min: 1, max: 128 }),
   body("reason")

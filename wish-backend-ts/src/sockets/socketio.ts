@@ -10,6 +10,7 @@ import {
 import { ChatMessageDTO } from "../interfaces/main-interfaces";
 import config from "../endpoints.config";
 import { readSessionFromCookies } from "../auth/session";
+import { flagLinks } from "../services/link-detection.service";
 
 let io: ServerIO;
 
@@ -162,6 +163,7 @@ const handleIncomingMessage = async (
   const receiverEmail = conversation.users?.[receiver];
 
   await saveIntoDb(message, senderEmail, receiverEmail);
+  flagLinks(userId, "chat", { message: message.message });
 
   io.to(conversationId).emit("message", message);
 

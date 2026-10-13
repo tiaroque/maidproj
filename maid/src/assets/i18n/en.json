@@ -618,6 +618,8 @@
     "emptyTitle": "Nothing to review",
     "emptyText": "Groups of linked accounts will appear here.",
     "accountsCount": "{{count}} active accounts",
+    "returningTitle": "A removed user may be back",
+    "returningHint": "An account here was created after a moderator removed another account on the same browser or device.",
     "lastSeen": "Last seen",
     "created": "created",
     "badge": {
@@ -633,6 +635,41 @@
     "dismiss": "Not the same person",
     "removed": "Account removed.",
     "dismissed": "Group dismissed. It comes back if another account joins it.",
+    "errors": {
+      "generic": "Something went wrong. Please try again.",
+      "moderator": "Moderator accounts can't be removed."
+    }
+  },
+  "linkFlags": {
+    "eyebrow": "Moderation",
+    "title": "Shared links",
+    "lead": "Users who put web links, email addresses or disguised addresses in their profile or chat messages. Remove the account, or allow it if the link is harmless.",
+    "emptyTitle": "Nothing to review",
+    "emptyText": "Users who share links will appear here.",
+    "source": {
+      "profile": "Profile",
+      "chat": "Chat"
+    },
+    "field": {
+      "profileName": "Profile name",
+      "nationality": "Nationality",
+      "qualifications": "Qualifications",
+      "profession": "Profession",
+      "country": "Country",
+      "location": "Location",
+      "locationName": "Location",
+      "eyes": "Eyes",
+      "languages": "Languages",
+      "description": "Description",
+      "sportHobbies": "Sports and hobbies",
+      "offer": "Offer",
+      "message": "Message"
+    },
+    "count": "{{count}} times",
+    "dismiss": "Allow",
+    "reasonRequired": "Add a reason before removing an account.",
+    "removed": "Account removed.",
+    "dismissed": "Flags cleared. The user is flagged again if they share another link.",
     "errors": {
       "generic": "Something went wrong. Please try again.",
       "moderator": "Moderator accounts can't be removed."

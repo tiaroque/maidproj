@@ -618,6 +618,8 @@
     "emptyTitle": "Nada que revisar",
     "emptyText": "Los grupos de cuentas vinculadas aparecerán aquí.",
     "accountsCount": "{{count}} cuentas activas",
+    "returningTitle": "Puede que un usuario eliminado haya vuelto",
+    "returningHint": "Una cuenta de este grupo se creó después de que un moderador eliminara otra cuenta en el mismo navegador o dispositivo.",
     "lastSeen": "Visto por última vez",
     "created": "creada",
     "badge": {
@@ -633,6 +635,41 @@
     "dismiss": "No es la misma persona",
     "removed": "Cuenta eliminada.",
     "dismissed": "Grupo descartado. Volverá si otra cuenta se une a él.",
+    "errors": {
+      "generic": "Algo salió mal. Inténtalo de nuevo.",
+      "moderator": "No se pueden eliminar cuentas de moderadores."
+    }
+  },
+  "linkFlags": {
+    "eyebrow": "Moderación",
+    "title": "Enlaces compartidos",
+    "lead": "Usuarios que han puesto enlaces, direcciones de correo o direcciones disfrazadas en su perfil o en mensajes de chat. Elimina la cuenta, o permítela si el enlace es inofensivo.",
+    "emptyTitle": "Nada que revisar",
+    "emptyText": "Los usuarios que compartan enlaces aparecerán aquí.",
+    "source": {
+      "profile": "Perfil",
+      "chat": "Chat"
+    },
+    "field": {
+      "profileName": "Nombre de perfil",
+      "nationality": "Nacionalidad",
+      "qualifications": "Formación",
+      "profession": "Profesión",
+      "country": "País",
+      "location": "Ubicación",
+      "locationName": "Ubicación",
+      "eyes": "Ojos",
+      "languages": "Idiomas",
+      "description": "Descripción",
+      "sportHobbies": "Deportes y aficiones",
+      "offer": "Oferta",
+      "message": "Mensaje"
+    },
+    "count": "{{count}} veces",
+    "dismiss": "Permitir",
+    "reasonRequired": "Añade un motivo antes de eliminar una cuenta.",
+    "removed": "Cuenta eliminada.",
+    "dismissed": "Avisos borrados. El usuario volverá a aparecer si comparte otro enlace.",
     "errors": {
       "generic": "Algo salió mal. Inténtalo de nuevo.",
       "moderator": "No se pueden eliminar cuentas de moderadores."

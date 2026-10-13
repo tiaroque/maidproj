@@ -618,6 +618,8 @@
     "emptyTitle": "Niets te beoordelen",
     "emptyText": "Groepen gekoppelde accounts verschijnen hier.",
     "accountsCount": "{{count}} actieve accounts",
+    "returningTitle": "Een verwijderde gebruiker is mogelijk terug",
+    "returningHint": "Een account in deze groep is aangemaakt nadat een moderator een ander account in dezelfde browser of op hetzelfde apparaat had verwijderd.",
     "lastSeen": "Laatst gezien",
     "created": "aangemaakt",
     "badge": {
@@ -636,6 +638,41 @@
     "errors": {
       "generic": "Er ging iets mis. Probeer het opnieuw.",
       "moderator": "Accounts van moderators kunnen niet worden verwijderd."
+    }
+  },
+  "linkFlags": {
+    "eyebrow": "Moderatie",
+    "title": "Gedeelde links",
+    "lead": "Gebruikers die links, e-mailadressen of vermomde adressen in hun profiel of chatberichten hebben gezet. Verwijder het account, of sta het toe als de link onschuldig is.",
+    "emptyTitle": "Niets te beoordelen",
+    "emptyText": "Gebruikers die links delen, verschijnen hier.",
+    "source": {
+      "profile": "Profiel",
+      "chat": "Chat"
+    },
+    "field": {
+      "profileName": "Profielnaam",
+      "nationality": "Nationaliteit",
+      "qualifications": "Opleiding",
+      "profession": "Beroep",
+      "country": "Land",
+      "location": "Locatie",
+      "locationName": "Locatie",
+      "eyes": "Ogen",
+      "languages": "Talen",
+      "description": "Beschrijving",
+      "sportHobbies": "Sport en hobby's",
+      "offer": "Aanbod",
+      "message": "Bericht"
+    },
+    "count": "{{count}} keer",
+    "dismiss": "Toestaan",
+    "reasonRequired": "Geef een reden op voordat je een account verwijdert.",
+    "removed": "Account verwijderd.",
+    "dismissed": "Meldingen gewist. De gebruiker wordt opnieuw gemarkeerd als hij nog een link deelt.",
+    "errors": {
+      "generic": "Er is iets misgegaan. Probeer het opnieuw.",
+      "moderator": "Moderatoraccounts kunnen niet worden verwijderd."
     }
   }
 }

@@ -48,6 +48,13 @@ export const manageIndexes = async () => {
     collection.createIndex({ userType: 1, "areasCovered.country": 1, "areasCovered.location": 1 })
     collection.createIndex({ userType: 1, services: 1 })
 
+    const linkFlags = getDb().collection("link_flags");
+    linkFlags.createIndex(
+      { uid: 1, source: 1, field: 1 },
+      { unique: true, partialFilterExpression: { status: "pending" } }
+    );
+    linkFlags.createIndex({ status: 1, lastSeenAt: -1 });
+
     const challenges = getDb().collection("webauthn_challenges");
     challenges.createIndex({ challengeId: 1 }, { unique: true });
     challenges.createIndex({ expiresAt: 1 }, { expireAfterSeconds: 0 });

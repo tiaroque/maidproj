@@ -35,7 +35,7 @@ type ClusterReview = {
   reviewedAt: Date;
 };
 
-type ClusterAccount = {
+export type ClusterAccount = {
   uid: string;
   email: string;
   profileName?: string;
@@ -44,10 +44,11 @@ type ClusterAccount = {
   emailVerified?: boolean;
   deleted?: boolean;
   removedByModerator?: boolean;
+  deletedAt?: Date;
   creationDate?: Date;
 };
 
-const clusterAccountProjection = {
+export const clusterAccountProjection = {
   _id: 0,
   uid: 1,
   email: 1,
@@ -57,7 +58,21 @@ const clusterAccountProjection = {
   emailVerified: 1,
   deleted: 1,
   removedByModerator: 1,
+  deletedAt: 1,
   creationDate: 1,
+};
+
+/** An active account created after a moderator removed another one in the group. */
+const hasReturningAccount = (accounts: ClusterAccount[]) => {
+  const removals = accounts
+    .filter((account) => account.removedByModerator && account.deletedAt)
+    .map((account) => account.deletedAt!.getTime());
+  return accounts.some(
+    (account) =>
+      !account.deleted &&
+      !!account.creationDate &&
+      removals.some((removedAt) => account.creationDate!.getTime() > removedAt)
+  );
 };
 
 const devices = () => getDb().collection<UserDevice>("user_devices");
@@ -249,18 +264,22 @@ export const findMultiAccountClusters = async (
   const reviewedUids = new Map(reviews.map((review) => [review.key, new Set(review.uids)]));
 
   return groups
-    .map((group) => ({
-      signal,
-      key: group.key,
-      lastSeenAt: group.lastSeenAt,
-      accounts: group.uids
+    .map((group) => {
+      const accounts = group.uids
         .map((uid) => accountByUid.get(uid))
         .filter((account): account is ClusterAccount => !!account)
-        .sort((a, b) => (a.creationDate?.getTime() ?? 0) - (b.creationDate?.getTime() ?? 0)),
-    }))
+        .sort((a, b) => (a.creationDate?.getTime() ?? 0) - (b.creationDate?.getTime() ?? 0));
+      return {
+        signal,
+        key: group.key,
+        lastSeenAt: group.lastSeenAt,
+        returning: hasReturningAccount(accounts),
+        accounts,
+      };
+    })
     .filter((cluster) => {
       const active = cluster.accounts.filter((account) => !account.deleted);
-      if (active.length < 2) {
+      if (active.length < 2 && !cluster.returning) {
         return false;
       }
       // A dismissed group comes back once an account the moderator hasn't seen joins it.
@@ -269,6 +288,7 @@ export const findMultiAccountClusters = async (
     })
     .sort(
       (a, b) =>
+        Number(b.returning) - Number(a.returning) ||
         b.accounts.length - a.accounts.length ||
         b.lastSeenAt.getTime() - a.lastSeenAt.getTime()
     )

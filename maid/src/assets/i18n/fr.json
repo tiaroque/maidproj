@@ -618,6 +618,8 @@
     "emptyTitle": "Rien à examiner",
     "emptyText": "Les groupes de comptes liés apparaîtront ici.",
     "accountsCount": "{{count}} comptes actifs",
+    "returningTitle": "Un utilisateur supprimé est peut-être revenu",
+    "returningHint": "Un compte de ce groupe a été créé après qu'un modérateur a supprimé un autre compte sur le même navigateur ou appareil.",
     "lastSeen": "Vu pour la dernière fois",
     "created": "créé",
     "badge": {
@@ -633,6 +635,41 @@
     "dismiss": "Pas la même personne",
     "removed": "Compte supprimé.",
     "dismissed": "Groupe ignoré. Il reviendra si un autre compte s'y ajoute.",
+    "errors": {
+      "generic": "Une erreur s'est produite. Veuillez réessayer.",
+      "moderator": "Les comptes de modérateurs ne peuvent pas être supprimés."
+    }
+  },
+  "linkFlags": {
+    "eyebrow": "Modération",
+    "title": "Liens partagés",
+    "lead": "Utilisateurs qui ont mis des liens, des adresses e-mail ou des adresses déguisées dans leur profil ou leurs messages. Supprimez le compte, ou autorisez-le si le lien est inoffensif.",
+    "emptyTitle": "Rien à examiner",
+    "emptyText": "Les utilisateurs qui partagent des liens apparaîtront ici.",
+    "source": {
+      "profile": "Profil",
+      "chat": "Chat"
+    },
+    "field": {
+      "profileName": "Nom de profil",
+      "nationality": "Nationalité",
+      "qualifications": "Diplômes",
+      "profession": "Profession",
+      "country": "Pays",
+      "location": "Lieu",
+      "locationName": "Lieu",
+      "eyes": "Yeux",
+      "languages": "Langues",
+      "description": "Description",
+      "sportHobbies": "Sports et loisirs",
+      "offer": "Offre",
+      "message": "Message"
+    },
+    "count": "{{count}} fois",
+    "dismiss": "Autoriser",
+    "reasonRequired": "Indiquez un motif avant de supprimer un compte.",
+    "removed": "Compte supprimé.",
+    "dismissed": "Signalements effacés. L'utilisateur sera de nouveau signalé s'il partage un autre lien.",
     "errors": {
       "generic": "Une erreur s'est produite. Veuillez réessayer.",
       "moderator": "Les comptes de modérateurs ne peuvent pas être supprimés."
