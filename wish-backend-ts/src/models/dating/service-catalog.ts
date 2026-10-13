@@ -13,6 +13,7 @@ export const SERVICES = [
   "moveInOut",
   "afterParty",
   "kitchenAppliances",
+  "cooking",
   "office",
   "ecoProducts",
 ] as const;

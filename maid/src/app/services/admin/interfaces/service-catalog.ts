@@ -11,6 +11,7 @@ export const SERVICES = [
   'moveInOut',
   'afterParty',
   'kitchenAppliances',
+  'cooking',
   'office',
   'ecoProducts',
 ] as const;
@@ -41,6 +42,7 @@ export const SERVICE_ICONS: Record<ServiceKey, string> = {
   moveInOut: 'local_shipping',
   afterParty: 'celebration',
   kitchenAppliances: 'kitchen',
+  cooking: 'restaurant',
   office: 'business_center',
   ecoProducts: 'eco',
 };

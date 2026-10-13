@@ -541,6 +541,7 @@ export const compiledMessages = {
     moveInOut: $localize`:@@services.moveInOut:Move-in / move-out`,
     afterParty: $localize`:@@services.afterParty:After-party cleaning`,
     kitchenAppliances: $localize`:@@services.kitchenAppliances:Oven and fridge`,
+    cooking: $localize`:@@services.cooking:Cooking`,
     office: $localize`:@@services.office:Office cleaning`,
     ecoProducts: $localize`:@@services.ecoProducts:Eco-friendly products`,
   },

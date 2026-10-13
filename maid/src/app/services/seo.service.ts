@@ -135,7 +135,7 @@ export class SeoService {
             '@id': `${SITE_ORIGIN}/#organization`,
             name: 'Clara',
             url: SITE_ORIGIN,
-            logo: `${SITE_ORIGIN}/assets/images/logo4-cropped.svg`,
+            logo: `${SITE_ORIGIN}/assets/images/logo-mop.png`,
           },
           {
             '@type': 'WebSite',

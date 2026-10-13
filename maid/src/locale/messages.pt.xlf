@@ -3850,6 +3850,14 @@
           <context context-type="linenumber">543</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="services.cooking" datatype="html">
+        <source>Cooking</source>
+        <target>Cozinhar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">544</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="services.office" datatype="html">
         <source>Office cleaning</source>
         <target>Limpeza de escritórios</target>
