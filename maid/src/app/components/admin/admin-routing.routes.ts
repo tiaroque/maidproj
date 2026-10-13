@@ -137,7 +137,7 @@ export const routesAdminChildren: Routes = [
           import('./moderation/multi-accounts/multi-accounts.component').then(
             (cp) => cp.MultiAccountsComponent,
           ),
-        title: 'Sugrit - Duplicate accounts',
+        title: 'Clara - Duplicate accounts',
       },
 
       {
@@ -146,7 +146,7 @@ export const routesAdminChildren: Routes = [
           import('./moderation/link-flags/link-flags.component').then(
             (cp) => cp.LinkFlagsComponent,
           ),
-        title: 'Sugrit - Shared links',
+        title: 'Clara - Shared links',
       },
 
       // { path: 'chat', redirectTo: 'list' },

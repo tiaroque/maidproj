@@ -3,4 +3,4 @@ Allow: /
 Disallow: /api/
 Disallow: /*/admin
 
-Sitemap: https://www.sugrit.com/sitemap.xml
+Sitemap: https://www.clara.com/sitemap.xml

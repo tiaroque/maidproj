@@ -11,7 +11,7 @@
       "brandAssets": {
         "logo": {
           "assetKey": "sugar-src-assets-images-logo4_no_fill.svg",
-          "url": "https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/projects/417499d6-09d1-40a6-b9f6-dbf2d8009872/brand-assets/sugar-src-assets-images-logo4_no_fill.svg/logo-sugrit.svg",
+          "url": "https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/projects/417499d6-09d1-40a6-b9f6-dbf2d8009872/brand-assets/sugar-src-assets-images-logo4_no_fill.svg/logo-clara.svg",
           "sourcePath": "maid/src/assets/images/logo4_no_fill.svg"
         }
       },
@@ -68,7 +68,7 @@
           "currentVersion": 1
         },
         "8257cd3b-7740-4fbe-af37-f113dbc9218c": {
-          "title": "Sugrit Search Page Redesign",
+          "title": "Clara Search Page Redesign",
           "visualDirection": "refined three-pane member app shell",
           "parentDraftId": "9764c4bf-5ff8-4691-bbae-90ffdc080811",
           "currentVersion": 1

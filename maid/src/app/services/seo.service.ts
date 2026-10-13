@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
 import { UserDetailsObject } from './admin/interfaces/user.interface';
 import { LanguageService } from './shared/language-service.service';
 
-const SITE_ORIGIN = 'https://www.sugrit.com';
+const SITE_ORIGIN = 'https://www.clara.com';
 
 const OG_LOCALE: Record<string, string> = {
   en: 'en_GB',
@@ -41,7 +41,9 @@ export class SeoService {
   constructor() {
     this.router.events
       .pipe(
-        filter((event): event is NavigationEnd => event instanceof NavigationEnd),
+        filter(
+          (event): event is NavigationEnd => event instanceof NavigationEnd,
+        ),
         switchMap(() =>
           this.translate.get([
             'landing.heroTitle',
@@ -76,9 +78,7 @@ export class SeoService {
     const page = notFound ? 'not-found' : (segments[0] ?? '');
     const indexable =
       environment.production &&
-      (page !== 'profile-view'
-        ? INDEXABLE.has(page)
-        : segments.length >= 2);
+      (page !== 'profile-view' ? INDEXABLE.has(page) : segments.length >= 2);
     const copy = this.copyFor(page, snapshot);
 
     this.document.documentElement.lang = lang;
@@ -89,13 +89,18 @@ export class SeoService {
       content: indexable ? 'index, follow' : 'noindex, nofollow',
     });
 
-    const path = segments.length ? `/${lang}/${segments.join('/')}` : `/${lang}/`;
+    const path = segments.length
+      ? `/${lang}/${segments.join('/')}`
+      : `/${lang}/`;
     const canonical = `${SITE_ORIGIN}${path}`;
     this.upsertLink('canonical', canonical);
     this.setAlternates(segments);
 
     this.meta.updateTag({ property: 'og:title', content: copy.title });
-    this.meta.updateTag({ property: 'og:description', content: copy.description });
+    this.meta.updateTag({
+      property: 'og:description',
+      content: copy.description,
+    });
     this.meta.updateTag({ property: 'og:url', content: canonical });
     this.meta.updateTag({ property: 'og:type', content: 'website' });
     this.meta.updateTag({
@@ -109,9 +114,15 @@ export class SeoService {
     this.meta.updateTag({ property: 'og:image:width', content: '1200' });
     this.meta.updateTag({ property: 'og:image:height', content: '630' });
     this.meta.updateTag({ property: 'og:image:alt', content: copy.title });
-    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
+    this.meta.updateTag({
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    });
     this.meta.updateTag({ name: 'twitter:title', content: copy.title });
-    this.meta.updateTag({ name: 'twitter:description', content: copy.description });
+    this.meta.updateTag({
+      name: 'twitter:description',
+      content: copy.description,
+    });
     this.meta.updateTag({ name: 'twitter:image', content: image });
     this.meta.updateTag({ name: 'twitter:image:alt', content: copy.title });
 
@@ -148,9 +159,7 @@ export class SeoService {
       const user = details?.user;
       const name = user?.name?.trim();
       const place = user?.locationName || user?.country;
-      const title = name
-        ? `${name} — Clara`
-        : 'Clara';
+      const title = name ? `${name} — Clara` : 'Clara';
       const description = this.clip(
         user?.description ||
           (name
@@ -225,7 +234,10 @@ export class SeoService {
   }
 
   private clip(value: string) {
-    const plain = value.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+    const plain = value
+      .replace(/<[^>]*>/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
     return plain.length > 160 ? `${plain.slice(0, 157).trimEnd()}...` : plain;
   }
 

@@ -26,10 +26,49 @@ const maxLinksPerFlag = 10;
 
 // Bare domains only count with a known TLD, so "e.g." or "1.80m" don't match.
 const tlds = [
-  "com", "net", "org", "info", "biz", "io", "co", "me", "app", "link", "site",
-  "online", "xyz", "club", "live", "shop", "store", "page", "ly", "gl", "gg",
-  "to", "tv", "cc", "ws", "sh", "pt", "br", "es", "fr", "de", "it", "nl", "be",
-  "ch", "at", "uk", "eu", "us", "ru", "ua", "pl", "ro",
+  "com",
+  "net",
+  "org",
+  "info",
+  "biz",
+  "io",
+  "co",
+  "me",
+  "app",
+  "link",
+  "site",
+  "online",
+  "xyz",
+  "club",
+  "live",
+  "shop",
+  "store",
+  "page",
+  "ly",
+  "gl",
+  "gg",
+  "to",
+  "tv",
+  "cc",
+  "ws",
+  "sh",
+  "pt",
+  "br",
+  "es",
+  "fr",
+  "de",
+  "it",
+  "nl",
+  "be",
+  "ch",
+  "at",
+  "uk",
+  "eu",
+  "us",
+  "ru",
+  "ua",
+  "pl",
+  "ro",
 ].join("|");
 
 const linkPattern = new RegExp(
@@ -39,7 +78,7 @@ const linkPattern = new RegExp(
     // "mysite dot com", "mysite (ponto) pt" and similar ways around the filter.
     String.raw`\b[a-z0-9-]{2,}\s*[([{]?\s*(?:dot|ponto|punto|point|punkt|punt)\s*[)\]}]?\s*(?:${tlds})\b`,
   ].join("|"),
-  "gi"
+  "gi",
 );
 
 const hostOf = (link: string) =>
@@ -50,7 +89,7 @@ const hostOf = (link: string) =>
     .split(/[/?#:]/)[0];
 
 const isOwnHost = (host: string) =>
-  host === "sugrit.com" || host.endsWith(".sugrit.com");
+  host === "clara.com" || host.endsWith(".clara.com");
 
 export const findLinks = (text: string) => {
   const links = new Set<string>();
@@ -82,18 +121,22 @@ const recordFlag = async (
   source: LinkFlagSource,
   field: string,
   text: string,
-  links: string[]
+  links: string[],
 ) => {
   const now = new Date();
   const write = () =>
     flags().updateOne(
       { uid, source, field, status: "pending" },
       {
-        $set: { excerpt: excerptAround(text, links[0]), links, lastSeenAt: now },
+        $set: {
+          excerpt: excerptAround(text, links[0]),
+          links,
+          lastSeenAt: now,
+        },
         $setOnInsert: { firstSeenAt: now },
         $inc: { count: 1 },
       },
-      { upsert: true }
+      { upsert: true },
     );
   try {
     await write();
@@ -113,7 +156,7 @@ const recordFlag = async (
 export const flagLinks = (
   uid: string,
   source: LinkFlagSource,
-  fields: Record<string, unknown>
+  fields: Record<string, unknown>,
 ) => {
   const writes = Object.entries(fields).flatMap(([field, value]) => {
     const text = Array.isArray(value)
@@ -122,10 +165,12 @@ export const flagLinks = (
         ? value
         : "";
     const links = text ? findLinks(text) : [];
-    return links.length > 0 ? [recordFlag(uid, source, field, text, links)] : [];
+    return links.length > 0
+      ? [recordFlag(uid, source, field, text, links)]
+      : [];
   });
   Promise.all(writes).catch((error) =>
-    console.error("Failed to record link flag", error)
+    console.error("Failed to record link flag", error),
   );
 };
 
@@ -134,7 +179,10 @@ export const findLinkFlags = async (limit = 100) => {
     .aggregate<{
       uid: string;
       lastSeenAt: Date;
-      flags: Pick<LinkFlag, "source" | "field" | "excerpt" | "links" | "count" | "lastSeenAt">[];
+      flags: Pick<
+        LinkFlag,
+        "source" | "field" | "excerpt" | "links" | "count" | "lastSeenAt"
+      >[];
     }>([
       { $match: { status: "pending" } },
       { $sort: { lastSeenAt: -1 } },
@@ -163,10 +211,15 @@ export const findLinkFlags = async (limit = 100) => {
 
   const accounts = await getDb()
     .collection("users")
-    .find({ uid: { $in: groups.map((group) => group.uid) }, deleted: { $ne: true } })
+    .find({
+      uid: { $in: groups.map((group) => group.uid) },
+      deleted: { $ne: true },
+    })
     .project<ClusterAccount>(clusterAccountProjection)
     .toArray();
-  const accountByUid = new Map(accounts.map((account) => [account.uid, account]));
+  const accountByUid = new Map(
+    accounts.map((account) => [account.uid, account]),
+  );
 
   return groups
     .filter((group) => accountByUid.has(group.uid))
@@ -179,6 +232,12 @@ export const findLinkFlags = async (limit = 100) => {
 export const dismissLinkFlags = async (uid: string, reviewer: string) => {
   await flags().updateMany(
     { uid, status: "pending" },
-    { $set: { status: "dismissed", reviewedBy: reviewer, reviewedAt: new Date() } }
+    {
+      $set: {
+        status: "dismissed",
+        reviewedBy: reviewer,
+        reviewedAt: new Date(),
+      },
+    },
   );
 };

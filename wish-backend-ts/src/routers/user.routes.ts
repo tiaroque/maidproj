@@ -51,8 +51,15 @@ import {
 } from "../auth/google-oauth";
 import { setUserSession } from "../auth/session";
 import { sendEmail } from "../services/email.service";
-import { getAccountVerificationEmail, getPasswordResetEmail } from "../email-templates/templates";
-import { getResetCopy, getVerificationCopy, resolveEmailLang } from "../email-templates/email-i18n";
+import {
+  getAccountVerificationEmail,
+  getPasswordResetEmail,
+} from "../email-templates/templates";
+import {
+  getResetCopy,
+  getVerificationCopy,
+  resolveEmailLang,
+} from "../email-templates/email-i18n";
 import { attachCaptcha, verifyCaptcha } from "../services/captcha.service";
 import {
   clearLoginFailures,
@@ -60,7 +67,10 @@ import {
   loginCaptchaRequired,
   recordLoginFailure,
 } from "../services/login-attempts.service";
-import { readFingerprint, recordDevice } from "../services/device-tracking.service";
+import {
+  readFingerprint,
+  recordDevice,
+} from "../services/device-tracking.service";
 import { flagLinks } from "../services/link-detection.service";
 import passkeyRouter from "./passkey.routes";
 import { deleteAllPasskeys } from "../models/passkey";
@@ -76,7 +86,7 @@ const loginRedirect = (lang: string, path: string) =>
 const ensureCaptcha = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   const answer = typeof req.body?.captcha === "string" ? req.body.captcha : "";
   try {
@@ -107,40 +117,40 @@ usersRouter.get("/captcha", (_req, res) => {
 const sendVerificationEmail = async (
   email: string,
   name: string,
-  lang: string
+  lang: string,
 ) => {
   const locale = resolveEmailLang(lang);
   const token = createResetToken();
   await setEmailVerification(
     email,
     hashResetToken(token),
-    new Date(Date.now() + emailTokenTtlMs)
+    new Date(Date.now() + emailTokenTtlMs),
   );
   const verifyUrl = `${config.returnUrlEmail}/${locale}/manage?mode=verifyEmail&oobCode=${token}`;
   await sendEmail(
     email,
     getAccountVerificationEmail(name || "", verifyUrl, locale),
-    getVerificationCopy(locale).subject
+    getVerificationCopy(locale).subject,
   );
 };
 
 const sendPasswordResetEmail = async (
   email: string,
   name: string,
-  lang: string
+  lang: string,
 ) => {
   const locale = resolveEmailLang(lang);
   const token = createResetToken();
   await setPasswordReset(
     email,
     hashResetToken(token),
-    new Date(Date.now() + emailTokenTtlMs)
+    new Date(Date.now() + emailTokenTtlMs),
   );
   const resetUrl = `${config.returnUrlEmail}/${locale}/manage?mode=resetPassword&oobCode=${token}`;
   await sendEmail(
     email,
     getPasswordResetEmail(name || "", resetUrl, locale),
-    getResetCopy(locale).subject
+    getResetCopy(locale).subject,
   );
 };
 
@@ -267,8 +277,8 @@ usersRouter.get("/google/callback", async (req, res, next) => {
 
 const clearSession = (req: Request, res: Response) => {
   res.clearCookie("session_admin", { path: "/" });
-  res.clearCookie("sugrit_email", { path: "/" });
-  res.clearCookie("sugrit_uid", { path: "/" });
+  res.clearCookie("clara_email", { path: "/" });
+  res.clearCookie("clara_uid", { path: "/" });
 
   req.session = null;
 };
@@ -301,7 +311,8 @@ usersRouter.post("/login", async (req, res, next) => {
   const user = req.body;
   try {
     if (await loginCaptchaRequired(attemptKey)) {
-      const answer = typeof req.body?.captcha === "string" ? req.body.captcha : "";
+      const answer =
+        typeof req.body?.captcha === "string" ? req.body.captcha : "";
       if (!(await verifyCaptcha(req, res, answer))) {
         return res
           .status(400)
@@ -363,62 +374,64 @@ usersRouter.post(
   ...birthdateRules,
   validateRequest,
   async (req, res, next) => {
-  try {
-    if (!isUserType(req.body.userType)) {
-      return res.status(400).send({ error: "userType must be Cleaner or Client" });
+    try {
+      if (!isUserType(req.body.userType)) {
+        return res
+          .status(400)
+          .send({ error: "userType must be Cleaner or Client" });
+      }
+
+      // const errors = validationResult(req);
+      // if (!errors.isEmpty()) {
+      //     return res.status(400).json({ errors: errors.array() });
+      // }
+
+      const userType = req.body.userType;
+      const birthday = req.body.birthday;
+
+      // Birth date
+      // const year = parseInt(req.body.year);
+      // const month = parseInt(req.body.month);
+      // const day = parseInt(req.body.day);
+      // let monthStr = (month < 10 ? "0" : "") + month;
+      // let dayStr = (day < 10 ? "0" : "") + day;
+      // let isoBirthDay = `${year}-${monthStr}-${dayStr}T00:00:00.000Z`;
+      let birthDateStr = birthday;
+      let birthDate = new Date(birthDateStr);
+
+      // Profile Details
+      const profileName = req.body.profileName;
+      const name = req.body.profileName;
+      const country = req.body.country;
+      const location = req.body.location;
+      const locationName = req.body.locationName;
+
+      await createSignup(req.uid, {
+        profileName,
+        name,
+        location,
+        locationName,
+        country,
+        currency: currencyForCountry(country),
+        birthDateStr,
+        birthDate,
+        userType,
+        claims: {
+          user: userType,
+        },
+      });
+      flagLinks(req.uid, "profile", { profileName });
+
+      // if (result.insertedCount !== 1) {
+      //     return res.status(400).send(null);
+      // }
+
+      return res.status(200).send({ valid: true });
+    } catch (error) {
+      console.log(error);
+      next(error);
     }
-
-    // const errors = validationResult(req);
-    // if (!errors.isEmpty()) {
-    //     return res.status(400).json({ errors: errors.array() });
-    // }
-
-    const userType = req.body.userType;
-    const birthday = req.body.birthday;
-
-    // Birth date
-    // const year = parseInt(req.body.year);
-    // const month = parseInt(req.body.month);
-    // const day = parseInt(req.body.day);
-    // let monthStr = (month < 10 ? "0" : "") + month;
-    // let dayStr = (day < 10 ? "0" : "") + day;
-    // let isoBirthDay = `${year}-${monthStr}-${dayStr}T00:00:00.000Z`;
-    let birthDateStr = birthday;
-    let birthDate = new Date(birthDateStr);
-
-    // Profile Details
-    const profileName = req.body.profileName;
-    const name = req.body.profileName;
-    const country = req.body.country;
-    const location = req.body.location;
-    const locationName = req.body.locationName;
-
-    await createSignup(req.uid, {
-      profileName,
-      name,
-      location,
-      locationName,
-      country,
-      currency: currencyForCountry(country),
-      birthDateStr,
-      birthDate,
-      userType,
-      claims: {
-        user: userType,
-      },
-    });
-    flagLinks(req.uid, "profile", { profileName });
-
-    // if (result.insertedCount !== 1) {
-    //     return res.status(400).send(null);
-    // }
-
-    return res.status(200).send({ valid: true });
-  } catch (error) {
-    console.log(error);
-    next(error);
-  }
-  }
+  },
 );
 
 usersRouter.post("/device", auth, async (req, res, next) => {
@@ -447,8 +460,8 @@ usersRouter.get("/me", auth, async (req, res, next) => {
       sameSite: "lax",
       path: "/",
     };
-    res.cookie("sugrit_uid", req.uid, options);
-    res.cookie("sugrit_email", req.email, options);
+    res.cookie("clara_uid", req.uid, options);
+    res.cookie("clara_email", req.email, options);
     res.status(200).send(user);
   } catch (error) {
     next(error);
@@ -533,12 +546,16 @@ usersRouter.post("/verify-email", async (req, res, next) => {
   try {
     const token = String(req.body.token || "");
     if (!token) {
-      return res.status(400).send({ error: "Invalid or expired verification code" });
+      return res
+        .status(400)
+        .send({ error: "Invalid or expired verification code" });
     }
 
     const user = await getUserByEmailVerifyToken(hashResetToken(token));
     if (!user?.email) {
-      return res.status(400).send({ error: "Invalid or expired verification code" });
+      return res
+        .status(400)
+        .send({ error: "Invalid or expired verification code" });
     }
 
     if (user.emailVerified) {
@@ -549,7 +566,9 @@ usersRouter.post("/verify-email", async (req, res, next) => {
       !user.emailVerifyExpires ||
       new Date(user.emailVerifyExpires).getTime() <= Date.now()
     ) {
-      return res.status(400).send({ error: "Invalid or expired verification code" });
+      return res
+        .status(400)
+        .send({ error: "Invalid or expired verification code" });
     }
 
     await confirmEmailVerification(user.email);
@@ -658,7 +677,7 @@ usersRouter.post(
     } catch (error) {
       next(error);
     }
-  }
+  },
 );
 
 usersRouter.get(
@@ -672,7 +691,7 @@ usersRouter.get(
     } catch (error) {
       next(error);
     }
-  }
+  },
 );
 
 usersRouter.post(
@@ -700,7 +719,7 @@ usersRouter.post(
     } catch (error) {
       next(error);
     }
-  }
+  },
 );
 
 usersRouter.post("/chat-alerts", auth, async (req, res, next) => {
@@ -766,7 +785,7 @@ usersRouter.get(
     } catch (error) {
       next(error);
     }
-  }
+  },
 );
 
 usersRouter.get(
@@ -784,7 +803,7 @@ usersRouter.get(
     } catch (error) {
       next(error);
     }
-  }
+  },
 );
 
 usersRouter.get("/test", async (req, res) => {

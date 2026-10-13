@@ -1,8 +1,8 @@
-docker network create sugrit
+docker network create clara
 docker build -t wish-backend ./wish-backend-ts
 docker build -t maid ./maid
 
-docker run --rm --name wish-backend --network sugrit \
+docker run --rm --name wish-backend --network clara \
   -p 3011:3011 \
   --env-file ./wish-backend-ts/.env \
   -e MONGO_URL=mongodb://host.docker.internal:27017/ \
@@ -18,14 +18,14 @@ docker run --name maid-api --network maid -p 3011:3011 \
   -e returnUrlEmail=http://localhost:4000 \
   -e GOOGLE_REDIRECT_URI=http://localhost:4000/api/users/google/callback \
   -e MAILGUN_API_KEY="$MAILGUN_API_KEY" \
-  -e MAILGUN_DOMAIN=sugrit.com \
-  -e emailfrom='Sugrit <noreply@sugrit.com>' \
+  -e MAILGUN_DOMAIN=clara.com \
+  -e emailfrom='clara <noreply@clara.com>' \
   maid-api
 
 
 
 
-docker run --rm --name maid --network sugrit \
+docker run --rm --name maid --network clara \
   -p 4000:4000 \
   -e PORT=4000 \
   -e API_PROXY_TARGET=http://wish-backend:3011 \

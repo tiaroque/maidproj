@@ -10,7 +10,7 @@ export const environment = {
   env: 'dev',
   baseUrl: '',
   socketUrl: 'http://localhost:3011',
-  s3ImageUrl: 'https://sugrit-bucket-489206260650-eu-west-3-an.s3.eu-west-3.amazonaws.com',
+  s3ImageUrl: 'https://maid-bucket.s3.eu-west-3.amazonaws.com',
   meridianApiUrl: 'https://meridian-api.com',
   gaMeasurementId: 'G-1QGW8YC0S4',
 };

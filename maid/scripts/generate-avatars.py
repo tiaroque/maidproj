@@ -77,7 +77,7 @@ def options(gender, index):
     config = FEMALE if gender == "female" else MALE
     skin, hair_color = TONES[index % len(TONES)]
     params = {
-        "seed": f"sugrit-toonhead-{gender}-{index + 1:02d}",
+        "seed": f"clara-toonhead-{gender}-{index + 1:02d}",
         "backgroundColor": "transparent",
         "skinColor": skin,
         "hairColor": hair_color,

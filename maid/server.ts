@@ -23,8 +23,8 @@ const meridianApiUpstream =
 const app = express();
 app.set('trust proxy', 1);
 app.use((req, res, next) => {
-  if (req.hostname === 'sugrit.com') {
-    res.redirect(308, `https://www.sugrit.com${req.originalUrl}`);
+  if (req.hostname === 'clara.com') {
+    res.redirect(308, `https://www.clara.com${req.originalUrl}`);
     return;
   }
   next();
@@ -35,8 +35,8 @@ app.use(cors());
 const allowedHosts = [
   'localhost',
   '127.0.0.1',
-  'sugrit.com',
-  'www.sugrit.com',
+  'clara.com',
+  'www.clara.com',
   ...(process.env['NG_ALLOWED_HOSTS'] ?? '')
     .split(',')
     .map((host) => host.trim())
@@ -130,7 +130,7 @@ ${alternates}
 }
 
 app.get('/sitemap.xml', async (_req, res) => {
-  const origin = 'https://www.sugrit.com';
+  const origin = 'https://www.clara.com';
   const profiles = await loadSitemapProfiles();
   const urls = [
     ...publicPages.flatMap((page) =>
@@ -228,7 +228,9 @@ app.use((req, res, next) => {
     .find((tag) => locales.has(tag));
   const lang = locales.has(requested) ? requested : (headerLang ?? 'en');
   const targetPath = req.path === '/' ? '/' : req.path;
-  const query = req.url.includes('?') ? req.url.slice(req.url.indexOf('?')) : '';
+  const query = req.url.includes('?')
+    ? req.url.slice(req.url.indexOf('?'))
+    : '';
   res.redirect(302, `/${lang}${targetPath}${query}`);
 });
 

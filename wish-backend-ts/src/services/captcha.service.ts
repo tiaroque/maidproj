@@ -3,7 +3,7 @@ import { CookieOptions, Request, Response } from "express";
 import config from "../endpoints.config";
 import { getRedisConnection } from "../databases/redis/redis";
 
-const COOKIE_NAME = "sugrit_captcha";
+const COOKIE_NAME = "clara_captcha";
 const TTL_MS = 3 * 60 * 1000;
 const ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 const WIDTH = 372;
@@ -90,7 +90,7 @@ const markConsumed = async (nonce: string, exp: number) => {
       "1",
       "PX",
       Math.max(exp - Date.now(), 1),
-      "NX"
+      "NX",
     );
     return result === "OK";
   }
@@ -121,10 +121,12 @@ const seal = (payload: CaptchaPayload) => {
   const cipher = crypto.createCipheriv(
     "aes-256-gcm",
     asBytes(encryptionKey()),
-    asBytes(iv)
+    asBytes(iv),
   );
   const ciphertext = Buffer.concat([
-    asBytes(cipher.update(JSON.stringify(payload), "utf8") as unknown as Buffer),
+    asBytes(
+      cipher.update(JSON.stringify(payload), "utf8") as unknown as Buffer,
+    ),
     asBytes(cipher.final() as unknown as Buffer),
   ] as unknown as Uint8Array[]);
   const tag = cipher.getAuthTag();
@@ -142,11 +144,15 @@ const unseal = (token: string): CaptchaPayload | null => {
     const decipher = crypto.createDecipheriv(
       "aes-256-gcm",
       asBytes(encryptionKey()),
-      asBytes(Buffer.from(ivPart, "base64url"))
+      asBytes(Buffer.from(ivPart, "base64url")),
     );
     decipher.setAuthTag(asBytes(Buffer.from(tagPart, "base64url")));
     const json = Buffer.concat([
-      asBytes(decipher.update(asBytes(Buffer.from(dataPart, "base64url"))) as unknown as Buffer),
+      asBytes(
+        decipher.update(
+          asBytes(Buffer.from(dataPart, "base64url")),
+        ) as unknown as Buffer,
+      ),
       asBytes(decipher.final() as unknown as Buffer),
     ] as unknown as Uint8Array[]).toString("utf8");
     const payload = JSON.parse(json) as CaptchaPayload;
@@ -191,7 +197,7 @@ const glyphMarkup = (character: string, index: number) => {
           const y = originY + rowIndex * CELL;
           return `<rect x="${x}" y="${y}" width="${CELL - 0.6}" height="${CELL - 0.6}" fill="${fill}"/>`;
         })
-        .join("")
+        .join(""),
     )
     .join("");
   return `<g transform="rotate(${rotation} ${centerX} ${centerY})">${rects}</g>`;
@@ -227,7 +233,7 @@ export const createCaptchaChallenge = () => {
 
 export const verifyCaptchaToken = async (
   token: string | undefined,
-  rawAnswer: string
+  rawAnswer: string,
 ) => {
   if (!token) {
     return false;
@@ -249,10 +255,14 @@ export const attachCaptcha = (res: Response) => {
   return challenge.image;
 };
 
-export const verifyCaptcha = (req: Request, res: Response, rawAnswer: string) => {
-  const token = (req.cookies as Record<string, string | undefined> | undefined)?.[
-    COOKIE_NAME
-  ];
+export const verifyCaptcha = (
+  req: Request,
+  res: Response,
+  rawAnswer: string,
+) => {
+  const token = (
+    req.cookies as Record<string, string | undefined> | undefined
+  )?.[COOKIE_NAME];
   res.clearCookie(COOKIE_NAME, {
     path: "/",
     httpOnly: true,

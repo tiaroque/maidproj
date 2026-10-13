@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import { getDb } from "../databases/db/mongo";
 import config from "../endpoints.config";
 
-export const deviceCookieName = "sugrit_did";
+export const deviceCookieName = "clara_did";
 const deviceCookieMaxAgeMs = 1000 * 60 * 60 * 24 * 365 * 2;
 const fingerprintPattern = /^[a-f0-9]{64}$/;
 const uuidPattern =
@@ -71,7 +71,7 @@ const hasReturningAccount = (accounts: ClusterAccount[]) => {
     (account) =>
       !account.deleted &&
       !!account.creationDate &&
-      removals.some((removedAt) => account.creationDate!.getTime() > removedAt)
+      removals.some((removedAt) => account.creationDate!.getTime() > removedAt),
   );
 };
 
@@ -83,7 +83,7 @@ const reviewsCollection = () =>
 export const ensureDeviceId = (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   const existing = req.cookies?.[deviceCookieName];
   if (typeof existing === "string" && uuidPattern.test(existing)) {
@@ -112,7 +112,7 @@ export const recordDevice = async (
   req: Request,
   uid: string,
   event: DeviceEvent,
-  fingerprint: string | null
+  fingerprint: string | null,
 ) => {
   if (!req.deviceId) {
     return;
@@ -135,7 +135,7 @@ export const recordDevice = async (
       $setOnInsert: { firstSeenAt: now },
       $addToSet: addToSet,
     },
-    { upsert: true }
+    { upsert: true },
   );
 };
 
@@ -165,7 +165,9 @@ export const findLinkedAccounts = async (uid: string) => {
   }
 
   const deviceIds = own.map((device) => device.deviceId);
-  const fingerprints = [...new Set(own.flatMap((device) => device.fingerprints ?? []))];
+  const fingerprints = [
+    ...new Set(own.flatMap((device) => device.fingerprints ?? [])),
+  ];
   const ipHashes = [...new Set(own.flatMap((device) => device.ipHashes ?? []))];
 
   const matches = await devices()
@@ -179,7 +181,10 @@ export const findLinkedAccounts = async (uid: string) => {
     })
     .toArray();
 
-  const linked = new Map<string, { signals: Set<LinkSignal>; lastSeenAt: Date }>();
+  const linked = new Map<
+    string,
+    { signals: Set<LinkSignal>; lastSeenAt: Date }
+  >();
   matches.forEach((match) => {
     const entry = linked.get(match.uid) ?? {
       signals: new Set<LinkSignal>(),
@@ -229,14 +234,28 @@ export const findLinkedAccounts = async (uid: string) => {
  */
 export const findMultiAccountClusters = async (
   signal: ClusterSignal,
-  limit = 100
+  limit = 100,
 ) => {
   const pipeline =
     signal === "device"
-      ? [{ $group: { _id: "$deviceId", uids: { $addToSet: "$uid" }, lastSeenAt: { $max: "$lastSeenAt" } } }]
+      ? [
+          {
+            $group: {
+              _id: "$deviceId",
+              uids: { $addToSet: "$uid" },
+              lastSeenAt: { $max: "$lastSeenAt" },
+            },
+          },
+        ]
       : [
           { $unwind: "$fingerprints" },
-          { $group: { _id: "$fingerprints", uids: { $addToSet: "$uid" }, lastSeenAt: { $max: "$lastSeenAt" } } },
+          {
+            $group: {
+              _id: "$fingerprints",
+              uids: { $addToSet: "$uid" },
+              lastSeenAt: { $max: "$lastSeenAt" },
+            },
+          },
         ];
 
   const groups = await devices()
@@ -253,22 +272,31 @@ export const findMultiAccountClusters = async (
   const [accounts, reviews] = await Promise.all([
     getDb()
       .collection("users")
-      .find({ uid: { $in: [...new Set(groups.flatMap((group) => group.uids))] } })
+      .find({
+        uid: { $in: [...new Set(groups.flatMap((group) => group.uids))] },
+      })
       .project<ClusterAccount>(clusterAccountProjection)
       .toArray(),
     reviewsCollection()
       .find({ signal, key: { $in: groups.map((group) => group.key) } })
       .toArray(),
   ]);
-  const accountByUid = new Map(accounts.map((account) => [account.uid, account]));
-  const reviewedUids = new Map(reviews.map((review) => [review.key, new Set(review.uids)]));
+  const accountByUid = new Map(
+    accounts.map((account) => [account.uid, account]),
+  );
+  const reviewedUids = new Map(
+    reviews.map((review) => [review.key, new Set(review.uids)]),
+  );
 
   return groups
     .map((group) => {
       const accounts = group.uids
         .map((uid) => accountByUid.get(uid))
         .filter((account): account is ClusterAccount => !!account)
-        .sort((a, b) => (a.creationDate?.getTime() ?? 0) - (b.creationDate?.getTime() ?? 0));
+        .sort(
+          (a, b) =>
+            (a.creationDate?.getTime() ?? 0) - (b.creationDate?.getTime() ?? 0),
+        );
       return {
         signal,
         key: group.key,
@@ -290,7 +318,7 @@ export const findMultiAccountClusters = async (
       (a, b) =>
         Number(b.returning) - Number(a.returning) ||
         b.accounts.length - a.accounts.length ||
-        b.lastSeenAt.getTime() - a.lastSeenAt.getTime()
+        b.lastSeenAt.getTime() - a.lastSeenAt.getTime(),
     )
     .slice(0, limit);
 };
@@ -299,7 +327,7 @@ export const dismissCluster = async (
   signal: ClusterSignal,
   key: string,
   uids: string[],
-  reviewer: string
+  reviewer: string,
 ) => {
   await reviewsCollection().updateOne(
     { signal, key },
@@ -307,7 +335,7 @@ export const dismissCluster = async (
       $set: { reviewedBy: reviewer, reviewedAt: new Date() },
       $addToSet: { uids: { $each: uids } },
     },
-    { upsert: true }
+    { upsert: true },
   );
 };
 
@@ -328,7 +356,7 @@ export const backfillCanonicalEmails = async () => {
         update: { $set: { canonicalEmail: canonicalEmail(user.email) } },
       },
     })),
-    { ordered: false }
+    { ordered: false },
   );
   console.log(`Set canonicalEmail for ${result.modifiedCount} users`);
 };

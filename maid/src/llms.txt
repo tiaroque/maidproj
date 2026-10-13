@@ -8,12 +8,12 @@ Browsing public profiles does not require an account. Contacting someone require
 
 ## Public pages
 
-- [Home](https://www.sugrit.com/en): What Clara is and how announcements and job requests work
-- [Browse profiles](https://www.sugrit.com/en/browse): Search public profiles. Accepts the query parameters `type` (`Cleaner` or `Client`, default `Cleaner`), `service` (`regular`, `deep`, `ironing`, `laundry`, `windows`, `moveInOut`, `afterParty`, `kitchenAppliances`, `office`, `ecoProducts`), `country` and `location`
-- [Create an account](https://www.sugrit.com/en/register): Register with an email address and password, or with Google
-- [Sitemap](https://www.sugrit.com/sitemap.xml): Every public page and public profile in all languages
+- [Home](https://www.clara.com/en): What Clara is and how announcements and job requests work
+- [Browse profiles](https://www.clara.com/en/browse): Search public profiles. Accepts the query parameters `type` (`Cleaner` or `Client`, default `Cleaner`), `service` (`regular`, `deep`, `ironing`, `laundry`, `windows`, `moveInOut`, `afterParty`, `kitchenAppliances`, `office`, `ecoProducts`), `country` and `location`
+- [Create an account](https://www.clara.com/en/register): Register with an email address and password, or with Google
+- [Sitemap](https://www.clara.com/sitemap.xml): Every public page and public profile in all languages
 
 ## Legal
 
-- [Terms and conditions](https://www.sugrit.com/en/terms-conditions)
-- [Privacy policy](https://www.sugrit.com/en/privacy)
+- [Terms and conditions](https://www.clara.com/en/terms-conditions)
+- [Privacy policy](https://www.clara.com/en/privacy)
