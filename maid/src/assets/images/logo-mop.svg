@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <g transform="rotate(15 32 32) translate(0 -3)">
+    <rect x="30" y="3" width="4" height="27" rx="2"/>
+    <path d="M23 28h18l3 9H20z"/>
+    <path d="M20.5 36h5l-7 18a3.5 3.5 0 0 1-7 0z"/>
+    <path d="M25 36h5l-2.5 21a3.5 3.5 0 0 1-7 0z"/>
+    <path d="M29.5 36h5l1 22a3.5 3.5 0 0 1-7 0z"/>
+    <path d="M34 36h5l4.5 21a3.5 3.5 0 0 1-7 0z"/>
+    <path d="M38.5 36h5l8.5 18a3.5 3.5 0 0 1-7 0z"/>
+  </g>
+</svg>

@@ -9,9 +9,9 @@
   /* --mat-form-field-container-text-line-height: 1.5rem; */
   --mat-form-field-outlined-container-shape: 16px !important;
   --mat-form-field-outlined-container-color: var(--mat-sys-background);
-  /* Focus uses mint so it does not read as the red invalid outline. */
-  --mat-form-field-outlined-focus-outline-color: var(--mat-sys-tertiary);
-  --mat-form-field-outlined-focus-label-text-color: var(--mat-sys-tertiary);
+  /* Focus uses the brand teal so it does not read as the red invalid outline. */
+  --mat-form-field-outlined-focus-outline-color: var(--mat-sys-primary);
+  --mat-form-field-outlined-focus-label-text-color: var(--mat-sys-primary);
   --mat-form-field-container-vertical-padding: 10px;
   --mat-form-field-container-height: 44px;
 

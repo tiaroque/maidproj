@@ -9,13 +9,9 @@
     <div
       class="admin-logo col-start-1 flex justify-start items-center font-bold md:w-[220px]"
     >
-      <div>
-        <svg class="w-15 h-15 pt-1 fill-current -translate-y-1">
-          <use xlink:href="assets/images/logo4_no_fill.svg#Capa_1"></use>
-        </svg>
-      </div>
+      <span class="logo-mark mr-1.5 ml-3 h-8 w-8" aria-hidden="true"></span>
       <div
-        class="hidden sm:block text-2xl font-[Albert_Sans,sans-serif] font-semibold tracking-tighter -translate-x-2"
+        class="hidden sm:block text-2xl font-[Albert_Sans,sans-serif] font-semibold tracking-tighter"
       >
         clara
       </div>
@@ -144,12 +140,15 @@
             <svg
               width="22px"
               height="22px"
-              fill="currentColor"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="60"
+              stroke-linecap="round"
+              stroke-linejoin="round"
               viewBox="0 0 512 512"
+              aria-hidden="true"
             >
-              <path
-                d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"
-              />
+              <polyline points="32,272 136,272 196,96 300,432 360,256 480,256" />
             </svg>
             <span class="text-xs font-medium leading-tight tracking-normal">
               {{ "tabs.activity" | translate }}
