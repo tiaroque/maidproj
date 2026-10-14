@@ -22,6 +22,23 @@ export const DAYS = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] as const;
 
 export const SLOTS = ["morning", "afternoon", "evening"] as const;
 
+export interface DayAvailability {
+  day: string;
+  slots: string[];
+}
+
+// One entry per day with at least one slot, days and slots in catalog order.
+export const normalizeAvailability = (
+  availability: DayAvailability[]
+): DayAvailability[] =>
+  DAYS.flatMap((day) => {
+    const picked = availability
+      .filter((entry) => entry.day === day)
+      .flatMap((entry) => entry.slots);
+    const slots = SLOTS.filter((slot) => picked.includes(slot));
+    return slots.length ? [{ day, slots }] : [];
+  });
+
 export const MAX_AREAS = 10;
 export const MIN_RATE = 5;
 export const MAX_RATE = 200;

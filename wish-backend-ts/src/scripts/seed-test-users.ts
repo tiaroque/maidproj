@@ -6,6 +6,7 @@ import path from "path";
 import {
   currencyForCountry,
   DAYS,
+  normalizeAvailability,
   SERVICES,
   SLOTS,
   UserType,
@@ -165,11 +166,14 @@ const buildUser = (person: Person, index: number) => {
     services: pick(SERVICES, index, cleaner ? 4 : 2),
     hourlyRate: baseRate + ((index * 3) % 12) + (cleaner ? 2 : 0),
     currency: currencyForCountry(country),
-    availability: {
-      days: pick(DAYS, index, cleaner ? 4 : 2),
-      slots: pick(SLOTS, index, cleaner ? 2 : 1),
-    },
+    availability: normalizeAvailability(
+      pick(DAYS, index, cleaner ? 4 : 2).map((day, n) => ({
+        day,
+        slots: pick(SLOTS, index + n, cleaner ? 2 : 1),
+      }))
+    ),
     areasCovered,
+    openToRelocate: cleaner && index % 2 === 0,
     experienceYears: cleaner ? 1 + (index % 15) : undefined,
     description: (cleaner ? CLEANER_ABOUT : CLIENT_ABOUT)[index % 3],
     offers: pick(cleaner ? CLEANER_POSTS : CLIENT_POSTS, index, 2),
@@ -233,6 +237,7 @@ export async function seedTestUsers() {
         currency: data.currency,
         availability: data.availability,
         areasCovered: data.areasCovered,
+        openToRelocate: data.openToRelocate,
         ...(data.experienceYears !== undefined && {
           experienceYears: data.experienceYears,
         }),

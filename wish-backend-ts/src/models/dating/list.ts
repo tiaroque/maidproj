@@ -18,6 +18,7 @@ export interface GlobalFilters {
   rate: string[];
   onlineOnly: boolean;
   verifiedOnly: boolean;
+  openToRelocateOnly: boolean;
 }
 
 export interface GlobalQuickFilters {
@@ -85,12 +86,17 @@ export const getList = async (
     match.services = { $in: globalFilters.services };
   }
 
+  // Days and slots must meet on the same day: Monday + morning only matches
+  // members free on Monday morning.
+  const dayMatch: any = {};
   if (globalFilters.days?.length) {
-    match["availability.days"] = { $in: globalFilters.days };
+    dayMatch.day = { $in: globalFilters.days };
   }
-
   if (globalFilters.slots?.length) {
-    match["availability.slots"] = { $in: globalFilters.slots };
+    dayMatch.slots = { $in: globalFilters.slots };
+  }
+  if (Object.keys(dayMatch).length) {
+    match.availability = { $elemMatch: dayMatch };
   }
 
   if (globalFilters.rate?.length === 2) {
@@ -110,6 +116,10 @@ export const getList = async (
 
   if (globalFilters.verifiedOnly) {
     match.verified = true;
+  }
+
+  if (globalFilters.openToRelocateOnly) {
+    match.openToRelocate = true;
   }
 
   const items = await collection

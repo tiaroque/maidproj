@@ -89,6 +89,18 @@
           </p>
         }
 
+        @if (isCleaner()) {
+          <p class="mt-2 text-sm text-(--mat-sys-on-surface)">
+            {{ "work.openToRelocate" | translate }}:
+            <span class="font-medium">{{
+              (user().openToRelocate
+                ? "work.openToRelocateYes"
+                : "work.openToRelocateNo"
+              ) | translate
+            }}</span>
+          </p>
+        }
+
         @if (isOwnProfile()) {
           <div class="mt-4">
             <div class="flex items-baseline justify-between gap-3">
@@ -174,6 +186,13 @@
               class="rounded-full border border-(--mat-sys-outline-variant) bg-(--mat-sys-surface-container-lowest) px-3 py-1 text-xs font-medium text-(--mat-sys-on-surface-variant)"
             >
               {{ user().languagesNames.join(", ") }}
+            </span>
+          }
+          @if (isCleaner() && user().openToRelocate) {
+            <span
+              class="inline-flex items-center gap-1 rounded-full border border-(--mat-sys-outline-variant) bg-(--mat-sys-surface-container-lowest) px-3 py-1 text-xs font-medium text-(--mat-sys-on-surface)"
+            >
+              {{ "work.openToRelocate" | translate }}
             </span>
           }
           @for (service of services(); track service) {
@@ -416,31 +435,41 @@
         <h3 class="text-sm font-semibold text-(--mat-sys-on-surface-variant)">
           {{ "profileView.availability" | translate }}
         </h3>
-        @if (days().length || slots().length) {
-          <div class="mt-2 grid grid-cols-7 gap-1" role="list">
+        @if (availability().length) {
+          <div
+            class="mt-2 grid grid-cols-[auto_repeat(7,minmax(0,1fr))] items-center gap-1 text-xs"
+            role="table"
+            [attr.aria-label]="'profileView.availability' | translate"
+          >
+            <span role="columnheader"></span>
             @for (day of allDays; track day) {
               <span
-                role="listitem"
-                class="rounded-lg py-1.5 text-center text-xs font-semibold"
-                [class.bg-(--mat-sys-primary-container)]="days().includes(day)"
-                [class.text-(--mat-sys-on-primary-container)]="days().includes(day)"
-                [class.text-(--mat-sys-outline)]="!days().includes(day)"
-                [class.line-through]="!days().includes(day)"
-                [attr.aria-label]="
-                  ('days.' + day | translate) +
-                  (days().includes(day) ? '' : ' ✕')
-                "
+                role="columnheader"
+                class="text-center font-semibold text-(--mat-sys-on-surface-variant)"
+                [attr.aria-label]="'days.' + day | translate"
                 >{{ "daysShort." + day | translate }}</span
               >
             }
-          </div>
-          @if (slots().length) {
-            <p class="mt-2 text-sm text-(--mat-sys-on-surface)">
-              @for (slot of slots(); track slot; let last = $last) {
-                {{ "slots." + slot | translate }}{{ last ? "" : " · " }}
+            @for (slot of allSlots; track slot) {
+              <span role="rowheader" class="pr-2 text-(--mat-sys-on-surface-variant)">{{
+                "slots." + slot | translate
+              }}</span>
+              @for (day of allDays; track day) {
+                <span
+                  role="cell"
+                  class="h-6 rounded-md"
+                  [class.bg-(--mat-sys-primary-container)]="hasSlot(day, slot)"
+                  [class.bg-(--mat-sys-surface-container-high)]="!hasSlot(day, slot)"
+                  [attr.aria-label]="
+                    ('days.' + day | translate) +
+                    ', ' +
+                    ('slots.' + slot | translate) +
+                    (hasSlot(day, slot) ? '' : ' ✕')
+                  "
+                ></span>
               }
-            </p>
-          }
+            }
+          </div>
         } @else {
           <p class="mt-2 text-sm text-(--mat-sys-on-surface-variant)">
             {{

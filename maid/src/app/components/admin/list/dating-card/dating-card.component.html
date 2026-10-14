@@ -103,6 +103,13 @@
           }
         </p>
       }
+      @if (user.userType === "Cleaner" && user.openToRelocate) {
+        <p class="profile-card-services">
+          <span class="profile-card-service">{{
+            "work.openToRelocate" | translate
+          }}</span>
+        </p>
+      }
       @if (services().length) {
         <p class="profile-card-services">
           @for (service of services().slice(0, 3); track service) {

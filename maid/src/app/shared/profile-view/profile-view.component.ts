@@ -27,9 +27,12 @@ import { Router, RouterLink } from '@angular/router';
 import { Subscription, switchMap } from 'rxjs';
 import {
   currencyForCountry,
+  DayKey,
   DAYS,
   SERVICE_ICONS,
+  SlotKey,
   SLOTS,
+  slotsForDay,
 } from '../../services/admin/interfaces/service-catalog';
 import { ImageViewerService } from '../../services/admin/image-viewer.service';
 import { LanguageService } from '../../services/shared/language-service.service';
@@ -113,6 +116,7 @@ export class ProfileViewComponent implements OnInit, OnDestroy {
   readonly maxBioChars = 500;
   readonly serviceIcons = SERVICE_ICONS;
   readonly allDays = DAYS;
+  readonly allSlots = SLOTS;
 
   readonly listPhotos = computed(() => this.user().images ?? []);
 
@@ -161,8 +165,9 @@ export class ProfileViewComponent implements OnInit, OnDestroy {
 
   readonly services = computed(() => this.user().services ?? []);
   readonly areas = computed(() => this.user().areasCovered ?? []);
-  readonly days = computed(() => this.user().availability?.days ?? []);
-  readonly slots = computed(() => this.user().availability?.slots ?? []);
+  readonly availability = computed(() => this.user().availability ?? []);
+  readonly hasSlot = (day: DayKey, slot: SlotKey) =>
+    slotsForDay(this.availability(), day).includes(slot);
 
   readonly rateLabel = computed(() => {
     const rate = this.user().hourlyRate;
@@ -204,16 +209,12 @@ export class ProfileViewComponent implements OnInit, OnDestroy {
             count: profile.experienceYears,
           })
         : '';
-    const daysValue = this.days()
-      .slice()
-      .sort((a, b) => DAYS.indexOf(a) - DAYS.indexOf(b))
-      .map((day) => t('days.' + day))
-      .join(', ');
-    const slotsValue = this.slots()
-      .slice()
-      .sort((a, b) => SLOTS.indexOf(a) - SLOTS.indexOf(b))
-      .map((slot) => t('slots.' + slot))
-      .join(', ');
+    const availabilityValue = this.availability()
+      .map(
+        ({ day, slots }) =>
+          `${t('days.' + day)}: ${slots.map((slot) => t('slots.' + slot)).join(', ')}`,
+      )
+      .join(' · ');
 
     const facts: ProfileFact[] = [
       { labelKey: 'location', value: location, group: 'work' },
@@ -229,16 +230,24 @@ export class ProfileViewComponent implements OnInit, OnDestroy {
       },
       {
         labelKey: this.isCleaner() ? 'work.availableDays' : 'work.preferredDays',
-        value: daysValue,
+        value: availabilityValue,
         group: 'schedule',
       },
-      { labelKey: 'work.timeOfDay', value: slotsValue, group: 'schedule' },
     ];
 
     if (this.isCleaner()) {
       facts.splice(2, 0, {
         labelKey: 'work.experienceYears',
         value: experience,
+        group: 'work',
+      });
+      facts.push({
+        labelKey: 'work.openToRelocate',
+        value: t(
+          profile.openToRelocate
+            ? 'work.openToRelocateYes'
+            : 'work.openToRelocateNo',
+        ),
         group: 'work',
       });
       facts.push({

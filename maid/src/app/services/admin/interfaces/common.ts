@@ -31,7 +31,8 @@ export type FilterType =
   | 'slots'
   | 'languages'
   | 'online'
-  | 'verified';
+  | 'verified'
+  | 'openToRelocate';
 
 // Filters that hold one ItemFilter per selected value.
 export type MultiFilterType = Extract<
@@ -40,7 +41,10 @@ export type MultiFilterType = Extract<
 >;
 
 // Filters with no value, switched on and off straight from their chip.
-export type ToggleFilterType = Extract<FilterType, 'online' | 'verified'>;
+export type ToggleFilterType = Extract<
+  FilterType,
+  'online' | 'verified' | 'openToRelocate'
+>;
 
 export type FilterGroupsType = 'location' | 'services' | 'availability' | 'adicional';
 
@@ -61,6 +65,7 @@ export const filtersIcon: Record<FilterType, string> = {
   languages: 'translate',
   online: 'circle',
   verified: 'verified',
+  openToRelocate: 'public',
 };
 
 // Used in the store

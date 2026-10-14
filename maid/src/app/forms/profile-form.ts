@@ -35,6 +35,7 @@ export interface ProfileWorkModel {
   hourlyRate: number | null;
   availability: Availability;
   areasCovered: Area[];
+  openToRelocate: boolean;
 }
 
 export interface ProfileAboutModel {
@@ -70,8 +71,9 @@ export function defaultProfileForm(): ProfileFormModel {
     work: {
       services: [],
       hourlyRate: null,
-      availability: { days: [], slots: [] },
+      availability: [],
       areasCovered: [],
+      openToRelocate: false,
     },
     about: {
       languages: [],

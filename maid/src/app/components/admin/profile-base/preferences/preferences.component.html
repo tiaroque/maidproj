@@ -40,33 +40,43 @@
       </div>
     } @else {
       <section class="ad-card">
-        <mat-chip-set aria-label="Blocked profiles">
+        <ul class="flex flex-wrap gap-2" aria-label="Blocked profiles">
           @for (user of blockedUsers(); track user.blockedUser.uid) {
-            <mat-chip>
-              @if (user.blockedUser.profileImage?.keyRezised) {
-                <span
-                  matChipAvatar
-                  class="relative overflow-hidden rounded-full"
-                >
+            <li class="filter-chip">
+              <span class="filter-chip-icon relative overflow-hidden" aria-hidden="true">
+                @if (user.blockedUser.profileImage?.keyRezised) {
                   <img
-                    alt="image avatar "
+                    alt=""
                     [ngSrc]="user.blockedUser.profileImage.keyRezised | s3Url"
                     fill
                     class="object-cover"
                   />
-                </span>
-              }
-
-              {{ user.blockedUser.name }}
+                } @else {
+                  <mat-icon class="size-3.5! text-sm! leading-none!">person</mat-icon>
+                }
+              </span>
+              <span class="min-w-0 truncate">{{ user.blockedUser.name }}</span>
               <button
-                matChipRemove
+                type="button"
+                class="filter-chip-remove"
+                [attr.aria-label]="('listFiltering.remove' | translate) + ' ' + user.blockedUser.name"
                 (click)="removeBlockedUser(user.blockedUser.uid!)"
               >
-                <mat-icon>cancel</mat-icon>
+                <svg
+                  width="10"
+                  height="10"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
+                </svg>
               </button>
-            </mat-chip>
+            </li>
           }
-        </mat-chip-set>
+        </ul>
       </section>
     }
 

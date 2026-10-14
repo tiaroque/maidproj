@@ -134,8 +134,7 @@ export class XprofileComponent implements OnInit {
     const workItems = [
       model.work.services,
       model.work.hourlyRate?.toString(),
-      model.work.availability.days,
-      model.work.availability.slots,
+      model.work.availability,
       ...(cleaner ? [model.work.areasCovered] : []),
     ];
     const aboutItems = [model.about.languages, model.about.description];
@@ -242,7 +241,8 @@ export class XprofileComponent implements OnInit {
   getDetailsData() {
     this.detailsLoading = true;
 
-    const result = this.storeChat.me().user;
+    // Store state is frozen, and signal forms tag every array item they track.
+    const result = structuredClone(this.storeChat.me().user);
 
     this.profileModel.update((model) => ({
       ...model,
@@ -260,11 +260,9 @@ export class XprofileComponent implements OnInit {
       work: {
         services: result.services ?? [],
         hourlyRate: result.hourlyRate ?? null,
-        availability: {
-          days: result.availability?.days ?? [],
-          slots: result.availability?.slots ?? [],
-        },
+        availability: result.availability ?? [],
         areasCovered: result.areasCovered ?? [],
+        openToRelocate: result.openToRelocate === true,
       },
       about: {
         languages: result.languages || [],

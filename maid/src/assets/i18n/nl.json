@@ -579,11 +579,16 @@
     "availableDays": "Dagen waarop je beschikbaar bent",
     "preferredDays": "Voorkeursdagen",
     "timeOfDay": "Tijdstip",
+    "availabilityHint": "Vink een hele dag aan of kies per dag de tijdstippen die je goed uitkomen.",
     "areasCovered": "Gebieden waar je werkt",
     "areasHint": "Voeg de plaatsen of wijken toe waar je graag naartoe gaat (maximaal {{max}}).",
     "addArea": "Gebied toevoegen",
     "experienceYears": "Jaren ervaring",
-    "experienceRange": "Vul een getal in tussen 0 en 60."
+    "experienceRange": "Vul een getal in tussen 0 en 60.",
+    "openToRelocate": "Bereid om naar het buitenland te verhuizen",
+    "openToRelocateHint": "Zet dit aan als je voor werk naar een ander land wilt verhuizen.",
+    "openToRelocateYes": "Ja",
+    "openToRelocateNo": "Nee"
   },
   "about": {
     "title": "Over jou",

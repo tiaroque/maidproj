@@ -79,8 +79,14 @@ export const workRules = [
     .isFloat({ min: MIN_RATE, max: MAX_RATE })
     .withMessage(`hourlyRate must be between ${MIN_RATE} and ${MAX_RATE}`)
     .toFloat(),
-  ...optionalEnumList("availability.days", DAYS),
-  ...optionalEnumList("availability.slots", SLOTS),
+  body("availability")
+    .optional()
+    .isArray({ max: DAYS.length })
+    .withMessage(`availability must be a list of at most ${DAYS.length} days`),
+  body("availability.*.day")
+    .isIn(DAYS)
+    .withMessage("availability contains an unknown day"),
+  ...optionalEnumList("availability.*.slots", SLOTS),
   body("areasCovered")
     .optional()
     .isArray({ max: MAX_AREAS })
@@ -101,6 +107,10 @@ export const workRules = [
     .trim()
     .isLength({ min: 1, max: 200 })
     .withMessage("each area needs a name"),
+  body("openToRelocate")
+    .optional()
+    .custom((value) => value === true || value === false)
+    .withMessage("openToRelocate must be true or false"),
 ];
 
 export const aboutRules = [

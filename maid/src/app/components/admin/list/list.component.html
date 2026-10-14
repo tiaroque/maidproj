@@ -37,7 +37,9 @@
           ? ("listFiltering.onlineNow" | translate)
           : filter.type === "verified"
             ? ("listFiltering.verified" | translate)
-            : filter.name;
+            : filter.type === "openToRelocate"
+              ? ("work.openToRelocate" | translate)
+              : filter.name;
       <li class="filter-chip">
         <span class="filter-chip-icon" aria-hidden="true">
           @switch (filter.type) {
@@ -73,6 +75,9 @@
             }
             @case ("verified") {
               <mat-icon class="size-3! text-xs! leading-none!">verified</mat-icon>
+            }
+            @case ("openToRelocate") {
+              <mat-icon class="size-3! text-xs! leading-none!">public</mat-icon>
             }
           }
         </span>

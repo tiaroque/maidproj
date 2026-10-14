@@ -579,11 +579,16 @@
     "availableDays": "Giorni in cui sei disponibile",
     "preferredDays": "Giorni preferiti",
     "timeOfDay": "Fascia oraria",
+    "availabilityHint": "Seleziona un giorno intero o scegli le fasce orarie adatte a te per ogni giorno.",
     "areasCovered": "Zone in cui lavori",
     "areasHint": "Aggiungi le città o i quartieri in cui sei disposto a spostarti (fino a {{max}}).",
     "addArea": "Aggiungi zona",
     "experienceYears": "Anni di esperienza",
-    "experienceRange": "Inserisci un numero tra 0 e 60."
+    "experienceRange": "Inserisci un numero tra 0 e 60.",
+    "openToRelocate": "Disponibile a trasferirsi all'estero",
+    "openToRelocateHint": "Attivalo se non ti dispiace trasferirti in un altro paese per lavorare.",
+    "openToRelocateYes": "Sì",
+    "openToRelocateNo": "No"
   },
   "about": {
     "title": "Su di te",

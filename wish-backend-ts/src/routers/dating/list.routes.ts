@@ -41,6 +41,7 @@ router.get("", auth, validateGenderExists, async (req, res, next) => {
       rate: queryList("rate") ?? [],
       onlineOnly: req.query.online === "true",
       verifiedOnly: req.query.verified === "true",
+      openToRelocateOnly: req.query.openToRelocate === "true",
     };
 
     const onlineUserIds = await getAllOnlineUserIds();

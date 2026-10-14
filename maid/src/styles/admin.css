@@ -317,7 +317,122 @@
   white-space: normal;
 }
 
-/* Chip pickers on the profile page (services, days, time of day). */
-.work-chips .mdc-evolution-chip-set__chips {
-  gap: 0.25rem;
+/* Removable chips (.filter-chip) and toggle chips (.chip-toggle, see
+   app-chip-picker) share one look. */
+.chip-toggle {
+  display: inline-flex;
+  max-width: 100%;
+  min-height: 2rem;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid var(--mat-sys-outline-variant);
+  background-color: transparent;
+  padding: 0.25rem 0.875rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  color: var(--mat-sys-on-surface);
+  cursor: pointer;
+  transition:
+    background-color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.chip-toggle:has(.filter-chip-icon) {
+  padding-left: 0.25rem;
+}
+
+.chip-toggle:hover {
+  border-color: var(--ad-accent-line);
+}
+
+.chip-toggle[aria-pressed="true"] {
+  border-color: var(--ad-accent-line);
+  background-color: var(--ad-accent-soft);
+}
+
+.chip-toggle[aria-pressed="true"] .filter-chip-icon {
+  background-color: var(--ad-accent);
+  color: var(--mat-sys-surface);
+}
+
+.chip-toggle[aria-pressed="false"] .filter-chip-icon {
+  background-color: var(--mat-sys-surface-container-high);
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.chip-toggle:focus-visible {
+  outline: 2px solid var(--ad-accent);
+  outline-offset: 1px;
+}
+
+.chip-toggle:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.filter-chip {
+  display: inline-flex;
+  max-width: 100%;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid var(--ad-accent-line);
+  background-color: var(--ad-accent-soft);
+  padding: 0.25rem 0.25rem 0.25rem 0.3rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.25rem;
+  color: var(--mat-sys-on-surface);
+  animation: filter-chip-in 0.18s ease-out;
+}
+
+.filter-chip-icon {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 9999px;
+  background-color: var(--mat-sys-surface);
+  color: var(--ad-accent);
+}
+
+.filter-chip-remove {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 9999px;
+  color: var(--mat-sys-on-surface-variant);
+  cursor: pointer;
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease;
+}
+
+.filter-chip-remove:hover {
+  background-color: var(--ad-accent-line);
+  color: var(--ad-accent);
+}
+
+.filter-chip-remove:focus-visible {
+  outline: 2px solid var(--ad-accent);
+  outline-offset: 1px;
+}
+
+@keyframes filter-chip-in {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filter-chip {
+    animation: none;
+  }
 }

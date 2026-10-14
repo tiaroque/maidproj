@@ -170,6 +170,7 @@ export class ListFilterService {
         }
         case 'online':
         case 'verified':
+        case 'openToRelocate':
           break;
       }
     });
@@ -201,7 +202,8 @@ export class ListFilterService {
         }
 
         case 'online':
-        case 'verified': {
+        case 'verified':
+        case 'openToRelocate': {
           mapOfFilters.set(filter.type, ['true']);
           break;
         }

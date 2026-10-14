@@ -108,6 +108,23 @@
       {{ "listFiltering.verified" | translate }}
     </button>
 
+    @if (searchingCleaners()) {
+      <button
+        type="button"
+        class="flex items-center cursor-pointer gap-2 group whitespace-nowrap rounded-full border px-4 py-2 text-sm font-medium text-(--mat-sys-on-surface) transition-colors hover:border-[#7fd8c3] hover:bg-[#7fd8c3]/10"
+        [ngClass]="chipClasses('openToRelocate', ['openToRelocate'])"
+        [attr.aria-pressed]="listFilterService.isToggleFilterApplied('openToRelocate')"
+        (click)="toggleFilter('openToRelocate')"
+      >
+        <mat-icon
+          class="size-4! text-base! leading-none! text-(--mat-sys-on-surface-variant)! group-[.is-active]:text-(--ad-accent)!"
+          aria-hidden="true"
+          >public</mat-icon
+        >
+        {{ "work.openToRelocate" | translate }}
+      </button>
+    }
+
     <div class="ml-auto flex shrink-0 items-center gap-3 pl-2">
       <button
         type="button"
@@ -139,21 +156,13 @@
             [compact]="true" />
         }
         @case ("services") {
-          <mat-chip-listbox
-            multiple
-            class="work-chips"
+          <app-chip-picker
             [formField]="filterForm.services"
+            [options]="services"
+            [icons]="serviceIcons"
+            labelPrefix="services."
             [attr.aria-label]="'listFiltering.services' | translate"
-          >
-            @for (service of services; track service) {
-              <mat-chip-option [value]="service">
-                <mat-icon matChipAvatar aria-hidden="true">{{
-                  serviceIcons[service]
-                }}</mat-icon>
-                {{ "services." + service | translate }}
-              </mat-chip-option>
-            }
-          </mat-chip-listbox>
+          />
         }
         @case ("rate") {
           <div class="mb-1 flex max-w-md items-center justify-between text-sm">
@@ -185,35 +194,23 @@
               <p class="mb-1.5 text-sm font-semibold">
                 {{ "work.availableDays" | translate }}
               </p>
-              <mat-chip-listbox
-                multiple
-                class="work-chips"
+              <app-chip-picker
                 [formField]="filterForm.days"
+                [options]="days"
+                labelPrefix="daysShort."
                 [attr.aria-label]="'work.availableDays' | translate"
-              >
-                @for (day of days; track day) {
-                  <mat-chip-option [value]="day">{{
-                    "daysShort." + day | translate
-                  }}</mat-chip-option>
-                }
-              </mat-chip-listbox>
+              />
             </div>
             <div>
               <p class="mb-1.5 text-sm font-semibold">
                 {{ "work.timeOfDay" | translate }}
               </p>
-              <mat-chip-listbox
-                multiple
-                class="work-chips"
+              <app-chip-picker
                 [formField]="filterForm.slots"
+                [options]="slots"
+                labelPrefix="slots."
                 [attr.aria-label]="'work.timeOfDay' | translate"
-              >
-                @for (slot of slots; track slot) {
-                  <mat-chip-option [value]="slot">{{
-                    "slots." + slot | translate
-                  }}</mat-chip-option>
-                }
-              </mat-chip-listbox>
+              />
             </div>
           </div>
         }

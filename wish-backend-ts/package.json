@@ -12,6 +12,7 @@
     "seed:users": "ts-node src/scripts/seed-test-users.ts",
     "purge:user": "ts-node src/scripts/purge-deleted-user.ts",
     "migrate:cleaning": "ts-node src/scripts/migrate-to-cleaning.ts",
+    "migrate:availability": "ts-node src/scripts/migrate-availability.ts",
     "build": "tsc -p . && cp src/email-templates/*.html dist/email-templates/"
   },
   "keywords": [],

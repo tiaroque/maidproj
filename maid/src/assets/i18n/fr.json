@@ -579,11 +579,16 @@
     "availableDays": "Vos jours de disponibilité",
     "preferredDays": "Jours préférés",
     "timeOfDay": "Moment de la journée",
+    "availabilityHint": "Cochez une journée entière ou choisissez les moments qui vous conviennent chaque jour.",
     "areasCovered": "Zones desservies",
     "areasHint": "Ajoutez les villes ou quartiers où vous acceptez de vous déplacer (jusqu'à {{max}}).",
     "addArea": "Ajouter une zone",
     "experienceYears": "Années d'expérience",
-    "experienceRange": "Saisissez un nombre entre 0 et 60."
+    "experienceRange": "Saisissez un nombre entre 0 et 60.",
+    "openToRelocate": "Prêt à déménager à l'étranger",
+    "openToRelocateHint": "Activez cette option si vous acceptez de déménager dans un autre pays pour travailler.",
+    "openToRelocateYes": "Oui",
+    "openToRelocateNo": "Non"
   },
   "about": {
     "title": "À propos de vous",

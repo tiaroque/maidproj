@@ -53,7 +53,25 @@ export interface Area {
   locationName: string;
 }
 
-export interface Availability {
-  days: DayKey[];
+export interface DayAvailability {
+  day: DayKey;
   slots: SlotKey[];
 }
+
+// One entry per day with at least one slot, ordered as in DAYS.
+export type Availability = DayAvailability[];
+
+export const slotsForDay = (availability: Availability | undefined, day: DayKey) =>
+  availability?.find((entry) => entry.day === day)?.slots ?? [];
+
+export const withDaySlots = (
+  availability: Availability,
+  day: DayKey,
+  slots: readonly SlotKey[],
+): Availability =>
+  DAYS.flatMap((key) => {
+    const daySlots = key === day ? slots : slotsForDay(availability, key);
+    return daySlots.length
+      ? [{ day: key, slots: SLOTS.filter((slot) => daySlots.includes(slot)) }]
+      : [];
+  });

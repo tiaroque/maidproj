@@ -579,11 +579,16 @@
     "availableDays": "Tage, an denen Sie verfügbar sind",
     "preferredDays": "Bevorzugte Tage",
     "timeOfDay": "Tageszeit",
+    "availabilityHint": "Haken Sie einen ganzen Tag an oder wählen Sie für jeden Tag die passenden Tageszeiten.",
     "areasCovered": "Ihre Einsatzgebiete",
     "areasHint": "Fügen Sie die Orte oder Quartiere hinzu, in die Sie gerne fahren (bis zu {{max}}).",
     "addArea": "Gebiet hinzufügen",
     "experienceYears": "Jahre Erfahrung",
-    "experienceRange": "Geben Sie eine Zahl zwischen 0 und 60 ein."
+    "experienceRange": "Geben Sie eine Zahl zwischen 0 und 60 ein.",
+    "openToRelocate": "Bereit, ins Ausland zu ziehen",
+    "openToRelocateHint": "Aktivieren Sie dies, wenn Sie für die Arbeit in ein anderes Land ziehen würden.",
+    "openToRelocateYes": "Ja",
+    "openToRelocateNo": "Nein"
   },
   "about": {
     "title": "Über Sie",

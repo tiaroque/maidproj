@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   ElementRef,
   HostListener,
   inject,
@@ -20,7 +21,7 @@ import {
   ToggleFilterType,
 } from '../../../../services/admin/interfaces/common';
 import { MatIcon } from '@angular/material/icon';
-import { MatChipsModule } from '@angular/material/chips';
+import { ChipPickerComponent } from '../../../../shared/chip-picker/chip-picker.component';
 import {
   DAYS,
   SERVICE_ICONS,
@@ -38,7 +39,7 @@ type FilterChip = FilterPanel | ToggleFilterType;
     NgTemplateOutlet,
     FormField,
     MatSliderModule,
-    MatChipsModule,
+    ChipPickerComponent,
     LanguagesComponent,
     LocationSearchComponent,
     TranslatePipe,
@@ -58,6 +59,10 @@ export class ListFilteringComponent {
   sliders = this.listFilterService.sliders;
   filterForm = this.listFilterService.filterForm;
   openPanel = signal<FilterPanel | null>(null);
+  // Clients browse cleaners, which is the only list this choice applies to.
+  readonly searchingCleaners = computed(
+    () => this.storeChat.userType() === 'Client',
+  );
 
   readonly services = SERVICES;
   readonly serviceIcons = SERVICE_ICONS;

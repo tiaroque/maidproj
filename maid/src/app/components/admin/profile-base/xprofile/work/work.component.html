@@ -3,23 +3,15 @@
     <h3 class="mb-2 text-sm font-semibold text-(--mat-sys-on-surface)">
       {{ (isCleaner() ? "work.servicesOffered" : "work.servicesNeeded") | translate }}
     </h3>
-    <mat-chip-listbox
-      multiple
-      class="work-chips"
+    <app-chip-picker
       [formField]="form().services"
+      [options]="services"
+      [icons]="serviceIcons"
+      labelPrefix="services."
       [attr.aria-label]="
         (isCleaner() ? 'work.servicesOffered' : 'work.servicesNeeded') | translate
       "
-    >
-      @for (service of services; track service) {
-        <mat-chip-option [value]="service">
-          <mat-icon matChipAvatar aria-hidden="true">{{
-            serviceIcons[service]
-          }}</mat-icon>
-          {{ "services." + service | translate }}
-        </mat-chip-option>
-      }
-    </mat-chip-listbox>
+    />
   </div>
 
   <mat-form-field [appearance]="utilsService.inputType()" class="w-full sm:max-w-xs">
@@ -43,35 +35,33 @@
   </mat-form-field>
 
   <div>
-    <h3 class="mb-2 text-sm font-semibold text-(--mat-sys-on-surface)">
+    <h3 class="text-sm font-semibold text-(--mat-sys-on-surface)">
       {{ (isCleaner() ? "work.availableDays" : "work.preferredDays") | translate }}
     </h3>
-    <mat-chip-listbox
-      multiple
-      class="work-chips"
-      [formField]="form().availability.days"
-      [attr.aria-label]="'work.availableDays' | translate"
-    >
+    <p class="mb-3 text-sm text-(--mat-sys-on-surface-variant)">
+      {{ "work.availabilityHint" | translate }}
+    </p>
+    <div class="flex flex-col gap-2" role="list">
       @for (day of days; track day) {
-        <mat-chip-option [value]="day">{{ "days." + day | translate }}</mat-chip-option>
+        @let daySlots = slotsByDay()[day];
+        <div role="listitem" class="flex flex-wrap items-center gap-x-3 gap-y-1">
+          <mat-checkbox
+            class="w-36 shrink-0"
+            [checked]="daySlots.length === slots.length"
+            [indeterminate]="daySlots.length > 0 && daySlots.length < slots.length"
+            (change)="setDaySlots(day, $event.checked ? slots : [])"
+            >{{ "days." + day | translate }}</mat-checkbox
+          >
+          <app-chip-picker
+            [value]="daySlots"
+            (valueChange)="setDaySlots(day, $event)"
+            [options]="slots"
+            labelPrefix="slots."
+            [attr.aria-label]="('days.' + day | translate) + ', ' + ('work.timeOfDay' | translate)"
+          />
+        </div>
       }
-    </mat-chip-listbox>
-  </div>
-
-  <div>
-    <h3 class="mb-2 text-sm font-semibold text-(--mat-sys-on-surface)">
-      {{ "work.timeOfDay" | translate }}
-    </h3>
-    <mat-chip-listbox
-      multiple
-      class="work-chips"
-      [formField]="form().availability.slots"
-      [attr.aria-label]="'work.timeOfDay' | translate"
-    >
-      @for (slot of slots; track slot) {
-        <mat-chip-option [value]="slot">{{ "slots." + slot | translate }}</mat-chip-option>
-      }
-    </mat-chip-listbox>
+    </div>
   </div>
 
   @if (isCleaner()) {
@@ -84,17 +74,39 @@
       </p>
 
       @if (form().areasCovered().value().length) {
-        <mat-chip-set class="mb-3 block" [attr.aria-label]="'work.areasCovered' | translate">
+        <ul class="mb-3 flex flex-wrap gap-2" [attr.aria-label]="'work.areasCovered' | translate">
           @for (area of form().areasCovered().value(); track area.location) {
-            <mat-chip (removed)="removeArea(area.location)">
-              <mat-icon matChipAvatar aria-hidden="true">place</mat-icon>
-              {{ area.locationName }} · {{ area.country }}
-              <button matChipRemove [attr.aria-label]="'offer.remove' | translate">
-                <mat-icon>cancel</mat-icon>
+            @let label = area.locationName + " · " + area.country;
+            <li class="filter-chip">
+              <span class="filter-chip-icon" aria-hidden="true">
+                <svg width="12px" height="12px" fill="currentColor" viewBox="0 0 384 512">
+                  <path
+                    d="M0 188.6C0 84.4 86 0 192 0S384 84.4 384 188.6c0 119.3-120.2 262.3-170.4 316.8-11.8 12.8-31.5 12.8-43.3 0-50.2-54.5-170.4-197.5-170.4-316.8zM192 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128z"
+                  />
+                </svg>
+              </span>
+              <span class="min-w-0 truncate">{{ label }}</span>
+              <button
+                type="button"
+                class="filter-chip-remove"
+                [attr.aria-label]="('offer.remove' | translate) + ' ' + label"
+                (click)="removeArea(area.location)"
+              >
+                <svg
+                  width="10"
+                  height="10"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
+                </svg>
               </button>
-            </mat-chip>
+            </li>
           }
-        </mat-chip-set>
+        </ul>
       }
 
       <app-location [isSignup]="false" [form]="draft" />
@@ -109,6 +121,25 @@
           {{ "work.addArea" | translate }}
         </button>
       </div>
+    </div>
+
+    <div class="flex items-center justify-between gap-4">
+      <div class="min-w-0">
+        <h3
+          id="open-to-relocate-title"
+          class="text-sm font-semibold text-(--mat-sys-on-surface)"
+        >
+          {{ "work.openToRelocate" | translate }}
+        </h3>
+        <p class="text-sm text-(--mat-sys-on-surface-variant)">
+          {{ "work.openToRelocateHint" | translate }}
+        </p>
+      </div>
+      <mat-slide-toggle
+        aria-labelledby="open-to-relocate-title"
+        [checked]="form().openToRelocate().value()"
+        (change)="setOpenToRelocate($event.checked)"
+      />
     </div>
   }
 </div>

@@ -37,6 +37,7 @@ export interface UserModel {
   currency?: string;
   availability?: Availability;
   areasCovered?: Area[];
+  openToRelocate?: boolean;
   languages?: string[];
   description?: string;
   offers?: Array<{ _id: string; offer: string; date: Date }>;

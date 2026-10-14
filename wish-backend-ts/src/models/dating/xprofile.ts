@@ -4,7 +4,12 @@ import {
   partialTextMatch,
   partialTextPatterns,
 } from "./pipeline-queries-helper";
-import { currencyForCountry, UserType } from "./service-catalog";
+import {
+  currencyForCountry,
+  DayAvailability,
+  normalizeAvailability,
+  UserType,
+} from "./service-catalog";
 import { publicRootProjection } from "../user";
 
 // // // // // // //  POST // // // // // // // // // // // // //
@@ -45,8 +50,9 @@ export const createBirthdate = async (uid: string, profile: any) => {
 export interface WorkProfile {
   services?: string[];
   hourlyRate?: number;
-  availability?: { days?: string[]; slots?: string[] };
+  availability?: DayAvailability[];
   areasCovered?: Array<{ country: string; location: string; locationName: string }>;
+  openToRelocate?: boolean;
 }
 
 // Only cleaners cover areas; a client's home location is enough to find them.
@@ -74,11 +80,9 @@ export const createWork = async (
         services: work.services ?? [],
         hourlyRate: work.hourlyRate ?? null,
         currency: currencyForCountry(user?.country),
-        availability: {
-          days: work.availability?.days ?? [],
-          slots: work.availability?.slots ?? [],
-        },
+        availability: normalizeAvailability(work.availability ?? []),
         areasCovered,
+        openToRelocate: userType === "Cleaner" && work.openToRelocate === true,
       },
     }
   );

@@ -8,7 +8,8 @@ import {
 } from '@angular/core';
 import { FieldTree, form, FormField, readonly, schema } from '@angular/forms/signals';
 import { MatButtonModule } from '@angular/material/button';
-import { MatChipsModule } from '@angular/material/chips';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { MatSlideToggle } from '@angular/material/slide-toggle';
 import { MatError, MatFormField, MatHint, MatLabel, MatSuffix } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
@@ -17,16 +18,21 @@ import { PlaceModel, ProfileWorkModel } from '../../../../../forms/profile-form'
 import { hasKind } from '../../../../../forms/form-utils';
 import {
   currencyForCountry,
+  DayKey,
   DAYS,
   MAX_AREAS,
   MAX_RATE,
   MIN_RATE,
   SERVICE_ICONS,
   SERVICES,
+  SlotKey,
   SLOTS,
+  slotsForDay,
+  withDaySlots,
 } from '../../../../../services/admin/interfaces/service-catalog';
 import { UtilsService } from '../../../../../services/utils.service';
 import { LocationComponent } from '../location/location.component';
+import { ChipPickerComponent } from '../../../../../shared/chip-picker/chip-picker.component';
 
 const emptyPlace = (): PlaceModel => ({ country: '', location: '', locationName: '' });
 
@@ -41,7 +47,9 @@ const placeSchema = schema<PlaceModel>((p) => {
   imports: [
     FormField,
     MatButtonModule,
-    MatChipsModule,
+    MatCheckbox,
+    MatSlideToggle,
+    ChipPickerComponent,
     MatError,
     MatFormField,
     MatHint,
@@ -71,6 +79,25 @@ export class WorkComponent {
   readonly maxAreas = MAX_AREAS;
 
   readonly currency = computed(() => currencyForCountry(this.homeCountry()));
+
+  readonly slotsByDay = computed(() => {
+    const availability = this.form().availability().value();
+    return Object.fromEntries(
+      DAYS.map((day) => [day, slotsForDay(availability, day)]),
+    ) as Record<DayKey, SlotKey[]>;
+  });
+
+  setOpenToRelocate(open: boolean) {
+    this.form().openToRelocate().value.set(open);
+    this.form().openToRelocate().markAsDirty();
+  }
+
+  setDaySlots(day: DayKey, slots: readonly SlotKey[]) {
+    this.form()
+      .availability()
+      .value.update((availability) => withDaySlots(availability, day, slots));
+    this.form().availability().markAsDirty();
+  }
 
   private readonly draftModel = signal(emptyPlace());
   readonly draft = form(this.draftModel, placeSchema);

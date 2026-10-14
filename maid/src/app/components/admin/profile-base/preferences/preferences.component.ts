@@ -16,12 +16,6 @@ import { MatIcon } from '@angular/material/icon';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
 import { UserService } from '../../../../services/user.service';
 import { ChatStore } from '../../../../services/admin/signals/store';
-import {
-  MatChip,
-  MatChipAvatar,
-  MatChipRemove,
-  MatChipSet,
-} from '@angular/material/chips';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ThemeService } from '../../../../services/theme.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
@@ -41,10 +35,6 @@ import {
     MatButtonModule,
     MatIcon,
     MatSlideToggle,
-    MatChip,
-    MatChipSet,
-    MatChipAvatar,
-    MatChipRemove,
     MatDialogModule,
     TranslatePipe,
     S3UrlPipe,
