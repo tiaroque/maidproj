@@ -53,6 +53,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   readonly languageService = inject(LanguageService);
   lang = this.languageService.defaultLang;
+  readonly showPricing = false;
   readonly partnerCountries = [
     'landing.partnerCountryPt',
     'landing.partnerCountryDe',

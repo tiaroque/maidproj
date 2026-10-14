@@ -512,15 +512,47 @@
 
 .profile-card-like {
   left: 0.75rem;
-  height: 2.25rem;
-  width: 2.25rem;
+  height: 2.5rem;
+  width: 2.5rem;
   justify-content: center;
-  color: var(--sg-mint);
+  background: #fff;
+  color: var(--sg-teal-deep);
+  box-shadow:
+    0 0 0 1px rgb(15 118 110 / 0.18),
+    0 4px 12px rgb(13 21 23 / 0.22);
+  cursor: pointer;
+  transition:
+    transform 150ms ease,
+    background-color 150ms ease,
+    color 150ms ease,
+    box-shadow 150ms ease;
 }
 
 .profile-card-like svg {
-  height: 1rem;
-  width: 1rem;
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.profile-card-like:hover:not(:disabled) {
+  transform: scale(1.08);
+  box-shadow:
+    0 0 0 1px rgb(15 118 110 / 0.35),
+    0 6px 16px rgb(13 21 23 / 0.28);
+}
+
+.profile-card-like:active:not(:disabled) {
+  transform: scale(0.94);
+}
+
+.profile-card-like:focus-visible {
+  outline: 2px solid var(--sg-teal);
+  outline-offset: 2px;
+}
+
+.profile-card-like.is-liked {
+  background: var(--sg-teal);
+  color: #fff;
+  box-shadow: 0 4px 14px rgb(15 148 136 / 0.45);
 }
 
 .profile-card-like:disabled {
@@ -614,10 +646,22 @@
   color: var(--sg-mint);
 }
 
-.unicorn-dark-theme .profile-card-like,
 .unicorn-dark-theme .profile-card-visited,
 .unicorn-dark-theme .profile-card-chip {
   background: rgb(13 21 23 / 0.72);
+}
+
+.unicorn-dark-theme .profile-card-like {
+  background: rgb(13 21 23 / 0.88);
+  box-shadow:
+    0 0 0 1px rgb(127 216 195 / 0.4),
+    0 4px 12px rgb(0 0 0 / 0.4);
+}
+
+.unicorn-dark-theme .profile-card-like.is-liked {
+  background: var(--sg-mint);
+  color: var(--sg-night);
+  box-shadow: 0 4px 14px rgb(127 216 195 / 0.4);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -626,6 +670,15 @@
   }
 
   .profile-card:hover .profile-card-photo {
+    transform: none;
+  }
+
+  .profile-card-like {
+    transition: none;
+  }
+
+  .profile-card-like:hover:not(:disabled),
+  .profile-card-like:active:not(:disabled) {
     transform: none;
   }
 }
