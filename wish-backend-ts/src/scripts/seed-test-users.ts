@@ -38,7 +38,7 @@ const PEOPLE: Person[] = [
   ["Cleaner", "Elena Rossi", "Elena", "Rossi", "female-02", "1999-08-20", "IT", "Milano", "/365331/44879/44881/44915/", ["it", "en"]],
   ["Cleaner", "Camille Dupont", "Camille", "Dupont", "female-03", "2002-01-15", "FR", "Paris", "/2202162/1403916/8649/71525/", ["fr", "en"]],
   ["Cleaner", "Lucía Morales", "Lucía", "Morales", "female-04", "2000-11-05", "ES", "Madrid", "/1311341/349055/6426653/5326784/", ["es", "en"]],
-  ["Cleaner", "Clara Weber", "Clara", "Weber", "female-05", "1998-06-18", "DE", "Berlin", "/51477/62422/", ["de", "en"]],
+  ["Cleaner", "Linpura Weber", "Linpura", "Weber", "female-05", "1998-06-18", "DE", "Berlin", "/51477/62422/", ["de", "en"]],
   ["Cleaner", "Beatriz Oliveira", "Beatriz", "Oliveira", "female-06", "2001-09-30", "PT", "Porto", "/295480/3459013/3372453/", ["pt", "en", "fr"]],
   ["Cleaner", "Giulia Bianchi", "Giulia", "Bianchi", "female-07", "2003-03-22", "IT", "Roma", "/365331/40784/41313/41485/", ["it", "en"]],
   ["Cleaner", "Chloé Martin", "Chloé", "Martin", "female-08", "1999-12-10", "FR", "Nice", "/2202162/1403916/8654/7385/1670977/170100/", ["fr", "en", "it"]],

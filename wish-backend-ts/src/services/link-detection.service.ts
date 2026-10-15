@@ -89,7 +89,7 @@ const hostOf = (link: string) =>
     .split(/[/?#:]/)[0];
 
 const isOwnHost = (host: string) =>
-  host === "clara.com" || host.endsWith(".clara.com");
+  host === "linpura.com" || host.endsWith(".linpura.com");
 
 export const findLinks = (text: string) => {
   const links = new Set<string>();

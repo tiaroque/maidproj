@@ -1,7 +1,7 @@
-# Clara design system
+# Linpura design system
 
 ## Product
-Clara is a European home-cleaning marketplace. Two roles: **Cleaner** (offers services) and **Client** (household looking for help). Authenticated `/admin` is the member app: **Profile**, **Search**, **Chat**.
+Linpura is a European home-cleaning marketplace. Two roles: **Cleaner** (offers services) and **Client** (household looking for help). Authenticated `/admin` is the member app: **Profile**, **Search**, **Chat**.
 
 Jobs to be done:
 - Clients find cleaners by service, hourly rate, availability (days + time of day) and area covered
@@ -11,7 +11,7 @@ Jobs to be done:
 Key pages: `/admin/list` (search), `/admin/profile` (edit: details, date of birth, services & availability, about), `/admin/offer-dreams` (announcements / job requests), `/admin/chat`, `/admin/upload`, `/admin/profile-view/:uid`.
 
 ## Brand
-- Wordmark: **clara** in Albert Sans, semibold, tracking-tighter, mint `#7fd8c3` on dark
+- Wordmark: **linpura** in Albert Sans, semibold, tracking-tighter, mint `#7fd8c3` on dark
 - Logo: still the old heart-ribbon mark (`logo4_no_fill.svg`) — to be replaced
 - Body: **Nunito**
 - Voice: warm, practical, trustworthy

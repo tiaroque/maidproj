@@ -23,8 +23,8 @@ const meridianApiUpstream =
 const app = express();
 app.set('trust proxy', 1);
 app.use((req, res, next) => {
-  if (req.hostname === 'clara.com') {
-    res.redirect(308, `https://www.clara.com${req.originalUrl}`);
+  if (req.hostname === 'linpura.com') {
+    res.redirect(308, `https://www.linpura.com${req.originalUrl}`);
     return;
   }
   next();
@@ -35,8 +35,8 @@ app.use(cors());
 const allowedHosts = [
   'localhost',
   '127.0.0.1',
-  'clara.com',
-  'www.clara.com',
+  'linpura.com',
+  'www.linpura.com',
   ...(process.env['NG_ALLOWED_HOSTS'] ?? '')
     .split(',')
     .map((host) => host.trim())
@@ -130,7 +130,7 @@ ${alternates}
 }
 
 app.get('/sitemap.xml', async (_req, res) => {
-  const origin = 'https://www.clara.com';
+  const origin = 'https://www.linpura.com';
   const profiles = await loadSitemapProfiles();
   const urls = [
     ...publicPages.flatMap((page) =>

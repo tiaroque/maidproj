@@ -23,10 +23,10 @@ const fromAddress = (domain: string) => {
   if (match?.[1]?.toLowerCase() === domain.toLowerCase()) {
     return configured;
   }
-  return `Clara <postmaster@${domain}>`;
+  return `Linpura <postmaster@${domain}>`;
 };
 
-export const sendEmail = (to: string, html: string, subject = "Clara") => {
+export const sendEmail = (to: string, html: string, subject = "Linpura") => {
   const domain = sendingDomain();
   if (!config.mailgunApiKey || !domain) {
     return Promise.reject(

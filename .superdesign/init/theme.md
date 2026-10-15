@@ -1,4 +1,4 @@
-# Clara theme tokens
+# Linpura theme tokens
 
 Framework: Angular 22 + Angular Material 3 (magenta-violet / custom M3) + Tailwind CSS v4.
 CSS approach: Material CSS variables (`--mat-sys-*`) + Tailwind utilities + `src/styles/*.css`.
@@ -7,7 +7,7 @@ CSS approach: Material CSS variables (`--mat-sys-*`) + Tailwind utilities + `src
 
 ### Brand
 
-- Product: clara — European maid / lifestyle matching (Client / Provider)
+- Product: linpura — European maid / lifestyle matching (Client / Provider)
 - Wordmark: Albert Sans, tracking-tighter, gold `#e8c97a`
 - Body: Nunito
 - Header chrome: wine `#1c1016` with cream text `#fff6ee`

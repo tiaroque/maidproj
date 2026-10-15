@@ -277,8 +277,8 @@ usersRouter.get("/google/callback", async (req, res, next) => {
 
 const clearSession = (req: Request, res: Response) => {
   res.clearCookie("session_admin", { path: "/" });
-  res.clearCookie("clara_email", { path: "/" });
-  res.clearCookie("clara_uid", { path: "/" });
+  res.clearCookie("linpura_email", { path: "/" });
+  res.clearCookie("linpura_uid", { path: "/" });
 
   req.session = null;
 };
@@ -460,8 +460,8 @@ usersRouter.get("/me", auth, async (req, res, next) => {
       sameSite: "lax",
       path: "/",
     };
-    res.cookie("clara_uid", req.uid, options);
-    res.cookie("clara_email", req.email, options);
+    res.cookie("linpura_uid", req.uid, options);
+    res.cookie("linpura_email", req.email, options);
     res.status(200).send(user);
   } catch (error) {
     next(error);

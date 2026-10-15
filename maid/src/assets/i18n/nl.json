@@ -362,7 +362,7 @@
     "chat": "Chat",
     "peopleLooking": "Schoonmakers bij jou in de buurt",
     "peopleLookingHint": "Bekijk diensten, tarieven en beschikbaarheid voordat je schrijft. Meld je aan om een gesprek te beginnen.",
-    "whyTitle": "Waarom mensen kiezen voor Clara",
+    "whyTitle": "Waarom mensen kiezen voor Linpura",
     "europeTitle": "Schoonmakers in heel Europa",
     "partnerCountryPt": "Portugal",
     "partnerCountryDe": "Duitsland",
@@ -373,7 +373,7 @@
     "partnerCountryNl": "Nederland",
     "partnerCountryGb": "Verenigd Koninkrijk",
     "europeSubtitle": "Hulp dichtbij, waar je ook woont",
-    "europeBody": "Clara brengt huishoudens en zelfstandige schoonmakers samen in 8 landen, en er komen binnenkort meer steden bij.",
+    "europeBody": "Linpura brengt huishoudens en zelfstandige schoonmakers samen in 8 landen, en er komen binnenkort meer steden bij.",
     "createProfile": "Maak je profiel aan",
     "priceKicker": "Prijzen",
     "priceTitle": "Abonneer nu en krijg 3 maanden gratis",
@@ -382,7 +382,7 @@
     "pricePerMonth": "per maand",
     "priceCta": "Nu abonneren",
     "ctaTitle": "Je schoonmaker is maar een paar klikken verwijderd",
-    "ctaSubtitle": "Word lid van Clara en vind deze week nog hulp voor je huis.",
+    "ctaSubtitle": "Word lid van Linpura en vind deze week nog hulp voor je huis.",
     "step1": "Zoeken",
     "step1Title": "Vind wie bij je past",
     "step1Body": "Filter op dienst, uurtarief, de dagen die je nodig hebt en de buurt waar je woont.",
@@ -432,8 +432,8 @@
     "backHome": "Terug naar home"
   },
   "seo": {
-    "termsDescription": "Lees de voorwaarden die gelden wanneer je Clara gebruikt: je account, lidmaatschap, gedrag en betalingen.",
-    "privacyDescription": "Hoe Clara je persoonsgegevens verzamelt, gebruikt en beschermt, en welke keuzes en rechten je hebt."
+    "termsDescription": "Lees de voorwaarden die gelden wanneer je Linpura gebruikt: je account, lidmaatschap, gedrag en betalingen.",
+    "privacyDescription": "Hoe Linpura je persoonsgegevens verzamelt, gebruikt en beschermt, en welke keuzes en rechten je hebt."
   },
   "adminMenu": "Beheer",
   "verification": {
@@ -441,7 +441,7 @@
     "dialogTitle": "Verifieer je profiel",
     "intro": "Maak een selfie waarin je een pose nadoet die we je laten zien. Een lid van ons team vergelijkt die met je profielfoto en als ze overeenkomen, krijgt je profiel een verificatiebadge.",
     "privacyNote": "Je selfie wordt privé opgeslagen, nooit aan andere leden getoond en verwijderd zodra de beoordeling klaar is.",
-    "consent": "Ik ga ermee akkoord dat Clara deze selfie alleen gebruikt om mijn profiel te verifiëren.",
+    "consent": "Ik ga ermee akkoord dat Linpura deze selfie alleen gebruikt om mijn profiel te verifiëren.",
     "continue": "Doorgaan",
     "poseIntro": "Maak een selfie terwijl je dit doet:",
     "poseHint": "Zorg dat je gezicht duidelijk zichtbaar, goed belicht en niet bedekt is. Deze pose verloopt over 10 minuten.",
@@ -522,7 +522,7 @@
     "example": "bijv. Vrijdagochtend vrij in Lausanne"
   },
   "role": {
-    "question": "Hoe ga je Clara gebruiken?",
+    "question": "Hoe ga je Linpura gebruiken?",
     "client": "Ik zoek een schoonmaker",
     "clientHint": "Hulp vinden voor mijn huis",
     "cleaner": "Ik bied schoonmaak aan",

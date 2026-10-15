@@ -50,8 +50,8 @@
               "allowedHosts": [
                 "localhost",
                 "127.0.0.1",
-                "clara.com",
-                "www.clara.com"
+                "linpura.com",
+                "www.linpura.com"
               ]
             },
             "ssr": {

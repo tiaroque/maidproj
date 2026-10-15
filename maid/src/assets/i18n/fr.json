@@ -362,7 +362,7 @@
     "chat": "Chat",
     "peopleLooking": "Aides ménagères près de chez vous",
     "peopleLookingHint": "Consultez services, tarifs et disponibilités avant d'écrire. Inscrivez-vous pour lancer la conversation.",
-    "whyTitle": "Pourquoi choisir Clara",
+    "whyTitle": "Pourquoi choisir Linpura",
     "europeTitle": "Des aides ménagères partout en Europe",
     "partnerCountryPt": "Portugal",
     "partnerCountryDe": "Allemagne",
@@ -373,7 +373,7 @@
     "partnerCountryNl": "Pays-Bas",
     "partnerCountryGb": "Royaume-Uni",
     "europeSubtitle": "De l'aide près de chez vous, où que vous viviez",
-    "europeBody": "Clara met en relation foyers et aides ménagères indépendantes dans 8 pays, et de nouvelles villes arrivent bientôt.",
+    "europeBody": "Linpura met en relation foyers et aides ménagères indépendantes dans 8 pays, et de nouvelles villes arrivent bientôt.",
     "createProfile": "Créez votre profil",
     "priceKicker": "Tarif",
     "priceTitle": "Abonnez-vous maintenant et profitez de 3 mois gratuits",
@@ -382,7 +382,7 @@
     "pricePerMonth": "par mois",
     "priceCta": "S'abonner",
     "ctaTitle": "Votre aide ménagère est à quelques clics",
-    "ctaSubtitle": "Rejoignez Clara et trouvez de l'aide pour votre logement dès cette semaine.",
+    "ctaSubtitle": "Rejoignez Linpura et trouvez de l'aide pour votre logement dès cette semaine.",
     "step1": "Chercher",
     "step1Title": "Trouvez la bonne personne",
     "step1Body": "Filtrez par service, tarif horaire, jours souhaités et quartier.",
@@ -432,8 +432,8 @@
     "backHome": "Retour à l’accueil"
   },
   "seo": {
-    "termsDescription": "Lisez les conditions qui s'appliquent lorsque vous utilisez Clara : votre compte, votre abonnement, votre conduite et les paiements.",
-    "privacyDescription": "Comment Clara collecte, utilise et protège vos données personnelles, et les choix et droits dont vous disposez."
+    "termsDescription": "Lisez les conditions qui s'appliquent lorsque vous utilisez Linpura : votre compte, votre abonnement, votre conduite et les paiements.",
+    "privacyDescription": "Comment Linpura collecte, utilise et protège vos données personnelles, et les choix et droits dont vous disposez."
   },
   "adminMenu": "Admin",
   "verification": {
@@ -441,7 +441,7 @@
     "dialogTitle": "Vérifiez votre profil",
     "intro": "Prenez un selfie en reproduisant la pose indiquée. Un membre de notre équipe le compare à votre photo de profil et, s'il correspond, votre profil reçoit le badge vérifié.",
     "privacyNote": "Votre selfie est stocké de manière privée, n'est jamais montré aux autres membres et est supprimé dès la fin de la vérification.",
-    "consent": "J'accepte que Clara utilise ce selfie uniquement pour vérifier mon profil.",
+    "consent": "J'accepte que Linpura utilise ce selfie uniquement pour vérifier mon profil.",
     "continue": "Continuer",
     "poseIntro": "Prenez un selfie en faisant ceci :",
     "poseHint": "Votre visage doit être bien visible, bien éclairé et non couvert. Cette pose expire dans 10 minutes.",
@@ -522,7 +522,7 @@
     "example": "ex : Libre le vendredi matin à Lausanne"
   },
   "role": {
-    "question": "Comment utiliserez-vous Clara ?",
+    "question": "Comment utiliserez-vous Linpura ?",
     "client": "Je cherche une aide ménagère",
     "clientHint": "Trouver de l'aide pour mon logement",
     "cleaner": "Je propose du ménage",

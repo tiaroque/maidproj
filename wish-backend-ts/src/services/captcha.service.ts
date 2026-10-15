@@ -3,7 +3,7 @@ import { CookieOptions, Request, Response } from "express";
 import config from "../endpoints.config";
 import { getRedisConnection } from "../databases/redis/redis";
 
-const COOKIE_NAME = "clara_captcha";
+const COOKIE_NAME = "linpura_captcha";
 const TTL_MS = 3 * 60 * 1000;
 const ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 const WIDTH = 372;

@@ -4,7 +4,7 @@
 - Category: layout
 - Description: Fixed 55px wine header with gold logo/wordmark, three icon tabs (Profile / Search / Chat), user chip, language FAB, overflow menu
 - Extractable props: activeTab (string, default: "search"), userName (string, default: "tiago"), lang (string, default: "EN")
-- Hardcoded: logo SVG, clara Albert Sans gold wordmark, dark `#1c1016` bar, gold `#e8c97a`, rose indicator `#d46a86`
+- Hardcoded: logo SVG, linpura Albert Sans gold wordmark, dark `#1c1016` bar, gold `#e8c97a`, rose indicator `#d46a86`
 
 ## LeftNav
 

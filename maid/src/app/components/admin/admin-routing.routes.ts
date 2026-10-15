@@ -64,29 +64,29 @@ export const routesAdminChildren: Routes = [
           {
             path: 'upload',
             component: UploadComponent,
-            title: 'Clara - Your Photos',
+            title: 'Linpura - Your Photos',
           },
           {
             path: 'preferences',
             component: PreferencesComponent,
-            title: 'Clara - Preferences',
+            title: 'Linpura - Preferences',
           },
           {
             path: 'account',
             component: AccountComponent,
-            title: 'Clara - Admin',
+            title: 'Linpura - Admin',
           },
           {
             path: 'profile',
             component: XprofileComponent,
             canDeactivate: [canDeactivateForm],
-            title: 'Clara - Profile',
+            title: 'Linpura - Profile',
             // resolve: { countries: xprofileResolver },
           },
           {
             path: 'offer-dreams',
             component: DreamOffersComponent,
-            title: 'Clara - Announcements & Requests',
+            title: 'Linpura - Announcements & Requests',
             // canDeactivate: [canDeactivateForm],
             // resolve: { countries: xprofileResolver },
           },
@@ -96,13 +96,13 @@ export const routesAdminChildren: Routes = [
       {
         path: 'activity',
         component: ActivityComponent,
-        title: 'Clara - Activity',
+        title: 'Linpura - Activity',
       },
 
       {
         path: 'list',
         component: ListComponent,
-        title: 'Clara - Search ',
+        title: 'Linpura - Search ',
         // resolve: { countries: xprofileResolver },
         // resolve: { userList: listResolver },
       },
@@ -118,7 +118,7 @@ export const routesAdminChildren: Routes = [
       {
         path: 'chat',
         component: ChatComponent,
-        title: 'Clara - Chat',
+        title: 'Linpura - Chat',
         // resolve: { initChat: initConversationResolver },
       },
 
@@ -128,7 +128,7 @@ export const routesAdminChildren: Routes = [
           import('./moderation/moderation.component').then(
             (cp) => cp.ModerationComponent,
           ),
-        title: 'Clara - Moderation',
+        title: 'Linpura - Moderation',
       },
 
       {
@@ -137,7 +137,7 @@ export const routesAdminChildren: Routes = [
           import('./moderation/multi-accounts/multi-accounts.component').then(
             (cp) => cp.MultiAccountsComponent,
           ),
-        title: 'Clara - Duplicate accounts',
+        title: 'Linpura - Duplicate accounts',
       },
 
       {
@@ -146,7 +146,7 @@ export const routesAdminChildren: Routes = [
           import('./moderation/link-flags/link-flags.component').then(
             (cp) => cp.LinkFlagsComponent,
           ),
-        title: 'Clara - Shared links',
+        title: 'Linpura - Shared links',
       },
 
       // { path: 'chat', redirectTo: 'list' },
@@ -159,7 +159,7 @@ export const routes: Routes = [
     path: 'signup',
     canActivate: [canActivateSignUp2],
     component: SignupComponent,
-    title: 'Clara - Signup',
+    title: 'Linpura - Signup',
     resolve: {
       userProfile: addMeResolver,
     },

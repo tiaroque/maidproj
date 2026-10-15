@@ -17,7 +17,7 @@ Centered column wrapping header + outlet.
 
 Path: `maid/src/app/components/admin/header-admin/header-admin.component.html`
 
-Fixed 55px wine bar. Left: gold logo SVG + "clara" Albert Sans. Center: Material tab-nav with three 28px icons (profile person, users, chat). Right: ProfileIcon + language mini-fab + more_vert menu (dark theme, view profile, logout). Mobile: hamburger + full-screen menu.
+Fixed 55px wine bar. Left: gold logo SVG + "linpura" Albert Sans. Center: Material tab-nav with three 28px icons (profile person, users, chat). Right: ProfileIcon + language mini-fab + more_vert menu (dark theme, view profile, logout). Mobile: hamburger + full-screen menu.
 
 ```html
 <header
@@ -35,7 +35,7 @@ Fixed 55px wine bar. Left: gold logo SVG + "clara" Albert Sans. Center: Material
       <div
         class="hidden sm:block text-2xl font-[Albert_Sans] font-semibold tracking-tighter text-[#e8c97a] -translate-x-2"
       >
-        clara
+        linpura
       </div>
     </div>
     <nav mat-tab-nav-bar>
@@ -84,7 +84,7 @@ Portal outlet fills grow. Footer: social icons (list/profile) or "messages encry
 
 Path: `maid/src/app/components/admin/right-content/right-content.component.html`
 
-Card titled "People who joined recently" / latestUsers. Rows: 44px avatar, name+age, location, profession · photo count, Connect stroked button. Footer legal links + © 2025 clara.
+Card titled "People who joined recently" / latestUsers. Rows: 44px avatar, name+age, location, profession · photo count, Connect stroked button. Footer legal links + © 2025 linpura.
 
 ## ProfileBase left settings portal
 

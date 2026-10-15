@@ -2643,8 +2643,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="landing.whyTitle" datatype="html">
-        <source>Why people choose Clara</source>
-        <target>Porque as pessoas escolhem a Clara</target>
+        <source>Why people choose Linpura</source>
+        <target>Porque as pessoas escolhem a Linpura</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
           <context context-type="linenumber">369</context>
@@ -2731,8 +2731,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="landing.europeBody" datatype="html">
-        <source>Clara connects households and independent cleaners in 8 countries, with more cities joining soon.</source>
-        <target>A Clara liga famílias e profissionais de limpeza independentes em 8 países, com mais cidades a juntar-se em breve.</target>
+        <source>Linpura connects households and independent cleaners in 8 countries, with more cities joining soon.</source>
+        <target>A Linpura liga famílias e profissionais de limpeza independentes em 8 países, com mais cidades a juntar-se em breve.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
           <context context-type="linenumber">380</context>
@@ -2803,8 +2803,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="landing.ctaSubtitle" datatype="html">
-        <source>Join Clara and find help for your home this week.</source>
-        <target>Junte-se à Clara e encontre ajuda para a sua casa esta semana.</target>
+        <source>Join Linpura and find help for your home this week.</source>
+        <target>Junte-se à Linpura e encontre ajuda para a sua casa esta semana.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
           <context context-type="linenumber">389</context>
@@ -3171,16 +3171,16 @@
         </context-group>
       </trans-unit>
       <trans-unit id="seo.termsDescription" datatype="html">
-        <source>Read the terms that apply when you use Clara: your account, membership, conduct and payments.</source>
-        <target>Leia os termos que se aplicam quando usa a Clara: a sua conta, subscrição, conduta e pagamentos.</target>
+        <source>Read the terms that apply when you use Linpura: your account, membership, conduct and payments.</source>
+        <target>Leia os termos que se aplicam quando usa a Linpura: a sua conta, subscrição, conduta e pagamentos.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
           <context context-type="linenumber">439</context>
         </context-group>
       </trans-unit>
       <trans-unit id="seo.privacyDescription" datatype="html">
-        <source>How Clara collects, uses and protects your personal data, and the choices and rights you have.</source>
-        <target>Como a Clara recolhe, usa e protege os seus dados pessoais, e as escolhas e direitos que tem.</target>
+        <source>How Linpura collects, uses and protects your personal data, and the choices and rights you have.</source>
+        <target>Como a Linpura recolhe, usa e protege os seus dados pessoais, e as escolhas e direitos que tem.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
           <context context-type="linenumber">440</context>
@@ -3227,8 +3227,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="verification.consent" datatype="html">
-        <source>I agree that Clara uses this selfie only to verify my profile.</source>
-        <target>Aceito que a Clara use esta selfie apenas para verificar o meu perfil.</target>
+        <source>I agree that Linpura uses this selfie only to verify my profile.</source>
+        <target>Aceito que a Linpura use esta selfie apenas para verificar o meu perfil.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
           <context context-type="linenumber">448</context>
@@ -3747,8 +3747,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="role.question" datatype="html">
-        <source>How will you use Clara?</source>
-        <target>Como vai usar a Clara?</target>
+        <source>How will you use Linpura?</source>
+        <target>Como vai usar a Linpura?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
           <context context-type="linenumber">529</context>

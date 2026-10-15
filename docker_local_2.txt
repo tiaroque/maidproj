@@ -1,8 +1,8 @@
-docker network create clara
+docker network create linpura
 docker build -t wish-backend ./wish-backend-ts
 docker build -t maid ./maid
 
-docker run --rm --name wish-backend --network clara \
+docker run --rm --name wish-backend --network linpura \
   -p 3011:3011 \
   --env-file ./wish-backend-ts/.env \
   -e MONGO_URL=mongodb://host.docker.internal:27017/ \
@@ -18,14 +18,14 @@ docker run --name maid-api --network maid -p 3011:3011 \
   -e returnUrlEmail=http://localhost:4000 \
   -e GOOGLE_REDIRECT_URI=http://localhost:4000/api/users/google/callback \
   -e MAILGUN_API_KEY="$MAILGUN_API_KEY" \
-  -e MAILGUN_DOMAIN=clara.com \
-  -e emailfrom='clara <noreply@clara.com>' \
+  -e MAILGUN_DOMAIN=linpura.com \
+  -e emailfrom='linpura <noreply@linpura.com>' \
   maid-api
 
 
 
 
-docker run --rm --name maid --network clara \
+docker run --rm --name maid --network linpura \
   -p 4000:4000 \
   -e PORT=4000 \
   -e API_PROXY_TARGET=http://wish-backend:3011 \

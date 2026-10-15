@@ -17,14 +17,14 @@ const defaultCorsOrigins = [
   "http://localhost:4201",
   "http://localhost:4200",
   "http://127.0.0.1",
-  "https://clara.com",
-  "https://www.clara.com",
+  "https://linpura.com",
+  "https://www.linpura.com",
 ];
 
 const corsOrigins = parseList(process.env.CORS_ORIGINS);
 
 const preferWww = (value: string) =>
-  value.replace(/^(https?:\/\/)clara\.com(?=\/|$)/, "$1www.clara.com");
+  value.replace(/^(https?:\/\/)linpura\.com(?=\/|$)/, "$1www.linpura.com");
 
 export default {
   AWSAccessKeyId: process.env.AWSAccessKeyId ?? "",
@@ -43,7 +43,7 @@ export default {
   mailgunApiKey: process.env.MAILGUN_API_KEY ?? "",
   mailgunDomain: process.env.MAILGUN_DOMAIN ?? "",
   mailgunApiUrl: process.env.MAILGUN_API_URL ?? "https://api.mailgun.net",
-  emailfrom: process.env.emailfrom ?? "Clara <noreply@clara.com>",
+  emailfrom: process.env.emailfrom ?? "Linpura <noreply@linpura.com>",
   returnUrlEmail: preferWww(process.env.returnUrlEmail ?? ""),
   mongoUrl: process.env.MONGO_URL ?? "mongodb://172.17.0.1:27017/",
   mongoDb: process.env.MONGO_DB ?? "maiditt",
@@ -55,13 +55,13 @@ export default {
   cookieSecure: process.env.COOKIE_SECURE
     ? process.env.COOKIE_SECURE === "true"
     : isProduction,
-  webauthnRpName: "Clara",
+  webauthnRpName: "Linpura",
   webauthnRpId:
-    process.env.WEBAUTHN_RP_ID ?? (isProduction ? "clara.com" : "localhost"),
+    process.env.WEBAUTHN_RP_ID ?? (isProduction ? "linpura.com" : "localhost"),
   webauthnOrigins: parseList(process.env.WEBAUTHN_ORIGINS).length
     ? parseList(process.env.WEBAUTHN_ORIGINS)
     : isProduction
-      ? ["https://www.clara.com", "https://clara.com"]
+      ? ["https://www.linpura.com", "https://linpura.com"]
       : [
           "http://localhost:4100",
           "http://127.0.0.1:4100",

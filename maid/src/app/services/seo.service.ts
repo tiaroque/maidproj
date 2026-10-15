@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
 import { UserDetailsObject } from './admin/interfaces/user.interface';
 import { LanguageService } from './shared/language-service.service';
 
-const SITE_ORIGIN = 'https://www.clara.com';
+const SITE_ORIGIN = 'https://www.linpura.com';
 
 const OG_LOCALE: Record<string, string> = {
   en: 'en_GB',
@@ -107,7 +107,7 @@ export class SeoService {
       property: 'og:locale',
       content: OG_LOCALE[lang] ?? 'en_GB',
     });
-    this.meta.updateTag({ property: 'og:site_name', content: 'Clara' });
+    this.meta.updateTag({ property: 'og:site_name', content: 'Linpura' });
     const image = `${SITE_ORIGIN}/assets/images/og/og-${OG_LOCALE[lang] ? lang : 'en'}.jpg`;
     this.meta.updateTag({ property: 'og:image', content: image });
     this.meta.updateTag({ property: 'og:image:type', content: 'image/jpeg' });
@@ -133,14 +133,14 @@ export class SeoService {
           {
             '@type': 'Organization',
             '@id': `${SITE_ORIGIN}/#organization`,
-            name: 'Clara',
+            name: 'Linpura',
             url: SITE_ORIGIN,
             logo: `${SITE_ORIGIN}/assets/images/logo-mop.png`,
           },
           {
             '@type': 'WebSite',
             '@id': `${SITE_ORIGIN}/#website`,
-            name: 'Clara',
+            name: 'Linpura',
             url: `${SITE_ORIGIN}/${lang}/`,
             description: this.text('landing.heroSubtitle'),
             inLanguage: lang,
@@ -159,7 +159,7 @@ export class SeoService {
       const user = details?.user;
       const name = user?.name?.trim();
       const place = user?.locationName || user?.country;
-      const title = name ? `${name} — Clara` : 'Clara';
+      const title = name ? `${name} — Linpura` : 'Linpura';
       const description = this.clip(
         user?.description ||
           (name
@@ -171,42 +171,42 @@ export class SeoService {
 
     const pages: Record<string, { title: string; description: string }> = {
       '': {
-        title: `Clara — ${this.text('landing.heroTitle')}`,
+        title: `Linpura — ${this.text('landing.heroTitle')}`,
         description: this.text('landing.heroSubtitle'),
       },
       browse: {
-        title: `${this.text('browse.pageTitle')} — Clara`,
+        title: `${this.text('browse.pageTitle')} — Linpura`,
         description: this.text('landing.peopleLookingHint'),
       },
       register: {
-        title: `${this.text('auth.createAccountTitle')} — Clara`,
+        title: `${this.text('auth.createAccountTitle')} — Linpura`,
         description: this.text('auth.heroLine'),
       },
       login: {
-        title: `${this.text('auth.welcomeBack')} — Clara`,
+        title: `${this.text('auth.welcomeBack')} — Linpura`,
         description: this.text('auth.heroLine'),
       },
       recover: {
-        title: `${this.text('auth.resetTitle')} — Clara`,
+        title: `${this.text('auth.resetTitle')} — Linpura`,
         description: this.text('auth.resetHint'),
       },
       'terms-conditions': {
-        title: `${this.text('termsConditions')} — Clara`,
+        title: `${this.text('termsConditions')} — Linpura`,
         description: this.text('seo.termsDescription'),
       },
       privacy: {
-        title: `${this.text('privacyPolicy')} — Clara`,
+        title: `${this.text('privacyPolicy')} — Linpura`,
         description: this.text('seo.privacyDescription'),
       },
       'not-found': {
-        title: `${this.text('notFound.title')} — Clara`,
+        title: `${this.text('notFound.title')} — Linpura`,
         description: this.text('notFound.text'),
       },
     };
 
     return (
       pages[page] ?? {
-        title: 'Clara',
+        title: 'Linpura',
         description: this.text('landing.heroSubtitle'),
       }
     );

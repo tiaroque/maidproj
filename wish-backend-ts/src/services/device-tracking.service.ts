@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import { getDb } from "../databases/db/mongo";
 import config from "../endpoints.config";
 
-export const deviceCookieName = "clara_did";
+export const deviceCookieName = "linpura_did";
 const deviceCookieMaxAgeMs = 1000 * 60 * 60 * 24 * 365 * 2;
 const fingerprintPattern = /^[a-f0-9]{64}$/;
 const uuidPattern =

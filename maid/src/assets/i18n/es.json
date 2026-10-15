@@ -362,7 +362,7 @@
     "chat": "Chat",
     "peopleLooking": "Profesionales cerca de ti",
     "peopleLookingHint": "Consulta servicios, tarifas y disponibilidad antes de escribir. Regístrate para empezar una conversación.",
-    "whyTitle": "Por qué eligen Clara",
+    "whyTitle": "Por qué eligen Linpura",
     "europeTitle": "Profesionales de limpieza en toda Europa",
     "partnerCountryPt": "Portugal",
     "partnerCountryDe": "Alemania",
@@ -373,7 +373,7 @@
     "partnerCountryNl": "Países Bajos",
     "partnerCountryGb": "Reino Unido",
     "europeSubtitle": "Ayuda local, vivas donde vivas",
-    "europeBody": "Clara conecta hogares y profesionales de limpieza independientes en 8 países, y pronto llegarán más ciudades.",
+    "europeBody": "Linpura conecta hogares y profesionales de limpieza independientes en 8 países, y pronto llegarán más ciudades.",
     "createProfile": "Crea tu perfil",
     "priceKicker": "Precio",
     "priceTitle": "Suscríbete ahora y obtén 3 meses gratis",
@@ -382,7 +382,7 @@
     "pricePerMonth": "al mes",
     "priceCta": "Suscríbete ahora",
     "ctaTitle": "Tu profesional de limpieza, a unos clics",
-    "ctaSubtitle": "Únete a Clara y encuentra ayuda para tu casa esta semana.",
+    "ctaSubtitle": "Únete a Linpura y encuentra ayuda para tu casa esta semana.",
     "step1": "Busca",
     "step1Title": "Encuentra a la persona adecuada",
     "step1Body": "Filtra por servicio, tarifa por hora, los días que necesitas y la zona donde vives.",
@@ -432,8 +432,8 @@
     "backHome": "Volver al inicio"
   },
   "seo": {
-    "termsDescription": "Lee los términos que se aplican cuando usas Clara: tu cuenta, tu suscripción, tu conducta y los pagos.",
-    "privacyDescription": "Cómo Clara recopila, usa y protege tus datos personales, y las opciones y derechos que tienes."
+    "termsDescription": "Lee los términos que se aplican cuando usas Linpura: tu cuenta, tu suscripción, tu conducta y los pagos.",
+    "privacyDescription": "Cómo Linpura recopila, usa y protege tus datos personales, y las opciones y derechos que tienes."
   },
   "adminMenu": "Admin",
   "verification": {
@@ -441,7 +441,7 @@
     "dialogTitle": "Verifica tu perfil",
     "intro": "Hazte un selfie imitando la pose que te mostramos. Un miembro de nuestro equipo lo compara con tu foto de perfil y, si coincide, tu perfil recibe la insignia de verificado.",
     "privacyNote": "Tu selfie se guarda de forma privada, nunca se muestra a otros miembros y se elimina en cuanto termina la revisión.",
-    "consent": "Acepto que Clara use este selfie solo para verificar mi perfil.",
+    "consent": "Acepto que Linpura use este selfie solo para verificar mi perfil.",
     "continue": "Continuar",
     "poseIntro": "Hazte un selfie haciendo esto:",
     "poseHint": "Asegúrate de que tu cara se vea bien, con buena luz y sin nada que la tape. Esta pose caduca en 10 minutos.",
@@ -522,7 +522,7 @@
     "example": "ej.: Libre los viernes por la mañana en Lausana"
   },
   "role": {
-    "question": "¿Cómo vas a usar Clara?",
+    "question": "¿Cómo vas a usar Linpura?",
     "client": "Busco limpieza",
     "clientHint": "Encuentra ayuda para tu casa",
     "cleaner": "Ofrezco limpieza",
