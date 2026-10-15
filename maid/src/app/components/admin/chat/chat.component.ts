@@ -47,17 +47,14 @@ import {
   NgTemplateOutlet,
   NgOptimizedImage,
 } from '@angular/common';
-import { form, FormField, maxLength } from '@angular/forms/signals';
+import { form, maxLength } from '@angular/forms/signals';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
-import { MatInput } from '@angular/material/input';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
-import { InputMonitorDirective } from '../../../libs/directives/input-monitor.directive';
 import { CdkOverlayOrigin, OverlayModule } from '@angular/cdk/overlay';
 import { CdkPortal, PortalModule } from '@angular/cdk/portal';
 import { MatRippleModule } from '@angular/material/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { MatFormField, MatSuffix } from '@angular/material/form-field';
 import { S3UrlPipe, s3Url } from '../../../utils/s3-url';
 import {
   IsTyping,
@@ -103,11 +100,6 @@ import { LanguageService } from '../../../services/shared/language-service.servi
     MatProgressSpinner,
     MatRippleModule,
     NgClass,
-    MatFormField,
-    MatSuffix,
-    MatInput,
-    FormField,
-    InputMonitorDirective,
     MatIcon,
     MatButtonModule,
     DatePipe,
@@ -137,8 +129,9 @@ export class ChatComponent
 
   readonly templatePortal = viewChild.required(CdkPortal);
   readonly viewportRef = viewChild<ElementRef<HTMLElement>>('chatContainer');
-  readonly messageInput =
-    viewChild<ElementRef<HTMLInputElement>>('messageInput');
+  static readonly MESSAGE_MAX_LENGTH = 80;
+
+  readonly messageInput = viewChild<ElementRef<HTMLElement>>('messageInput');
   readonly templateConfirmBlock = viewChild.required<TemplateRef<unknown>>(
     'templateConfirmBlock',
   );
@@ -206,7 +199,7 @@ export class ChatComponent
 
   chatModel = signal({ message: '' });
   chatForm = form(this.chatModel, (p) => {
-    maxLength(p.message, 80);
+    maxLength(p.message, ChatComponent.MESSAGE_MAX_LENGTH);
   });
   userIsTyping$ = new BehaviorSubject<boolean>(false);
   private chatIsTypingSubject = new Subject<any>();
@@ -295,6 +288,21 @@ export class ChatComponent
   constructor() {
     effect(() => {
       this.checkMessagesLoading();
+    });
+
+    // Writes that do not come from typing, such as a picked emoji or the reset
+    // after sending, still have to reach the editable host.
+    effect(() => {
+      const message = this.chatForm.message().value();
+      const host = this.messageInput()?.nativeElement;
+      if (!host || host.textContent === message) {
+        return;
+      }
+
+      host.textContent = message;
+      if (document.activeElement === host) {
+        this.placeCaretAtEnd(host);
+      }
     });
 
     // Surface store level failures, which carry a translation key.
@@ -498,10 +506,16 @@ export class ChatComponent
   }
 
   focusMessageInput() {
-    this.messageInput()?.nativeElement.focus();
+    const host = this.messageInput()?.nativeElement;
+    if (!host) {
+      return;
+    }
+
+    host.focus();
+    this.placeCaretAtEnd(host);
   }
 
-  private isEditingAnotherField(input: HTMLInputElement) {
+  private isEditingAnotherField(input: HTMLElement) {
     const active = document.activeElement as HTMLElement | null;
     return (
       !!active &&
@@ -546,11 +560,8 @@ export class ChatComponent
     return message._id;
   }
 
-  showEmojiPanel($event: MouseEvent) {
+  showEmojiPanel() {
     if (this.isMobile()) {
-      // mat-form-field focuses its input on any click inside it, which would
-      // bring the keyboard back over the panel.
-      $event.stopPropagation();
       // The panel takes the soft keyboard's place, so only one is ever shown.
       if (this.isOpenEmojisMobile()) {
         this.isOpenEmojisMobile.set(false);
@@ -589,9 +600,119 @@ export class ChatComponent
     this.isOpenEmojisMobile.set(false);
   }
 
+  onMessageEnter($event: KeyboardEvent) {
+    // IME composition uses Enter to confirm the current word.
+    if ($event.isComposing) {
+      return;
+    }
+    $event.preventDefault();
+    this.sendMessage();
+  }
+
+  // The composer holds plain text on a single line, so the editable host is
+  // the source of truth for the model while the user types.
+  onMessageInput() {
+    const host = this.messageInput()?.nativeElement;
+    if (!host) {
+      return;
+    }
+
+    const text = (host.textContent ?? '')
+      .replace(/[\r\n]+/g, ' ')
+      .slice(0, ChatComponent.MESSAGE_MAX_LENGTH);
+
+    // Browsers leave a stray <br> behind once the last character is deleted,
+    // which would keep the placeholder hidden.
+    if (!text && host.innerHTML) {
+      host.innerHTML = '';
+    }
+
+    this.chatForm.message().value.set(text);
+    this.keepCaretVisible(host);
+    this.inputStateChanged({ hasData: text.length > 0, isFocused: true });
+  }
+
+  onMessageFocus() {
+    this.onMessageInputFocus();
+    this.inputStateChanged({
+      hasData: this.chatForm.message().value().length > 0,
+      isFocused: true,
+    });
+  }
+
+  onMessageBlur() {
+    this.inputStateChanged({
+      hasData: this.chatForm.message().value().length > 0,
+      isFocused: false,
+    });
+  }
+
+  // Paste arrives as rich text or with line breaks, neither of which fits a
+  // single line of plain text.
+  onMessagePaste($event: ClipboardEvent) {
+    $event.preventDefault();
+
+    const pasted = ($event.clipboardData?.getData('text') ?? '').replace(
+      /\s*[\r\n]+\s*/g,
+      ' ',
+    );
+    const selection = window.getSelection();
+    if (!pasted || !selection?.rangeCount) {
+      return;
+    }
+
+    const range = selection.getRangeAt(0);
+    range.deleteContents();
+    const inserted = document.createTextNode(pasted);
+    range.insertNode(inserted);
+    range.setStartAfter(inserted);
+    range.collapse(true);
+    selection.removeAllRanges();
+    selection.addRange(range);
+
+    this.onMessageInput();
+  }
+
   onMessageInputFocus() {
     if (this.isMobile()) {
       this.isOpenEmojisMobile.set(false);
+    }
+  }
+
+  private placeCaretAtEnd(host: HTMLElement) {
+    const selection = window.getSelection();
+    if (!selection) {
+      return;
+    }
+
+    const range = document.createRange();
+    range.selectNodeContents(host);
+    range.collapse(false);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    this.keepCaretVisible(host);
+  }
+
+  // An editable host does not scroll to its caret the way a native field does,
+  // so the single line has to be panned by hand.
+  private keepCaretVisible(host: HTMLElement) {
+    const selection = window.getSelection();
+    if (!selection?.rangeCount) {
+      return;
+    }
+
+    const caret = selection.getRangeAt(0).getBoundingClientRect();
+    if (!caret.width && !caret.height && !caret.left) {
+      return;
+    }
+
+    // A margin keeps the character next to the caret from being half cut off.
+    const margin = 12;
+    const view = host.getBoundingClientRect();
+    if (caret.right > view.right - margin) {
+      host.scrollLeft += caret.right - view.right + margin;
+    } else if (caret.left < view.left + margin) {
+      host.scrollLeft -= view.left - caret.left + margin;
     }
   }
 

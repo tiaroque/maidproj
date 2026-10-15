@@ -599,25 +599,6 @@ app-left-nav {
   box-shadow: none;
 }
 
-.chat-composer-field {
-  --mat-form-field-container-height: 44px;
-  --mat-form-field-container-vertical-padding: 10px;
-  --mat-form-field-outlined-outline-width: 0;
-  --mat-form-field-outlined-outline-color: transparent;
-  --mat-form-field-outlined-hover-outline-color: transparent;
-  --mat-form-field-outlined-focus-outline-color: transparent;
-  --mat-form-field-outlined-disabled-outline-color: transparent;
-}
-
-.chat-composer-field .mdc-notched-outline {
-  display: none;
-}
-
-.chat-composer-field .mat-mdc-text-field-wrapper {
-  background: transparent !important;
-  padding-inline: 0 !important;
-}
-
 .chat-send-btn:disabled {
   cursor: default;
   opacity: 0.45;

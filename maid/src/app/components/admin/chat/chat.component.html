@@ -517,30 +517,37 @@
             (change)="chooseFile($event)"
           />
         </div>
-        <mat-form-field
-          [appearance]="utilsService.inputType()"
-          class="chat-composer-field no-validation [&_.mat-mdc-form-field-subscript-wrapper]:hidden z-20 w-full"
-        >
-          <input
+        <div class="z-20 flex min-w-0 flex-1">
+          <!-- A contenteditable host keeps Chrome's autofill bar away, which it
+               shows above the keyboard for any native text field. -->
+          <div
             #messageInput
             id="chat-message-input"
-            appInputMonitor
-            matInput
-            autocomplete="off"
+            class="chat-composer-input h-6 w-full overflow-hidden bg-transparent p-0 text-base leading-6 whitespace-pre text-(--mat-sys-on-surface) caret-(--mat-sys-primary) outline-none"
+            contenteditable="plaintext-only"
+            role="textbox"
+            aria-multiline="false"
             enterkeyhint="send"
-            [formField]="chatForm.message"
-            (inputState)="inputStateChanged($any($event))"
-            (focus)="onMessageInputFocus()"
-            (keydown.enter)="sendMessage()"
-            [placeholder]="'chatScreen.writeMessage' | translate"
-          />
+            [attr.aria-label]="'chatScreen.writeMessage' | translate"
+            [attr.data-placeholder]="'chatScreen.writeMessage' | translate"
+            [class.is-empty]="chatForm.message().value().length === 0"
+            (input)="onMessageInput()"
+            (focus)="onMessageFocus()"
+            (blur)="onMessageBlur()"
+            (paste)="onMessagePaste($any($event))"
+            (keydown.enter)="onMessageEnter($any($event))"
+          ></div>
+        </div>
 
+        <div class="z-20 flex items-center justify-center">
           <button
+            id="toggle-emoji-panel"
+            aria-label="toggle emoji panel"
+            title="emojis"
             (mouseenter)="isHoverEmojiButton = true"
             (mouseleave)="isHoverEmojiButton = false"
             mat-icon-button
-            matIconSuffix
-            (click)="showEmojiPanel($event)"
+            (click)="showEmojiPanel()"
             cdkOverlayOrigin
             #trigger="cdkOverlayOrigin"
           >
@@ -564,7 +571,7 @@
             <ng-container *ngTemplateOutlet="emojiMart"> </ng-container>
             <!-- } -->
           </ng-template>
-        </mat-form-field>
+        </div>
 
         <div class="z-20 flex items-center justify-center">
           <button
@@ -603,8 +610,8 @@
     <!-- EMOJI closed Mobile panel -->
     @defer {
       <div
-        [ngClass]="{ 'h-[260px]': isOpenEmojisMobile() }"
-        class="block h-0 overflow-hidden transition-height duration-300 ease-in-out md:hidden"
+        [ngClass]="{ 'h-[345px]': isOpenEmojisMobile() }"
+        class="block h-0 shrink-0 overflow-hidden transition-height duration-300 ease-in-out md:hidden"
         appClickOutside
         [exception]="[messageSenderContainer]"
         (clickOutside)="closeMobielEmojis()"

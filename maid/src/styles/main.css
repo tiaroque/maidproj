@@ -291,8 +291,14 @@ em-emoji-picker {
 }
 
 /* The mobile panel clips its overflow, which would cut off the rounded corners and shadow. */
+/* The composer is contenteditable, so the placeholder is drawn by hand. */
+.chat-composer-input.is-empty::before {
+  content: attr(data-placeholder);
+  color: var(--mat-sys-on-surface-variant);
+  pointer-events: none;
+}
+
 .emoji-panel-mobile em-emoji-picker {
-  height: 260px;
   --border-radius: 0;
   --shadow: none;
 }
