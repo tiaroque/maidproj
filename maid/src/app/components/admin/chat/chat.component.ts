@@ -548,6 +548,9 @@ export class ChatComponent
 
   showEmojiPanel($event: MouseEvent) {
     if (this.isMobile()) {
+      // mat-form-field focuses its input on any click inside it, which would
+      // bring the keyboard back over the panel.
+      $event.stopPropagation();
       // The panel takes the soft keyboard's place, so only one is ever shown.
       if (this.isOpenEmojisMobile()) {
         this.isOpenEmojisMobile.set(false);
