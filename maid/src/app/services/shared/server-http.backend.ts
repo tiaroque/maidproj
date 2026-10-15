@@ -22,11 +22,11 @@ const toLoopbackUrl = (url: string, request: Request | null) => {
     requestUrl = undefined;
   }
 
-  // ng serve listens on localhost:4100, and only on IPv6. 127.0.0.1:4000
+  // ng serve listens on localhost:4102, and only on IPv6. 127.0.0.1:4000
   // refuses the connection (status 0). Production listens on 0.0.0.0:PORT.
   const port =
     requestUrl?.port ||
-    (environment.production ? process.env['PORT'] || '4000' : '4100');
+    (environment.production ? process.env['PORT'] || '4000' : '4102');
   const host = environment.production ? '127.0.0.1' : 'localhost';
   const loopback = `http://${host}:${port}`;
 

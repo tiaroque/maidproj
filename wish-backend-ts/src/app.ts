@@ -59,7 +59,7 @@ app.use(
 app.use(cookieParser());
 app.use(ensureDeviceId);
 
-const port = Number(process.env.PORT ?? process.env.Port ?? 3011);
+const port = Number(process.env.PORT ?? process.env.Port ?? 3000);
 
 const httpServer: Server = createServer(app);
 const io: ServerIO = startSocketIO(httpServer);

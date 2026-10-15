@@ -13,7 +13,7 @@ const isProduction = process.env.NODE_ENV === "production";
 const defaultCorsOrigins = [
   "http://localhost:4000",
   "http://127.0.0.1:4000",
-  "http://localhost:4100",
+  "http://localhost:4102",
   "http://localhost:4201",
   "http://localhost:4200",
   "http://127.0.0.1",
@@ -38,7 +38,7 @@ export default {
   googleClientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
   googleRedirectUri: preferWww(
     process.env.GOOGLE_REDIRECT_URI ??
-      "http://localhost:4100/api/users/google/callback",
+      "http://localhost:4102/api/users/google/callback",
   ),
   mailgunApiKey: process.env.MAILGUN_API_KEY ?? "",
   mailgunDomain: process.env.MAILGUN_DOMAIN ?? "",
@@ -63,8 +63,8 @@ export default {
     : isProduction
       ? ["https://www.linpura.com", "https://linpura.com"]
       : [
-          "http://localhost:4100",
-          "http://127.0.0.1:4100",
+          "http://localhost:4102",
+          "http://127.0.0.1:4102",
           "http://localhost:4200",
           "http://127.0.0.1:4200",
         ],

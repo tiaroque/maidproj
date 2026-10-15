@@ -16,7 +16,7 @@ const serverDistFolder = dirname(fileURLToPath(import.meta.url));
 const browserDistFolder = resolve(serverDistFolder, '../browser');
 
 const apiProxyTarget =
-  process.env['API_PROXY_TARGET'] ?? 'http://127.0.0.1:3011';
+  process.env['API_PROXY_TARGET'] ?? 'http://127.0.0.1:3000';
 const meridianApiUpstream =
   process.env['MERIDIAN_API_UPSTREAM'] ?? 'http://127.0.0.1:3000';
 

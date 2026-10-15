@@ -3,13 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 // http://datingcuri.com
-// baseUrl:  http://127.0.0.1:3011
+// baseUrl:  http://127.0.0.1:3000
 // baseUrl: 'http://localhost',
 export const environment = {
   production: false,
   env: 'dev',
   baseUrl: '',
-  socketUrl: 'http://localhost:3011',
+  socketUrl: 'http://localhost:3000',
   s3ImageUrl: 'https://maid-bucket.s3.eu-west-3.amazonaws.com',
   meridianApiUrl: 'https://meridian-api.com',
   gaMeasurementId: 'G-EF5XK0CCQ4',
