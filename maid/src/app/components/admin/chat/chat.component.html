@@ -530,6 +530,7 @@
             enterkeyhint="send"
             [formField]="chatForm.message"
             (inputState)="inputStateChanged($any($event))"
+            (focus)="onMessageInputFocus()"
             (keydown.enter)="sendMessage()"
             [placeholder]="'chatScreen.writeMessage' | translate"
           />
@@ -544,7 +545,9 @@
             #trigger="cdkOverlayOrigin"
           >
             <div class="flex items-center justify-center">
-              @if (isHoverEmojiButton) {
+              @if (isOpenEmojisMobile()) {
+                <mat-icon>keyboard</mat-icon>
+              } @else if (isHoverEmojiButton) {
                 <mat-icon>sentiment_very_satisfied</mat-icon>
               } @else {
                 <mat-icon>add_reaction</mat-icon>

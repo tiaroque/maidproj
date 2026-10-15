@@ -548,7 +548,14 @@ export class ChatComponent
 
   showEmojiPanel($event: MouseEvent) {
     if (this.isMobile()) {
-      this.isOpenEmojisMobile.update((isOpen) => !isOpen);
+      // The panel takes the soft keyboard's place, so only one is ever shown.
+      if (this.isOpenEmojisMobile()) {
+        this.isOpenEmojisMobile.set(false);
+        this.focusMessageInput();
+      } else {
+        this.messageInput()?.nativeElement.blur();
+        this.isOpenEmojisMobile.set(true);
+      }
     } else {
       this.isOpenEmojisDesktop.update((isOpen) => !isOpen);
     }
@@ -577,6 +584,12 @@ export class ChatComponent
 
   closeMobielEmojis() {
     this.isOpenEmojisMobile.set(false);
+  }
+
+  onMessageInputFocus() {
+    if (this.isMobile()) {
+      this.isOpenEmojisMobile.set(false);
+    }
   }
 
   // From directive applied in the input
