@@ -18,13 +18,14 @@ RUN npm run build -- --configuration=${NG_CONFIGURATION}
 FROM node:${NODE_VERSION}-alpine AS final
 WORKDIR /usr/src/app
 ENV NODE_ENV=production
+ENV PORT=4001
 
 COPY --from=build --chown=node:node /usr/src/app/dist ./dist
 
 USER node
-EXPOSE 4000
+EXPOSE 4001
 
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
-  CMD node -e "fetch('http://127.0.0.1:'+(process.env.PORT||4000)+'/').then((r)=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+  CMD node -e "fetch('http://127.0.0.1:'+(process.env.PORT||4001)+'/').then((r)=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
 
 CMD ["node", "dist/maid/server/server.mjs"]

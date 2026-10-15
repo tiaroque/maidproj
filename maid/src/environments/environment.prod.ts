@@ -6,5 +6,5 @@ export const environment = {
   socketUrl: '',
   s3ImageUrl: 'https://maid-bucket.s3.eu-west-3.amazonaws.com',
   meridianApiUrl: '/meridian',
-  gaMeasurementId: 'G-1QGW8YC0S4',
+  gaMeasurementId: 'G-EF5XK0CCQ4',
 };

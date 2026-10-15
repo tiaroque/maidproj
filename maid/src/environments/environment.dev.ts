@@ -12,7 +12,7 @@ export const environment = {
   socketUrl: 'http://localhost:3011',
   s3ImageUrl: 'https://maid-bucket.s3.eu-west-3.amazonaws.com',
   meridianApiUrl: 'https://meridian-api.com',
-  gaMeasurementId: 'G-1QGW8YC0S4',
+  gaMeasurementId: 'G-EF5XK0CCQ4',
 };
 
 /*
