@@ -36,6 +36,12 @@ const app = express();
 // frontend's /api proxy forwards the header unchanged.
 app.set("trust proxy", 1);
 
+// Registered before session and device cookies so the probe stays side-effect free.
+// Listening already means Mongo connected; this only reports that the process is up.
+app.get("/health", (_req, res) => {
+  res.status(200).json({ status: "ok" });
+});
+
 const expiresIn = 60 * 60 * 24 * 5 * 1000;
 app.use(
   cookieSession({
