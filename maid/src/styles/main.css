@@ -299,6 +299,7 @@ em-emoji-picker {
 }
 
 .emoji-panel-mobile em-emoji-picker {
+  height: 100%;
   --border-radius: 0;
   --shadow: none;
 }
@@ -355,13 +356,27 @@ em-emoji-picker {
 .chat-bg {
   height: 100%;
   background-color: var(--mat-sys-background);
+  /* Clip the wallpaper layer when the keyboard shortens the column. */
+  overflow: clip;
+  isolation: isolate;
+}
+
+.chat-bg::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--chat-wallpaper-height, 100%);
   background-image: url("../assets/images/chat/pattern-1.svg");
   background-repeat: repeat;
   background-position: center;
   background-size: 380px;
+  pointer-events: none;
 }
 
-.unicorn-dark-theme .chat-bg {
+.unicorn-dark-theme .chat-bg::before {
   background-image: url("../assets/images/chat/pattern-1_d.svg");
 }
 

@@ -1,14 +1,13 @@
-// import { CdkPortal, ComponentPortal, DomPortal, Portal, TemplatePortal } from '@angular/cdk/portal';
-import { HttpEventType, HttpResponse } from '@angular/common/http';
-import { BreakpointObserver, LayoutModule } from '@angular/cdk/layout';
+import { HttpResponse } from '@angular/common/http';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  DestroyRef,
   effect,
   ElementRef,
   inject,
-  OnInit,
   signal,
   TemplateRef,
   OnDestroy,
@@ -21,19 +20,16 @@ import {
   input,
   viewChild,
 } from '@angular/core';
-// import { Socket } from 'ngx-socket-io';
 
-import { BehaviorSubject, EMPTY, merge, of, Subject, Subscription } from 'rxjs';
+import { BehaviorSubject, EMPTY, Subject, Subscription } from 'rxjs';
 import {
   catchError,
-  debounceTime,
   distinctUntilChanged,
   filter,
   map,
   switchMap,
   takeUntil,
   tap,
-  throttle,
 } from 'rxjs';
 import { ChatSocketsService } from '../../../services/admin/chat-sockets.service';
 import { ChatService } from '../../../services/admin/chat.service';
@@ -53,7 +49,6 @@ import { MatIcon } from '@angular/material/icon';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { CdkOverlayOrigin, OverlayModule } from '@angular/cdk/overlay';
 import { CdkPortal, PortalModule } from '@angular/cdk/portal';
-import { MatRippleModule } from '@angular/material/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { S3UrlPipe, s3Url } from '../../../utils/s3-url';
 import {
@@ -70,10 +65,8 @@ import { ThemeService } from '../../../services/theme.service';
 import { UtilsService } from '../../../services/utils.service';
 import { MessagesListComponent } from '../left-nav/messages-list/messages-list.component';
 import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
-import { UserService } from '../../../services/user.service';
 import { IntersectionWatcherDirective } from '../../../libs/directives/intersection-watcher';
 import { IntersectionItemDirective } from '../../../libs/directives/intersection-item';
-import { MatCardModule } from '@angular/material/card';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { ClickOutsideDirective } from '../../../libs/directives/click-outside.directive';
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -85,7 +78,6 @@ import { DateTransformPipe } from '../../../utils/pipes/date.pipe';
 import { ImageViewerService } from '../../../services/admin/image-viewer.service';
 import { ProfileAvatarComponent } from '../../../shared/profile-avatar/profile-avatar.component';
 import { LanguageService } from '../../../services/shared/language-service.service';
-
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -98,7 +90,6 @@ import { LanguageService } from '../../../services/shared/language-service.servi
     IntersectionItemDirective,
     ProfileAvatarComponent,
     MatProgressSpinner,
-    MatRippleModule,
     NgClass,
     MatIcon,
     MatButtonModule,
@@ -108,9 +99,7 @@ import { LanguageService } from '../../../services/shared/language-service.servi
     OverlayModule,
     MatMenuModule,
     MatDialogModule,
-    MatCardModule,
     NgTemplateOutlet,
-    LayoutModule,
     ClickOutsideDirective,
     EmojiMartDirective,
     AsyncPipe,
@@ -121,37 +110,35 @@ import { LanguageService } from '../../../services/shared/language-service.servi
   ],
 })
 export class ChatComponent
-  implements OnInit, AfterViewInit, AfterContentInit, OnDestroy
+  implements AfterViewInit, AfterContentInit, OnDestroy
 {
+  static readonly MESSAGE_MAX_LENGTH = 80;
+  static readonly DEFAULT_EMOJI_PANEL_HEIGHT = 345;
+  // Visual viewport changes below this are browser toolbars, not a keyboard.
+  static readonly MIN_KEYBOARD_HEIGHT = 150;
+  // Enough for the title, the composer and a sliver of the thread between.
+  static readonly MIN_CHAT_HEIGHT = 160;
+
   private uploadService = inject(UploadService);
   protected utilsService = inject(UtilsService);
   private themeService = inject(ThemeService);
+  private host = inject<ElementRef<HTMLElement>>(ElementRef);
+  private destroyRef = inject(DestroyRef);
 
   readonly templatePortal = viewChild.required(CdkPortal);
   readonly viewportRef = viewChild<ElementRef<HTMLElement>>('chatContainer');
-  static readonly MESSAGE_MAX_LENGTH = 80;
-
   readonly messageInput = viewChild<ElementRef<HTMLElement>>('messageInput');
   readonly templateConfirmBlock = viewChild.required<TemplateRef<unknown>>(
     'templateConfirmBlock',
   );
-  readonly templateConfirmDeletePhoto = viewChild.required<TemplateRef<unknown>>(
-    'templateConfirmDeletePhoto',
-  );
-  readonly intersectionWatcher = viewChild(IntersectionWatcherDirective);
-  readonly audio = viewChild<ElementRef>('audio');
-  readonly btn = viewChild<ElementRef>('buttonHidden');
+  readonly templateConfirmDeletePhoto = viewChild.required<
+    TemplateRef<unknown>
+  >('templateConfirmDeletePhoto');
   readonly emojiTrigger = viewChild<CdkOverlayOrigin>('trigger');
-
-  // public backgroundImageFn: Emoji['backgroundImageFn'] = (
-  //   set: string,
-  //   sheetSize: number,
-  // ) => 'assets/images/64.png';
 
   readonly storeChat = inject(ChatStore);
   private chatService = inject(ChatService);
   readonly chatSocketsService = inject(ChatSocketsService);
-  readonly userService = inject(UserService);
   readonly dialog = inject(MatDialog);
   readonly breakpointObserver = inject(BreakpointObserver);
   readonly activeRoute = inject(ActivatedRoute);
@@ -170,30 +157,60 @@ export class ChatComponent
   isOpenEmojisMobile = signal(false);
   isHoverEmojiButton = false;
 
-  currentScrollTop: number;
+  // The mobile panel matches the soft keyboard, so switching between them
+  // leaves the composer where it is.
+  emojiPanelHeight = signal(ChatComponent.DEFAULT_EMOJI_PANEL_HEIGHT);
+  // Space held inside the column, below the composer. Shared by the emoji
+  // panel and whatever part of the keyboard the layout has not absorbed, so
+  // swapping them does not resize the thread or the wallpaper.
+  bottomReserve = signal(0);
+  // How tall the soft keyboard looks, mid-slide included.
+  private keyboardHeight = 0;
+  // Layout viewport height while the keyboard is closed. Compared with the
+  // current height to see how much the browser already shortened the page.
+  private layoutFullHeight = 0;
+  // Safari and Firefox ignore interactive-widget=resizes-content, so the
+  // keyboard covers the page instead of shortening it. The reserve then has
+  // to hold the keyboard's height itself.
+  private appliedReserve = 0;
+  // The height the keyboard had last time, held until the real one arrives so
+  // the composer is already in place while the keyboard is still sliding up.
+  private anticipatedInset = 0;
+  // Viewport gaps count as a keyboard only after a tap on the composer or the
+  // emoji control. Opening a conversation does not focus the field, and the
+  // browser can still report a tall gap for a moment as its chrome settles.
+  private keyboardArmed = false;
+  // True once a real keyboard has covered the page, so the reserve can follow
+  // it all the way down. A shorter visual-viewport gap is the browser toolbar.
+  private keyboardEngaged = false;
+  private anticipationTimer = 0;
+  // Panel height kept after the picker is dismissed, until the keyboard has
+  // grown into that same slot. Dropping it immediately lets the thread flash
+  // to full height and back.
+  protected emojiHandoffHeight = signal(0);
+  // Ancestors that would scroll to reveal the caret. Overflow is frozen
+  // while the composer is focused so the thread cannot jump, without
+  // scrolling the page back — that fight dismisses the keyboard.
+  private scrollPins: { el: HTMLElement; overflow: string }[] = [];
+  readonly bottomReserveRef =
+    viewChild<ElementRef<HTMLElement>>('keyboardReserve');
 
   subscriptionList = new Subscription();
 
   uploadLoading = false;
 
-  private lastFocusedConversationId = '';
+  private lastOpenedConversationId = '';
   private typingNoticeTarget: {
     userToId: string;
     conversationId: string;
   } | null = null;
 
-  protected subscriptionDestroy$ = new Subject<void>();
   protected destroyGetPastMessages$ = new Subject<boolean>();
   private cancelConversationLoad$ = new Subject<void>();
 
-  protected scrollEvent$ = new BehaviorSubject<number>(0);
-  // Signal mirror of the scroll offset, so computeds can react to scrolling.
+  // The thread is reversed, so the bottom is zero and scrolling up is negative.
   private scrollTop = signal(0);
-
-  // Profile pics bucket
-  chosenFiles: FileList | undefined;
-  existingFile: File | undefined;
-  progress = 0;
+  isScrolledUp = computed(() => this.scrollTop() < 0);
 
   readonly userProfile = input<UserDetailsObject>();
 
@@ -202,92 +219,81 @@ export class ChatComponent
     maxLength(p.message, ChatComponent.MESSAGE_MAX_LENGTH);
   });
   userIsTyping$ = new BehaviorSubject<boolean>(false);
-  private chatIsTypingSubject = new Subject<any>();
+  // Carries whether the composer holds text, which is what "is typing" means.
+  private chatIsTypingSubject = new Subject<boolean>();
 
-  isDark = signal(false);
-  isScrolledUp = signal(false);
+  isDark = toSignal(this.themeService.isDarkTheme, { initialValue: false });
 
-  showStaticTimeGrouping = signal('');
   setEmojisContainer = signal(false);
-  // observer: IntersectionObserver;
 
   selectedLang = signal<string>(this.translateService.currentLang);
 
   mapOfHiddenDateGroups = new Map<string, IntersectionObserverEntry>();
-  showTimeHEader = signal(false);
-  // stickyHeaderMessage = signal('');
-  showTimeHEaderValue = signal('');
   #signalIntersectionEntry = signal<IntersectionObserverEntry | undefined>(
     undefined,
   );
 
   profilePicUrlOther = computed(() => {
-    if (this.storeChat.userTo()) {
-      const userTo = this.storeChat.userTo();
-      return userTo && !userTo.avatar && userTo.images && userTo.images[0]
-        ? s3Url(userTo.images[0].keyRezised)
-        : '';
-    }
-    return '';
+    const userTo = this.storeChat.userTo();
+    const image = userTo && !userTo.avatar ? userTo.images?.[0] : undefined;
+    return image ? s3Url(image.keyRezised) : '';
   });
 
-  hasNewMessage = computed(() => {
-    const messageStatus = this.storeChat.messageStatus();
-    return messageStatus.type !== 'idle' && this.scrollTop() < 0;
-  });
+  hasNewMessage = computed(
+    () => this.storeChat.messageStatus().type !== 'idle' && this.isScrolledUp(),
+  );
 
   stickyHeaderMessage = computed(() => {
-    const lastValueSet = this.#signalIntersectionEntry();
-
-    if (lastValueSet) {
-      const entitiesMap = this.storeChat.messagesEntityMap();
-      // Ids can outlive their message when a conversation is reset, so only
-      // consider the ones still present in the store.
-      const hiddenItemsIds = [...this.mapOfHiddenDateGroups.keys()].filter(
-        (messageId) => !!entitiesMap[messageId],
-      );
-      if (hiddenItemsIds.length === 0) {
-        return '';
-      }
-
-      return hiddenItemsIds.reduce((prev, curr) =>
-        entitiesMap[prev].date < entitiesMap[curr].date ? curr : prev,
-      );
+    if (!this.#signalIntersectionEntry()) {
+      return '';
     }
 
-    return '';
+    const entitiesMap = this.storeChat.messagesEntityMap();
+    // Ids can outlive their message when a conversation is reset, so only
+    // consider the ones still present in the store.
+    const hiddenIds = [...this.mapOfHiddenDateGroups.keys()].filter(
+      (messageId) => !!entitiesMap[messageId],
+    );
+    if (hiddenIds.length === 0) {
+      return '';
+    }
+
+    // The newest divider that has scrolled away is the one on show.
+    return hiddenIds.reduce((prev, curr) =>
+      entitiesMap[prev].date < entitiesMap[curr].date ? curr : prev,
+    );
   });
 
   isMobile = toSignal(
-    this.breakpointObserver
-      .observe([
-        // '(min-width: 640px)',
-        '(min-width: 768px)',
-        // '(min-width: 1024px)',
-      ])
-      .pipe(
-        tap(() => {
-          this.isOpenEmojisDesktop.set(false);
-          this.isOpenEmojisMobile.set(false);
-        }),
-        map((observer) => !observer.matches),
-      ),
+    this.breakpointObserver.observe(['(min-width: 768px)']).pipe(
+      tap(() => {
+        this.isOpenEmojisDesktop.set(false);
+        this.isOpenEmojisMobile.set(false);
+        this.emojiHandoffHeight.set(0);
+        if (isPlatformBrowser(this.platformId)) {
+          this.clearAnticipatedInset();
+          this.applyBottomReserve(0);
+        }
+      }),
+      map((observer) => !observer.matches),
+    ),
   );
 
-  album = computed(() => {
-    return this.storeChat
+  album = computed(() =>
+    this.storeChat
       .groupedMessages()
       .filter((msg) => msg.message && msg.type === 'media')
       .sort((a, b) => (a.date > b.date ? 1 : -1))
-      .map((msg) => msg.message as ImageObj);
-  });
+      .map((msg) => msg.message as ImageObj),
+  );
 
-  showViewer = signal<{ index: number }>({ index: -1 });
   deletingPhotoId = signal<string | null>(null);
 
   constructor() {
     effect(() => {
-      this.checkMessagesLoading();
+      if (this.storeChat.groupedMessages()) {
+        this.safariScrollFix();
+      }
     });
 
     // Writes that do not come from typing, such as a picked emoji or the reset
@@ -321,38 +327,35 @@ export class ChatComponent
       this.storeChat.clearError();
     });
 
-    // Focus the message input and pin the thread once per opened conversation.
-    // The viewport can appear a render after the id is set, so wait for it.
+    // Pin the thread once per opened conversation. The viewport can appear a
+    // render after the id is set, so wait for it. The composer is left alone.
     afterRenderEffect({
-      earlyRead: () => {
-        const input = this.messageInput()?.nativeElement ?? null;
-        return {
-          input,
-          viewport: this.viewportRef()?.nativeElement ?? null,
-          conversationId: this.storeChat.currentConversationId(),
-          editingElsewhere: !!input && this.isEditingAnotherField(input),
-        };
-      },
+      earlyRead: () => ({
+        viewport: this.viewportRef()?.nativeElement ?? null,
+        conversationId: this.storeChat.currentConversationId(),
+      }),
       write: (state) => {
-        const { input, viewport, conversationId, editingElsewhere } = state();
+        const { viewport, conversationId } = state();
 
         if (!conversationId) {
-          this.lastFocusedConversationId = '';
+          this.lastOpenedConversationId = '';
           return;
         }
-        if (!viewport || conversationId === this.lastFocusedConversationId) {
+        if (!viewport || conversationId === this.lastOpenedConversationId) {
           return;
         }
 
         viewport.scrollTop = 0;
-        if (!input) {
-          return;
-        }
 
-        this.lastFocusedConversationId = conversationId;
-        if (!editingElsewhere) {
-          input.focus();
-        }
+        // A previous conversation may still be holding a keyboard slot. Drop it
+        // before this one paints, or the thread flicks short.
+        this.keyboardArmed = false;
+        this.keyboardEngaged = false;
+        this.clearAnticipatedInset();
+        this.emojiHandoffHeight.set(0);
+        this.applyBottomReserve(0);
+
+        this.lastOpenedConversationId = conversationId;
       },
     });
 
@@ -374,9 +377,8 @@ export class ChatComponent
       .subscribe();
     this.subscriptionList.add(sub);
 
-    ///////////////////////////////////////////////
-    //////// Sockets Subscription Methods /////////
     this.manageUserTypingOnInit();
+    afterNextRender(() => this.trackKeyboard());
     afterNextRender(() => {
       this.subscriptionList.add(
         this.chatSocketsService.onReConnect().subscribe({
@@ -390,21 +392,6 @@ export class ChatComponent
         }),
       );
     });
-    ///////////////////////////////////////////////
-  }
-
-  ngOnInit(): void {
-    this.subscriptionList.add(
-      this.themeService.isDarkTheme.subscribe((isDark) => {
-        this.isDark.set(isDark);
-      }),
-    );
-
-    if (isPlatformBrowser(this.platformId)) {
-      this.onScrollEnd();
-    }
-
-    // navigator.mediaDevices.getUserMedia({ video: true, audio: true });
   }
 
   ngAfterViewInit(): void {
@@ -418,26 +405,22 @@ export class ChatComponent
     }, 300);
   }
 
-  setCurrentConversationDetails() {
+  private resetConversationView() {
+    this.stopTypingNotice();
+    this.chatForm.message().value.set('');
+    this.chatIsTypingSubject.next(false);
+    this.isOpenEmojisDesktop.set(false);
+    this.isOpenEmojisMobile.set(false);
+    this.mapOfHiddenDateGroups.clear();
+    this.#signalIntersectionEntry.set(undefined);
+
     this.userIsTyping$.next(false);
-    this.isScrolledUp.set(false);
     this.scrollTop.set(0);
     this.storeChat.setDefaultNewMessageStatus();
     const viewport = this.viewportRef()?.nativeElement;
     if (viewport) {
       viewport.scrollTop = 0;
     }
-  }
-
-  private resetConversationView() {
-    this.stopTypingNotice();
-    this.chatForm.message().value.set('');
-    this.chatIsTypingSubject.next({ hasData: false, isFocused: false });
-    this.isOpenEmojisDesktop.set(false);
-    this.isOpenEmojisMobile.set(false);
-    this.mapOfHiddenDateGroups.clear();
-    this.#signalIntersectionEntry.set(undefined);
-    this.setCurrentConversationDetails();
   }
 
   private leaveCurrentRoom() {
@@ -511,68 +494,57 @@ export class ChatComponent
       return;
     }
 
-    host.focus();
+    // A normal focus scrolls every ancestor to reveal the caret, which
+    // fights the keyboard slide and flashes the thread when it finishes.
+    host.focus({ preventScroll: true });
     this.placeCaretAtEnd(host);
   }
 
-  private isEditingAnotherField(input: HTMLElement) {
-    const active = document.activeElement as HTMLElement | null;
-    return (
-      !!active &&
-      active !== input &&
-      (active.isContentEditable ||
-        active instanceof HTMLTextAreaElement ||
-        (active instanceof HTMLInputElement && active.type !== 'file'))
-    );
-  }
+  // A date divider that has slipped off the top of the thread is the one the
+  // sticky header stands in for.
+  onDateGroupVisibility(entry: IntersectionObserverEntry) {
+    const target = entry.target as HTMLElement;
+    const messageId = target.getAttribute('data-msgid') ?? '';
 
-  elementEntry2(entry: IntersectionObserverEntry) {
-    const elementTarget = entry.target as HTMLDivElement;
-    const parent = elementTarget.parentElement;
-    const messageId = elementTarget.getAttribute('data-msgid') as string;
-
-    if (entry.isIntersecting === true) {
+    if (entry.isIntersecting) {
       if (this.mapOfHiddenDateGroups.delete(messageId)) {
         this.#signalIntersectionEntry.set(entry);
       }
-    } else {
-      const distanceToIntercestionContainer =
-        elementTarget.getBoundingClientRect().top -
-        parent?.getBoundingClientRect()!.top!;
-      if (distanceToIntercestionContainer < 0) {
-        this.mapOfHiddenDateGroups.set(messageId, entry);
-        this.#signalIntersectionEntry.set(entry);
-      }
+      return;
+    }
+
+    const threadTop = target.parentElement?.getBoundingClientRect().top ?? 0;
+    if (target.getBoundingClientRect().top < threadTop) {
+      this.mapOfHiddenDateGroups.set(messageId, entry);
+      this.#signalIntersectionEntry.set(entry);
     }
   }
 
-  elementEntryRemoved(element: ElementRef<any>, message: MessageDTO) {
+  onDateGroupRemoved(message: MessageDTO) {
     this.mapOfHiddenDateGroups.delete(message._id);
   }
 
-  checkMessagesLoading() {
-    if (this.storeChat.groupedMessages()) {
-      this.safariScrollFix();
-    }
-  }
-
-  trackMessages(index: number, message: any) {
-    return message._id;
-  }
-
   showEmojiPanel() {
-    if (this.isMobile()) {
-      // The panel takes the soft keyboard's place, so only one is ever shown.
-      if (this.isOpenEmojisMobile()) {
-        this.isOpenEmojisMobile.set(false);
-        this.focusMessageInput();
-      } else {
-        this.messageInput()?.nativeElement.blur();
-        this.isOpenEmojisMobile.set(true);
-      }
-    } else {
+    if (!this.isMobile()) {
       this.isOpenEmojisDesktop.update((isOpen) => !isOpen);
+      return;
     }
+
+    // The panel takes the soft keyboard's place, so only one is ever shown.
+    if (this.isOpenEmojisMobile()) {
+      this.focusMessageInput();
+      return;
+    }
+
+    this.lockPageScroll();
+    // The panel takes over the slot the keyboard was holding. Resize that
+    // slot in place — clearing it first drops the composer for a frame.
+    this.clearAnticipatedInset();
+    this.emojiHandoffHeight.set(0);
+    this.keyboardArmed = true;
+    this.isOpenEmojisMobile.set(true);
+    this.syncComposerInset();
+    this.messageInput()?.nativeElement.blur();
   }
 
   addEmoji($event: any) {
@@ -585,7 +557,7 @@ export class ChatComponent
     }
   }
 
-  clickedOusideEmojiPanel($event: MouseEvent) {
+  clickedOutsideEmojiPanel($event: MouseEvent) {
     // The trigger button's own click handler toggles the panel.
     const trigger = this.emojiTrigger()?.elementRef.nativeElement as
       | HTMLElement
@@ -596,8 +568,12 @@ export class ChatComponent
     this.isOpenEmojisDesktop.set(false);
   }
 
-  closeMobielEmojis() {
+  closeMobileEmojis() {
     this.isOpenEmojisMobile.set(false);
+    this.emojiHandoffHeight.set(0);
+    this.keyboardArmed = false;
+    this.keyboardEngaged = false;
+    this.syncComposerInset();
   }
 
   onMessageEnter($event: KeyboardEvent) {
@@ -629,22 +605,32 @@ export class ChatComponent
 
     this.chatForm.message().value.set(text);
     this.keepCaretVisible(host);
-    this.inputStateChanged({ hasData: text.length > 0, isFocused: true });
+    this.chatIsTypingSubject.next(text.length > 0);
   }
 
   onMessageFocus() {
-    this.onMessageInputFocus();
-    this.inputStateChanged({
-      hasData: this.chatForm.message().value().length > 0,
-      isFocused: true,
-    });
+    if (this.isMobile()) {
+      // Keep the panel's slot until the keyboard has grown into it.
+      if (this.isOpenEmojisMobile()) {
+        this.emojiHandoffHeight.set(this.emojiPanelHeight());
+      }
+      this.isOpenEmojisMobile.set(false);
+      this.anticipateKeyboard();
+    }
+    this.notifyTypingFromModel();
   }
 
   onMessageBlur() {
-    this.inputStateChanged({
-      hasData: this.chatForm.message().value().length > 0,
-      isFocused: false,
-    });
+    this.notifyTypingFromModel();
+    // The emoji control blurs the field while the panel is taking the slot.
+    if (this.isOpenEmojisMobile() || this.emojiHandoffHeight() > 0) {
+      return;
+    }
+    this.keyboardArmed = false;
+  }
+
+  private notifyTypingFromModel() {
+    this.chatIsTypingSubject.next(this.chatForm.message().value().length > 0);
   }
 
   // Paste arrives as rich text or with line breaks, neither of which fits a
@@ -673,10 +659,329 @@ export class ChatComponent
     this.onMessageInput();
   }
 
-  onMessageInputFocus() {
-    if (this.isMobile()) {
-      this.isOpenEmojisMobile.set(false);
+  private trackKeyboard() {
+    this.emojiPanelHeight.set(this.storedKeyboardHeight());
+    this.layoutFullHeight = document.documentElement.clientHeight;
+    this.syncWallpaperHeight();
+    this.lockPageScroll();
+
+    const visualViewport = window.visualViewport;
+    let fullHeight = window.innerHeight;
+    const onOrientationChange = () => {
+      fullHeight = window.innerHeight;
+      this.layoutFullHeight = document.documentElement.clientHeight;
+      this.emojiPanelHeight.set(this.storedKeyboardHeight());
+      onViewportResize();
+    };
+
+    const onViewportResize = () => {
+      const innerHeight = window.innerHeight;
+      if (innerHeight > fullHeight) {
+        fullHeight = innerHeight;
+      }
+
+      const keyboardHeight = visualViewport
+        ? Math.max(
+            0,
+            Math.round(
+              fullHeight - visualViewport.height - visualViewport.offsetTop,
+            ),
+          )
+        : Math.max(0, Math.round(fullHeight - innerHeight));
+      const keyboardOpen = keyboardHeight >= ChatComponent.MIN_KEYBOARD_HEIGHT;
+
+      // Browser chrome (the address bar) moves the baseline. Follow it only
+      // while a keyboard is not covering the page and the emoji slot is empty.
+      if (
+        !keyboardOpen &&
+        !this.isOpenEmojisMobile() &&
+        this.emojiHandoffHeight() === 0
+      ) {
+        fullHeight = innerHeight;
+        this.layoutFullHeight = document.documentElement.clientHeight;
+      }
+
+      this.keyboardHeight = keyboardHeight;
+      // Mid-slide heights would resize the picker that is still holding the slot.
+      if (
+        !this.isOpenEmojisMobile() &&
+        this.emojiHandoffHeight() === 0 &&
+        keyboardOpen
+      ) {
+        this.rememberKeyboardHeight(keyboardHeight);
+      }
+
+      this.syncComposerInset(keyboardOpen);
+      this.syncWallpaperHeight();
+    };
+
+    visualViewport?.addEventListener('resize', onViewportResize);
+    visualViewport?.addEventListener('scroll', onViewportResize);
+    window.addEventListener('resize', onViewportResize);
+    screen.orientation?.addEventListener('change', onOrientationChange);
+    this.destroyRef.onDestroy(() => {
+      this.clearAnticipatedInset();
+      this.emojiHandoffHeight.set(0);
+      this.applyBottomReserve(0);
+      this.releasePageScroll();
+      visualViewport?.removeEventListener('resize', onViewportResize);
+      visualViewport?.removeEventListener('scroll', onViewportResize);
+      window.removeEventListener('resize', onViewportResize);
+      screen.orientation?.removeEventListener('change', onOrientationChange);
+    });
+  }
+
+  // Space below the composer. The emoji panel and the soft keyboard share it.
+  // Where the browser already shortened the layout, that part is left out so
+  // the thread is not pushed up twice. The rest is a spacer inside the column,
+  // which keeps the wallpaper box at a steady height.
+  private syncComposerInset(
+    keyboardOpen = this.keyboardHeight >= ChatComponent.MIN_KEYBOARD_HEIGHT,
+  ) {
+    if (!this.isMobile()) {
+      this.clearAnticipatedInset();
+      this.emojiHandoffHeight.set(0);
+      this.keyboardArmed = false;
+      this.keyboardEngaged = false;
+      this.applyBottomReserve(0);
+      return;
     }
+
+    // Nothing asked for the keyboard. A viewport gap on open is the browser
+    // chrome settling, and reserving it flashes the thread short.
+    if (
+      !this.keyboardArmed &&
+      !this.keyboardEngaged &&
+      this.anticipatedInset === 0 &&
+      !this.isOpenEmojisMobile() &&
+      this.emojiHandoffHeight() === 0
+    ) {
+      this.applyBottomReserve(0);
+      return;
+    }
+
+    // Pinch zoom shrinks the visual viewport too, and nothing is hidden then.
+    const view = window.visualViewport;
+    const covered =
+      view && view.scale <= 1.01
+        ? Math.max(
+            0,
+            Math.round(
+              document.documentElement.clientHeight -
+                view.height -
+                view.offsetTop,
+            ),
+          )
+        : 0;
+
+    if (covered >= ChatComponent.MIN_KEYBOARD_HEIGHT) {
+      this.keyboardEngaged = true;
+    } else if (covered === 0) {
+      this.keyboardEngaged = false;
+    }
+
+    // Follow a keyboard that is already on screen, including the last part of
+    // its slide. Anything shorter, with no guess held open, is browser chrome.
+    const keyboardCover =
+      this.keyboardEngaged || this.anticipatedInset > 0 ? covered : 0;
+
+    const layoutShrink = Math.max(
+      0,
+      Math.round(
+        this.layoutFullHeight - document.documentElement.clientHeight,
+      ),
+    );
+    // The guessed keyboard height is in full-page coordinates. Drop it once
+    // the real keyboard, or the layout shrink it caused, has caught up.
+    // Clearing on the first few pixels would snap the thread short and
+    // then stretch it again as the keyboard finishes opening.
+    const absorbed = layoutShrink + covered;
+    if (
+      this.emojiHandoffHeight() === 0 &&
+      this.anticipatedInset > 0 &&
+      absorbed + 8 >= this.anticipatedInset
+    ) {
+      this.clearAnticipatedInset();
+    }
+
+    const panelTarget = this.isOpenEmojisMobile()
+      ? this.emojiPanelHeight()
+      : this.emojiHandoffHeight();
+    const panelReserve = Math.max(0, panelTarget - layoutShrink);
+    // While the panel is open it owns the slot, including the moment the
+    // keyboard is still on its way down. The guessed height is reduced by
+    // whatever the browser has already taken off the layout, so the thread
+    // is not shortened twice.
+    const keyboardReserve = this.isOpenEmojisMobile()
+      ? 0
+      : Math.max(
+          0,
+          Math.max(keyboardCover, this.anticipatedInset) - layoutShrink,
+        );
+    const reserve = Math.max(panelReserve, keyboardReserve);
+
+    // keyboardReserve matches panelReserve for the whole slide, so compare
+    // against the real keyboard. Releasing the slot earlier lets the thread
+    // drop, then climb back as the keyboard finishes opening.
+    if (
+      this.emojiHandoffHeight() > 0 &&
+      keyboardOpen &&
+      absorbed + 8 >= this.emojiHandoffHeight()
+    ) {
+      this.emojiHandoffHeight.set(0);
+      if (absorbed + 8 >= this.anticipatedInset) {
+        this.clearAnticipatedInset();
+      }
+    }
+
+    this.applyBottomReserve(reserve);
+  }
+
+  // The pattern is centered on the column's full height. Freezing that height
+  // while the keyboard shortens the column keeps the tiles from sliding.
+  private syncWallpaperHeight() {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
+    const column = this.host.nativeElement.firstElementChild as HTMLElement | null;
+    if (!column) {
+      return;
+    }
+
+    const layoutShrunk =
+      this.layoutFullHeight > 0 &&
+      document.documentElement.clientHeight < this.layoutFullHeight - 2;
+    if (layoutShrunk) {
+      return;
+    }
+
+    const height = Math.round(column.getBoundingClientRect().height);
+    if (height <= 0) {
+      return;
+    }
+
+    column.style.setProperty('--chat-wallpaper-height', `${height}px`);
+  }
+
+  // Written straight to the spacer: a binding would land a frame later, and
+  // the slot has to move with the keyboard, not a paint behind it.
+  private applyBottomReserve(reserve: number) {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
+    const host = this.host.nativeElement;
+    // Older builds shortened the host itself, which rescaled the wallpaper.
+    if (host.style.height) {
+      host.style.height = '';
+    }
+
+    const columnHeight = host.clientHeight;
+    // A keyboard taller than the column, which landscape can be, would leave
+    // no room for the thread, so the composer keeps a floor to stand on.
+    const limit =
+      columnHeight > 0
+        ? Math.max(0, Math.round(columnHeight - ChatComponent.MIN_CHAT_HEIGHT))
+        : Number.POSITIVE_INFINITY;
+    const wanted = Math.min(Math.max(0, Math.round(reserve)), limit);
+    if (wanted === this.appliedReserve && this.bottomReserve() === wanted) {
+      const el = this.bottomReserveRef()?.nativeElement;
+      if (!el || el.style.height === `${wanted}px`) {
+        return;
+      }
+    }
+
+    this.appliedReserve = wanted;
+    this.bottomReserve.set(wanted);
+    const el = this.bottomReserveRef()?.nativeElement;
+    if (el) {
+      el.style.height = `${wanted}px`;
+    }
+  }
+
+  // Reserving the slot only once the keyboard has claimed its space leaves
+  // the thread at the wrong height for the whole slide. Start from the height
+  // the keyboard had last time, on the click, and let the viewport correct it.
+  private anticipateKeyboard() {
+    const coarse = window.matchMedia('(pointer: coarse)').matches;
+    if (!coarse && this.emojiHandoffHeight() === 0) {
+      return;
+    }
+
+    this.keyboardArmed = true;
+
+    if (coarse) {
+      // From the emoji panel, keep the slot that is already on screen. A
+      // taller remembered keyboard would shrink the thread on the tap.
+      const handoff = this.emojiHandoffHeight();
+      this.anticipatedInset =
+        handoff > 0 ? handoff : this.storedKeyboardHeight();
+    }
+
+    // No keyboard turned up, so release the slot the panel left behind.
+    window.clearTimeout(this.anticipationTimer);
+    this.anticipationTimer = window.setTimeout(() => {
+      this.anticipatedInset = 0;
+      this.emojiHandoffHeight.set(0);
+      this.syncComposerInset();
+    }, 1200);
+    this.syncComposerInset();
+  }
+
+  private clearAnticipatedInset() {
+    window.clearTimeout(this.anticipationTimer);
+    this.anticipatedInset = 0;
+  }
+
+  // Stop the page from scrolling the thread into view. Done once, before
+  // the keyboard moves, and never by pushing the scroll position back.
+  private lockPageScroll() {
+    if (!this.isMobile() || this.scrollPins.length > 0) {
+      return;
+    }
+
+    let el = this.host.nativeElement.parentElement;
+    while (el) {
+      const overflowY = getComputedStyle(el).overflowY;
+      if (
+        overflowY === 'auto' ||
+        overflowY === 'scroll' ||
+        overflowY === 'overlay'
+      ) {
+        this.scrollPins.push({ el, overflow: el.style.overflow });
+        el.style.overflow = 'hidden';
+      }
+      el = el.parentElement;
+    }
+  }
+
+  private releasePageScroll() {
+    for (const pin of this.scrollPins) {
+      pin.el.style.overflow = pin.overflow;
+    }
+    this.scrollPins = [];
+  }
+
+  private keyboardHeightKey() {
+    const isLandscape =
+      screen.orientation?.type.startsWith('landscape') ??
+      screen.width > screen.height;
+    return `chatKeyboardHeight:${isLandscape ? 'landscape' : 'portrait'}`;
+  }
+
+  private storedKeyboardHeight() {
+    const stored = Number(localStorage.getItem(this.keyboardHeightKey()));
+    return stored > 0 ? stored : ChatComponent.DEFAULT_EMOJI_PANEL_HEIGHT;
+  }
+
+  private rememberKeyboardHeight(height: number) {
+    if (height === this.emojiPanelHeight()) {
+      return;
+    }
+
+    this.emojiPanelHeight.set(height);
+    localStorage.setItem(this.keyboardHeightKey(), String(height));
   }
 
   private placeCaretAtEnd(host: HTMLElement) {
@@ -716,24 +1021,12 @@ export class ChatComponent
     }
   }
 
-  // From directive applied in the input
-  inputStateChanged(inputState: { hasData: boolean; isFocused: boolean }) {
-    this.chatIsTypingSubject.next(inputState);
-  }
-
   manageUserTypingOnInit() {
-    const debounced = this.chatIsTypingSubject.pipe(debounceTime(0));
-
-    const effect = merge(
-      // Emits a value from the source Observable, then ignores subsequent source values for a duration
-      // determined by another Observable, then repeats this process.
-      this.chatIsTypingSubject.pipe(throttle(() => debounced)),
-      debounced,
-    ).pipe(distinctUntilChanged((a: any, b: any) => a.hasData === b.hasData));
-
-    const sub1 = effect.subscribe(
-      (inpuState: { hasData: boolean; isFocused: boolean }) => {
-        if (!inpuState.hasData) {
+    // Only the transitions between an empty and a filled composer are news.
+    const sub1 = this.chatIsTypingSubject
+      .pipe(distinctUntilChanged())
+      .subscribe((hasData) => {
+        if (!hasData) {
           this.stopTypingNotice();
           return;
         }
@@ -745,8 +1038,7 @@ export class ChatComponent
         }
         this.typingNoticeTarget = { userToId, conversationId };
         this.chatSocketsService.sendIsTyping(userToId, conversationId, true);
-      },
-    );
+      });
     this.subscriptionList.add(sub1);
 
     afterNextRender(() => {
@@ -808,7 +1100,7 @@ export class ChatComponent
       'message',
     );
     this.chatForm.message().value.set('');
-    this.chatIsTypingSubject.next({ hasData: false, isFocused: false });
+    this.chatIsTypingSubject.next(false);
 
     this.isOpenEmojisDesktop.set(false);
     this.isOpenEmojisMobile.set(false);
@@ -822,12 +1114,10 @@ export class ChatComponent
     const imageMaxSizError = this.translateService.instant(
       'upload.imageMaxSizError',
     );
-    const imageTooBig = this.translateService.instant('upload.imageTooBig');
     const imageUploadError = this.translateService.instant(
       'upload.imageUploadError',
     );
 
-    this.progress = 0;
     this.uploadLoading = true;
 
     // The upload can outlive a conversation switch, so it must keep targeting
@@ -839,8 +1129,7 @@ export class ChatComponent
       return;
     }
 
-    const fileSizeMb = +(file.size / (1024 * 1024)).toFixed(2);
-    if (fileSizeMb > 1) {
+    if (file.size > 1024 * 1024) {
       this.uploadLoading = false;
       this.utilsService.alert(imageMaxSizError, this.closeTxt, 6000, 'top');
       return;
@@ -867,71 +1156,43 @@ export class ChatComponent
       isSocketMessage: true,
     };
 
-    this.chatSocketsService.sendData(conversationId, messageDTO, 'media'); // 'media'
+    this.chatSocketsService.sendData(conversationId, messageDTO, 'media');
 
     const sub1 = this.uploadService
       .uploadChatPhoto(file, conversationId, messageId, width, height)
-      // .pipe(delay(10000))
-      .subscribe(
-        (event) => {
-          if (event.type === HttpEventType.UploadProgress) {
-            this.progress = Math.round(
-              (100 * event.loaded) / (event.total as number),
-            );
-          } else if (event instanceof HttpResponse) {
-            const imageObj: ImageObj = event.body.imageObj;
-
-            // Here 'loading' is set to false and message is set with the image
-            const messageDTO: MessageDTO = {
-              _id: messageId,
-              conversationId: '',
-              message: imageObj,
-              sender: this.userProfile()!.user.uid,
-              receiver: userToId,
-              date: newDate,
-              type: 'media',
-              loading: false,
-              isSocketMessage: true,
-            };
-
-            this.chatSocketsService.sendData(
-              conversationId,
-              messageDTO,
-              'message',
-            ); // 'media'
-
-            this.existingFile = undefined;
-            this.uploadLoading = false;
+      .subscribe({
+        next: (event) => {
+          if (!(event instanceof HttpResponse)) {
+            return;
           }
-        },
-        (error) => {
-          console.log(error);
 
-          this.progress = 0;
-
-          this.storeChat.removeMessage(messageId);
-
-          // this.store.dispatch(chatActions.removeMessage({ messageId: id }));
-
-          this.utilsService.alert(imageUploadError, this.closeTxt, 6000, 'top');
-
-          // this.msg = 'Error occured while uploading file';
-          this.existingFile = undefined;
+          // The placeholder is replaced by the stored image.
+          this.chatSocketsService.sendData(
+            conversationId,
+            {
+              ...messageDTO,
+              message: event.body.imageObj as ImageObj,
+              loading: false,
+            },
+            'message',
+          );
           this.uploadLoading = false;
         },
-      );
+        error: () => {
+          this.storeChat.removeMessage(messageId);
+          this.utilsService.alert(imageUploadError, this.closeTxt, 6000, 'top');
+          this.uploadLoading = false;
+        },
+      });
     this.subscriptionList.add(sub1);
-
-    this.chosenFiles = undefined;
   }
 
   chooseFile(event: Event): void {
     const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
 
-    this.chosenFiles = input.files as FileList;
-    if (this.chosenFiles && this.chosenFiles?.length > 0) {
-      this.existingFile = this.chosenFiles?.item(0) as File;
-      this.upload(this.existingFile);
+    if (file) {
+      void this.upload(file);
       input.value = '';
     }
   }
@@ -981,26 +1242,22 @@ export class ChatComponent
     this.subscriptionList.add(sub);
   }
 
-  open(index: number, message: MessageDTO): void {
-    if (message.message && message.type === 'media') {
-      const image = message.message as ImageObj;
-
-      const album = this.album();
-
-      const index = album.findIndex((img) => img && img.key === image.key);
-      this.showViewer.set({ index });
-
-      this.imageViewerService.listPhotos.set(this.album());
-      this.imageViewerService.showViewer.set(this.showViewer());
+  open(message: MessageDTO): void {
+    if (!message.message || message.type !== 'media') {
+      return;
     }
+
+    const album = this.album();
+    const image = message.message as ImageObj;
+
+    this.imageViewerService.listPhotos.set(album);
+    this.imageViewerService.showViewer.set({
+      index: album.findIndex((img) => img?.key === image.key),
+    });
   }
 
   loadPastMessages() {
     this.storeChat.loadMoreMessages(this.destroyGetPastMessages$);
-  }
-
-  unsubscribeEvents() {
-    this.subscriptionList.unsubscribe();
   }
 
   imageError(event: Event) {
@@ -1008,17 +1265,17 @@ export class ChatComponent
     image.src = './assets/images/image-regular-2.svg';
   }
 
+  // Safari leaves the thread a row off after new messages land.
   private safariScrollFix() {
-    if (this.viewportRef()) {
-      const browser = UtilsService.getBrowserName();
-      if (browser === 'Safari') {
-        const currentScrollTop = this.getContainerScrollTop();
-
-        setTimeout(() => {
-          this.viewportRef()!.nativeElement.scrollTop = currentScrollTop - 1;
-        }, 0);
-      }
+    const viewport = this.viewportRef()?.nativeElement;
+    if (!viewport || UtilsService.getBrowserName() !== 'Safari') {
+      return;
     }
+
+    const currentScrollTop = viewport.scrollTop;
+    setTimeout(() => {
+      viewport.scrollTop = currentScrollTop - 1;
+    }, 0);
   }
 
   toggleAlerts($event: Event, menuTrigger: MatMenuTrigger) {
@@ -1058,37 +1315,19 @@ export class ChatComponent
     });
   }
 
-  onScrollEnd() {
-    this.scrollEvent$
-      .pipe(
-        takeUntil(this.subscriptionDestroy$),
-        debounceTime(0),
-        tap((scrollValue) => {
-          if (scrollValue >= 0) {
-            this.storeChat.setDefaultNewMessageStatus();
-            this.isScrolledUp.set(false);
-          } else {
-            this.isScrolledUp.set(true);
-          }
-        }),
-      )
-      .subscribe();
-  }
-
-  onScroll($event: any) {
-    const scrollTop = $event.target.scrollTop as number;
+  onScroll($event: Event) {
+    const scrollTop = ($event.target as HTMLElement).scrollTop;
     this.scrollTop.set(scrollTop);
-    this.scrollEvent$.next(scrollTop);
+
+    // Coming back to the bottom is how the new message notice is dismissed.
+    if (scrollTop >= 0 && this.storeChat.messageStatus().type !== 'idle') {
+      this.storeChat.setDefaultNewMessageStatus();
+    }
   }
 
   scrollToBottom() {
     this.storeChat.setDefaultNewMessageStatus();
     this.viewportRef()?.nativeElement.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  // I get the current scroll offset of the container.
-  private getContainerScrollTop(): number {
-    return this.viewportRef()!.nativeElement.scrollTop;
   }
 
   ngOnDestroy() {
@@ -1099,15 +1338,11 @@ export class ChatComponent
     this.stopTypingNotice();
     this.leaveCurrentRoom();
     this.storeChat.resetConversationIds();
-
-    this.unsubscribeEvents();
+    this.subscriptionList.unsubscribe();
 
     this.cancelConversationLoad$.next();
     this.cancelConversationLoad$.complete();
     this.destroyGetPastMessages$.next(true);
     this.destroyGetPastMessages$.complete();
-
-    this.subscriptionDestroy$.next();
-    this.subscriptionDestroy$.complete();
   }
 }

@@ -204,9 +204,9 @@
       <div
         #chatContainer
         intersectionWatcher
-        (elementEntry)="elementEntry2($event)"
+        (elementEntry)="onDateGroupVisibility($event)"
         (scroll)="onScroll($event)"
-        class="static w-full basis-0 grow flex flex-col-reverse justify-between overflow-y-scroll overscroll-contain px-3 pb-3 sm:px-5"
+        class="static w-full min-h-0 basis-0 grow flex flex-col-reverse justify-start overflow-y-scroll overscroll-contain [overflow-anchor:none] px-3 pb-3 sm:px-5"
       >
         <!-- <div
           class="text-zinc-800 absolute left-0 bottom-0 flex w-full h-full -z-50"
@@ -306,7 +306,7 @@
                     <div class="relative inline-flex">
                       <img
                         alt=""
-                        (click)="open(0, message)"
+                        (click)="open(message)"
                         [ngSrc]="$any(message.message).keyRezised | s3Url"
                         [width]="$any(message.message).thumbWidth"
                         [height]="$any(message.message).thumbHeight"
@@ -384,7 +384,7 @@
               }"
               [attr.data-msgId]="message._id"
               intersectionItem
-              (elementEntryRemoved)="elementEntryRemoved($event, message)"
+              (elementEntryRemoved)="onDateGroupRemoved(message)"
               class="message-item mb-2 flex h-[45px] w-full shrink-0 items-start justify-center pt-[5px] text-sm font-semibold"
             >
               <div
@@ -487,12 +487,12 @@
     <!-- Messages Typing -->
     <div
       #messageSenderContainer
-      class="relative z-2 flex items-center justify-start border-t border-(--mat-sys-outline-variant) bg-(--mat-sys-background)/90 p-2.5 backdrop-blur-md sm:p-3"
+      class="relative z-2 flex shrink-0 items-center justify-start border-t border-(--mat-sys-outline-variant) bg-(--mat-sys-background)/90 p-2.5 backdrop-blur-md sm:p-3"
       id="chat-form"
       [ngClass]="{ 'pointer-events-none opacity-75': !setEmojisContainer() }"
     >
       <div
-        class="flex w-full items-center gap-1 rounded-full border border-(--mat-sys-outline-variant) bg-(--mat-sys-surface-container-low) py-0.5 pr-1 pl-0.5 shadow-[0_1px_2px_rgb(28_16_22/0.06)] transition-[border-color,box-shadow] duration-200 focus-within:border-(--mat-sys-primary)/50 focus-within:shadow-[0_0_10px_2px_color-mix(in_oklab,var(--mat-sys-primary)_45%,transparent)]"
+        class="flex w-full items-center gap-1 rounded-full border border-(--mat-sys-outline-variant) bg-(--mat-sys-surface-container-low) py-0.5 pr-1 pl-0.5 shadow-[0_1px_2px_rgb(28_16_22/0.06)] focus-within:border-(--mat-sys-primary)/50 focus-within:shadow-[0_0_10px_2px_color-mix(in_oklab,var(--mat-sys-primary)_45%,transparent)]"
       >
         <div class="z-20 flex items-center justify-center">
           <button
@@ -540,6 +540,8 @@
         </div>
 
         <div class="z-20 flex items-center justify-center">
+          <!-- Taking focus would close the keyboard before showEmojiPanel can
+               put the panel in its place. -->
           <button
             id="toggle-emoji-panel"
             aria-label="toggle emoji panel"
@@ -547,6 +549,7 @@
             (mouseenter)="isHoverEmojiButton = true"
             (mouseleave)="isHoverEmojiButton = false"
             mat-icon-button
+            (mousedown)="$event.preventDefault()"
             (click)="showEmojiPanel()"
             cdkOverlayOrigin
             #trigger="cdkOverlayOrigin"
@@ -562,7 +565,7 @@
             </div>
           </button>
           <ng-template
-            (overlayOutsideClick)="clickedOusideEmojiPanel($event)"
+            (overlayOutsideClick)="clickedOutsideEmojiPanel($event)"
             cdkConnectedOverlay
             [cdkConnectedOverlayOrigin]="trigger"
             [cdkConnectedOverlayOpen]="isOpenEmojisDesktop()"
@@ -580,7 +583,7 @@
               chatForm.message().value().trim().length === 0 ||
               !chatForm().valid()
             "
-            class="chat-send-btn flex size-10 items-center justify-center rounded-full transition-colors duration-200"
+            class="chat-send-btn flex size-10 items-center justify-center rounded-full"
             [ngClass]="{
               'bg-(--mat-sys-primary) text-(--mat-sys-on-primary)':
                 chatForm.message().value().trim().length > 0 &&
@@ -610,14 +613,17 @@
     <!-- EMOJI closed Mobile panel -->
     @defer {
       <div
-        [ngClass]="{ 'h-[345px]': isOpenEmojisMobile() }"
-        class="block h-0 shrink-0 overflow-hidden transition-height duration-300 ease-in-out md:hidden"
+        #keyboardReserve
+        [style.height.px]="bottomReserve()"
+        class="block shrink-0 overflow-hidden [overflow-anchor:none] bg-(--mat-sys-background) md:hidden"
         appClickOutside
         [exception]="[messageSenderContainer]"
-        (clickOutside)="closeMobielEmojis()"
+        (clickOutside)="closeMobileEmojis()"
       >
         <div
           class="emoji-panel-mobile w-full"
+          [class.invisible]="!isOpenEmojisMobile() && emojiHandoffHeight() === 0"
+          [style.height.px]="emojiPanelHeight()"
           appEmojiMart
           (clickedEmoji)="addEmoji($event)"
           [locale]="selectedLang()"

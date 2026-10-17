@@ -56,11 +56,12 @@
       type="image/svg+xml"
     />
   </head>
+  <!-- Heights stay relative to the layout viewport. A dvh floor would hold the
+       page at full screen height when the soft keyboard shrinks it. -->
   <body
     id="body-maid"
-    class="mat-typography min-h-dvh h-full bg-(--mat-sys-background) text-(--mat-sys-on-surface)"
+    class="mat-typography h-full bg-(--mat-sys-background) text-(--mat-sys-on-surface)"
   >
-    <!-- class="h-dvh" -->
     <app-root></app-root>
   </body>
 </html>
