@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { findUserDetailResolverHome } from './resolvers/findUserDetailsResolver.resolver';
 import { addLocationsResolver } from './resolvers/locations.resover';
+import { browseLocationResolver } from './resolvers/browse-location.resolver';
 import { themeSetWhiteResolver } from './resolvers/themeAuthResolver.resolver';
 
 export const childRoutes: Routes = [
@@ -33,6 +34,22 @@ export const childRoutes: Routes = [
       ).then((cp) => cp.AnonymousProfileSearchComponent),
     resolve: { addLocationsResolver: addLocationsResolver },
   },
+  // Country, city and city+service listings carry their filters in the path so
+  // each one is a distinct, indexable page. The query-string form still works
+  // and stays canonicalised to plain /browse.
+  ...['browse/:country', 'browse/:country/:city', 'browse/:country/:city/:service'].map(
+    (path) => ({
+      path,
+      loadComponent: () =>
+        import(
+          './components/home/anonymous-profile-search/anonymous-profile-search.component'
+        ).then((cp) => cp.AnonymousProfileSearchComponent),
+      resolve: {
+        addLocationsResolver: addLocationsResolver,
+        browseLocation: browseLocationResolver,
+      },
+    }),
+  ),
 
   {
     path: '',

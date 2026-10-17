@@ -5,6 +5,7 @@ import {
   getLastestUsersBlured,
   getLatestOffersBlured,
   getSitemapProfiles,
+  getSitemapLocations,
   getList,
   GlobalFilters,
   GlobalQuickFilters,
@@ -122,6 +123,15 @@ router.get("/sitemap-profiles", async (_req, res, next) => {
   try {
     const profiles = await getSitemapProfiles();
     return res.status(200).send(profiles);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get("/sitemap-locations", async (_req, res, next) => {
+  try {
+    const locations = await getSitemapLocations();
+    return res.status(200).send(locations);
   } catch (error) {
     next(error);
   }

@@ -4,12 +4,41 @@
   <section class="sg-band pt-28 pb-24 text-center">
     <div class="container mx-auto max-w-3xl px-6">
       <p class="sg-kicker">{{ "list.discover" | translate }}</p>
-      <h1 class="mt-3 text-4xl font-bold leading-tight text-white md:text-5xl">
-        {{ "browse.pageTitle" | translate }}
-      </h1>
-      <p class="mt-4 text-lg leading-relaxed text-white/75">
-        {{ "landing.peopleLookingHint" | translate }}
-      </p>
+      @if (locationHeading(); as place) {
+        @if (browseLocation()?.service; as picked) {
+          @let serviceName = "services." + picked.service | translate;
+          <h1
+            class="mt-3 text-4xl font-bold leading-tight text-white md:text-5xl"
+          >
+            {{
+              "browse.titleInLocationService"
+                | translate: { service: serviceName, location: place }
+            }}
+          </h1>
+          <p class="mt-4 text-lg leading-relaxed text-white/75">
+            {{
+              "browse.leadInLocationService"
+                | translate: { service: serviceName, location: place }
+            }}
+          </p>
+        } @else {
+          <h1
+            class="mt-3 text-4xl font-bold leading-tight text-white md:text-5xl"
+          >
+            {{ "browse.titleInLocation" | translate: { location: place } }}
+          </h1>
+          <p class="mt-4 text-lg leading-relaxed text-white/75">
+            {{ "browse.leadInLocation" | translate: { location: place } }}
+          </p>
+        }
+      } @else {
+        <h1 class="mt-3 text-4xl font-bold leading-tight text-white md:text-5xl">
+          {{ "browse.pageTitle" | translate }}
+        </h1>
+        <p class="mt-4 text-lg leading-relaxed text-white/75">
+          {{ "landing.peopleLookingHint" | translate }}
+        </p>
+      }
       @if (list().length) {
         <p
           class="mt-6 inline-flex rounded-full border border-[#7fd8c3]/35 bg-white/8 px-4 py-1.5 text-sm font-semibold text-[#7fd8c3]"
@@ -96,6 +125,92 @@
       </div>
     </div>
   </main>
+
+  <!-- Crawlable paths between the location pages. Without them the country,
+       city and service listings exist only in the sitemap, with nothing
+       linking to them. -->
+  <nav
+    class="sg-band px-6 py-14"
+    [attr.aria-label]="'browse.byLocation' | translate"
+  >
+    <div class="container mx-auto max-w-5xl">
+      @if (cityServices().length) {
+        <h2 class="text-sm font-semibold tracking-[0.18em] text-white uppercase">
+          {{
+            "browse.servicesIn" | translate: { location: locationHeading() }
+          }}
+        </h2>
+        <ul class="mt-4 flex flex-wrap gap-2.5 list-none">
+          @for (entry of cityServices(); track entry.service) {
+            <li>
+              <a
+                class="sg-chip-dark px-3 py-1 text-sm font-semibold"
+                [routerLink]="[
+                  '/',
+                  lang(),
+                  'browse',
+                  browseLocation()!.country.slug,
+                  browseLocation()!.citySlug,
+                  serviceSlugs[entry.service],
+                ]"
+              >
+                {{ "services." + entry.service | translate }}
+              </a>
+            </li>
+          }
+        </ul>
+      }
+
+      @if (cities().length) {
+        <h2
+          class="text-sm font-semibold tracking-[0.18em] text-white uppercase"
+          [class.mt-10]="cityServices().length"
+        >
+          {{
+            "browse.citiesIn"
+              | translate: { country: browseLocation()!.country.name }
+          }}
+        </h2>
+        <ul class="mt-4 flex flex-wrap gap-2.5 list-none">
+          @for (city of cities(); track city.location) {
+            <li>
+              <a
+                class="sg-chip-dark px-3 py-1 text-sm font-semibold"
+                [routerLink]="[
+                  '/',
+                  lang(),
+                  'browse',
+                  browseLocation()!.country.slug,
+                  citySlug(city.locationName),
+                ]"
+              >
+                {{ city.locationName }}
+              </a>
+            </li>
+          }
+        </ul>
+      }
+
+      <h2
+        class="text-sm font-semibold tracking-[0.18em] text-white uppercase"
+        [class.mt-10]="cities().length || cityServices().length"
+      >
+        {{ "browse.byCountry" | translate }}
+      </h2>
+      <ul class="mt-4 flex flex-wrap gap-2.5 list-none">
+        @for (country of countries; track country.slug) {
+          <li>
+            <a
+              class="sg-chip-dark px-3 py-1 text-sm font-semibold"
+              [routerLink]="['/', lang(), 'browse', country.slug]"
+            >
+              {{ country.name }}
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+  </nav>
 
   <app-footer />
 </div>

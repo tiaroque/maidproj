@@ -72,6 +72,59 @@ export const ssrLocaleStorage = new AsyncLocalStorage<string>();
 
 const publicPages = ['', 'browse', 'register', 'terms-conditions', 'privacy'];
 
+interface SitemapLocationService {
+  service: string;
+  count: number;
+  indexable: boolean;
+}
+
+interface SitemapLocation {
+  country: string;
+  location: string;
+  locationName: string;
+  count: number;
+  indexable: boolean;
+  services: SitemapLocationService[];
+}
+
+// Mirrors BROWSE_COUNTRIES and SERVICE_SLUGS in
+// src/app/utils/browse-locations.ts. The sitemap is built in Express, outside
+// the Angular injector, so the slugs are repeated here rather than imported
+// through the browser bundle.
+const COUNTRY_SLUGS: Record<string, string> = {
+  PT: 'portugal',
+  DE: 'germany',
+  FR: 'france',
+  ES: 'spain',
+  IT: 'italy',
+  CH: 'switzerland',
+  NL: 'netherlands',
+  GB: 'united-kingdom',
+};
+
+const SERVICE_SLUGS: Record<string, string> = {
+  regular: 'regular-cleaning',
+  deep: 'deep-cleaning',
+  ironing: 'ironing',
+  laundry: 'laundry',
+  windows: 'window-cleaning',
+  moveInOut: 'move-in-move-out',
+  afterParty: 'after-party-cleaning',
+  kitchenAppliances: 'oven-and-fridge',
+  cooking: 'cooking',
+  office: 'office-cleaning',
+  ecoProducts: 'eco-friendly-cleaning',
+};
+
+function slugifyLocation(name: string) {
+  return name
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
 interface SitemapProfile {
   uid: string;
   creationDate?: string;
@@ -109,6 +162,75 @@ async function loadSitemapProfiles(): Promise<SitemapProfile[]> {
   }
 }
 
+const SITEMAP_LOCATIONS_TTL_MS = 60 * 60 * 1000;
+let sitemapLocationsCache: { at: number; locations: SitemapLocation[] } | null =
+  null;
+
+async function loadSitemapLocations(): Promise<SitemapLocation[]> {
+  if (
+    sitemapLocationsCache &&
+    Date.now() - sitemapLocationsCache.at < SITEMAP_LOCATIONS_TTL_MS
+  ) {
+    return sitemapLocationsCache.locations;
+  }
+  try {
+    const response = await fetch(
+      `${apiProxyTarget}/api/list/sitemap-locations`,
+      { signal: AbortSignal.timeout(5000) },
+    );
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+    const locations = ((await response.json()) as SitemapLocation[]).filter(
+      (entry) => COUNTRY_SLUGS[entry.country] && entry.locationName,
+    );
+    sitemapLocationsCache = { at: Date.now(), locations };
+    return locations;
+  } catch (error) {
+    console.error('Sitemap: could not load locations', error);
+    return sitemapLocationsCache?.locations ?? [];
+  }
+}
+
+// Mirrors indexLocations(): the busiest place keeps a slug it would otherwise
+// share, so the sitemap never lists a URL that resolves to a different page.
+// Slug ownership is decided over every place, not just the indexable ones, so
+// a quiet one can never take a slug that a busier one already renders at.
+function browseLocationPaths(locations: SitemapLocation[]) {
+  const taken = new Set<string>();
+  const paths: string[] = [];
+
+  for (const slug of Object.values(COUNTRY_SLUGS)) {
+    paths.push(`/browse/${slug}`);
+  }
+
+  for (const entry of [...locations].sort((a, b) => b.count - a.count)) {
+    const countrySlug = COUNTRY_SLUGS[entry.country];
+    const citySlug = slugifyLocation(entry.locationName);
+    if (!countrySlug || !citySlug) {
+      continue;
+    }
+    const cityPath = `/browse/${countrySlug}/${citySlug}`;
+    if (taken.has(cityPath)) {
+      continue;
+    }
+    taken.add(cityPath);
+    // The pages exist either way; only those over the index threshold are
+    // advertised here, to match the noindex the page itself carries.
+    if (entry.indexable) {
+      paths.push(cityPath);
+    }
+    for (const service of entry.services ?? []) {
+      const serviceSlug = SERVICE_SLUGS[service.service];
+      if (serviceSlug && service.indexable) {
+        paths.push(`${cityPath}/${serviceSlug}`);
+      }
+    }
+  }
+
+  return paths;
+}
+
 function sitemapEntries(origin: string, suffix: string, lastmod?: string) {
   const localeList = [...locales];
   const alternates = localeList
@@ -131,10 +253,16 @@ ${alternates}
 
 app.get('/sitemap.xml', async (_req, res) => {
   const origin = 'https://www.linpura.com';
-  const profiles = await loadSitemapProfiles();
+  const [profiles, locations] = await Promise.all([
+    loadSitemapProfiles(),
+    loadSitemapLocations(),
+  ]);
   const urls = [
     ...publicPages.flatMap((page) =>
       sitemapEntries(origin, page ? `/${page}` : '/'),
+    ),
+    ...browseLocationPaths(locations).flatMap((path) =>
+      sitemapEntries(origin, path),
     ),
     ...profiles.flatMap((profile) => {
       const created = profile.creationDate

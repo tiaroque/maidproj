@@ -12,10 +12,18 @@ import { FooterComponent } from '../footer/footer.component';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { ListFilterService } from '../../../services/admin/list-filter.service';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { filter, map, switchMap } from 'rxjs';
+import { combineLatest, filter, map, of, switchMap } from 'rxjs';
 import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 import { DatingCardComponent } from '../../admin/list/dating-card/dating-card.component';
 import { LanguageService } from '../../../services/shared/language-service.service';
+import {
+  BROWSE_COUNTRIES,
+  BrowseLocation,
+  ResolvedBrowseLocation,
+  SERVICE_SLUGS,
+  slugifyLocation,
+} from '../../../utils/browse-locations';
+import { BrowseLocationsService } from '../../../services/shared/browse-locations.service';
 
 @Component({
   selector: 'app-anonymous-profile-search',
@@ -39,12 +47,72 @@ export class AnonymousProfileSearchComponent {
   readonly router = inject(Router);
   readonly routeActivated = inject(ActivatedRoute);
   readonly languageService = inject(LanguageService);
+  readonly browseLocations = inject(BrowseLocationsService);
   readonly lang = this.languageService.defaultLang;
+  readonly citySlug = slugifyLocation;
+  readonly serviceSlugs = SERVICE_SLUGS;
+  readonly countries = BROWSE_COUNTRIES;
+
+  private readonly resolvedLocation$ = this.routeActivated.data.pipe(
+    map((data) => data['browseLocation'] as ResolvedBrowseLocation | undefined),
+  );
+
+  /** Set on /browse/:country(/:city(/:service)), absent on plain /browse. */
+  readonly browseLocation = toSignal(this.resolvedLocation$);
+
+  readonly locationHeading = computed(() => {
+    const resolved = this.browseLocation();
+    if (!resolved) {
+      return '';
+    }
+    return resolved.location?.locationName ?? resolved.country.name;
+  });
+
+  // Crawlers reach the city pages through these links; the sitemap alone
+  // leaves them orphaned with no internal path to follow.
+  readonly cities = toSignal(
+    this.resolvedLocation$.pipe(
+      switchMap((resolved) =>
+        resolved ? this.browseLocations.citiesFor(resolved.country.slug) : of([]),
+      ),
+    ),
+    { initialValue: [] as BrowseLocation[] },
+  );
+
+  /** Services actually covered in the current city, for the same reason. */
+  readonly cityServices = computed(
+    () => this.browseLocation()?.location?.services ?? [],
+  );
 
   // Plain /browse (header link, sitemap) has no query params and lists the
   // newest cleaners.
-  list$ = this.routeActivated.queryParams.pipe(
-    map((params): Params => ({ type: 'Cleaner', ...params })),
+  list$ = combineLatest([
+    this.resolvedLocation$,
+    this.routeActivated.queryParams,
+  ]).pipe(
+    map(([resolved, params]): Params => {
+      const merged: Params = { type: 'Cleaner', ...params };
+      if (!resolved) {
+        return merged;
+      }
+      // The path is the authoritative filter here; a stale ?country= from a
+      // copied URL must not contradict the page's own canonical.
+      merged['country'] = resolved.country.code;
+      if (resolved.location) {
+        merged['location'] = resolved.location.location;
+        // Read back by the filter panel to label the location chip.
+        merged['locationName'] = resolved.location.locationName;
+      } else {
+        delete merged['location'];
+        delete merged['locationName'];
+      }
+      if (resolved.service) {
+        merged['service'] = resolved.service.service;
+      } else {
+        delete merged['service'];
+      }
+      return merged;
+    }),
     filter((params) => {
       return this.listFilterService.validateQuickSearchParams(params);
     }),

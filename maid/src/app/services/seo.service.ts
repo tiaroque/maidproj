@@ -7,6 +7,10 @@ import { filter, switchMap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { UserDetailsObject } from './admin/interfaces/user.interface';
 import { LanguageService } from './shared/language-service.service';
+import {
+  ResolvedBrowseLocation,
+  SERVICE_SLUGS,
+} from '../utils/browse-locations';
 
 const SITE_ORIGIN = 'https://www.linpura.com';
 
@@ -50,6 +54,10 @@ export class SeoService {
             'landing.heroSubtitle',
             'landing.peopleLookingHint',
             'browse.pageTitle',
+            'browse.titleInLocation',
+            'browse.seoDescription',
+            'browse.titleInLocationService',
+            'browse.seoDescriptionService',
             'auth.createAccountTitle',
             'auth.heroLine',
             'auth.welcomeBack',
@@ -76,17 +84,33 @@ export class SeoService {
       .filter((segment) => segment && segment !== lang);
     const notFound = snapshot.data['notFound'] === true;
     const page = notFound ? 'not-found' : (segments[0] ?? '');
+    const browseLocation = this.browseLocation(snapshot);
+    // A thin listing keeps its page and its internal links, but stays out of
+    // the index until enough cleaners make it worth a result. A service page
+    // is judged on its own supply, not the city's. The country pages carry no
+    // such flag and are always indexable.
+    const thinLocation = browseLocation?.service
+      ? browseLocation.service.indexable === false
+      : browseLocation?.location?.indexable === false;
     const indexable =
       environment.production &&
-      (page !== 'profile-view' ? INDEXABLE.has(page) : segments.length >= 2);
+      (page !== 'profile-view' ? INDEXABLE.has(page) : segments.length >= 2) &&
+      !thinLocation;
     const copy = this.copyFor(page, snapshot);
 
     this.document.documentElement.lang = lang;
     this.title.setTitle(copy.title);
     this.meta.updateTag({ name: 'description', content: copy.description });
+    // A thin listing is kept precisely so crawlers reach the places, services
+    // and profiles it links to, so it drops out of the index without dropping
+    // the links. Everything else non-indexable is private and gets nofollow.
     this.meta.updateTag({
       name: 'robots',
-      content: indexable ? 'index, follow' : 'noindex, nofollow',
+      content: indexable
+        ? 'index, follow'
+        : thinLocation
+          ? 'noindex, follow'
+          : 'noindex, nofollow',
     });
 
     const path = segments.length
@@ -126,7 +150,43 @@ export class SeoService {
     this.meta.updateTag({ name: 'twitter:image', content: image });
     this.meta.updateTag({ name: 'twitter:image:alt', content: copy.title });
 
-    if (page === '' || page === 'browse') {
+    if (page === 'browse' && browseLocation) {
+      const place =
+        browseLocation.location?.locationName ?? browseLocation.country.name;
+      this.setJsonLd({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'CollectionPage',
+            '@id': `${canonical}#page`,
+            url: canonical,
+            name: copy.title,
+            description: copy.description,
+            inLanguage: lang,
+            isPartOf: { '@id': `${SITE_ORIGIN}/#website` },
+            about: {
+              '@type': 'Service',
+              serviceType: browseLocation.service
+                ? this.text(`services.${browseLocation.service.service}`)
+                : this.text('browse.pageTitle'),
+              provider: { '@id': `${SITE_ORIGIN}/#organization` },
+              areaServed: {
+                '@type': 'Place',
+                name: place,
+                address: {
+                  '@type': 'PostalAddress',
+                  addressCountry: browseLocation.country.code,
+                  ...(browseLocation.location
+                    ? { addressLocality: browseLocation.location.locationName }
+                    : {}),
+                },
+              },
+            },
+          },
+          this.breadcrumbs(lang, browseLocation),
+        ],
+      });
+    } else if (page === '' || page === 'browse') {
       this.setJsonLd({
         '@context': 'https://schema.org',
         '@graph': [
@@ -153,7 +213,82 @@ export class SeoService {
     }
   }
 
+  private breadcrumbs(lang: string, resolved: ResolvedBrowseLocation) {
+    const base = `/${lang}/browse`;
+    const trail = [
+      { name: this.text('browse.pageTitle'), path: base },
+      {
+        name: resolved.country.name,
+        path: `${base}/${resolved.country.slug}`,
+      },
+    ];
+
+    if (resolved.location && resolved.citySlug) {
+      const cityPath = `${base}/${resolved.country.slug}/${resolved.citySlug}`;
+      trail.push({ name: resolved.location.locationName, path: cityPath });
+
+      if (resolved.service) {
+        trail.push({
+          name: this.text(`services.${resolved.service.service}`),
+          path: `${cityPath}/${SERVICE_SLUGS[resolved.service.service]}`,
+        });
+      }
+    }
+
+    return {
+      '@type': 'BreadcrumbList',
+      itemListElement: trail.map((item, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: item.name,
+        item: `${SITE_ORIGIN}${item.path}`,
+      })),
+    };
+  }
+
+  private browseLocation(
+    snapshot: ActivatedRouteSnapshot,
+  ): ResolvedBrowseLocation | undefined {
+    let route: ActivatedRouteSnapshot | null = snapshot;
+    while (route) {
+      const resolved = route.data['browseLocation'] as
+        | ResolvedBrowseLocation
+        | undefined;
+      if (resolved?.country) {
+        return resolved;
+      }
+      route = route.parent;
+    }
+    return undefined;
+  }
+
   private copyFor(page: string, snapshot: ActivatedRouteSnapshot) {
+    if (page === 'browse') {
+      const resolved = this.browseLocation(snapshot);
+      if (resolved) {
+        const place =
+          resolved.location?.locationName ?? resolved.country.name;
+        if (resolved.service) {
+          const service = this.text(`services.${resolved.service.service}`);
+          return {
+            title: `${this.textWith('browse.titleInLocationService', { service, location: place })} — Linpura`,
+            description: this.clip(
+              this.textWith('browse.seoDescriptionService', {
+                service,
+                location: place,
+              }),
+            ),
+          };
+        }
+        return {
+          title: `${this.textWith('browse.titleInLocation', { location: place })} — Linpura`,
+          description: this.clip(
+            this.textWith('browse.seoDescription', { location: place }),
+          ),
+        };
+      }
+    }
+
     if (page === 'profile-view') {
       const details = this.profileDetails(snapshot);
       const user = details?.user;
@@ -230,6 +365,11 @@ export class SeoService {
 
   private text(key: string) {
     const value = this.translate.instant(key);
+    return typeof value === 'string' ? value : key;
+  }
+
+  private textWith(key: string, params: Record<string, string>) {
+    const value = this.translate.instant(key, params);
     return typeof value === 'string' ? value : key;
   }
 

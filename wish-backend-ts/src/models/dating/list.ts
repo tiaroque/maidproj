@@ -309,6 +309,172 @@ export const getLatestOffersBlured = async (limit = 6) => {
     .toArray();
 };
 
+export interface SitemapLocationService {
+  service: string;
+  count: number;
+  indexable: boolean;
+}
+
+export interface SitemapLocation {
+  country: string;
+  location: string;
+  locationName: string;
+  count: number;
+  /** Whether the place has enough cleaners to be worth a search result. */
+  indexable: boolean;
+  services: SitemapLocationService[];
+}
+
+const positiveEnv = (name: string, fallback: number) => {
+  const parsed = Number(process.env[name]);
+  return Number.isInteger(parsed) && parsed > 0 ? parsed : fallback;
+};
+
+// A place needs PAGE_MIN cleaners to get a browse page at all, and INDEX_MIN to
+// be worth indexing. Between the two it still renders and still collects
+// internal links, but carries noindex, so a half-empty listing never becomes a
+// search result. A page crosses into the index on its own as supply grows.
+// Service pages sit on a lower index bar, since one service is only ever a
+// slice of the cleaners in a place.
+const PAGE_MIN = () => positiveEnv("BROWSE_PAGE_MIN_PROFILES", 1);
+const INDEX_MIN = () => positiveEnv("BROWSE_INDEX_MIN_PROFILES", 5);
+const SERVICE_INDEX_MIN = () =>
+  positiveEnv("BROWSE_SERVICE_INDEX_MIN_PROFILES", 3);
+
+// Cleaners are findable where they live and in every area they cover, which is
+// how placeMatch() filters the listing, so both are counted here. One cleaner
+// reachable in a place through several of those routes still counts once,
+// hence the distinct uid sets rather than plain sums.
+export const getSitemapLocations = async (
+  pageMin = PAGE_MIN(),
+  indexMin = INDEX_MIN(),
+  serviceIndexMin = SERVICE_INDEX_MIN()
+): Promise<SitemapLocation[]> => {
+  const [result] = await getDb()
+    .collection("users")
+    .aggregate<{
+      locations: Array<Omit<SitemapLocation, "indexable" | "services">>;
+      services: Array<{
+        country: string;
+        location: string;
+        service: string;
+        count: number;
+      }>;
+    }>([
+      {
+        $match: {
+          deleted: { $ne: true },
+          uid: { $exists: true },
+          name: { $nin: [null, ""] },
+          userType: "Cleaner",
+        },
+      },
+      {
+        $project: {
+          uid: 1,
+          services: { $ifNull: ["$services", []] },
+          places: {
+            $filter: {
+              input: {
+                $concatArrays: [
+                  [
+                    {
+                      country: "$country",
+                      location: "$location",
+                      locationName: "$locationName",
+                    },
+                  ],
+                  { $ifNull: ["$areasCovered", []] },
+                ],
+              },
+              as: "place",
+              cond: {
+                $and: [
+                  { $gt: [{ $ifNull: ["$$place.country", ""] }, ""] },
+                  { $gt: [{ $ifNull: ["$$place.locationName", ""] }, ""] },
+                ],
+              },
+            },
+          },
+        },
+      },
+      { $unwind: "$places" },
+      {
+        $facet: {
+          locations: [
+            {
+              $group: {
+                _id: {
+                  country: "$places.country",
+                  location: "$places.location",
+                },
+                // Cleaners covering the same place can hold slightly different
+                // lineage depths, so one spelling of the name has to win.
+                locationName: { $first: "$places.locationName" },
+                uids: { $addToSet: "$uid" },
+              },
+            },
+            {
+              $project: {
+                _id: 0,
+                country: "$_id.country",
+                location: "$_id.location",
+                locationName: 1,
+                count: { $size: "$uids" },
+              },
+            },
+            { $match: { count: { $gte: pageMin } } },
+            { $sort: { count: -1 } },
+          ],
+          services: [
+            { $unwind: "$services" },
+            {
+              $group: {
+                _id: {
+                  country: "$places.country",
+                  location: "$places.location",
+                  service: "$services",
+                },
+                uids: { $addToSet: "$uid" },
+              },
+            },
+            {
+              $project: {
+                _id: 0,
+                country: "$_id.country",
+                location: "$_id.location",
+                service: "$_id.service",
+                count: { $size: "$uids" },
+              },
+            },
+            { $match: { count: { $gte: pageMin } } },
+            { $sort: { count: -1 } },
+          ],
+        },
+      },
+    ])
+    .toArray();
+
+  const servicesByPlace = new Map<string, SitemapLocationService[]>();
+  for (const entry of result?.services ?? []) {
+    const key = `${entry.country}${entry.location}`;
+    const list = servicesByPlace.get(key) ?? [];
+    list.push({
+      service: entry.service,
+      count: entry.count,
+      indexable: entry.count >= serviceIndexMin,
+    });
+    servicesByPlace.set(key, list);
+  }
+
+  return (result?.locations ?? []).map((location) => ({
+    ...location,
+    indexable: location.count >= indexMin,
+    services:
+      servicesByPlace.get(`${location.country}${location.location}`) ?? [],
+  }));
+};
+
 // Public profiles for the sitemap: only the id and a last-modified hint.
 // Profiles without a name are skipped; they render as thin pages.
 export const getSitemapProfiles = async (limit = 5000) => {
