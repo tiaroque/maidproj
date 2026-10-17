@@ -1,7 +1,7 @@
 <div>
   <mat-form-field [appearance]="utilsService.inputType()" class="w-full">
     <mat-label>{{ "languages" | translate | titlecase }}</mat-label>
-    <mat-select [formField]="languages()" multiple>
+    <mat-select panelClass="app-select-panel" [formField]="languages()" multiple>
       <mat-select-trigger>
         {{
           languages()().value().length
@@ -20,7 +20,14 @@
         <mat-option
           [value]="language.value"
           (onSelectionChange)="selectionChange($event, language)"
-          >{{ language.name }}
+        >
+          <span class="flex w-full items-center justify-between gap-3">
+            <span class="truncate">{{ language.name }}</span>
+            <span
+              class="lang-code shrink-0 text-[11px] font-bold tracking-wider uppercase text-(--mat-sys-outline)"
+              >{{ language.value }}</span
+            >
+          </span>
         </mat-option>
       }
     </mat-select>
