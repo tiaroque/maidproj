@@ -369,15 +369,15 @@ em-emoji-picker {
   left: 0;
   right: 0;
   height: var(--chat-wallpaper-height, 100%);
-  background-image: url("../assets/images/chat/pattern-1.svg");
+  background-image: url("../assets/images/chat/pattern-cleaning.svg");
   background-repeat: repeat;
   background-position: center;
-  background-size: 380px;
+  background-size: 304px;
   pointer-events: none;
 }
 
 .unicorn-dark-theme .chat-bg::before {
-  background-image: url("../assets/images/chat/pattern-1_d.svg");
+  background-image: url("../assets/images/chat/pattern-cleaning_d.svg");
 }
 
 .chat-typing-dots {
