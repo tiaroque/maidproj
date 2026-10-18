@@ -31,6 +31,7 @@ const CREDENTIAL_FIELDS = [
 const PUBLIC_HIDDEN_FIELDS = [
   ...CREDENTIAL_FIELDS,
   "email",
+  "canonicalEmail",
   "emailVerified",
   "phoneNumber",
   "lastname",

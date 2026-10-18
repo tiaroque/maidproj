@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
+# Homepage rendering fetches these. The longer path wins over Disallow: /api/.
+Allow: /api/list/browse
+Allow: /api/list/latestOffers
 Disallow: /api/
 Disallow: /*/admin
 
