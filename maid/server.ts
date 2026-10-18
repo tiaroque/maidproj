@@ -5,7 +5,7 @@ import {
   writeResponseToNodeResponse,
 } from '@angular/ssr/node';
 import express from 'express';
-import { dirname, resolve } from 'node:path';
+import { dirname, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { AsyncLocalStorage } from 'node:async_hooks';
 import compression from 'compression';
@@ -291,27 +291,38 @@ app.get(['/favicon.ico', '/robots.txt', '/llms.txt'], (req, res, next) => {
   });
 });
 
+// Only the build's bundles and media/ carry a content hash in their name;
+// /assets files keep their URL when edited, so a year-long cache would pin
+// stale copies in returning browsers.
+const HASHED_FILE =
+  /(?:^|[\\/])(?:chunk|main|polyfills|styles)-[\w-]+\.(?:m?js|css)$|[\\/]media[\\/]/;
+const isHashed = (path: string) =>
+  !path.includes(`${sep}assets${sep}`) && HASHED_FILE.test(path);
+const staticOptions = {
+  index: false,
+  redirect: false,
+  cacheControl: false,
+  setHeaders: (res: express.Response, path: string) => {
+    res.setHeader(
+      'Cache-Control',
+      isHashed(path)
+        ? 'public, max-age=31536000, immutable'
+        : 'public, max-age=86400',
+    );
+  },
+};
+
 // Assets are identical across locales. Serving root /assets directly avoids a
 // 302 to /en/assets on the font preload, @font-face and logo requests.
 app.use(
   '/assets',
-  express.static(resolve(browserDistFolder, 'en', 'assets'), {
-    maxAge: '1y',
-    index: false,
-    redirect: false,
-  }),
+  express.static(resolve(browserDistFolder, 'en', 'assets'), staticOptions),
 );
 
 /**
  * Serve static files from /browser
  */
-app.use(
-  express.static(browserDistFolder, {
-    maxAge: '1y',
-    index: false,
-    redirect: false,
-  }),
-);
+app.use(express.static(browserDistFolder, staticOptions));
 
 app.use((req, res, next) => {
   if (req.method !== 'GET' && req.method !== 'HEAD') {
