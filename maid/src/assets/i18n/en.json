@@ -227,7 +227,7 @@
     "block": "Block",
     "moreMessage": "more messages",
     "newMessage": "new message!",
-    "isTyping": " is writing...",
+    "isTyping": " is writing",
     "selectConversation": "Please select a conversation",
     "noContacts": "You have not contacted anyone yet.",
     "blockUser": "Do you want to block the user?",

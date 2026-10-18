@@ -231,7 +231,7 @@ export const compiledMessages = {
     block: $localize`:@@chatScreen.block:Block`,
     moreMessage: $localize`:@@chatScreen.moreMessage:more messages`,
     newMessage: $localize`:@@chatScreen.newMessage:new message!`,
-    isTyping: $localize`:@@chatScreen.isTyping: is writing...`,
+    isTyping: $localize`:@@chatScreen.isTyping: is writing`,
     selectConversation: $localize`:@@chatScreen.selectConversation:Please select a conversation`,
     noContacts: $localize`:@@chatScreen.noContacts:You have not contacted anyone yet.`,
     blockUser: $localize`:@@chatScreen.blockUser:Do you want to block the user?`,
