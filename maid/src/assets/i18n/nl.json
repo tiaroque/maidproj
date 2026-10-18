@@ -690,5 +690,10 @@
       "generic": "Er is iets misgegaan. Probeer het opnieuw.",
       "moderator": "Moderatoraccounts kunnen niet worden verwijderd."
     }
+  },
+  "workBanner": {
+    "cleaner": "Voeg je diensten, uurtarief en beschikbaarheid toe zodat klanten je in de zoekresultaten vinden.",
+    "client": "Vertel schoonmakers wat je nodig hebt: diensten, budget en beschikbaarheid. Zo zien ze of ze bij je passen.",
+    "cta": "Profiel aanvullen"
   }
 }

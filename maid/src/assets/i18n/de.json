@@ -690,5 +690,10 @@
       "generic": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
       "moderator": "Moderatorkonten können nicht entfernt werden."
     }
+  },
+  "workBanner": {
+    "cleaner": "Fügen Sie Ihre Leistungen, Ihren Stundensatz und Ihre Verfügbarkeit hinzu, damit Kunden Sie in der Suche finden.",
+    "client": "Sagen Sie Reinigungskräften, was Sie brauchen: Leistungen, Budget und Verfügbarkeit. So sehen sie, ob sie zu Ihnen passen.",
+    "cta": "Profil vervollständigen"
   }
 }

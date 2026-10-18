@@ -18,6 +18,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ListFilterService } from '../../services/admin/list-filter.service';
 import { ChatSocketsService } from '../../services/admin/chat-sockets.service';
 import { VerificationBannerComponent } from '../../shared/verification-banner/verification-banner.component';
+import { WorkBannerComponent } from '../../shared/work-banner/work-banner.component';
 
 type MenuStates = 'closed' | 'opened';
 
@@ -29,6 +30,7 @@ type MenuStates = 'closed' | 'opened';
     RouterOutlet,
     RightContentComponent,
     VerificationBannerComponent,
+    WorkBannerComponent,
   ],
   templateUrl: './main.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

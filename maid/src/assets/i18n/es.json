@@ -690,5 +690,10 @@
       "generic": "Algo salió mal. Inténtalo de nuevo.",
       "moderator": "No se pueden eliminar cuentas de moderadores."
     }
+  },
+  "workBanner": {
+    "cleaner": "Añade tus servicios, tarifa por hora y disponibilidad para que los clientes te encuentren en la búsqueda.",
+    "client": "Cuéntales a los profesionales de limpieza lo que necesitas: servicios, presupuesto y disponibilidad. Así sabrán si encajan contigo.",
+    "cta": "Completar perfil"
   }
 }

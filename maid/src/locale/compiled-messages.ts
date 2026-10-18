@@ -695,4 +695,9 @@ export const compiledMessages = {
       moderator: $localize`:@@linkFlags.errors.moderator:Moderator accounts can't be removed.`,
     },
   },
+  workBanner: {
+    cleaner: $localize`:@@workBanner.cleaner:Add your services, hourly rate and availability so clients can find you in search.`,
+    client: $localize`:@@workBanner.client:Tell cleaners what you need: services, budget and availability. It helps them see if they are a good fit.`,
+    cta: $localize`:@@workBanner.cta:Complete profile`,
+  },
 };

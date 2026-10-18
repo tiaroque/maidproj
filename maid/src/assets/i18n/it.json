@@ -690,5 +690,10 @@
       "generic": "Qualcosa è andato storto. Riprova.",
       "moderator": "Gli account dei moderatori non possono essere rimossi."
     }
+  },
+  "workBanner": {
+    "cleaner": "Aggiungi i tuoi servizi, la tariffa oraria e la disponibilità per farti trovare dai clienti nella ricerca.",
+    "client": "Di' agli addetti alle pulizie di cosa hai bisogno: servizi, budget e disponibilità. Li aiuta a capire se fanno al caso tuo.",
+    "cta": "Completa il profilo"
   }
 }

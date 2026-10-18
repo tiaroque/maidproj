@@ -690,5 +690,10 @@
       "generic": "Something went wrong. Please try again.",
       "moderator": "Moderator accounts can't be removed."
     }
+  },
+  "workBanner": {
+    "cleaner": "Add your services, hourly rate and availability so clients can find you in search.",
+    "client": "Tell cleaners what you need: services, budget and availability. It helps them see if they are a good fit.",
+    "cta": "Complete profile"
   }
 }

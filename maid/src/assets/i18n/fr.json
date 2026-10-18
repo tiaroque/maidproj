@@ -690,5 +690,10 @@
       "generic": "Une erreur s'est produite. Veuillez réessayer.",
       "moderator": "Les comptes de modérateurs ne peuvent pas être supprimés."
     }
+  },
+  "workBanner": {
+    "cleaner": "Ajoutez vos services, votre tarif horaire et vos disponibilités pour que les clients vous trouvent dans la recherche.",
+    "client": "Dites aux agents d’entretien ce dont vous avez besoin : services, budget et disponibilités. Cela les aide à voir s’ils vous conviennent.",
+    "cta": "Compléter le profil"
   }
 }

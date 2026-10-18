@@ -9,7 +9,7 @@ import {
   computed,
   signal,
 } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 import { UserService } from '../../../../services/user.service';
 import { DetailsComponent } from './details/details.component';
@@ -63,6 +63,7 @@ export class XprofileComponent implements OnInit {
   private usersService = inject(UserService);
   private utilsService = inject(UtilsService);
   private themeService = inject(ThemeService);
+  private route = inject(ActivatedRoute);
   dialog = inject(MatDialog);
 
   readonly templateConfirmSave = viewChild.required<TemplateRef<any>>(
@@ -183,7 +184,16 @@ export class XprofileComponent implements OnInit {
   }
 
   constructor() {
-    afterNextRender(() => this.captureBaseline());
+    afterNextRender(() => {
+      this.captureBaseline();
+      // The router's anchor scrolling only moves the window, not the admin scroll container.
+      const fragment = this.route.snapshot.fragment;
+      if (fragment) {
+        document
+          .getElementById(fragment)
+          ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
   }
 
   ngOnInit(): void {
