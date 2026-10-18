@@ -50,10 +50,23 @@
       crossorigin
     />
 
+    <!-- Link-preview crawlers and older browsers skip SVG icons and fall back
+         to the .ico or the PNGs, so all three must show the mop. -->
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
     <link
       rel="icon"
-      href="assets/images/favicon-mop.svg"
+      href="/assets/images/favicon-mop.svg"
       type="image/svg+xml"
+    />
+    <link
+      rel="icon"
+      href="/assets/images/icons/icon-192.png"
+      type="image/png"
+      sizes="192x192"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="/assets/images/icons/apple-touch-icon.png"
     />
   </head>
   <!-- Heights stay relative to the layout viewport. A dvh floor would hold the
