@@ -861,6 +861,38 @@ app-left-nav {
   --mat-menu-item-focus-state-layer-color: rgb(186 26 26 / 0.12);
 }
 
+/* Language selector menu; the trigger lives in the component stylesheet. */
+.lang-menu {
+  min-width: 200px !important;
+}
+
+.lang-menu .mat-mdc-menu-item {
+  min-height: 40px !important;
+  padding-inline: 10px 12px !important;
+}
+
+.lang-menu .mat-mdc-menu-item.is-selected {
+  background-color: color-mix(
+    in srgb,
+    var(--mat-sys-primary) 14%,
+    transparent
+  ) !important;
+}
+
+.lang-menu-code {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.lang-menu-check {
+  width: 18px;
+  height: 18px;
+  color: var(--mat-sys-primary);
+}
+
 .unicorn-dark-theme .chat-presence-online {
   color: #4ade80;
 }

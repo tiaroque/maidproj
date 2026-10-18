@@ -1,16 +1,47 @@
-<div class="language">
-  <button mat-mini-fab disableRipple [matMenuTriggerFor]="menu">
-    {{ selectedLanguage() | uppercase }}
-  </button>
-  <mat-menu #menu="matMenu">
-    @for (language of languages(); track language.value) {
-      <button
-        disableRipple
-        (click)="selectLanguage(language.value)"
-        mat-menu-item
-      >
-        {{ language.name }}
-      </button>
-    }
-  </mat-menu>
-</div>
+@let current = currentLanguage();
+<button
+  type="button"
+  class="lang-trigger"
+  [matMenuTriggerFor]="menu"
+  [attr.aria-label]="('listFiltering.languages' | translate) + ': ' + current.name"
+>
+  <app-flag [code]="current.value" class="h-4.5 w-4.5" />
+  <span class="lang-trigger-code">{{ current.value }}</span>
+  <mat-icon class="lang-trigger-chevron" aria-hidden="true">expand_more</mat-icon>
+</button>
+
+<mat-menu #menu="matMenu" xPosition="before" class="app-menu lang-menu">
+  @for (language of languages(); track language.value) {
+    @let selected = language.value === current.value;
+    <button
+      mat-menu-item
+      disableRipple
+      role="menuitemradio"
+      [attr.aria-checked]="selected"
+      [attr.lang]="language.value"
+      [class.is-selected]="selected"
+      (click)="selectLanguage(language.value)"
+    >
+      <span class="flex w-full items-center gap-3">
+        <app-flag [code]="language.value" class="h-5 w-5" />
+        <span class="flex-1">{{ language.name }}</span>
+        @if (selected) {
+          <svg
+            class="lang-menu-check"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M5 12.5l4.5 4.5L19 7.5" />
+          </svg>
+        } @else {
+          <span class="lang-menu-code" aria-hidden="true">{{ language.value }}</span>
+        }
+      </span>
+    </button>
+  }
+</mat-menu>

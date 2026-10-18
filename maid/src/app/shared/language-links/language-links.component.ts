@@ -13,6 +13,7 @@ import { filter } from 'rxjs';
 import { APP_LOCALES } from '../../../locale/compiled-locale';
 import { LanguageService } from '../../services/shared/language-service.service';
 import { localeSwitchHref } from '../../utils/locale-href';
+import { FlagComponent } from '../flag/flag.component';
 
 interface LanguageItem {
   code: string;
@@ -21,7 +22,7 @@ interface LanguageItem {
 
 @Component({
   selector: 'app-language-links',
-  imports: [],
+  imports: [FlagComponent],
   changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './language-links.component.html',
   host: { class: 'block w-full' },

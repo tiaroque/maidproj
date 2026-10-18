@@ -6,10 +6,9 @@ import {
   signal,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { TranslateService } from '@ngx-translate/core';
-import { UpperCasePipe } from '@angular/common';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { CookieService } from 'ngx-cookie-service';
 import {
   ActivatedRoute,
@@ -22,12 +21,14 @@ import { ChatStore } from '../../services/admin/signals/store';
 import { LanguageService } from '../../services/shared/language-service.service';
 import { UtilsService } from '../../services/utils.service';
 import { localeSwitchHref, pageSegments } from '../../utils/locale-href';
+import { FlagComponent } from '../flag/flag.component';
 
 @Component({
   selector: 'app-language-selector',
-  imports: [MatButtonModule, MatMenuModule, UpperCasePipe],
+  imports: [MatMenuModule, MatIcon, TranslatePipe, FlagComponent],
   changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './language-selector.component.html',
+  styleUrl: './language-selector.component.css',
 })
 export class LanguageSelectorComponent {
   translateService = inject(TranslateService);
@@ -48,6 +49,12 @@ export class LanguageSelectorComponent {
         this.languageService.currentLanguages.includes(lang.value),
       );
   });
+
+  readonly currentLanguage = computed(
+    () =>
+      this.languages().find((lang) => lang.value === this.selectedLanguage()) ??
+      this.languages()[0],
+  );
 
   constructor() {
     // afterNextRender(() => {
