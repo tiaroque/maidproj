@@ -4,6 +4,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>--TITLE--</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600&family=Nunito:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
       img {
         border: none;
@@ -12,8 +16,8 @@
       }
 
       body {
-        background-color: #f4eef0;
-        font-family: Helvetica, Arial, sans-serif;
+        background-color: #f3f8f7;
+        font-family: Nunito, Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         font-size: 16px;
         line-height: 1.5;
@@ -31,13 +35,13 @@
       }
 
       table td {
-        font-family: Helvetica, Arial, sans-serif;
+        font-family: Nunito, Helvetica, Arial, sans-serif;
         font-size: 16px;
         vertical-align: top;
       }
 
       .body {
-        background-color: #f4eef0;
+        background-color: #f3f8f7;
         width: 100%;
       }
 
@@ -69,18 +73,24 @@
       }
 
       .header {
-        background-color: #b44a6a;
+        background-color: #155e63;
         border-radius: 12px 12px 0 0;
         padding: 24px 28px;
         text-align: center;
       }
 
+      .brand-lockup {
+        margin: 0 auto;
+        width: auto;
+      }
+
       .brand {
         color: #ffffff;
-        font-family: Helvetica, Arial, sans-serif;
+        font-family: "Albert Sans", Nunito, Helvetica, Arial, sans-serif;
         font-size: 28px;
-        font-weight: 700;
-        letter-spacing: -0.04em;
+        font-weight: 600;
+        letter-spacing: -0.05em;
+        line-height: 1;
         margin: 0;
         text-decoration: none;
       }
@@ -101,14 +111,14 @@
       .footer p,
       .footer span,
       .footer a {
-        color: #9a7a82;
+        color: #6b8280;
         font-size: 12px;
         text-align: center;
       }
 
       h1 {
-        color: #301016;
-        font-family: Helvetica, Arial, sans-serif;
+        color: #12292c;
+        font-family: Nunito, Helvetica, Arial, sans-serif;
         font-size: 24px;
         font-weight: 700;
         line-height: 1.3;
@@ -116,15 +126,15 @@
       }
 
       p {
-        font-family: Helvetica, Arial, sans-serif;
+        font-family: Nunito, Helvetica, Arial, sans-serif;
         font-size: 16px;
         font-weight: normal;
-        color: #4a353a;
+        color: #2c4544;
         margin: 0 0 16px 0;
       }
 
       a {
-        color: #b44a6a;
+        color: #0f766e;
         text-decoration: underline;
       }
 
@@ -142,15 +152,15 @@
       }
 
       .btn table td {
-        background-color: #b44a6a;
-        border-radius: 8px;
+        background-color: #0f9488;
+        border-radius: 999px;
         text-align: center;
       }
 
       .btn-primary a {
-        background-color: #b44a6a;
-        border: solid 1px #b44a6a;
-        border-radius: 8px;
+        background-color: #0f9488;
+        border: solid 1px #0f9488;
+        border-radius: 999px;
         box-sizing: border-box;
         color: #ffffff;
         cursor: pointer;
@@ -165,7 +175,7 @@
       .fallback-url {
         word-break: break-all;
         font-size: 13px;
-        color: #7a5a62;
+        color: #546665;
       }
 
       .preheader {
@@ -245,11 +255,11 @@
           line-height: inherit;
         }
         .btn-primary table td:hover {
-          background-color: #8f3852 !important;
+          background-color: #0f766e !important;
         }
         .btn-primary a:hover {
-          background-color: #8f3852 !important;
-          border-color: #8f3852 !important;
+          background-color: #0f766e !important;
+          border-color: #0f766e !important;
         }
       }
     </style>
@@ -269,8 +279,43 @@
           <div class="content">
             <table role="presentation" class="main">
               <tr>
-                <td class="header">
-                  <p class="brand">linpura</p>
+                <td class="header" align="center">
+                  <table
+                    role="presentation"
+                    border="0"
+                    cellpadding="0"
+                    cellspacing="0"
+                    class="brand-lockup"
+                    align="center"
+                  >
+                    <tr>
+                      <td
+                        style="padding-right: 8px; vertical-align: middle; line-height: 0"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="28"
+                          height="28"
+                          viewBox="0 0 64 64"
+                          fill="#ffffff"
+                          aria-hidden="true"
+                        >
+                          <g transform="rotate(15 32 32) translate(0 -3)">
+                            <rect x="30" y="3" width="4" height="27" rx="2" />
+                            <path d="M23 28h18l3 9H20z" />
+                            <path d="M20.5 36h5l-7 18a3.5 3.5 0 0 1-7 0z" />
+                            <path d="M25 36h5l-2.5 21a3.5 3.5 0 0 1-7 0z" />
+                            <path d="M29.5 36h5l1 22a3.5 3.5 0 0 1-7 0z" />
+                            <path d="M34 36h5l4.5 21a3.5 3.5 0 0 1-7 0z" />
+                            <path d="M38.5 36h5l8.5 18a3.5 3.5 0 0 1-7 0z" />
+                          </g>
+                        </svg>
+                      </td>
+                      <td style="vertical-align: middle">
+                        <p class="brand">linpura</p>
+                      </td>
+                    </tr>
+                  </table>
                 </td>
               </tr>
               <tr>

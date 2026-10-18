@@ -2,22 +2,22 @@
   <title id="title">No results</title>
   <desc id="desc">A magnifying glass held over an empty profile card</desc>
 
-  <circle cx="156" cy="114" r="88" fill="#f8ebe4" />
+  <circle cx="156" cy="114" r="88" fill="#dff2ee" />
 
-  <rect x="78" y="36" width="132" height="148" rx="24" fill="#f6d5df" />
-  <rect x="90" y="46" width="132" height="148" rx="24" fill="#fff8f3" stroke="#e7c8d2" stroke-width="2" />
+  <rect x="78" y="36" width="132" height="148" rx="24" fill="#ccf0e9" />
+  <rect x="90" y="46" width="132" height="148" rx="24" fill="#f7fbfa" stroke="#c8d6d3" stroke-width="2" />
 
-  <circle cx="156" cy="98" r="28" fill="#f7e4ea" />
-  <circle cx="156" cy="90" r="9" fill="#6b2d45" />
-  <path d="M136 118c2.4-16 10.6-24 20-24s17.6 8 20 24" fill="#6b2d45" />
+  <circle cx="156" cy="98" r="28" fill="#dff2ee" />
+  <circle cx="156" cy="90" r="9" fill="#155e63" />
+  <path d="M136 118c2.4-16 10.6-24 20-24s17.6 8 20 24" fill="#155e63" />
 
-  <path d="M124 142h64" stroke="#e7c8d2" stroke-linecap="round" stroke-width="5" />
-  <path d="M136 156h40" stroke="#f0d5dc" stroke-linecap="round" stroke-width="5" />
+  <path d="M124 142h64" stroke="#c8d6d3" stroke-linecap="round" stroke-width="5" />
+  <path d="M136 156h40" stroke="#d6e8e4" stroke-linecap="round" stroke-width="5" />
 
-  <circle cx="210" cy="136" r="32" fill="#fff" stroke="#b44a6a" stroke-width="4" />
-  <path d="M198 124a12 12 0 0 1 10-6" stroke="#e8c97a" stroke-linecap="round" stroke-width="2.5" />
-  <path d="M232 158l26 26" stroke="#6b2d45" stroke-linecap="round" stroke-width="6" />
+  <circle cx="210" cy="136" r="32" fill="#fff" stroke="#0f9488" stroke-width="4" />
+  <path d="M198 124a12 12 0 0 1 10-6" stroke="#f0c464" stroke-linecap="round" stroke-width="2.5" />
+  <path d="M232 158l26 26" stroke="#155e63" stroke-linecap="round" stroke-width="6" />
 
-  <path d="M70 62l2.4 6.6 6.6 2.4-6.6 2.4L70 80l-2.4-6.6-6.6-2.4 6.6-2.4L70 62z" fill="#e8c97a" />
-  <path d="M252 52l1.6 4.2 4.2 1.6-4.2 1.6-1.6 4.2-1.6-4.2-4.2-1.6 4.2-1.6 1.6-4.2z" fill="#e8c97a" />
+  <path d="M70 62l2.4 6.6 6.6 2.4-6.6 2.4L70 80l-2.4-6.6-6.6-2.4 6.6-2.4L70 62z" fill="#f0c464" />
+  <path d="M252 52l1.6 4.2 4.2 1.6-4.2 1.6-1.6 4.2-1.6-4.2-4.2-1.6 4.2-1.6 1.6-4.2z" fill="#f0c464" />
 </svg>

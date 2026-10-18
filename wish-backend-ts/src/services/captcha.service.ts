@@ -214,7 +214,7 @@ const renderSvg = (code: string) => {
   const dots = Array.from({ length: 22 }, () => {
     return `<rect x="${crypto.randomInt(0, WIDTH)}" y="${crypto.randomInt(0, HEIGHT)}" width="2" height="2" fill="rgb(196,180,170)"/>`;
   }).join("");
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 ${WIDTH} ${HEIGHT}" preserveAspectRatio="xMidYMid meet" style="display:block;width:100%;height:100%"><rect width="${WIDTH}" height="${HEIGHT}" fill="rgb(246,241,234)"/>${lines}${dots}${glyphs}</svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 ${WIDTH} ${HEIGHT}" preserveAspectRatio="none" style="display:block;width:100%;height:100%"><rect width="${WIDTH}" height="${HEIGHT}" fill="rgb(246,241,234)"/>${lines}${dots}${glyphs}</svg>`;
 };
 
 export const createCaptchaChallenge = () => {

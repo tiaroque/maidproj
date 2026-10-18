@@ -1,14 +1,20 @@
 <div class="mb-2">
   <div class="mb-3 flex items-center gap-2">
     <div
-      class="aspect-[372/72] min-w-0 flex-1 overflow-hidden rounded-lg border border-(--mat-sys-outline-variant) bg-[#eef6f4]"
+      class="min-w-0 flex-1 overflow-hidden rounded-lg border border-(--mat-sys-outline-variant) bg-[#eef6f4]"
       aria-hidden="true"
     >
-      @if (image(); as svg) {
-        <div class="h-full w-full" [class.opacity-40]="loading()" [innerHTML]="svg"></div>
-      } @else {
-        <div class="h-full w-full animate-pulse bg-[#eef6f4]"></div>
-      }
+      <div class="relative aspect-[372/72]">
+        @if (image(); as svg) {
+          <div
+            class="absolute inset-0 [&_svg]:block [&_svg]:h-full [&_svg]:w-full [&_svg]:max-w-none"
+            [class.opacity-40]="loading()"
+            [innerHTML]="svg"
+          ></div>
+        } @else {
+          <div class="absolute inset-0 animate-pulse bg-[#eef6f4]"></div>
+        }
+      </div>
     </div>
     <button
       type="button"
