@@ -115,7 +115,7 @@ export const setProfilePicUserProfile = async (uid: string, key: string) => {
   };
 
   const updateImage = {
-    $set: { "images.$.isProfile": true },
+    $set: { "images.$.isProfile": true, updateDate: new Date() },
   };
 
   let update2 = await collection.updateOne(queryUserAndImage, updateImage);
@@ -130,7 +130,10 @@ export const setAvatarUserProfile = async (uid: string, avatar: string) => {
     { $set: { "images.$[].isProfile": false } }
   );
 
-  return collection.updateOne({ uid }, { $set: { avatar } });
+  return collection.updateOne(
+    { uid },
+    { $set: { avatar, updateDate: new Date() } }
+  );
 };
 
 ////////////////////////////////// COUNT USER IMAGES //////////////////////////////
@@ -165,6 +168,7 @@ export const deleteImageUserProfile = async (uid: string, key: string) => {
   };
 
   const update = {
+    $set: { updateDate: new Date() },
     $pull: { images: { key } },
   } as any;
 

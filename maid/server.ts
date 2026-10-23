@@ -128,6 +128,7 @@ function slugifyLocation(name: string) {
 interface SitemapProfile {
   uid: string;
   creationDate?: string;
+  updateDate?: string;
 }
 
 const SITEMAP_PROFILES_TTL_MS = 60 * 60 * 1000;
@@ -265,9 +266,11 @@ app.get('/sitemap.xml', async (_req, res) => {
       sitemapEntries(origin, path),
     ),
     ...profiles.flatMap((profile) => {
-      const created = profile.creationDate
-        ? new Date(profile.creationDate)
-        : undefined;
+      const created = profile.updateDate
+        ? new Date(profile.updateDate)
+        : profile.creationDate
+          ? new Date(profile.creationDate)
+          : undefined;
       const lastmod =
         created && !isNaN(created.getTime())
           ? created.toISOString().slice(0, 10)

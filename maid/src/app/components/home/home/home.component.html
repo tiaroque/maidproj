@@ -596,6 +596,32 @@
         </p>
       </div>
 
+      @if (featuredCities().length) {
+        <p
+          class="mt-12 text-center text-sm font-semibold uppercase tracking-[0.18em] text-[#155e63]"
+        >
+          {{ "landing.topCities" | translate }}
+        </p>
+        <ul class="mt-4 flex flex-wrap justify-center gap-3 list-none">
+          @for (city of featuredCities(); track city.countrySlug + city.citySlug) {
+            <li>
+              <a
+                class="sg-pill"
+                [routerLink]="[
+                  '/',
+                  lang(),
+                  'browse',
+                  city.countrySlug,
+                  city.citySlug,
+                ]"
+              >
+                {{ city.locationName }}
+              </a>
+            </li>
+          }
+        </ul>
+      }
+
       <p
         class="mt-12 text-center text-sm font-semibold uppercase tracking-[0.18em] text-[#155e63]"
       >
@@ -604,8 +630,15 @@
       <!-- Wrapping pills rather than a fixed grid, so eight countries do not
            leave a lone item stranded on the last row. -->
       <ul class="mt-4 flex flex-wrap justify-center gap-3 list-none">
-        @for (country of partnerCountries; track country) {
-          <li class="sg-pill">{{ country | translate }}</li>
+        @for (country of partnerCountries; track country.slug) {
+          <li>
+            <a
+              class="sg-pill"
+              [routerLink]="['/', lang(), 'browse', country.slug]"
+            >
+              {{ country.key | translate }}
+            </a>
+          </li>
         }
       </ul>
 

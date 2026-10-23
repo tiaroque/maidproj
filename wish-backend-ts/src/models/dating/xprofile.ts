@@ -21,9 +21,12 @@ export const createDetails = async (uid: string, profile: any) => {
   };
 
   const update = {
-    $set: profile.country
-      ? { ...profile, currency: currencyForCountry(profile.country) }
-      : profile,
+    $set: {
+      ...(profile.country
+        ? { ...profile, currency: currencyForCountry(profile.country) }
+        : profile),
+      updateDate: new Date(),
+    },
   };
 
   let inserts = await collection.updateOne(query, update);
@@ -39,7 +42,7 @@ export const createBirthdate = async (uid: string, profile: any) => {
   };
 
   const update = {
-    $set: profile,
+    $set: { ...profile, updateDate: new Date() },
   };
 
   let inserts = await collection.updateOne(query, update);
@@ -83,6 +86,7 @@ export const createWork = async (
         availability: normalizeAvailability(work.availability ?? []),
         areasCovered,
         openToRelocate: userType === "Cleaner" && work.openToRelocate === true,
+        updateDate: new Date(),
       },
     }
   );
@@ -100,6 +104,7 @@ export const createAbout = async (
       $set: {
         languages: about.languages ?? [],
         description: about.description ?? "",
+        updateDate: new Date(),
       },
     }
   );
@@ -116,6 +121,7 @@ export const createOffer = async (uid: string, offer: string) => {
   let _id = new ObjectId();
 
   const update = {
+    $set: { updateDate: date },
     $addToSet: {
       offers: {
         _id,
@@ -140,6 +146,7 @@ export const deleteOffer = async (uid: string, offer: string) => {
   };
 
   const update = {
+    $set: { updateDate: new Date() },
     $pull: { offers: { offer } },
   } as any;
 

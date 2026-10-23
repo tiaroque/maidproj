@@ -5,9 +5,16 @@ import { ActivatedRouteSnapshot, NavigationEnd, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { filter, switchMap } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { UserDetailsObject } from './admin/interfaces/user.interface';
-import { LanguageService } from './shared/language-service.service';
 import {
+  UserDetailsObject,
+  UserModel,
+} from './admin/interfaces/user.interface';
+import { LanguageService } from './shared/language-service.service';
+import { currencyForCountry } from '../services/admin/interfaces/service-catalog';
+import { BrowseLocationsService } from './shared/browse-locations.service';
+import {
+  browseFact,
+  countryFact,
   ResolvedBrowseLocation,
   SERVICE_SLUGS,
 } from '../utils/browse-locations';
@@ -41,6 +48,7 @@ export class SeoService {
   private readonly meta = inject(Meta);
   private readonly translate = inject(TranslateService);
   private readonly languageService = inject(LanguageService);
+  private readonly browseLocations = inject(BrowseLocationsService);
 
   constructor() {
     this.router.events
@@ -58,6 +66,14 @@ export class SeoService {
             'browse.seoDescription',
             'browse.titleInLocationService',
             'browse.seoDescriptionService',
+            'browse.factsRate',
+            'browse.factsSingleRate',
+            'browse.facts',
+            'browse.factsCount',
+            'browse.factsServiceRate',
+            'browse.factsServiceSingleRate',
+            'browse.factsService',
+            'browse.factsCountry',
             'auth.createAccountTitle',
             'auth.heroLine',
             'auth.welcomeBack',
@@ -186,6 +202,13 @@ export class SeoService {
           this.breadcrumbs(lang, browseLocation),
         ],
       });
+    } else if (page === 'profile-view') {
+      const details = this.profileDetails(snapshot);
+      this.setJsonLd(
+        details?.user?.name?.trim()
+          ? this.profileJsonLd(details.user, canonical, lang, copy)
+          : null,
+      );
     } else if (page === '' || page === 'browse') {
       this.setJsonLd({
         '@context': 'https://schema.org',
@@ -246,6 +269,96 @@ export class SeoService {
     };
   }
 
+  private browseDescription(resolved: ResolvedBrowseLocation) {
+    const names = resolved.service
+      ? [this.text(`services.${resolved.service.service}`)]
+      : (resolved.location?.services ?? [])
+          .slice(0, 4)
+          .map((entry) => this.text(`services.${entry.service}`));
+    return this.translated(browseFact(resolved, names));
+  }
+
+  private translated(
+    fact: { key: string; params: Record<string, string> } | null,
+  ) {
+    if (!fact) {
+      return '';
+    }
+    const line = this.textWith(fact.key, fact.params);
+    return line === fact.key ? '' : this.clip(line);
+  }
+
+  private profileJsonLd(
+    user: UserModel,
+    canonical: string,
+    lang: string,
+    copy: { title: string; description: string },
+  ) {
+    const place = user.locationName || user.country || '';
+    const languages = this.languageService
+      .getLanguagesMenu()
+      .filter((item) => user.languages?.includes(item.value))
+      .map((item) => item.name);
+    const person: Record<string, unknown> = {
+      '@type': 'Person',
+      '@id': `${canonical}#person`,
+      name: user.name,
+      url: canonical,
+    };
+    if (user.description?.trim()) {
+      person['description'] = this.clip(user.description);
+    }
+    if (place) {
+      person['homeLocation'] = {
+        '@type': 'Place',
+        name: place,
+        address: {
+          '@type': 'PostalAddress',
+          ...(user.locationName ? { addressLocality: user.locationName } : {}),
+          ...(user.country ? { addressCountry: user.country } : {}),
+        },
+      };
+    }
+    if (languages.length) {
+      person['knowsLanguage'] = languages;
+    }
+
+    const rate = user.hourlyRate;
+    if (user.userType === 'Cleaner' && rate != null) {
+      const currency = user.currency || currencyForCountry(user.country);
+      const services = user.services ?? [];
+      const offers = (services.length ? services : [undefined]).map(
+        (service) => ({
+          '@type': 'Offer',
+          price: rate,
+          priceCurrency: currency,
+          ...(service
+            ? {
+                itemOffered: {
+                  '@type': 'Service',
+                  serviceType: this.text(`services.${service}`),
+                  ...(place ? { areaServed: place } : {}),
+                },
+              }
+            : {}),
+        }),
+      );
+      person['makesOffer'] = offers;
+    }
+
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'ProfilePage',
+      '@id': `${canonical}#page`,
+      url: canonical,
+      name: copy.title,
+      description: copy.description,
+      inLanguage: lang,
+      isPartOf: { '@id': `${SITE_ORIGIN}/#website` },
+      mainEntity: person,
+    };
+  }
+
   private browseLocation(
     snapshot: ActivatedRouteSnapshot,
   ): ResolvedBrowseLocation | undefined {
@@ -265,26 +378,49 @@ export class SeoService {
   private copyFor(page: string, snapshot: ActivatedRouteSnapshot) {
     if (page === 'browse') {
       const resolved = this.browseLocation(snapshot);
-      if (resolved) {
-        const place =
-          resolved.location?.locationName ?? resolved.country.name;
+      if (resolved?.location) {
+        const place = resolved.location.locationName;
+        const fact = this.browseDescription(resolved);
         if (resolved.service) {
           const service = this.text(`services.${resolved.service.service}`);
           return {
             title: `${this.textWith('browse.titleInLocationService', { service, location: place })} — Linpura`,
-            description: this.clip(
-              this.textWith('browse.seoDescriptionService', {
-                service,
-                location: place,
-              }),
-            ),
+            description:
+              fact ||
+              this.clip(
+                this.textWith('browse.seoDescriptionService', {
+                  service,
+                  location: place,
+                }),
+              ),
           };
         }
         return {
           title: `${this.textWith('browse.titleInLocation', { location: place })} — Linpura`,
-          description: this.clip(
-            this.textWith('browse.seoDescription', { location: place }),
+          description:
+            fact ||
+            this.clip(
+              this.textWith('browse.seoDescription', { location: place }),
+            ),
+        };
+      }
+
+      if (resolved) {
+        const countryLine = this.translated(
+          countryFact(
+            resolved.country.name,
+            this.browseLocations.snapshotCities(resolved.country.slug),
           ),
+        );
+        return {
+          title: `${this.textWith('browse.titleInLocation', { location: resolved.country.name })} — Linpura`,
+          description:
+            countryLine ||
+            this.clip(
+              this.textWith('browse.seoDescription', {
+                location: resolved.country.name,
+              }),
+            ),
         };
       }
     }

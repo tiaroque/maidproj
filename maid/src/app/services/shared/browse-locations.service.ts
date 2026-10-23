@@ -10,9 +10,16 @@ import {
   serviceBySlug,
 } from '../../utils/browse-locations';
 
+export interface FeaturedCity {
+  countrySlug: string;
+  citySlug: string;
+  locationName: string;
+}
+
 @Injectable({ providedIn: 'root' })
 export class BrowseLocationsService {
   private readonly httpClient = inject(HttpClient);
+  private indexSnapshot = new Map<string, Map<string, BrowseLocation>>();
 
   // The index backs every /browse/:country/:city request and changes at most
   // a few times a day, so one shared in-flight request is replayed to all of
@@ -20,10 +27,49 @@ export class BrowseLocationsService {
   private readonly index$ = this.httpClient
     .get<BrowseLocation[]>(`${environment.baseUrl}/api/list/sitemap-locations`)
     .pipe(
-      map((locations) => indexLocations(locations ?? [])),
+      map((locations) => {
+        const index = indexLocations(locations ?? []);
+        this.indexSnapshot = index;
+        return index;
+      }),
       catchError(() => of(new Map<string, Map<string, BrowseLocation>>())),
       shareReplay({ bufferSize: 1, refCount: false }),
     );
+
+  /** Cities already resolved for this country. Empty until the index arrives. */
+  snapshotCities(countrySlug: string): BrowseLocation[] {
+    return [...(this.indexSnapshot.get(countrySlug)?.values() ?? [])];
+  }
+
+  /** Busiest indexable cities, for links on the homepage. */
+  featuredCities(limit = 12): Observable<FeaturedCity[]> {
+    return this.index$.pipe(
+      map((index) => {
+        const cities: Array<FeaturedCity & { count: number }> = [];
+        for (const [countrySlug, places] of index) {
+          for (const [citySlug, location] of places) {
+            if (!location.indexable) {
+              continue;
+            }
+            cities.push({
+              countrySlug,
+              citySlug,
+              locationName: location.locationName,
+              count: location.count,
+            });
+          }
+        }
+        return cities
+          .sort((a, b) => b.count - a.count)
+          .slice(0, limit)
+          .map(({ countrySlug, citySlug, locationName }) => ({
+            countrySlug,
+            citySlug,
+            locationName,
+          }));
+      }),
+    );
+  }
 
   citiesFor(countrySlug: string): Observable<BrowseLocation[]> {
     return this.index$.pipe(
@@ -47,7 +93,12 @@ export class BrowseLocationsService {
       return of(null);
     }
     if (!citySlug) {
-      return of(serviceSlug ? null : { country });
+      if (serviceSlug) {
+        return of(null);
+      }
+      // Wait for the same index the city pages use, so the country sentence
+      // and its meta description are ready on the first render.
+      return this.index$.pipe(map(() => ({ country })));
     }
 
     const serviceKey = serviceSlug ? serviceBySlug(serviceSlug) : undefined;

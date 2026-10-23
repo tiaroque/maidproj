@@ -19,6 +19,8 @@ import { LanguageService } from '../../../services/shared/language-service.servi
 import {
   BROWSE_COUNTRIES,
   BrowseLocation,
+  browseFact,
+  countryFact,
   ResolvedBrowseLocation,
   SERVICE_SLUGS,
   slugifyLocation,
@@ -83,6 +85,36 @@ export class AnonymousProfileSearchComponent {
   readonly cityServices = computed(
     () => this.browseLocation()?.location?.services ?? [],
   );
+
+  // Counts, rates and services from the location index, so the paragraph is
+  // different on every city. Reading the language signal rebuilds it after a
+  // locale change.
+  readonly placeFact = computed(() => {
+    this.lang();
+    const resolved = this.browseLocation();
+    if (!resolved) {
+      return '';
+    }
+    const label = (key: string) => {
+      const value = this.translateService.instant(key);
+      return typeof value === 'string' ? value : '';
+    };
+    const fact = resolved.location
+      ? browseFact(
+          resolved,
+          resolved.service
+            ? [label(`services.${resolved.service.service}`)]
+            : resolved.location.services
+                .slice(0, 4)
+                .map((entry) => label(`services.${entry.service}`)),
+        )
+      : countryFact(resolved.country.name, this.cities());
+    if (!fact) {
+      return '';
+    }
+    const line = this.translateService.instant(fact.key, fact.params);
+    return typeof line === 'string' && line !== fact.key ? line : '';
+  });
 
   // Plain /browse (header link, sitemap) has no query params and lists the
   // newest cleaners.

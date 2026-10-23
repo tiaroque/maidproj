@@ -313,6 +313,9 @@ export interface SitemapLocationService {
   service: string;
   count: number;
   indexable: boolean;
+  /** Hourly rates of the cleaners who offer this service here. Null when none listed one. */
+  minRate: number | null;
+  maxRate: number | null;
 }
 
 export interface SitemapLocation {
@@ -322,8 +325,14 @@ export interface SitemapLocation {
   count: number;
   /** Whether the place has enough cleaners to be worth a search result. */
   indexable: boolean;
+  /** Hourly rates of the cleaners counted above. Null when none listed one. */
+  minRate: number | null;
+  maxRate: number | null;
   services: SitemapLocationService[];
 }
+
+const finiteRate = (value: unknown): number | null =>
+  typeof value === "number" && Number.isFinite(value) ? value : null;
 
 const positiveEnv = (name: string, fallback: number) => {
   const parsed = Number(process.env[name]);
@@ -359,6 +368,8 @@ export const getSitemapLocations = async (
         location: string;
         service: string;
         count: number;
+        minRate: number | null;
+        maxRate: number | null;
       }>;
     }>([
       {
@@ -372,6 +383,7 @@ export const getSitemapLocations = async (
       {
         $project: {
           uid: 1,
+          hourlyRate: 1,
           services: { $ifNull: ["$services", []] },
           places: {
             $filter: {
@@ -412,6 +424,9 @@ export const getSitemapLocations = async (
                 // lineage depths, so one spelling of the name has to win.
                 locationName: { $first: "$places.locationName" },
                 uids: { $addToSet: "$uid" },
+                // $min and $max skip cleaners who never set a rate.
+                minRate: { $min: "$hourlyRate" },
+                maxRate: { $max: "$hourlyRate" },
               },
             },
             {
@@ -421,6 +436,8 @@ export const getSitemapLocations = async (
                 location: "$_id.location",
                 locationName: 1,
                 count: { $size: "$uids" },
+                minRate: 1,
+                maxRate: 1,
               },
             },
             { $match: { count: { $gte: pageMin } } },
@@ -436,6 +453,8 @@ export const getSitemapLocations = async (
                   service: "$services",
                 },
                 uids: { $addToSet: "$uid" },
+                minRate: { $min: "$hourlyRate" },
+                maxRate: { $max: "$hourlyRate" },
               },
             },
             {
@@ -445,6 +464,8 @@ export const getSitemapLocations = async (
                 location: "$_id.location",
                 service: "$_id.service",
                 count: { $size: "$uids" },
+                minRate: 1,
+                maxRate: 1,
               },
             },
             { $match: { count: { $gte: pageMin } } },
@@ -463,6 +484,8 @@ export const getSitemapLocations = async (
       service: entry.service,
       count: entry.count,
       indexable: entry.count >= serviceIndexMin,
+      minRate: finiteRate(entry.minRate),
+      maxRate: finiteRate(entry.maxRate),
     });
     servicesByPlace.set(key, list);
   }
@@ -470,15 +493,37 @@ export const getSitemapLocations = async (
   return (result?.locations ?? []).map((location) => ({
     ...location,
     indexable: location.count >= indexMin,
+    minRate: finiteRate(location.minRate),
+    maxRate: finiteRate(location.maxRate),
     services:
       servicesByPlace.get(`${location.country}${location.location}`) ?? [],
   }));
 };
 
-// Public profiles for the sitemap: only the id and a last-modified hint.
-// Profiles without a name are skipped; they render as thin pages.
+const latestDate = (...values: unknown[]) => {
+  let latest: Date | undefined;
+  for (const value of values) {
+    const date =
+      value instanceof Date
+        ? value
+        : typeof value === "string" || typeof value === "number"
+          ? new Date(value)
+          : undefined;
+    if (!date || Number.isNaN(date.getTime())) {
+      continue;
+    }
+    if (!latest || date > latest) {
+      latest = date;
+    }
+  }
+  return latest;
+};
+
+// Public profiles for the sitemap: the id, plus the newest of creation, the
+// last profile edit, and the latest post. Profiles without a name are skipped;
+// they render as thin pages.
 export const getSitemapProfiles = async (limit = 5000) => {
-  return getDb()
+  const profiles = await getDb()
     .collection("users")
     .find(
       {
@@ -486,9 +531,32 @@ export const getSitemapProfiles = async (limit = 5000) => {
         uid: { $exists: true },
         name: { $nin: [null, ""] },
       },
-      { projection: { _id: 0, uid: 1, creationDate: 1 } }
+      {
+        projection: {
+          _id: 0,
+          uid: 1,
+          creationDate: 1,
+          updateDate: 1,
+          "offers.date": 1,
+        },
+      }
     )
     .sort({ creationDate: -1 })
     .limit(limit)
     .toArray();
+
+  return profiles.map((profile) => {
+    const offerDates = Array.isArray(profile["offers"])
+      ? profile["offers"].map((offer: { date?: unknown }) => offer?.date)
+      : [];
+    return {
+      uid: profile["uid"] as string,
+      creationDate: profile["creationDate"],
+      updateDate: latestDate(
+        profile["updateDate"],
+        profile["creationDate"],
+        ...offerDates
+      ),
+    };
+  });
 };

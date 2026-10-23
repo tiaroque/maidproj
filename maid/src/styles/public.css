@@ -308,6 +308,11 @@
   background: white;
   border: 1px solid rgb(21 94 99 / 0.12);
   box-shadow: 0 4px 12px rgb(15 42 46 / 0.05);
+  text-decoration: none;
+}
+
+a.sg-pill:hover {
+  border-color: rgb(21 94 99 / 0.45);
 }
 
 /* Profile cards share one layout. Only the colours change with the theme:

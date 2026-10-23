@@ -39,6 +39,11 @@
           {{ "landing.peopleLookingHint" | translate }}
         </p>
       }
+      @if (placeFact()) {
+        <p class="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/80">
+          {{ placeFact() }}
+        </p>
+      }
       @if (list().length) {
         <p
           class="mt-6 inline-flex rounded-full border border-[#7fd8c3]/35 bg-white/8 px-4 py-1.5 text-sm font-semibold text-[#7fd8c3]"

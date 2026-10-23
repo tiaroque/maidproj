@@ -1,4 +1,8 @@
-import { SERVICES, ServiceKey } from '../services/admin/interfaces/service-catalog';
+import {
+  SERVICES,
+  ServiceKey,
+  currencyForCountry,
+} from '../services/admin/interfaces/service-catalog';
 
 export interface BrowseCountry {
   /** URL segment, identical in every language. */
@@ -12,6 +16,9 @@ export interface BrowseLocationService {
   service: ServiceKey;
   count: number;
   indexable: boolean;
+  /** Hourly rates of the cleaners who offer this service here. */
+  minRate?: number | null;
+  maxRate?: number | null;
 }
 
 export interface BrowseLocation {
@@ -26,6 +33,9 @@ export interface BrowseLocation {
    * index until it has enough cleaners to be worth a search result.
    */
   indexable: boolean;
+  /** Hourly rates of the cleaners counted above. */
+  minRate?: number | null;
+  maxRate?: number | null;
   services: BrowseLocationService[];
 }
 
@@ -129,4 +139,107 @@ export function indexLocations(locations: readonly BrowseLocation[]) {
   }
 
   return byCountry;
+}
+
+const finiteRate = (value: number | null | undefined) =>
+  typeof value === 'number' && Number.isFinite(value) ? value : undefined;
+
+/**
+ * The sentence that makes a city or service page different from the others:
+ * how many cleaners, the rate range they actually list, and the services
+ * covered. Service names are already translated by the caller.
+ */
+export function browseFact(
+  resolved: ResolvedBrowseLocation,
+  serviceNames: readonly string[],
+): { key: string; params: Record<string, string> } | null {
+  const location = resolved.location;
+  if (!location) {
+    return null;
+  }
+
+  const place = location.locationName;
+  const currency = currencyForCountry(location.country);
+  const names = serviceNames.filter(Boolean);
+
+  if (resolved.service) {
+    const count = String(resolved.service.count);
+    const service = names[0] ?? resolved.service.service;
+    const min = finiteRate(resolved.service.minRate);
+    const max = finiteRate(resolved.service.maxRate);
+    if (min != null && max != null && min !== max) {
+      return {
+        key: 'browse.factsServiceRate',
+        params: {
+          count,
+          service,
+          location: place,
+          min: String(min),
+          max: String(max),
+          currency,
+        },
+      };
+    }
+    if (min != null) {
+      return {
+        key: 'browse.factsServiceSingleRate',
+        params: { count, service, location: place, rate: String(min), currency },
+      };
+    }
+    return { key: 'browse.factsService', params: { count, service, location: place } };
+  }
+
+  const count = String(location.count);
+  const services = names.join(', ');
+  const min = finiteRate(location.minRate);
+  const max = finiteRate(location.maxRate);
+  if (services && min != null && max != null && min !== max) {
+    return {
+      key: 'browse.factsRate',
+      params: {
+        count,
+        location: place,
+        min: String(min),
+        max: String(max),
+        currency,
+        services,
+      },
+    };
+  }
+  if (services && min != null) {
+    return {
+      key: 'browse.factsSingleRate',
+      params: {
+        count,
+        location: place,
+        rate: String(min),
+        currency,
+        services,
+      },
+    };
+  }
+  if (services) {
+    return { key: 'browse.facts', params: { count, location: place, services } };
+  }
+  return { key: 'browse.factsCount', params: { count, location: place } };
+}
+
+export function countryFact(
+  countryName: string,
+  cities: readonly BrowseLocation[],
+): { key: string; params: Record<string, string> } | null {
+  if (!cities.length) {
+    return null;
+  }
+  return {
+    key: 'browse.factsCountry',
+    params: {
+      count: String(cities.length),
+      country: countryName,
+      cities: cities
+        .slice(0, 3)
+        .map((city) => city.locationName)
+        .join(', '),
+    },
+  };
 }

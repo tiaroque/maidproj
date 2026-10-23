@@ -30,6 +30,7 @@ import {
 import { avatarSrc } from '../../../utils/avatar';
 import { S3UrlPipe } from '../../../utils/s3-url';
 import { SliceDescriptionPipe } from '../../../utils/pipes/sliceDescription.pipe';
+import { BrowseLocationsService } from '../../../services/shared/browse-locations.service';
 
 @Component({
   selector: 'app-home',
@@ -54,15 +55,19 @@ export class HomeComponent implements OnInit, OnDestroy {
   readonly languageService = inject(LanguageService);
   lang = this.languageService.defaultLang;
   readonly showPricing = false;
+  private readonly browseLocations = inject(BrowseLocationsService);
+  readonly featuredCities = toSignal(this.browseLocations.featuredCities(), {
+    initialValue: [],
+  });
   readonly partnerCountries = [
-    'landing.partnerCountryPt',
-    'landing.partnerCountryDe',
-    'landing.partnerCountryFr',
-    'landing.partnerCountryEs',
-    'landing.partnerCountryIt',
-    'landing.partnerCountryCh',
-    'landing.partnerCountryNl',
-    'landing.partnerCountryGb',
+    { key: 'landing.partnerCountryPt', slug: 'portugal' },
+    { key: 'landing.partnerCountryDe', slug: 'germany' },
+    { key: 'landing.partnerCountryFr', slug: 'france' },
+    { key: 'landing.partnerCountryEs', slug: 'spain' },
+    { key: 'landing.partnerCountryIt', slug: 'italy' },
+    { key: 'landing.partnerCountryCh', slug: 'switzerland' },
+    { key: 'landing.partnerCountryNl', slug: 'netherlands' },
+    { key: 'landing.partnerCountryGb', slug: 'united-kingdom' },
   ];
   readonly whyReasons = [
     { titleKey: 'landing.reason1Title', bodyKey: 'landing.reason1Body' },
