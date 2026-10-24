@@ -29,7 +29,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { LanguageLinksComponent } from '../shared/language-links/language-links.component';
 import { LanguageService } from '../services/shared/language-service.service';
 import { PasskeyCancelled, PasskeyService } from '../services/passkey.service';
-import { filter, firstValueFrom, fromEvent } from 'rxjs';
+import { filter, firstValueFrom, fromEvent, merge } from 'rxjs';
 import { APP_LOCALES } from '../../locale/compiled-locale';
 
 @Component({
@@ -73,14 +73,20 @@ export class AuthComponent {
       }
     });
 
-    // Google/Facebook login leaves via location.assign. Back restores this page
-    // from the back-forward cache with loading still true, so clear it.
+    // Google/Facebook login leaves via location.assign, so the page can come
+    // back with loading still true: Back restores it from the back-forward
+    // cache, and on mobile the provider's app may take over the link without
+    // the page ever unloading. Clear loading in both cases.
     if (isPlatformBrowser(this.platformId)) {
-      fromEvent<PageTransitionEvent>(window, 'pageshow')
-        .pipe(
+      merge(
+        fromEvent<PageTransitionEvent>(window, 'pageshow').pipe(
           filter((event) => event.persisted),
-          takeUntilDestroyed(),
-        )
+        ),
+        fromEvent(document, 'visibilitychange').pipe(
+          filter(() => document.visibilityState === 'visible'),
+        ),
+      )
+        .pipe(takeUntilDestroyed())
         .subscribe(() => {
           this.loading.set(false);
           this.facebookLoading.set(false);
