@@ -386,6 +386,7 @@ export const compiledMessages = {
     verified: $localize`:@@landing.verified:Verified`,
     private: $localize`:@@landing.private:Private`,
     chat: $localize`:@@landing.chat:Chat`,
+    membersCount: $localize`:@@landing.membersCount:{{count}} members registered`,
     peopleLooking: $localize`:@@landing.peopleLooking:Cleaners near you`,
     peopleLookingHint: $localize`:@@landing.peopleLookingHint:See services, rates and availability before you write. Sign up to start a conversation.`,
     whyTitle: $localize`:@@landing.whyTitle:Why people choose Linpura`,

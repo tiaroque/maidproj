@@ -89,6 +89,13 @@ export class ListService {
     return this.httpClient.get<UserDetailsObject[]>(url);
   }
 
+  getMembersCount(): Observable<{ count: number | null }> {
+    const url = `${environment.baseUrl}/api/list/members-count`;
+    return this.httpClient.get<{ count: number | null }>(url, {
+      withCredentials: true,
+    });
+  }
+
   getLatestUsers(type: UserType) {
     const url = `${environment.baseUrl}/api/list/latestUsers`;
     const params = new HttpParams().set('type', type);

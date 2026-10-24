@@ -10,6 +10,7 @@ import {
   GlobalFilters,
   GlobalQuickFilters,
 } from "../../models/dating/list";
+import { countRegisteredUsers } from "../../models/user";
 import { validateGenderExists } from "../../middleware/validate-gender";
 import { getAllOnlineUserIds } from "../../sockets/socketio";
 import { isUserType, SERVICES } from "../../models/dating/service-catalog";
@@ -114,6 +115,31 @@ router.get("/latestOffers", async (_req, res, next) => {
   try {
     const list = await getLatestOffersBlured();
     return res.status(200).send(list);
+  } catch (error) {
+    next(error);
+  }
+});
+
+// Every anonymous home page view hits this, so the count is reused for a while
+// instead of scanning the users collection per request.
+const membersCountTtlMs = 10 * 60 * 1000;
+let membersCountCache: { count: number; expiresAt: number } | null = null;
+const membersCountViewers = ["tiaroque@gmail.com"];
+
+router.get("/members-count", async (req, res, next) => {
+  try {
+    const email = req.session?.email?.toLowerCase();
+    if (!email || !membersCountViewers.includes(email)) {
+      return res.status(200).send({ count: null });
+    }
+
+    if (!membersCountCache || membersCountCache.expiresAt <= Date.now()) {
+      membersCountCache = {
+        count: await countRegisteredUsers(),
+        expiresAt: Date.now() + membersCountTtlMs,
+      };
+    }
+    return res.status(200).send({ count: membersCountCache.count });
   } catch (error) {
     next(error);
   }

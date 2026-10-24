@@ -64,6 +64,11 @@
           {{ "landing.chat" | translate }}
         </li>
       </ul>
+      @if (membersCountLabel(); as count) {
+        <p class="mt-4 text-xs tracking-wide text-white/45">
+          {{ "landing.membersCount" | translate: { count } }}
+        </p>
+      }
     </div>
 
     <svg

@@ -382,6 +382,7 @@
     "verified": "Verificado",
     "private": "Privado",
     "chat": "Chat",
+    "membersCount": "{{count}} miembros registrados",
     "peopleLooking": "Profesionales cerca de ti",
     "peopleLookingHint": "Consulta servicios, tarifas y disponibilidad antes de escribir. Regístrate para empezar una conversación.",
     "whyTitle": "Por qué eligen Linpura",

@@ -382,6 +382,7 @@
     "verified": "Vérifié",
     "private": "Privé",
     "chat": "Chat",
+    "membersCount": "{{count}} membres inscrits",
     "peopleLooking": "Aides ménagères près de chez vous",
     "peopleLookingHint": "Consultez services, tarifs et disponibilités avant d'écrire. Inscrivez-vous pour lancer la conversation.",
     "whyTitle": "Pourquoi choisir Linpura",

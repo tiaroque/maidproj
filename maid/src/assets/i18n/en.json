@@ -382,6 +382,7 @@
     "verified": "Verified",
     "private": "Private",
     "chat": "Chat",
+    "membersCount": "{{count}} members registered",
     "peopleLooking": "Cleaners near you",
     "peopleLookingHint": "See services, rates and availability before you write. Sign up to start a conversation.",
     "whyTitle": "Why people choose Linpura",

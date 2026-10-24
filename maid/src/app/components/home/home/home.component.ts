@@ -99,6 +99,15 @@ export class HomeComponent implements OnInit, OnDestroy {
     { initialValue: [] as UserDetailsObject[] },
   );
 
+  private readonly membersCount = toSignal(
+    this.listService.getMembersCount().pipe(catchError(() => of(null))),
+    { initialValue: null },
+  );
+  readonly membersCountLabel = computed(() => {
+    const count = this.membersCount()?.count;
+    return count ? count.toLocaleString(this.lang()) : null;
+  });
+
   offerAvatar(user: UserModel) {
     return avatarSrc(user.uid, user.avatar);
   }

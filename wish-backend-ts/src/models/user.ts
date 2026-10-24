@@ -168,6 +168,11 @@ export const canonicalEmailTaken = async (email: string) =>
       { limit: 1 }
     )) > 0;
 
+export const countRegisteredUsers = () =>
+  getDb()
+    .collection("users")
+    .countDocuments({ deleted: { $ne: true }, isFake: { $ne: true } });
+
 export const getDetailsForUserByUid = async (uid: string): Promise<any> => {
   let collection = getDb().collection("users");
 
