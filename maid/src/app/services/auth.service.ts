@@ -32,6 +32,13 @@ export class AuthService {
     );
   }
 
+  startFacebookLogin(lang: string) {
+    const params = new URLSearchParams({ lang: lang || 'en' });
+    window.location.assign(
+      `${environment.baseUrl}/api/users/facebook/start?${params.toString()}`,
+    );
+  }
+
   sessionLogin(email: string, password: string, captcha = '') {
     const url = `${environment.baseUrl}/api/users/login`;
     return this.http.post<any>(

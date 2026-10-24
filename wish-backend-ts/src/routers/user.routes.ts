@@ -49,6 +49,7 @@ import {
   oauthPkceCookieName,
   OauthPkceCookie,
 } from "../auth/google-oauth";
+import { buildFacebookAuthUrl, getFacebookProfile } from "../auth/facebook-oauth";
 import { setUserSession } from "../auth/session";
 import { sendEmail } from "../services/email.service";
 import {
@@ -275,6 +276,105 @@ usersRouter.get("/google/callback", async (req, res, next) => {
   }
 });
 
+usersRouter.get("/facebook/start", (req, res, next) => {
+  try {
+    const lang = typeof req.query.lang === "string" ? req.query.lang : "en";
+    const { state, codeVerifier } = createPkce();
+    const pkce: OauthPkceCookie = { state, codeVerifier, lang };
+    const authUrl = buildFacebookAuthUrl(state);
+    res.cookie(oauthPkceCookieName, JSON.stringify(pkce), {
+      httpOnly: true,
+      secure: config.cookieSecure,
+      sameSite: "lax",
+      path: "/",
+      maxAge: 10 * 60 * 1000,
+    });
+    res.redirect(authUrl);
+  } catch (error) {
+    next(error);
+  }
+});
+
+usersRouter.get("/facebook/callback", async (req, res) => {
+  const pkceRaw = req.cookies[oauthPkceCookieName];
+  let lang = "en";
+  const fail = () =>
+    res.redirect(loginRedirect(lang, "/login?facebookError=1"));
+  try {
+    if (typeof pkceRaw !== "string") {
+      return fail();
+    }
+    const pkce = JSON.parse(pkceRaw) as OauthPkceCookie;
+    lang = pkce.lang || "en";
+    res.clearCookie(oauthPkceCookieName, { path: "/" });
+
+    const code = typeof req.query.code === "string" ? req.query.code : "";
+    const state = typeof req.query.state === "string" ? req.query.state : "";
+    if (!code || !state || state !== pkce.state) {
+      return fail();
+    }
+
+    const profile = await getFacebookProfile(code);
+    // Facebook omits email for phone-only accounts or when the user declines it.
+    const email = profile.email?.toLowerCase().trim();
+    if (!email || !profile.id) {
+      return fail();
+    }
+
+    let userObj = await getUserByEmail(email);
+    if (!userObj?.user) {
+      await createUser({
+        name: profile.name || "",
+        lastname: "",
+        email,
+        uid: `fb_${profile.id}`,
+        emailVerified: true,
+        additionalUserInfo: [
+          {
+            providerId: "facebook.com",
+            uid: profile.id,
+            displayName: profile.name,
+            email,
+            photoURL: profile.picture?.data?.url,
+          },
+        ],
+        images: [],
+        deleted: false,
+      });
+      userObj = await getUserByEmail(email);
+    }
+
+    const user = userObj?.user;
+    if (!user || user.deleted) {
+      return fail();
+    }
+
+    setUserSession(req, {
+      uid: user.uid,
+      email: user.email,
+      name: user.name || profile.name,
+      emailVerified: user.emailVerified !== false,
+    });
+
+    if (user.userType) {
+      return res.redirect(loginRedirect(lang, "/admin/list"));
+    }
+    return res.redirect(loginRedirect(lang, "/admin/signup"));
+  } catch (error) {
+    console.error("Facebook OAuth callback failed", error);
+    return fail();
+  }
+});
+
+const socialLoginError = (user: { additionalUserInfo?: unknown }) => {
+  const providers = Array.isArray(user.additionalUserInfo)
+    ? user.additionalUserInfo
+    : [];
+  return providers.some((info) => info?.providerId === "facebook.com")
+    ? "USE_FACEBOOK"
+    : "USE_GOOGLE";
+};
+
 const clearSession = (req: Request, res: Response) => {
   res.clearCookie("session_admin", { path: "/" });
   res.clearCookie("linpura_email", { path: "/" });
@@ -337,7 +437,7 @@ usersRouter.post("/login", async (req, res, next) => {
     const passwordHash = userObj.user.password;
     if (typeof passwordHash !== "string" || !passwordHash) {
       return res.status(409).send({
-        error: "USE_GOOGLE",
+        error: socialLoginError(userObj.user),
         captchaRequired: await recordLoginFailure(attemptKey),
       });
     }
@@ -499,7 +599,7 @@ usersRouter.post("/create-user", async (req, res, next) => {
     if (existing?.user) {
       const existingPassword = existing.user.password;
       if (typeof existingPassword !== "string" || !existingPassword) {
-        return res.status(409).send({ error: "USE_GOOGLE" });
+        return res.status(409).send({ error: socialLoginError(existing.user) });
       }
       return res.status(409).send({ error: "EMAIL_EXISTS" });
     }

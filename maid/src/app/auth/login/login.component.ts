@@ -29,6 +29,7 @@ import {
 } from '../../forms/credentials-form';
 import { hasKind } from '../../forms/form-utils';
 import { GoogleComponent } from '../../shared/snackbars/google/google.component';
+import { FacebookComponent } from '../../shared/snackbars/facebook/facebook.component';
 import {
   CaptchaComponent,
   isCaptchaError,
@@ -112,6 +113,8 @@ export class LoginComponent {
           }
           if (err?.error?.error === 'USE_GOOGLE') {
             this.utilsService.providerOAuth('', GoogleComponent, 5000);
+          } else if (err?.error?.error === 'USE_FACEBOOK') {
+            this.utilsService.providerOAuth('', FacebookComponent, 5000);
           } else if (err?.status === 403) {
             const text = this.translateService.instant(
               'auth.pleaseVerifyAccount',

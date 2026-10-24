@@ -62,6 +62,7 @@ export class AuthComponent {
   screenUrl = signal('');
 
   loading = signal(false);
+  facebookLoading = signal(false);
   passkeyLoading = signal(false);
   private passkeyService = inject(PasskeyService);
   constructor() {
@@ -72,19 +73,22 @@ export class AuthComponent {
       }
     });
 
-    // Google login leaves via location.assign. Back restores this page from
-    // the back-forward cache with loading still true, so clear it.
+    // Google/Facebook login leaves via location.assign. Back restores this page
+    // from the back-forward cache with loading still true, so clear it.
     if (isPlatformBrowser(this.platformId)) {
       fromEvent<PageTransitionEvent>(window, 'pageshow')
         .pipe(
           filter((event) => event.persisted),
           takeUntilDestroyed(),
         )
-        .subscribe(() => this.loading.set(false));
+        .subscribe(() => {
+          this.loading.set(false);
+          this.facebookLoading.set(false);
+        });
     }
 
     afterNextRender(() => {
-      this.showGoogleErrorIfPresent();
+      this.showOAuthErrorIfPresent();
     });
   }
 
@@ -151,16 +155,28 @@ export class AuthComponent {
 
   createGoogleUser() {
     this.loading.set(true);
-    const lang =
-      this.languageService.defaultLang() ||
-      this.translateService.getCurrentLang() ||
-      'en';
-    this.authService.startGoogleLogin(lang);
+    this.authService.startGoogleLogin(this.currentLang());
   }
 
-  private showGoogleErrorIfPresent() {
+  createFacebookUser() {
+    this.facebookLoading.set(true);
+    this.authService.startFacebookLogin(this.currentLang());
+  }
+
+  private currentLang() {
+    return (
+      this.languageService.defaultLang() ||
+      this.translateService.getCurrentLang() ||
+      'en'
+    );
+  }
+
+  private showOAuthErrorIfPresent() {
     const params = new URLSearchParams(window.location.search);
-    if (params.get('googleError') !== '1') {
+    const errorParam = ['googleError', 'facebookError'].find(
+      (name) => params.get(name) === '1',
+    );
+    if (!errorParam) {
       return;
     }
     const close = this.translateService.instant('buttonClose');
@@ -169,7 +185,7 @@ export class AuthComponent {
     );
     this.utilsService.alert(textAuthError, close);
     const url = new URL(window.location.href);
-    url.searchParams.delete('googleError');
+    url.searchParams.delete(errorParam);
     history.replaceState(null, '', url.pathname + url.search);
   }
 }

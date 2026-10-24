@@ -40,6 +40,12 @@ export default {
     process.env.GOOGLE_REDIRECT_URI ??
       "http://localhost:4102/api/users/google/callback",
   ),
+  facebookAppId: process.env.FACEBOOK_APP_ID ?? "",
+  facebookAppSecret: process.env.FACEBOOK_APP_SECRET ?? "",
+  facebookRedirectUri: preferWww(
+    process.env.FACEBOOK_REDIRECT_URI ??
+      "http://localhost:4102/api/users/facebook/callback",
+  ),
   mailgunApiKey: process.env.MAILGUN_API_KEY ?? "",
   mailgunDomain: process.env.MAILGUN_DOMAIN ?? "",
   mailgunApiUrl: process.env.MAILGUN_API_URL ?? "https://api.mailgun.net",

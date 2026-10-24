@@ -1,4 +1,6 @@
-<div class="flex" style="color: #3e50b3">
-  <span>Please use <strong>Facebook </strong> <i class="fab fa-facebook"></i> to sign in!</span>
-  <button mat-button (click)="close()">Dismiss</button>
+<div class="flex items-center justify-between" style="color: #3e50b3">
+  <span [innerHTML]="'auth.useFacebookToLogin' | translate"> </span>
+  <button mat-button (click)="close()">
+    {{ "buttonClose" | translate }}
+  </button>
 </div>

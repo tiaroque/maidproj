@@ -31,6 +31,7 @@ import {
 import { hasKind } from '../../forms/form-utils';
 import { LanguageService } from '../../services/shared/language-service.service';
 import { GoogleComponent } from '../../shared/snackbars/google/google.component';
+import { FacebookComponent } from '../../shared/snackbars/facebook/facebook.component';
 import {
   CaptchaComponent,
   isCaptchaError,
@@ -137,8 +138,13 @@ export class RegisterComponent {
       'auth.emailAlreadyExists',
     );
 
-    if (error?.error?.error === 'USE_GOOGLE') {
-      this.utilsService.providerOAuth('', GoogleComponent, 5000);
+    if (
+      error?.error?.error === 'USE_GOOGLE' ||
+      error?.error?.error === 'USE_FACEBOOK'
+    ) {
+      const snackbar =
+        error.error.error === 'USE_FACEBOOK' ? FacebookComponent : GoogleComponent;
+      this.utilsService.providerOAuth('', snackbar, 5000);
       return {
         kind: 'emailTaken',
         fieldTree: this.registerForm.email,
