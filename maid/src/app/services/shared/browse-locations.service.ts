@@ -20,6 +20,7 @@ export interface FeaturedCity {
 export class BrowseLocationsService {
   private readonly httpClient = inject(HttpClient);
   private indexSnapshot = new Map<string, Map<string, BrowseLocation>>();
+  private indexLoaded = false;
 
   // The index backs every /browse/:country/:city request and changes at most
   // a few times a day, so one shared in-flight request is replayed to all of
@@ -30,6 +31,7 @@ export class BrowseLocationsService {
       map((locations) => {
         const index = indexLocations(locations ?? []);
         this.indexSnapshot = index;
+        this.indexLoaded = true;
         return index;
       }),
       catchError(() => of(new Map<string, Map<string, BrowseLocation>>())),
@@ -39,6 +41,18 @@ export class BrowseLocationsService {
   /** Cities already resolved for this country. Empty until the index arrives. */
   snapshotCities(countrySlug: string): BrowseLocation[] {
     return [...(this.indexSnapshot.get(countrySlug)?.values() ?? [])];
+  }
+
+  /**
+   * Whether any city in this country has a cleaner. True while the index is
+   * unknown (not loaded, or the API failed), so an outage never noindexes a
+   * country that has supply.
+   */
+  countryHasCleaners(countrySlug: string): boolean {
+    return (
+      !this.indexLoaded ||
+      this.snapshotCities(countrySlug).some((city) => city.count > 0)
+    );
   }
 
   /** Busiest indexable cities, for links on the homepage. */

@@ -27,6 +27,9 @@ app.use((req, res, next) => {
     res.redirect(308, `https://www.linpura.com${req.originalUrl}`);
     return;
   }
+  if (req.secure) {
+    res.setHeader('Strict-Transport-Security', 'max-age=31536000');
+  }
   next();
 });
 app.use(compression({ level: 8 }));
@@ -201,8 +204,16 @@ function browseLocationPaths(locations: SitemapLocation[]) {
   const taken = new Set<string>();
   const paths: string[] = [];
 
-  for (const slug of Object.values(COUNTRY_SLUGS)) {
-    paths.push(`/browse/${slug}`);
+  // Mirrors countryHasCleaners(): a country with no cleaners renders "No
+  // results" and is noindexed, so it is left out. If the API is down the list
+  // is unknown and every country stays in, as the page does.
+  const supplied = new Set(
+    locations.filter((entry) => entry.count > 0).map((entry) => entry.country),
+  );
+  for (const [code, slug] of Object.entries(COUNTRY_SLUGS)) {
+    if (!locations.length || supplied.has(code)) {
+      paths.push(`/browse/${slug}`);
+    }
   }
 
   for (const entry of [...locations].sort((a, b) => b.count - a.count)) {
@@ -373,6 +384,8 @@ app.use((req, res, next) => {
   const query = req.url.includes('?')
     ? req.url.slice(req.url.indexOf('?'))
     : '';
+  res.vary('Accept-Language');
+  res.vary('Cookie');
   res.redirect(302, `/${lang}${targetPath}${query}`);
 });
 

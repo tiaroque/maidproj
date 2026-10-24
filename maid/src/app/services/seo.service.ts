@@ -103,11 +103,17 @@ export class SeoService {
     const browseLocation = this.browseLocation(snapshot);
     // A thin listing keeps its page and its internal links, but stays out of
     // the index until enough cleaners make it worth a result. A service page
-    // is judged on its own supply, not the city's. The country pages carry no
-    // such flag and are always indexable.
-    const thinLocation = browseLocation?.service
-      ? browseLocation.service.indexable === false
-      : browseLocation?.location?.indexable === false;
+    // is judged on its own supply, not the city's. A country page is thin only
+    // when no city in it has a cleaner, since it would render "No results".
+    const thinLocation = !browseLocation
+      ? false
+      : browseLocation.service
+        ? browseLocation.service.indexable === false
+        : browseLocation.location
+          ? browseLocation.location.indexable === false
+          : !this.browseLocations.countryHasCleaners(
+              browseLocation.country.slug,
+            );
     const indexable =
       environment.production &&
       (page !== 'profile-view' ? INDEXABLE.has(page) : segments.length >= 2) &&
@@ -133,8 +139,14 @@ export class SeoService {
       ? `/${lang}/${segments.join('/')}`
       : `/${lang}/`;
     const canonical = `${SITE_ORIGIN}${path}`;
-    this.upsertLink('canonical', canonical);
-    this.setAlternates(segments);
+    // hreflang is ignored between noindexed pages, and a private or missing
+    // page has no preferred URL to declare.
+    if (indexable || thinLocation) {
+      this.upsertLink('canonical', canonical);
+    } else {
+      this.removeLinks('link[rel="canonical"]');
+    }
+    this.setAlternates(indexable ? segments : null);
 
     this.meta.updateTag({ property: 'og:title', content: copy.title });
     this.meta.updateTag({
@@ -431,10 +443,23 @@ export class SeoService {
       const name = user?.name?.trim();
       const place = user?.locationName || user?.country;
       const title = name ? `${name} — Linpura` : 'Linpura';
+      // The bio is written in whatever language its author chose, so it is
+      // only used on the locales the author says they speak. Elsewhere the
+      // snippet is built from translated strings in the page's language.
+      const lang = this.languageService.defaultLang();
+      const ownText =
+        user?.description?.trim() && user.languages?.includes(lang)
+          ? user.description
+          : '';
+      const services = (user?.services ?? [])
+        .slice(0, 4)
+        .map((service) => this.text(`services.${service}`))
+        .join(', ');
+      const summary = [name, place, services].filter(Boolean).join(' · ');
       const description = this.clip(
-        user?.description ||
-          (name
-            ? `${name}${place ? ` · ${place}` : ''}. ${this.text('landing.heroSubtitle')}`
+        ownText ||
+          (summary
+            ? `${summary}. ${this.text('landing.heroSubtitle')}`
             : this.text('landing.heroSubtitle')),
       );
       return { title, description };
@@ -517,11 +542,17 @@ export class SeoService {
     return plain.length > 160 ? `${plain.slice(0, 157).trimEnd()}...` : plain;
   }
 
-  private setAlternates(segments: string[]) {
-    const head = this.document.head;
-    head
-      .querySelectorAll('link[rel="alternate"][hreflang]')
+  private removeLinks(selector: string) {
+    this.document.head
+      .querySelectorAll(selector)
       .forEach((node) => node.remove());
+  }
+
+  private setAlternates(segments: string[] | null) {
+    this.removeLinks('link[rel="alternate"][hreflang]');
+    if (!segments) {
+      return;
+    }
 
     const suffix = segments.length ? `/${segments.join('/')}` : '/';
     for (const locale of this.languageService.currentLanguages) {
