@@ -160,7 +160,7 @@ export class SeoService {
       content: OG_LOCALE[lang] ?? 'en_GB',
     });
     this.meta.updateTag({ property: 'og:site_name', content: 'Linpura' });
-    const image = `${SITE_ORIGIN}/assets/images/og/og-${OG_LOCALE[lang] ? lang : 'en'}.jpg`;
+    const image = `${SITE_ORIGIN}/assets/images/og/og-${OG_LOCALE[lang] ? lang : 'en'}.jpg?v=2`;
     this.meta.updateTag({ property: 'og:image', content: image });
     this.meta.updateTag({ property: 'og:image:type', content: 'image/jpeg' });
     this.meta.updateTag({ property: 'og:image:width', content: '1200' });
