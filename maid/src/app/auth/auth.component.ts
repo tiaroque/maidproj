@@ -173,17 +173,18 @@ export class AuthComponent {
 
   private showOAuthErrorIfPresent() {
     const params = new URLSearchParams(window.location.search);
-    const errorParam = ['googleError', 'facebookError'].find(
-      (name) => params.get(name) === '1',
+    const errorParam = ['googleError', 'facebookError'].find((name) =>
+      params.has(name),
     );
     if (!errorParam) {
       return;
     }
     const close = this.translateService.instant('buttonClose');
-    const textAuthError = this.translateService.instant(
-      'auth.authenticationError',
-    );
-    this.utilsService.alert(textAuthError, close);
+    const messageKey =
+      errorParam === 'facebookError' && params.get(errorParam) === 'email'
+        ? 'auth.facebookNoEmail'
+        : 'auth.authenticationError';
+    this.utilsService.alert(this.translateService.instant(messageKey), close);
     const url = new URL(window.location.href);
     url.searchParams.delete(errorParam);
     history.replaceState(null, '', url.pathname + url.search);

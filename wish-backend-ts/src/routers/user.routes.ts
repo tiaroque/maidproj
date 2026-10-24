@@ -298,8 +298,8 @@ usersRouter.get("/facebook/start", (req, res, next) => {
 usersRouter.get("/facebook/callback", async (req, res) => {
   const pkceRaw = req.cookies[oauthPkceCookieName];
   let lang = "en";
-  const fail = () =>
-    res.redirect(loginRedirect(lang, "/login?facebookError=1"));
+  const fail = (reason = "1") =>
+    res.redirect(loginRedirect(lang, `/login?facebookError=${reason}`));
   try {
     if (typeof pkceRaw !== "string") {
       return fail();
@@ -316,9 +316,12 @@ usersRouter.get("/facebook/callback", async (req, res) => {
 
     const profile = await getFacebookProfile(code);
     // Facebook omits email for phone-only accounts or when the user declines it.
-    const email = profile.email?.toLowerCase().trim();
-    if (!email || !profile.id) {
+    if (!profile.id) {
       return fail();
+    }
+    const email = profile.email?.toLowerCase().trim();
+    if (!email) {
+      return fail("email");
     }
 
     let userObj = await getUserByEmail(email);

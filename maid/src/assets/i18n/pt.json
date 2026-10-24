@@ -125,6 +125,7 @@
     "profileName": "Nome de perfil",
     "useGoogleToLogin": "Por favor usa o <strong>Google </strong> <i class='fab fa-google'></i> para entrar!",
     "useFacebookToLogin": "Por favor usa o <strong>Facebook</strong> <i class='fab fa-facebook'></i> para entrar!",
+    "facebookNoEmail": "O Facebook não partilhou o teu email. Tenta novamente e permite o acesso ao email, ou entra com o Google ou com o teu email.",
     "pleaseSelectAccount": "Por favor selecione uma conta!",
     "authenticationError": "Erro ao autenticar, tente de novo dentro de momentos!",
     "pleaseVerifyAccount": "Por favor verifique o seu email!",

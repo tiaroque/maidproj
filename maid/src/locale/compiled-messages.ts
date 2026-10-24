@@ -129,6 +129,7 @@ export const compiledMessages = {
     profileName: $localize`:@@auth.profileName:Profile name`,
     useGoogleToLogin: $localize`:@@auth.useGoogleToLogin:Please use <strong>Google</strong> <i class='fab fa-google'></i> to log in!`,
     useFacebookToLogin: $localize`:@@auth.useFacebookToLogin:Please use <strong>Facebook</strong> <i class='fab fa-facebook'></i> to log in!`,
+    facebookNoEmail: $localize`:@@auth.facebookNoEmail:Facebook didn't share your email address. Try again and allow access to your email, or sign in with Google or your email.`,
     pleaseSelectAccount: $localize`:@@auth.pleaseSelectAccount:Please select an account!`,
     authenticationError: $localize`:@@auth.authenticationError:Error authenticating, please try again in a moment!`,
     pleaseVerifyAccount: $localize`:@@auth.pleaseVerifyAccount:Please check your email!`,

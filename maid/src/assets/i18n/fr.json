@@ -125,6 +125,7 @@
     "profileName": "Nom du profil",
     "useGoogleToLogin": "Veuillez utiliser <strong>Google</strong> <i class='fab fa-google'></i> pour vous connecter!",
     "useFacebookToLogin": "Veuillez utiliser <strong>Facebook</strong> <i class='fab fa-facebook'></i> pour vous connecter!",
+    "facebookNoEmail": "Facebook n'a pas partagé votre adresse e-mail. Réessayez en autorisant l'accès à votre e-mail, ou connectez-vous avec Google ou votre e-mail.",
     "pleaseSelectAccount": "Veuillez sélectionner un compte!",
     "authenticationError": "Erreur d'authentification, veuillez réessayer dans un moment!",
     "pleaseVerifyAccount": "Veuillez vérifier votre e-mail!",

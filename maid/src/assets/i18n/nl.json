@@ -125,6 +125,7 @@
     "profileName": "Profielnaam",
     "useGoogleToLogin": "Gebruik <strong>Google</strong> <i class='fab fa-google'></i> om in te loggen!",
     "useFacebookToLogin": "Gebruik <strong>Facebook</strong> <i class='fab fa-facebook'></i> om in te loggen!",
+    "facebookNoEmail": "Facebook heeft je e-mailadres niet gedeeld. Probeer het opnieuw en geef toegang tot je e-mail, of log in met Google of je e-mailadres.",
     "pleaseSelectAccount": "Selecteer een account!",
     "authenticationError": "Fout bij inloggen, probeer het zo opnieuw!",
     "pleaseVerifyAccount": "Controleer je e-mail!",

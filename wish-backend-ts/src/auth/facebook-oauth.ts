@@ -27,6 +27,8 @@ export const buildFacebookAuthUrl = (state: string) => {
     state,
     response_type: "code",
     scope: FACEBOOK_SCOPES.join(","),
+    // Facebook never re-prompts for a declined permission unless asked to.
+    auth_type: "rerequest",
   });
   return `https://www.facebook.com/${FACEBOOK_GRAPH_VERSION}/dialog/oauth?${params.toString()}`;
 };

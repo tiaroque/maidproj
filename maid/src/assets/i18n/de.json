@@ -125,6 +125,7 @@
     "profileName": "Profilname",
     "useGoogleToLogin": "Bitte verwenden Sie <strong>Google</strong> <i class='fab fa-google'></i>, um sich anzumelden!",
     "useFacebookToLogin": "Bitte verwenden Sie <strong>Facebook</strong> <i class='fab fa-facebook'></i>, um sich anzumelden!",
+    "facebookNoEmail": "Facebook hat Ihre E-Mail-Adresse nicht freigegeben. Versuchen Sie es erneut und erlauben Sie den Zugriff auf Ihre E-Mail, oder melden Sie sich mit Google oder Ihrer E-Mail an.",
     "pleaseSelectAccount": "Bitte wählen Sie ein Konto!",
     "authenticationError": "Fehler bei der Authentifizierung, bitte versuchen Sie es in Kürze erneut!",
     "pleaseVerifyAccount": "Bitte überprüfen Sie Ihre E-Mail!",
