@@ -65,6 +65,15 @@ export class ServerHttpBackend implements HttpBackend {
       serverReq = serverReq.clone({ setHeaders: { Cookie: cookieHeader } });
     }
 
+    // The API picks the visitor's country from their IP. Over loopback it would
+    // otherwise see this server's address.
+    const forwardedFor = this.request?.headers.get('x-forwarded-for');
+    if (forwardedFor && isApiRequest(req.url)) {
+      serverReq = serverReq.clone({
+        setHeaders: { 'X-Forwarded-For': forwardedFor },
+      });
+    }
+
     const url = toLoopbackUrl(req.url, this.request);
     if (url !== req.url) {
       serverReq = serverReq.clone({ url });

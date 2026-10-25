@@ -80,7 +80,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   platformId = inject(PLATFORM_ID);
   isBrowser = isPlatformBrowser(this.platformId);
 
-  map = new Map<string, string | undefined>([['type', 'Cleaner']]);
+  map = new Map<string, string | undefined>([
+    ['type', 'Cleaner'],
+    ['nearby', 'true'],
+  ]);
 
   isOpen = false;
 

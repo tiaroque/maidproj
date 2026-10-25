@@ -1,4 +1,5 @@
 import { Router } from "express";
+import geoip from "geoip-lite";
 import { auth } from "../../middleware/auth";
 import {
   getLastestUsers,
@@ -91,6 +92,14 @@ router.get(
   }
 );
 
+// Mirrors BROWSE_COUNTRIES in the frontend's src/app/utils/browse-locations.ts.
+const browseCountries = new Set(["PT", "DE", "FR", "ES", "IT", "CH", "NL", "GB"]);
+
+const visitorCountry = (ip: string | undefined) => {
+  const country = ip ? geoip.lookup(ip)?.country : undefined;
+  return country && browseCountries.has(country) ? country : "";
+};
+
 router.get("/browse", async (req, res, next) => {
   try {
     const type = req.query.type;
@@ -103,7 +112,19 @@ router.get("/browse", async (req, res, next) => {
       service: SERVICES.includes(service as any) ? service! : "",
     };
 
-    let list = await getLastestUsersBlured(globalFilters);
+    // `nearby` narrows to the visitor's country only when we serve it and it
+    // has members; otherwise the list stays worldwide rather than empty.
+    const nearbyCountry =
+      req.query.nearby === "true" && !globalFilters.country
+        ? visitorCountry(req.ip)
+        : "";
+
+    let list = nearbyCountry
+      ? await getLastestUsersBlured({ ...globalFilters, country: nearbyCountry })
+      : [];
+    if (!list.length) {
+      list = await getLastestUsersBlured(globalFilters);
+    }
 
     return res.status(200).send(list);
   } catch (error) {
