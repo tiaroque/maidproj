@@ -49,6 +49,7 @@ export interface UserModel {
   userType?: string;
   profileImage?: any;
   additionalUserInfo?: any[];
+  creationDate?: string;
   updateDate?: string;
   chatAlertsDisabled?: boolean;
 }

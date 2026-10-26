@@ -93,7 +93,15 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.listService.getListAnonymous(this.map).pipe(catchError(() => of([]))),
     { initialValue: [] },
   );
-  list = computed(() => this.listPaging() ?? []);
+  // The endpoint returns the 16 newest profiles; the slider shows them
+  // oldest-registered first.
+  list = computed(() =>
+    [...(this.listPaging() ?? [])].sort(
+      (a, b) =>
+        new Date(a.user?.creationDate ?? 0).getTime() -
+        new Date(b.user?.creationDate ?? 0).getTime(),
+    ),
+  );
 
   latestOffers = toSignal(
     this.listService
