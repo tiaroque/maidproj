@@ -31,8 +31,6 @@ import config from "../../endpoints.config";
 import { deleteObject } from "../../services/file-upload";
 import { notifyMediaDeleted } from "../../sockets/socketio";
 
-// import { saveChatMessages } from "../../queues/dating/mongodb.queue";
-
 const router = Router();
 
 // router.get('/getUserTo', auth, async (req, res, next) => {

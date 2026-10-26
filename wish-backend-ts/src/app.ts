@@ -15,9 +15,6 @@ import {
   backfillCanonicalEmails,
   ensureDeviceId,
 } from "./services/device-tracking.service";
-// import { wipeProductionUsers } from "./services/wipe-users";
-// // // import Debug from "debug";
-// // // const debug = Debug("express");
 import { connectRedis } from "./databases/redis/redis";
 
 const app = express();
@@ -145,14 +142,6 @@ const start = async () => {
       process.exit(1);
     }
   }
-
-  // try {
-  //   await wipeProductionUsers();
-  // } catch (err) {
-  //   const message = err instanceof Error ? err.message : String(err);
-  //   console.error(`Failed to remove production users: ${message}`);
-  //   process.exit(1);
-  // }
 
   httpServer.listen(port, "0.0.0.0", () => {
     console.log(`Server running on Port ${port}`);
