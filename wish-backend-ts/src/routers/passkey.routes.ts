@@ -15,6 +15,7 @@ import { auth } from "../middleware/auth";
 import config from "../endpoints.config";
 import { setUserSession } from "../auth/session";
 import { getUserByUid } from "../models/user";
+import { recordLogin } from "../services/device-tracking.service";
 import {
   consumeChallenge,
   countPasskeys,
@@ -224,6 +225,7 @@ passkeyRouter.post("/login/verify", async (req, res, next) => {
       name: user.name,
       emailVerified: true,
     });
+    await recordLogin(req, user.uid);
     res.status(200).send();
   } catch (error) {
     next(error);

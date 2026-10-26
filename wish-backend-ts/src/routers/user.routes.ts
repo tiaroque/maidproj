@@ -71,6 +71,7 @@ import {
 import {
   readFingerprint,
   recordDevice,
+  recordLogin,
 } from "../services/device-tracking.service";
 import { flagLinks } from "../services/link-detection.service";
 import passkeyRouter from "./passkey.routes";
@@ -301,6 +302,7 @@ usersRouter.get("/google/callback", async (req, res, next) => {
       name: user.name || payload.name,
       emailVerified: user.emailVerified !== false,
     });
+    await recordLogin(req, user.uid);
 
     if (user.userType) {
       return res.redirect(loginRedirect(lang, "/admin/list"));
@@ -394,6 +396,7 @@ usersRouter.get("/facebook/callback", async (req, res) => {
       name: user.name || profile.name,
       emailVerified: user.emailVerified !== false,
     });
+    await recordLogin(req, user.uid);
 
     if (user.userType) {
       return res.redirect(loginRedirect(lang, "/admin/list"));
@@ -499,6 +502,7 @@ usersRouter.post("/login", async (req, res, next) => {
       name: userObj.user.name,
       emailVerified: userObj.user.emailVerified !== false,
     });
+    await recordLogin(req, userObj.user.uid);
 
     res.status(200).send();
   } catch (error) {
@@ -545,7 +549,7 @@ usersRouter.post(
       const location = req.body.location;
       const locationName = req.body.locationName;
 
-      await createSignup(req.uid, {
+      const saved = await createSignup(req.uid, {
         profileName,
         name,
         location,
@@ -559,6 +563,10 @@ usersRouter.post(
           user: userType,
         },
       });
+      if (!saved) {
+        console.error(`[signup-no-user] uid=${req.uid}`);
+        return res.status(404).send({ error: "User not found" });
+      }
       flagLinks(req.uid, "profile", { profileName });
 
       // if (result.insertedCount !== 1) {

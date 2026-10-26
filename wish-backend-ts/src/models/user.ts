@@ -101,9 +101,9 @@ export const createSignup = async (uid: string, profile: any) => {
     },
   };
 
-  let inserts = await collection.findOneAndUpdate(query, update);
+  const result = await collection.updateOne(query, update);
 
-  return inserts;
+  return result.matchedCount === 1;
 };
 
 const getUser = async (match: { email: string } | { uid: string }): Promise<any> => {
@@ -263,8 +263,7 @@ export const confirmEmailVerification = async (email: string) => {
     .updateOne(
       { email },
       {
-        $set: { emailVerified: true },
-      }
+        $set: { emailVerified: true },      }
     );
 };
 

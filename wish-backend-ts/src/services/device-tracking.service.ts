@@ -11,7 +11,7 @@ const fingerprintPattern = /^[a-f0-9]{64}$/;
 const uuidPattern =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 
-export type DeviceEvent = "signup" | "session";
+export type DeviceEvent = "signup" | "login" | "session";
 
 export type UserDevice = {
   uid: string;
@@ -137,6 +137,14 @@ export const recordDevice = async (
     },
     { upsert: true },
   );
+};
+
+export const recordLogin = async (req: Request, uid: string) => {
+  try {
+    await recordDevice(req, uid, "login", readFingerprint(req.body?.fp));
+  } catch (error) {
+    console.error("Failed to record login device", error);
+  }
 };
 
 /**
