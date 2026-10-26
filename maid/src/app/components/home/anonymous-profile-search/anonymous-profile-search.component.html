@@ -158,6 +158,7 @@
                   browseLocation()!.citySlug,
                   serviceSlugs[entry.service],
                 ]"
+                [queryParams]="locationLinkParams()"
               >
                 {{ "services." + entry.service | translate }}
               </a>
@@ -188,6 +189,7 @@
                   browseLocation()!.country.slug,
                   citySlug(city.locationName),
                 ]"
+                [queryParams]="locationLinkParams()"
               >
                 {{ city.locationName }}
               </a>
@@ -208,6 +210,7 @@
             <a
               class="sg-chip transition-colors hover:bg-[#155e63]/12"
               [routerLink]="['/', lang(), 'browse', country.slug]"
+              [queryParams]="locationLinkParams()"
             >
               {{ country.name }}
             </a>

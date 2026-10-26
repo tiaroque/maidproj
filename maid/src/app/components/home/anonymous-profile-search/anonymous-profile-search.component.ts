@@ -62,6 +62,18 @@ export class AnonymousProfileSearchComponent {
   /** Set on /browse/:country(/:city(/:service)), absent on plain /browse. */
   readonly browseLocation = toSignal(this.resolvedLocation$);
 
+  private readonly queryParams = toSignal(this.routeActivated.queryParams, {
+    initialValue: {} as Params,
+  });
+
+  // The location links below are plain paths, so without this a visitor
+  // browsing job requests is dropped back to cleaners on the first click.
+  // Cleaner is the default, and leaving it off keeps the canonical URLs bare.
+  readonly locationLinkParams = computed(() => {
+    const type = this.queryParams()['type'];
+    return type && type !== 'Cleaner' ? { type } : {};
+  });
+
   readonly locationHeading = computed(() => {
     const resolved = this.browseLocation();
     if (!resolved) {
