@@ -61,6 +61,9 @@ export class BirthdateComponent {
     if (hasKind(field, 'ageInvalid')) {
       return this.translateService.instant('ageInvalid');
     }
+    if (hasKind(field, 'ageTooOld')) {
+      return this.translateService.instant('ageTooOld');
+    }
     return '';
   });
 }

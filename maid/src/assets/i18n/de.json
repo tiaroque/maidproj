@@ -16,6 +16,7 @@
   "invalidDateFormat": "<strong>Ungültiges</strong> Datum",
   "invalidDate": "<strong>Ungültiges</strong> Datum",
   "ageInvalid": "Mindestalter <strong>18 Jahre</strong>",
+  "ageTooOld": "Höchstalter <strong>99 Jahre</strong>",
   "additional": "Weitere Angaben",
   "imageSent": "Bild gesendet",
   "description": "Beschreibung",

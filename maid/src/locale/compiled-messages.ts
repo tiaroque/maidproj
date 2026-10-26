@@ -20,6 +20,7 @@ export const compiledMessages = {
   invalidDateFormat: $localize`:@@invalidDateFormat:<strong>Invalid</strong> date`,
   invalidDate: $localize`:@@invalidDate:<strong>Invalid</strong> date`,
   ageInvalid: $localize`:@@ageInvalid:Minimum age <strong>18 years</strong>`,
+  ageTooOld: $localize`:@@ageTooOld:Maximum age <strong>99 years</strong>`,
   additional: $localize`:@@additional:Additional`,
   imageSent: $localize`:@@imageSent:image sent`,
   description: $localize`:@@description:Description`,

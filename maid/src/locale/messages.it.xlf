@@ -138,6 +138,14 @@
           <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="ageTooOld" datatype="html">
+        <source>Maximum age &lt;strong&gt;99 years&lt;/strong&gt;</source>
+        <target>Età massima &lt;strong&gt;99 anni&lt;/strong&gt;</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="additional" datatype="html">
         <source>Additional</source>
         <target>Aggiuntivo</target>

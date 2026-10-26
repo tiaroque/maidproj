@@ -9,7 +9,8 @@ import {
 } from "../models/dating/service-catalog";
 
 const MIN_AGE = 18;
-const MAX_AGE = 120;
+// Keep aligned with MAX_AGE in maid/src/app/validators/ageValidator.ts.
+const MAX_AGE = 99;
 
 // Limits mirror the frontend schema in maid/src/app/forms/profile-form.ts.
 const optionalText = (field: string, max: number) =>
@@ -66,7 +67,7 @@ export const birthdateRules = [
         throw new Error(`You must be at least ${MIN_AGE} years old`);
       }
       if (age > MAX_AGE) {
-        throw new Error("birthday is not valid");
+        throw new Error(`You must be at most ${MAX_AGE} years old`);
       }
       return true;
     }),

@@ -4,5 +4,11 @@
     "secure": false,
     "changeOrigin": true,
     "ws": true
+  },
+  "/meridian": {
+    "target": "https://meridian-api.com",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": { "^/meridian": "" }
   }
 }

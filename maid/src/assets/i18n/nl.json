@@ -16,6 +16,7 @@
   "invalidDateFormat": "<strong>Ongeldige</strong> datum",
   "invalidDate": "<strong>Ongeldige</strong> datum",
   "ageInvalid": "Minimumleeftijd <strong>18 jaar</strong>",
+  "ageTooOld": "Maximumleeftijd <strong>99 jaar</strong>",
   "additional": "Aanvullend",
   "imageSent": "afbeelding verzonden",
   "description": "Beschrijving",

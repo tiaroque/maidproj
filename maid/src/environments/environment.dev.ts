@@ -11,7 +11,7 @@ export const environment = {
   baseUrl: '',
   socketUrl: 'http://localhost:3000',
   s3ImageUrl: 'https://maid-bucket.s3.eu-west-3.amazonaws.com',
-  meridianApiUrl: 'https://meridian-api.com',
+  meridianApiUrl: '/meridian',
   gaMeasurementId: 'G-EF5XK0CCQ4',
 };
 
