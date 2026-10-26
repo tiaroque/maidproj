@@ -135,6 +135,42 @@ const sendVerificationEmail = async (
   );
 };
 
+// An account whose verification mail never left the building is stranded: it
+// cannot log in, it never reaches signup, so it never gets a userType and stays
+// invisible everywhere. Nothing retries on its own, so the failure has to be
+// loud in the logs and visible to the caller instead of ending in a swallowed
+// console line. The marker is fixed so it can be grepped and alerted on.
+const VERIFICATION_EMAIL_FAILED = "[verification-email-failed]";
+
+// Mailgun reports the useful part as status and details; its message alone is
+// bare ("Forbidden"), which does not say whether the key, the domain or the
+// recipient was refused.
+const describeSendError = (error: unknown) => {
+  const { status, details, message } = (error ?? {}) as {
+    status?: number;
+    details?: string;
+    message?: string;
+  };
+  const described = [status && `status=${status}`, details || message]
+    .filter(Boolean)
+    .join(" ");
+  return described || String(error);
+};
+
+const trySendVerificationEmail = async (
+  email: string,
+  name: string,
+  lang: string,
+) => {
+  try {
+    await sendVerificationEmail(email, name, lang);
+    return true;
+  } catch (error) {
+    console.error(`${VERIFICATION_EMAIL_FAILED} ${email}: ${describeSendError(error)}`);
+    return false;
+  }
+};
+
 const sendPasswordResetEmail = async (
   email: string,
   name: string,
@@ -633,13 +669,9 @@ usersRouter.post("/create-user", async (req, res, next) => {
       console.error("Failed to record signup device", error);
     }
 
-    try {
-      await sendVerificationEmail(email, name || "", lang);
-    } catch (error) {
-      console.error("Failed to send verification email", error);
-    }
+    const emailSent = await trySendVerificationEmail(email, name || "", lang);
 
-    res.status(200).send();
+    res.status(200).send({ emailSent });
   } catch (error) {
     next(error);
   }
@@ -689,15 +721,18 @@ usersRouter.post("/resend-verification-email", async (req, res, next) => {
     const lang = typeof req.body.lang === "string" ? req.body.lang : "en";
     const userObj = email ? await getUserByEmail(email) : null;
 
+    // Unknown and already-verified addresses still report a send, so the
+    // response cannot be used to probe which emails exist.
+    let emailSent = true;
     if (userObj?.user && userObj.user.emailVerified === false) {
-      try {
-        await sendVerificationEmail(email, userObj.user.name || "", lang);
-      } catch (error) {
-        console.error("Failed to send verification email", error);
-      }
+      emailSent = await trySendVerificationEmail(
+        email,
+        userObj.user.name || "",
+        lang,
+      );
     }
 
-    res.status(200).send();
+    res.status(200).send({ emailSent });
   } catch (error) {
     next(error);
   }

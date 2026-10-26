@@ -104,12 +104,21 @@ export class RegisterComponent {
             password: pass,
           };
 
-          await firstValueFrom(this.authService.createUser(user, lang, captcha));
+          const created = await firstValueFrom(
+            this.authService.createUser(user, lang, captcha),
+          );
           const cleared = defaultCredentials();
           this.registerModel.set(cleared);
           formRef().reset(cleared);
           this.captcha()?.reload();
-          this.utilsService.alert(pleaseVerifyAccount, close);
+          // The account exists either way, but without the mail there is no way
+          // in, so telling them to check their inbox would strand them.
+          this.utilsService.alert(
+            created?.emailSent === false
+              ? this.translateService.instant('auth.errorSendingValidation')
+              : pleaseVerifyAccount,
+            close,
+          );
           return undefined;
         } catch (error: any) {
           this.captcha()?.reload(isCaptchaError(error));
