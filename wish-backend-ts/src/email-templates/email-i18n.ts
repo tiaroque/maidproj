@@ -225,8 +225,105 @@ const resetCopy: Record<EmailLang, EmailCopy> = {
   },
 };
 
+const signupReminderCopy: Record<EmailLang, EmailCopy> = {
+  en: {
+    subject: "Finish setting up your Linpura account",
+    title: "Finish setting up your Linpura account",
+    preheader: "You're one step away from using Linpura.",
+    heading: "Finish your profile",
+    greeting: "Hi --NAME--,",
+    body: "You started creating your Linpura account but didn't finish. Log in to complete your profile and start using the app.",
+    cta: "Complete my profile",
+    fallback:
+      "If the button does not work, copy and paste this link into your browser:",
+    expiry:
+      "If you did not create a Linpura account, you can ignore this email.",
+  },
+  pt: {
+    subject: "Conclua a configuração da sua conta Linpura",
+    title: "Conclua a configuração da sua conta Linpura",
+    preheader: "Está a um passo de começar a usar o Linpura.",
+    heading: "Conclua o seu perfil",
+    greeting: "Olá --NAME--,",
+    body: "Começou a criar a sua conta Linpura mas não a concluiu. Inicie sessão para completar o seu perfil e começar a usar a app.",
+    cta: "Completar o meu perfil",
+    fallback:
+      "Se o botão não funcionar, copie e cole este link no navegador:",
+    expiry:
+      "Se não criou uma conta Linpura, pode ignorar este email.",
+  },
+  de: {
+    subject: "Schließen Sie die Einrichtung Ihres Linpura-Kontos ab",
+    title: "Schließen Sie die Einrichtung Ihres Linpura-Kontos ab",
+    preheader: "Sie sind nur einen Schritt davon entfernt, Linpura zu nutzen.",
+    heading: "Profil vervollständigen",
+    greeting: "Hallo --NAME--,",
+    body: "Sie haben begonnen, Ihr Linpura-Konto zu erstellen, es aber nicht abgeschlossen. Melden Sie sich an, um Ihr Profil zu vervollständigen und die App zu nutzen.",
+    cta: "Profil vervollständigen",
+    fallback:
+      "Wenn die Schaltfläche nicht funktioniert, kopieren Sie diesen Link und fügen Sie ihn in Ihren Browser ein:",
+    expiry:
+      "Wenn Sie kein Linpura-Konto erstellt haben, können Sie diese E-Mail ignorieren.",
+  },
+  fr: {
+    subject: "Terminez la configuration de votre compte Linpura",
+    title: "Terminez la configuration de votre compte Linpura",
+    preheader: "Vous êtes à une étape de pouvoir utiliser Linpura.",
+    heading: "Complétez votre profil",
+    greeting: "Bonjour --NAME--,",
+    body: "Vous avez commencé à créer votre compte Linpura sans le terminer. Connectez-vous pour compléter votre profil et commencer à utiliser l'application.",
+    cta: "Compléter mon profil",
+    fallback:
+      "Si le bouton ne fonctionne pas, copiez et collez ce lien dans votre navigateur :",
+    expiry:
+      "Si vous n'avez pas créé de compte Linpura, vous pouvez ignorer cet email.",
+  },
+  it: {
+    subject: "Completa la configurazione del tuo account Linpura",
+    title: "Completa la configurazione del tuo account Linpura",
+    preheader: "Ti manca un solo passo per usare Linpura.",
+    heading: "Completa il tuo profilo",
+    greeting: "Ciao --NAME--,",
+    body: "Hai iniziato a creare il tuo account Linpura ma non l'hai completato. Accedi per completare il tuo profilo e iniziare a usare l'app.",
+    cta: "Completa il mio profilo",
+    fallback:
+      "Se il pulsante non funziona, copia e incolla questo link nel browser:",
+    expiry:
+      "Se non hai creato un account Linpura, puoi ignorare questa email.",
+  },
+  es: {
+    subject: "Termina de configurar tu cuenta de Linpura",
+    title: "Termina de configurar tu cuenta de Linpura",
+    preheader: "Estás a un paso de empezar a usar Linpura.",
+    heading: "Completa tu perfil",
+    greeting: "Hola --NAME--,",
+    body: "Empezaste a crear tu cuenta de Linpura pero no la terminaste. Inicia sesión para completar tu perfil y empezar a usar la app.",
+    cta: "Completar mi perfil",
+    fallback:
+      "Si el botón no funciona, copia y pega este enlace en el navegador:",
+    expiry:
+      "Si no has creado una cuenta de Linpura, puedes ignorar este correo.",
+  },
+  nl: {
+    subject: "Rond het instellen van je Linpura-account af",
+    title: "Rond het instellen van je Linpura-account af",
+    preheader: "Je bent nog één stap verwijderd van Linpura.",
+    heading: "Maak je profiel af",
+    greeting: "Hoi --NAME--,",
+    body: "Je bent begonnen met het aanmaken van je Linpura-account, maar hebt het niet afgerond. Log in om je profiel af te maken en de app te gaan gebruiken.",
+    cta: "Mijn profiel afmaken",
+    fallback:
+      "Werkt de knop niet? Kopieer deze link en plak hem in je browser:",
+    expiry:
+      "Heb je geen Linpura-account aangemaakt? Dan kun je deze e-mail negeren.",
+  },
+};
+
 export const getVerificationCopy = (lang?: string): EmailCopy =>
   verificationCopy[resolveEmailLang(lang)];
+
+export const getSignupReminderCopy = (lang?: string): EmailCopy =>
+  signupReminderCopy[resolveEmailLang(lang)];
 
 export const getResetCopy = (lang?: string): EmailCopy =>
   resetCopy[resolveEmailLang(lang)];

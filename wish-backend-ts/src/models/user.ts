@@ -9,6 +9,7 @@ export interface UserInfoCreation {
   password?: string;
   uid: string;
   emailVerified: boolean;
+  lang?: string;
   phoneNumber?: string;
   images: any[];
   additionalUserInfo: any;

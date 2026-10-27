@@ -24,7 +24,6 @@ import {
   confirmEmailVerification,
   getUserByEmailVerifyToken,
   markUserDeleted,
-  setEmailVerification,
   setChatAlertsDisabled,
   setPasswordReset,
   setUserPassword,
@@ -53,14 +52,11 @@ import { buildFacebookAuthUrl, getFacebookProfile } from "../auth/facebook-oauth
 import { setUserSession } from "../auth/session";
 import { sendEmail } from "../services/email.service";
 import {
-  getAccountVerificationEmail,
-  getPasswordResetEmail,
-} from "../email-templates/templates";
-import {
-  getResetCopy,
-  getVerificationCopy,
-  resolveEmailLang,
-} from "../email-templates/email-i18n";
+  emailTokenTtlMs,
+  sendVerificationEmail,
+} from "../services/verification-email.service";
+import { getPasswordResetEmail } from "../email-templates/templates";
+import { getResetCopy, resolveEmailLang } from "../email-templates/email-i18n";
 import { attachCaptcha, verifyCaptcha } from "../services/captcha.service";
 import {
   clearLoginFailures,
@@ -80,7 +76,6 @@ import { refreshPresenceBetween } from "../sockets/socketio";
 
 const usersRouter = Router();
 usersRouter.use("/passkeys", passkeyRouter);
-const emailTokenTtlMs = 60 * 60 * 1000;
 
 const loginRedirect = (lang: string, path: string) =>
   `/${resolveEmailLang(lang)}${path}`;
@@ -115,26 +110,6 @@ usersRouter.get("/captcha", (_req, res) => {
   const image = attachCaptcha(res);
   res.status(200).send({ image });
 });
-
-const sendVerificationEmail = async (
-  email: string,
-  name: string,
-  lang: string,
-) => {
-  const locale = resolveEmailLang(lang);
-  const token = createResetToken();
-  await setEmailVerification(
-    email,
-    hashResetToken(token),
-    new Date(Date.now() + emailTokenTtlMs),
-  );
-  const verifyUrl = `${config.returnUrlEmail}/${locale}/manage?mode=verifyEmail&oobCode=${token}`;
-  await sendEmail(
-    email,
-    getAccountVerificationEmail(name || "", verifyUrl, locale),
-    getVerificationCopy(locale).subject,
-  );
-};
 
 // An account whose verification mail never left the building is stranded: it
 // cannot log in, it never reaches signup, so it never gets a userType and stays
@@ -276,6 +251,7 @@ usersRouter.get("/google/callback", async (req, res, next) => {
         email,
         uid: payload.sub,
         emailVerified: payload.email_verified !== false,
+        lang: resolveEmailLang(lang),
         additionalUserInfo: [
           {
             providerId: "google.com",
@@ -370,6 +346,7 @@ usersRouter.get("/facebook/callback", async (req, res) => {
         email,
         uid: `fb_${profile.id}`,
         emailVerified: true,
+        lang: resolveEmailLang(lang),
         additionalUserInfo: [
           {
             providerId: "facebook.com",
@@ -664,6 +641,7 @@ usersRouter.post("/create-user", async (req, res, next) => {
       additionalUserInfo,
       uid,
       emailVerified: false,
+      lang: resolveEmailLang(lang),
       phoneNumber,
       images,
       deleted: false,

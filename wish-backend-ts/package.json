@@ -11,6 +11,7 @@
     "debug-with-nodemon": "nodemon --inspect src/app.ts",
     "seed:users": "ts-node src/scripts/seed-test-users.ts",
     "purge:user": "ts-node src/scripts/purge-deleted-user.ts",
+    "remind:registration": "ts-node --files src/scripts/send-registration-reminders.ts",
     "migrate:cleaning": "ts-node src/scripts/migrate-to-cleaning.ts",
     "migrate:availability": "ts-node src/scripts/migrate-availability.ts",
     "build": "tsc -p . && cp src/email-templates/*.html dist/email-templates/"

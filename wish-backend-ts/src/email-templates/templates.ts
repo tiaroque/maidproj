@@ -2,6 +2,7 @@ import { readFileSync } from 'fs'
 import config from '../endpoints.config';
 import {
     getResetCopy,
+    getSignupReminderCopy,
     getVerificationCopy,
     resolveEmailLang,
     type EmailCopy,
@@ -70,6 +71,15 @@ export const getAccountVerificationEmail = (name: string, url: string, lang?: st
     renderEmailTemplate(
         'verify-email.html',
         getVerificationCopy(lang),
+        name,
+        url,
+        lang
+    );
+
+export const getSignupReminderEmail = (name: string, url: string, lang?: string) =>
+    renderEmailTemplate(
+        'verify-email.html',
+        getSignupReminderCopy(lang),
         name,
         url,
         lang
