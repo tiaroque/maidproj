@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8" />
+    <title>Linpura — vídeo para o Facebook</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600;700&family=Nunito:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        width: 1080px;
+        height: 1350px;
+        overflow: hidden;
+        background: #071c20;
+      }
+
+      .card {
+        position: relative;
+        width: 1080px;
+        height: 1350px;
+        padding: 64px 72px 56px;
+        display: flex;
+        flex-direction: column;
+        color: #f4fbf9;
+        font-family: Nunito, sans-serif;
+        background:
+          radial-gradient(
+            820px 620px at 8% -8%,
+            rgba(127, 216, 195, 0.28),
+            transparent 58%
+          ),
+          radial-gradient(
+            700px 520px at 108% 108%,
+            rgba(15, 118, 110, 0.55),
+            transparent 52%
+          ),
+          linear-gradient(168deg, #16484d 0%, #0d3337 46%, #071c20 100%);
+        overflow: hidden;
+      }
+
+      .card::before,
+      .card::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        border: 1.5px solid rgba(127, 216, 195, 0.16);
+        animation: drift 16s linear both paused;
+      }
+
+      .card::before {
+        width: 520px;
+        height: 520px;
+        right: -160px;
+        top: -180px;
+      }
+
+      .card::after {
+        width: 360px;
+        height: 360px;
+        right: -40px;
+        top: -70px;
+        border-color: rgba(127, 216, 195, 0.1);
+      }
+
+      @keyframes drift {
+        from {
+          transform: translate3d(0, 0, 0);
+        }
+        to {
+          transform: translate3d(-24px, 18px, 0);
+        }
+      }
+
+      .top,
+      .stage,
+      .progress {
+        position: relative;
+        z-index: 1;
+      }
+
+      .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: #7fd8c3;
+      }
+
+      .broom {
+        width: 54px;
+        height: 54px;
+        fill: currentColor;
+      }
+
+      .wordmark {
+        font-family: "Albert Sans", Nunito, sans-serif;
+        font-weight: 600;
+        font-size: 52px;
+        letter-spacing: -0.05em;
+        line-height: 1;
+      }
+
+      .pill {
+        font-size: 22px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        color: #08332f;
+        background: #7fd8c3;
+        border-radius: 999px;
+        padding: 12px 22px;
+      }
+
+      .stage {
+        position: relative;
+        flex: 1;
+        margin-top: 28px;
+      }
+
+      .scene {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        animation: hold 16s linear both paused;
+      }
+
+      .scene-a {
+        animation-name: scene-a;
+      }
+      .scene-b {
+        animation-name: scene-b;
+      }
+      .scene-c {
+        animation-name: scene-c;
+      }
+      .scene-d {
+        animation-name: scene-d;
+        justify-content: center;
+      }
+
+      @keyframes scene-a {
+        0%,
+        22.5% {
+          opacity: 1;
+        }
+        25.6%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      @keyframes scene-b {
+        0%,
+        22.5% {
+          opacity: 0;
+        }
+        25.6%,
+        55% {
+          opacity: 1;
+        }
+        58.1%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      @keyframes scene-c {
+        0%,
+        55% {
+          opacity: 0;
+        }
+        58.1%,
+        76.25% {
+          opacity: 1;
+        }
+        79.4%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      @keyframes scene-d {
+        0%,
+        76.25% {
+          opacity: 0;
+        }
+        79.4%,
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .kicker {
+        color: #7fd8c3;
+        font-size: 22px;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .kicker::after {
+        content: "";
+        display: block;
+        width: 72px;
+        height: 6px;
+        margin-top: 22px;
+        border-radius: 999px;
+        background: #7fd8c3;
+      }
+
+      h1 {
+        margin-top: 28px;
+        font-size: 68px;
+        font-weight: 800;
+        line-height: 1.06;
+        letter-spacing: -0.03em;
+      }
+
+      .lead {
+        margin-top: 28px;
+        max-width: 860px;
+        font-size: 32px;
+        font-weight: 600;
+        line-height: 1.35;
+        color: rgba(244, 251, 249, 0.82);
+      }
+
+      .features {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .feature {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        padding: 26px 28px;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1.5px solid rgba(127, 216, 195, 0.22);
+        animation: rise 16s linear both paused;
+      }
+
+      .feature:nth-child(1) {
+        animation-name: rise-1;
+      }
+      .feature:nth-child(2) {
+        animation-name: rise-2;
+      }
+      .feature:nth-child(3) {
+        animation-name: rise-3;
+      }
+
+      @keyframes rise-1 {
+        0%,
+        24% {
+          opacity: 0;
+          transform: translateY(26px);
+        }
+        28.5%,
+        100% {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      @keyframes rise-2 {
+        0%,
+        27.5% {
+          opacity: 0;
+          transform: translateY(26px);
+        }
+        32%,
+        100% {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      @keyframes rise-3 {
+        0%,
+        31% {
+          opacity: 0;
+          transform: translateY(26px);
+        }
+        35.5%,
+        100% {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      .icon {
+        width: 64px;
+        height: 64px;
+        flex-shrink: 0;
+        border-radius: 18px;
+        display: grid;
+        place-items: center;
+        background: rgba(127, 216, 195, 0.16);
+        color: #7fd8c3;
+      }
+
+      .icon svg {
+        width: 34px;
+        height: 34px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2.2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .feature h2 {
+        font-size: 32px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+      }
+
+      .feature p {
+        margin-top: 4px;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 1.3;
+        color: rgba(244, 251, 249, 0.74);
+      }
+
+      .scene-c h1 {
+        margin-top: 22px;
+        max-width: 900px;
+      }
+
+      .free {
+        padding: 56px 48px;
+        border-radius: 36px;
+        background: #7fd8c3;
+        color: #08332f;
+      }
+
+      .free-label {
+        font-size: 28px;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .free-url {
+        margin-top: 12px;
+        font-family: "Albert Sans", Nunito, sans-serif;
+        font-size: 84px;
+        font-weight: 700;
+        letter-spacing: -0.045em;
+        line-height: 1;
+      }
+
+      .free-meta {
+        margin-top: 28px;
+        font-size: 26px;
+        font-weight: 800;
+      }
+
+      .progress {
+        margin-top: 28px;
+        height: 8px;
+        border-radius: 99px;
+        background: rgba(255, 255, 255, 0.14);
+        overflow: hidden;
+      }
+
+      .progress span {
+        display: block;
+        height: 100%;
+        width: 100%;
+        border-radius: inherit;
+        background: #7fd8c3;
+        transform-origin: left center;
+        animation: grow 16s linear both paused;
+      }
+
+      @keyframes grow {
+        from {
+          transform: scaleX(0.02);
+        }
+        to {
+          transform: scaleX(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <article class="card">
+      <header class="top">
+        <div class="brand">
+          <svg class="broom" viewBox="0 0 64 64" aria-hidden="true">
+            <g transform="rotate(15 32 32) translate(0 -3)">
+              <rect x="30" y="3" width="4" height="27" rx="2" />
+              <path d="M23 28h18l3 9H20z" />
+              <path d="M20.5 36h5l-7 18a3.5 3.5 0 0 1-7 0z" />
+              <path d="M25 36h5l-2.5 21a3.5 3.5 0 0 1-7 0z" />
+              <path d="M29.5 36h5l1 22a3.5 3.5 0 0 1-7 0z" />
+              <path d="M34 36h5l4.5 21a3.5 3.5 0 0 1-7 0z" />
+              <path d="M38.5 36h5l8.5 18a3.5 3.5 0 0 1-7 0z" />
+            </g>
+          </svg>
+          <div class="wordmark">linpura</div>
+        </div>
+        <div class="pill">Totalmente grátis</div>
+      </header>
+
+      <div class="stage">
+        <section class="scene scene-a">
+          <p class="kicker">Limpeza doméstica, sem complicações</p>
+          <h1>
+            Encontre um profissional<br />
+            de limpeza independente<br />
+            perto de si.
+          </h1>
+          <p class="lead">
+            Cada profissional trabalha por conta própria, com o seu preço e a
+            sua zona.
+          </p>
+        </section>
+
+        <section class="scene scene-b">
+          <div class="features">
+            <section class="feature">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M4 11.5 12 5l8 6.5" />
+                  <path d="M7 10.8V19h10v-8.2" />
+                  <path d="M10 19v-4h4v4" />
+                </svg>
+              </div>
+              <div>
+                <h2>Limpeza regular</h2>
+                <p>Semanal ou quando precisar, no horário que combina.</p>
+              </div>
+            </section>
+            <section class="feature">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 3.5 13.1 7.4 17 8.5 13.1 9.6 12 13.5 10.9 9.6 7 8.5l4-1.1L12 3.5z"
+                  />
+                  <path
+                    d="M17.5 13.5 18.2 15.6 20.3 16.3 18.2 17 17.5 19.1 16.8 17 14.7 16.3 16.8 15.6 17.5 13.5z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h2>Limpeza profunda</h2>
+                <p>Mudança de casa, pós-festa ou uma limpeza a fundo.</p>
+              </div>
+            </section>
+            <section class="feature">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M8 7.5 12 9.2 16 7.5 19 10.2 17 12v7H7v-7L5 10.2 8 7.5z" />
+                  <path d="M12 9.2V19" />
+                </svg>
+              </div>
+              <div>
+                <h2>Ferro e lavandaria</h2>
+                <p>Passar a ferro, lavandaria e a roupa do dia a dia.</p>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="scene scene-c">
+          <p class="kicker">Para trabalhadores independentes</p>
+          <h1>Trabalhe por conta própria.</h1>
+          <p class="lead">
+            Defina o seu preço, a sua zona e os serviços que aceita.
+          </p>
+        </section>
+
+        <section class="scene scene-d">
+          <div class="free">
+            <div class="free-label">Totalmente grátis</div>
+            <div class="free-url">linpura.com</div>
+            <div class="free-meta">18+ · 8 países · Portugal</div>
+          </div>
+        </section>
+      </div>
+
+      <div class="progress" aria-hidden="true"><span></span></div>
+    </article>
+    <script>
+      window.seekTo = (ms) => {
+        for (const animation of document.getAnimations()) {
+          animation.pause();
+          animation.currentTime = ms;
+        }
+      };
+    </script>
+  </body>
+</html>
