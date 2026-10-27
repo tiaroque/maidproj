@@ -118,7 +118,7 @@
     "forgotPassword": "Vous avez oublié votre mot de passe?",
     "joinUs": "Rejoignez-nous dès aujourd'hui !",
     "orRegisterEmail": "ou s'inscrire par e-mail",
-    "siteProtected": "Ce site est protégé par les <a href='/terms-conditions' target='_blank' class='dotted-link'>Conditions d'utilisation</a> et la <a href='/privacy' target='_blank' class='dotted-link'>Politique de confidentialité</a> suivantes.",
+    "siteProtected": "Ce site est protégé par les <a href='/{{lang}}/terms-conditions' target='_blank' class='dotted-link'>Conditions d'utilisation</a> et la <a href='/{{lang}}/privacy' target='_blank' class='dotted-link'>Politique de confidentialité</a> suivantes.",
     "doYourLogin": "Se connecter",
     "loginHere": "ici",
     "orRecoverAccount": "ou récupérer votre mot de passe",
@@ -458,7 +458,12 @@
   },
   "seo": {
     "termsDescription": "Lisez les conditions qui s'appliquent lorsque vous utilisez Linpura : votre compte, votre abonnement, votre conduite et les paiements.",
-    "privacyDescription": "Comment Linpura collecte, utilise et protège vos données personnelles, et les choix et droits dont vous disposez."
+    "privacyDescription": "Comment Linpura collecte, utilise et protège vos données personnelles, et les choix et droits dont vous disposez.",
+    "profileTitleCleaner": "{{name}}, aide ménagère à {{location}}",
+    "profileTitleClient": "{{name}} cherche une aide ménagère à {{location}}",
+    "profileDescriptionCleaner": "{{name}} propose {{services}} à {{location}}. Disponibilités et prise de contact sur Linpura.",
+    "profileDescriptionCleanerRate": "{{name}} propose {{services}} à {{location}}, à {{rate}} {{currency}} de l'heure. Disponibilités et prise de contact sur Linpura.",
+    "profileDescriptionClient": "{{name}} cherche {{services}} à {{location}}. Les aides ménagères peuvent prendre contact sur Linpura."
   },
   "adminMenu": "Admin",
   "verification": {

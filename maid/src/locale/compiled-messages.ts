@@ -122,7 +122,7 @@ export const compiledMessages = {
     forgotPassword: $localize`:@@auth.forgotPassword:Forgot your password?`,
     joinUs: $localize`:@@auth.joinUs:Join us today!`,
     orRegisterEmail: $localize`:@@auth.orRegisterEmail:or register with email`,
-    siteProtected: $localize`:@@auth.siteProtected:This site is protected by the following's <a href='/terms-conditions' target='_blank' class='dotted-link'>Terms of Service</a> and  <a href='/privacy' target='_blank' class='dotted-link'>Privacy Policy</a>`,
+    siteProtected: $localize`:@@auth.siteProtected:This site is protected by the following's <a href='/{{lang}}/terms-conditions' target='_blank' class='dotted-link'>Terms of Service</a> and  <a href='/{{lang}}/privacy' target='_blank' class='dotted-link'>Privacy Policy</a>`,
     doYourLogin: $localize`:@@auth.doYourLogin:Log in`,
     loginHere: $localize`:@@auth.loginHere:here`,
     orRecoverAccount: $localize`:@@auth.orRecoverAccount:or recover your password`,
@@ -463,6 +463,11 @@ export const compiledMessages = {
   seo: {
     termsDescription: $localize`:@@seo.termsDescription:Read the terms that apply when you use Linpura: your account, membership, conduct and payments.`,
     privacyDescription: $localize`:@@seo.privacyDescription:How Linpura collects, uses and protects your personal data, and the choices and rights you have.`,
+    profileTitleCleaner: $localize`:@@seo.profileTitleCleaner:{{name}}, cleaner in {{location}}`,
+    profileTitleClient: $localize`:@@seo.profileTitleClient:{{name}} is looking for a cleaner in {{location}}`,
+    profileDescriptionCleaner: $localize`:@@seo.profileDescriptionCleaner:{{name}} offers {{services}} in {{location}}. See availability and get in touch on Linpura.`,
+    profileDescriptionCleanerRate: $localize`:@@seo.profileDescriptionCleanerRate:{{name}} offers {{services}} in {{location}} at {{rate}} {{currency}} an hour. See availability and get in touch on Linpura.`,
+    profileDescriptionClient: $localize`:@@seo.profileDescriptionClient:{{name}} is looking for {{services}} in {{location}}. Cleaners can get in touch on Linpura.`,
   },
   adminMenu: $localize`:@@adminMenu:Admin`,
   verification: {

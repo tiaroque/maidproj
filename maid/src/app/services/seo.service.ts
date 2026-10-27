@@ -441,8 +441,19 @@ export class SeoService {
       const details = this.profileDetails(snapshot);
       const user = details?.user;
       const name = user?.name?.trim();
-      const place = user?.locationName || user?.country;
-      const title = name ? `${name} — Linpura` : 'Linpura';
+      const city = user?.locationName?.trim();
+      const place = city || user?.country;
+      const role =
+        user?.userType === 'Cleaner'
+          ? 'Cleaner'
+          : user?.userType === 'Client'
+            ? 'Client'
+            : undefined;
+      const title = !name
+        ? 'Linpura'
+        : role && city
+          ? `${this.textWith(`seo.profileTitle${role}`, { name, location: city })} — Linpura`
+          : `${name} — Linpura`;
       // The bio is written in whatever language its author chose, so it is
       // only used on the locales the author says they speak. Elsewhere the
       // snippet is built from translated strings in the page's language.
@@ -451,13 +462,34 @@ export class SeoService {
         user?.description?.trim() && user.languages?.includes(lang)
           ? user.description
           : '';
-      const services = (user?.services ?? [])
-        .slice(0, 4)
-        .map((service) => this.text(`services.${service}`))
-        .join(', ');
+      const serviceNames = (user?.services ?? []).map((service) =>
+        this.text(`services.${service}`),
+      );
+      const services = serviceNames.slice(0, 4).join(', ');
+      // Three services keep the full sentence inside the 160-character clip.
+      const topServices = serviceNames.slice(0, 3).join(', ');
+      const rate = user?.hourlyRate;
+      const roleText =
+        name && role && city && topServices
+          ? role === 'Cleaner' && rate != null
+            ? this.textWith('seo.profileDescriptionCleanerRate', {
+                name,
+                services: topServices,
+                location: city,
+                rate: String(rate),
+                currency:
+                  user?.currency || currencyForCountry(user?.country),
+              })
+            : this.textWith(`seo.profileDescription${role}`, {
+                name,
+                services: topServices,
+                location: city,
+              })
+          : '';
       const summary = [name, place, services].filter(Boolean).join(' · ');
       const description = this.clip(
         ownText ||
+          roleText ||
           (summary
             ? `${summary}. ${this.text('landing.heroSubtitle')}`
             : this.text('landing.heroSubtitle')),

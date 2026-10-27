@@ -108,7 +108,9 @@
   </button>
   <p
     class="mt-5 text-xs text-(--mat-sys-on-surface-variant) text-center leading-relaxed"
-    [innerHTML]="'auth.siteProtected' | translate"
+    [innerHTML]="
+      'auth.siteProtected' | translate: { lang: languageService.defaultLang() }
+    "
   ></p>
 </form>
 

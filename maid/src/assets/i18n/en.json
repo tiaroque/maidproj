@@ -118,7 +118,7 @@
     "forgotPassword": "Forgot your password?",
     "joinUs": "Join us today!",
     "orRegisterEmail": "or register with email",
-    "siteProtected": "This site is protected by the following's <a href='/terms-conditions' target='_blank' class='dotted-link'>Terms of Service</a> and  <a href='/privacy' target='_blank' class='dotted-link'>Privacy Policy</a>",
+    "siteProtected": "This site is protected by the following's <a href='/{{lang}}/terms-conditions' target='_blank' class='dotted-link'>Terms of Service</a> and  <a href='/{{lang}}/privacy' target='_blank' class='dotted-link'>Privacy Policy</a>",
     "doYourLogin": "Log in",
     "loginHere": "here",
     "orRecoverAccount": "or recover your password",
@@ -458,7 +458,12 @@
   },
   "seo": {
     "termsDescription": "Read the terms that apply when you use Linpura: your account, membership, conduct and payments.",
-    "privacyDescription": "How Linpura collects, uses and protects your personal data, and the choices and rights you have."
+    "privacyDescription": "How Linpura collects, uses and protects your personal data, and the choices and rights you have.",
+    "profileTitleCleaner": "{{name}}, cleaner in {{location}}",
+    "profileTitleClient": "{{name}} is looking for a cleaner in {{location}}",
+    "profileDescriptionCleaner": "{{name}} offers {{services}} in {{location}}. See availability and get in touch on Linpura.",
+    "profileDescriptionCleanerRate": "{{name}} offers {{services}} in {{location}} at {{rate}} {{currency}} an hour. See availability and get in touch on Linpura.",
+    "profileDescriptionClient": "{{name}} is looking for {{services}} in {{location}}. Cleaners can get in touch on Linpura."
   },
   "adminMenu": "Admin",
   "verification": {

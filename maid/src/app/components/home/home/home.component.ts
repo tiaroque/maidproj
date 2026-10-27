@@ -29,7 +29,6 @@ import {
 } from '../../../services/admin/interfaces/user.interface';
 import { avatarSrc } from '../../../utils/avatar';
 import { S3UrlPipe } from '../../../utils/s3-url';
-import { SliceDescriptionPipe } from '../../../utils/pipes/sliceDescription.pipe';
 import { BrowseLocationsService } from '../../../services/shared/browse-locations.service';
 
 @Component({
@@ -45,7 +44,6 @@ import { BrowseLocationsService } from '../../../services/shared/browse-location
     FooterComponent,
     NgOptimizedImage,
     S3UrlPipe,
-    SliceDescriptionPipe,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -345,6 +345,29 @@ app.use((req, res, next) => {
   }
 
   const parts = req.path.split('/').filter(Boolean);
+
+  // Browse slugs resolve in any case, so `/en/browse/Portugal` would render
+  // the lowercase page under a canonical of its own. An uppercase locale
+  // would otherwise be read as a path and prefixed again (`/en/EN/browse`).
+  const lowerLocale = parts[0]?.toLowerCase();
+  if (lowerLocale && locales.has(lowerLocale)) {
+    const rest = parts.slice(1);
+    const fixed = [
+      lowerLocale,
+      ...(rest[0]?.toLowerCase() === 'browse'
+        ? rest.map((part) => part.toLowerCase())
+        : rest),
+    ];
+    if (fixed.join('/') !== parts.join('/')) {
+      const query = req.url.includes('?')
+        ? req.url.slice(req.url.indexOf('?'))
+        : '';
+      const slash = fixed.length === 1 || req.path.endsWith('/') ? '/' : '';
+      res.redirect(308, `/${fixed.join('/')}${slash}${query}`);
+      return;
+    }
+  }
+
   // `/pt` does not match `<base href="/pt/">`. Serving it paints the page,
   // then the client rewrites the URL to `/pt/` and loads it again.
   if (parts.length === 1 && locales.has(parts[0]) && !req.path.endsWith('/')) {

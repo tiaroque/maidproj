@@ -118,7 +118,7 @@
     "forgotPassword": "Wachtwoord vergeten?",
     "joinUs": "Word vandaag nog lid!",
     "orRegisterEmail": "of registreer met e-mail",
-    "siteProtected": "Deze site valt onder de volgende <a href='/terms-conditions' target='_blank' class='dotted-link'>Servicevoorwaarden</a> en het <a href='/privacy' target='_blank' class='dotted-link'>Privacybeleid</a>",
+    "siteProtected": "Deze site valt onder de volgende <a href='/{{lang}}/terms-conditions' target='_blank' class='dotted-link'>Servicevoorwaarden</a> en het <a href='/{{lang}}/privacy' target='_blank' class='dotted-link'>Privacybeleid</a>",
     "doYourLogin": "Log in",
     "loginHere": "hier",
     "orRecoverAccount": "of herstel je wachtwoord",
@@ -458,7 +458,12 @@
   },
   "seo": {
     "termsDescription": "Lees de voorwaarden die gelden wanneer je Linpura gebruikt: je account, lidmaatschap, gedrag en betalingen.",
-    "privacyDescription": "Hoe Linpura je persoonsgegevens verzamelt, gebruikt en beschermt, en welke keuzes en rechten je hebt."
+    "privacyDescription": "Hoe Linpura je persoonsgegevens verzamelt, gebruikt en beschermt, en welke keuzes en rechten je hebt.",
+    "profileTitleCleaner": "{{name}}, schoonmaker in {{location}}",
+    "profileTitleClient": "{{name}} zoekt een schoonmaker in {{location}}",
+    "profileDescriptionCleaner": "{{name}} biedt {{services}} aan in {{location}}. Bekijk de beschikbaarheid en neem contact op via Linpura.",
+    "profileDescriptionCleanerRate": "{{name}} biedt {{services}} aan in {{location}}, voor {{rate}} {{currency}} per uur. Bekijk de beschikbaarheid en neem contact op via Linpura.",
+    "profileDescriptionClient": "{{name}} zoekt {{services}} in {{location}}. Schoonmakers kunnen contact opnemen via Linpura."
   },
   "adminMenu": "Beheer",
   "verification": {

@@ -118,7 +118,7 @@
     "forgotPassword": "Esqueceste a tua palavra-passe?",
     "joinUs": "Junte-se a nós hoje mesmo!",
     "orRegisterEmail": "ou regista-te com o email",
-    "siteProtected": "Este site é protegido pelos seguintes <a href='/terms-conditions' target='_blank' class='dotted-link'> Termos de serviço</a> e <a href='/privacy' target='_blank' class='dotted-link'>  Política de Privacidade </a>",
+    "siteProtected": "Este site é protegido pelos seguintes <a href='/{{lang}}/terms-conditions' target='_blank' class='dotted-link'> Termos de serviço</a> e <a href='/{{lang}}/privacy' target='_blank' class='dotted-link'>  Política de Privacidade </a>",
     "doYourLogin": "Inicia sessão",
     "loginHere": "aqui",
     "orRecoverAccount": "ou recupere a sua palavra-passe",
@@ -458,7 +458,12 @@
   },
   "seo": {
     "termsDescription": "Leia os termos que se aplicam quando usa a Linpura: a sua conta, subscrição, conduta e pagamentos.",
-    "privacyDescription": "Como a Linpura recolhe, usa e protege os seus dados pessoais, e as escolhas e direitos que tem."
+    "privacyDescription": "Como a Linpura recolhe, usa e protege os seus dados pessoais, e as escolhas e direitos que tem.",
+    "profileTitleCleaner": "{{name}}, profissional de limpeza em {{location}}",
+    "profileTitleClient": "{{name}} procura um profissional de limpeza em {{location}}",
+    "profileDescriptionCleaner": "{{name}} oferece {{services}} em {{location}}. Veja a disponibilidade e entre em contacto na Linpura.",
+    "profileDescriptionCleanerRate": "{{name}} oferece {{services}} em {{location}}, a {{rate}} {{currency}} por hora. Veja a disponibilidade e entre em contacto na Linpura.",
+    "profileDescriptionClient": "{{name}} procura {{services}} em {{location}}. Os profissionais de limpeza podem entrar em contacto na Linpura."
   },
   "adminMenu": "Admin",
   "verification": {
