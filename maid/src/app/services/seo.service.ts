@@ -234,6 +234,7 @@ export class SeoService {
             sameAs: [
               'https://www.facebook.com/people/Linpura/61595661271521/',
               'https://www.instagram.com/linpura_cleaning/',
+              'https://www.linkedin.com/company/linpura/',
             ],
           },
           {
