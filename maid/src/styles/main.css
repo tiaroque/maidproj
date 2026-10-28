@@ -331,7 +331,7 @@ em-emoji-picker {
 /* Cookies Consent  */
 #cc-main {
   /** Change font **/
-  --cc-font-family: Nunito;
+  --cc-font-family: Nunito, "Nunito Fallback", sans-serif;
 
   --cc-bg: var(--mat-sys-background);
   --cc-cookie-category-block-bg: var(--mat-sys-inverse-on-surface);
