@@ -580,6 +580,11 @@
               <p class="mt-2 leading-relaxed text-white/80">
                 {{ reason.bodyKey | translate }}
               </p>
+              @if (reason.body2Key) {
+                <p class="mt-2 leading-relaxed text-white/80">
+                  {{ reason.body2Key | translate }}
+                </p>
+              }
             </div>
           </article>
         }

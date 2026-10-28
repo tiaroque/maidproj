@@ -67,11 +67,19 @@ export class HomeComponent implements OnInit, OnDestroy {
     { key: 'landing.partnerCountryNl', slug: 'netherlands' },
     { key: 'landing.partnerCountryGb', slug: 'united-kingdom' },
   ];
-  readonly whyReasons = [
+  readonly whyReasons: {
+    titleKey: string;
+    bodyKey: string;
+    body2Key?: string;
+  }[] = [
     { titleKey: 'landing.reason1Title', bodyKey: 'landing.reason1Body' },
     { titleKey: 'landing.reason2Title', bodyKey: 'landing.reason2Body' },
     { titleKey: 'landing.reason3Title', bodyKey: 'landing.reason3Body' },
-    { titleKey: 'landing.reason4Title', bodyKey: 'landing.reason4Body' },
+    {
+      titleKey: 'landing.reason4Title',
+      bodyKey: 'landing.reason4Body',
+      body2Key: 'landing.reason4Body2',
+    },
   ];
   listService = inject(ListService);
   readonly router = inject(Router);
