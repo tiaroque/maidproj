@@ -63,6 +63,10 @@ export const manageIndexes = async () => {
     passkeys.createIndex({ credentialId: 1 }, { unique: true });
     passkeys.createIndex({ uid: 1 });
 
+    const pushSubscriptions = getDb().collection("push_subscriptions");
+    pushSubscriptions.createIndex({ endpoint: 1 }, { unique: true });
+    pushSubscriptions.createIndex({ uid: 1 });
+
     const profileLikes = getDb().collection("profile_likes");
     profileLikes.createIndex({ likerUid: 1, likedUid: 1 }, { unique: true });
     profileLikes.createIndex({ likedUid: 1, createdAt: -1 });

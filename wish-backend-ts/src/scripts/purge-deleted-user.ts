@@ -133,6 +133,7 @@ const purgeUser = async (user: PurgeUser, apply: boolean) => {
     profile_likes: { $or: [{ likerUid: uid }, { likedUid: uid }] },
     profile_visits: { $or: [{ visitorUid: uid }, { visitedUid: uid }] },
     passkeys: { uid },
+    push_subscriptions: { uid },
     webauthn_challenges: { uid },
     verifications: { uid },
     contactus: { $or: [{ userId: uid }, { userEmail: email }] },

@@ -3,6 +3,7 @@ import { auth } from "../../middleware/auth";
 import { validateGenderExists } from "../../middleware/validate-gender";
 import { getUserByUid } from "../../models/user";
 import { likeProfile, unlikeProfile } from "../../models/dating/likes";
+import { notifyProfileLiked } from "../../services/push.service";
 
 const router = Router();
 
@@ -42,7 +43,10 @@ router.post("/", auth, validateGenderExists, async (req, res, next) => {
       return res.status(403).send({ error: "Profile unavailable" });
     }
 
-    const like = await likeProfile(req.uid, likedUid);
+    const { like, isNew } = await likeProfile(req.uid, likedUid);
+    if (isNew) {
+      notifyProfileLiked(req.uid, likedUid);
+    }
     return res.status(200).send({
       liked: true,
       likedUid,

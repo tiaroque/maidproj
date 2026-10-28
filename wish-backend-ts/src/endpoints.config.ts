@@ -61,6 +61,9 @@ export default {
   cookieSecure: process.env.COOKIE_SECURE
     ? process.env.COOKIE_SECURE === "true"
     : isProduction,
+  vapidPublicKey: process.env.VAPID_PUBLIC_KEY ?? "",
+  vapidPrivateKey: process.env.VAPID_PRIVATE_KEY ?? "",
+  vapidSubject: process.env.VAPID_SUBJECT ?? "mailto:noreply@linpura.com",
   webauthnRpName: "Linpura",
   webauthnRpId:
     process.env.WEBAUTHN_RP_ID ?? (isProduction ? "linpura.com" : "localhost"),

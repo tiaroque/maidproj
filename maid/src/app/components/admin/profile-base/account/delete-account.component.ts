@@ -15,6 +15,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { firstValueFrom } from 'rxjs';
 import { AuthService } from '../../../../services/auth.service';
 import { ChatSocketsService } from '../../../../services/admin/chat-sockets.service';
+import { PushNotificationsService } from '../../../../services/push-notifications.service';
 import { ChatStore } from '../../../../services/admin/signals/store';
 import { LanguageService } from '../../../../services/shared/language-service.service';
 import { UtilsService } from '../../../../services/utils.service';
@@ -29,6 +30,7 @@ export class DeleteAccountComponent {
   private authService = inject(AuthService);
   private cookieService = inject(CookieService);
   private chatSocketsService = inject(ChatSocketsService);
+  private pushNotificationsService = inject(PushNotificationsService);
   private storeChat = inject(ChatStore);
   private languageService = inject(LanguageService);
   private utilsService = inject(UtilsService);
@@ -69,6 +71,8 @@ export class DeleteAccountComponent {
 
     this.cookieService.delete('session_admin');
     this.cookieService.delete('session');
+    // The server already dropped every subscription of the deleted account.
+    await this.pushNotificationsService.detachForLogout();
     this.chatSocketsService.disconnect();
     this.storeChat.resetStore();
     await this.router.navigate([this.languageService.defaultLang(), 'login']);

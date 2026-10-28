@@ -97,6 +97,58 @@
         (change)="toggleChatAlerts($event.checked)"
       />
     </section>
+
+    <section class="ad-card mt-6">
+      <div class="flex items-center justify-between gap-4">
+        <div class="min-w-0">
+          <h2 id="push-title" class="ad-card-title">
+            {{ "preferencesScreen.pushTitle" | translate }}
+          </h2>
+          <p class="ad-card-hint">
+            @switch (pushService.state()) {
+              @case ("denied") {
+                {{ "preferencesScreen.pushDenied" | translate }}
+              }
+              @case ("unsupported") {
+                {{ "preferencesScreen.pushUnsupported" | translate }}
+              }
+              @default {
+                {{ "preferencesScreen.pushHint" | translate }}
+              }
+            }
+          </p>
+        </div>
+        @if (
+          pushService.state() === "enabled" ||
+          pushService.state() === "disabled"
+        ) {
+          <mat-slide-toggle
+            id="toggle-push"
+            aria-labelledby="push-title"
+            [checked]="pushService.state() === 'enabled'"
+            [disabled]="savingPush()"
+            (change)="togglePush($event)"
+          />
+        }
+      </div>
+
+      @if (pushService.state() === "enabled") {
+        <ul class="mt-4 flex flex-col gap-3" aria-labelledby="push-title">
+          @for (kind of pushKinds; track kind) {
+            <li class="flex items-center justify-between gap-4">
+              <span [id]="'push-kind-' + kind">
+                {{ pushLabels[kind] | translate }}
+              </span>
+              <mat-slide-toggle
+                [attr.aria-labelledby]="'push-kind-' + kind"
+                [checked]="pushPrefs()[kind]"
+                (change)="togglePushKind(kind, $event.checked)"
+              />
+            </li>
+          }
+        </ul>
+      }
+    </section>
   </div>
 </div>
 

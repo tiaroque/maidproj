@@ -72,11 +72,11 @@ export class AuthService {
     );
   }
 
-  sessionLogout() {
+  sessionLogout(pushEndpoint?: string) {
     const url = `${environment.baseUrl}/api/users/sessionLogout`;
     return this.http.post<any>(
       url,
-      {},
+      pushEndpoint ? { pushEndpoint } : {},
       {
         withCredentials: true,
       },

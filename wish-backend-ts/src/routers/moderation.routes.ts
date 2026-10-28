@@ -4,6 +4,7 @@ import { auth } from "../middleware/auth";
 import { isModerator, requireModerator } from "../middleware/require-moderator";
 import { validateRequest } from "../middleware/validate-request";
 import { deleteAllPasskeys } from "../models/passkey";
+import { deleteAllPushSubscriptions } from "../models/push-subscription";
 import { getUserByUid, markUserRemovedByModerator } from "../models/user";
 import {
   ClusterSignal,
@@ -105,6 +106,7 @@ moderationRouter.post(
         return res.status(409).send({ error: "ALREADY_REMOVED" });
       }
       await deleteAllPasskeys(uid);
+      await deleteAllPushSubscriptions(uid);
       res.status(204).send();
     } catch (error) {
       next(error);

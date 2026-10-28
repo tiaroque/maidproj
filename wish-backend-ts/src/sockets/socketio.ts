@@ -11,6 +11,7 @@ import { ChatMessageDTO } from "../interfaces/main-interfaces";
 import config from "../endpoints.config";
 import { readSessionFromCookies } from "../auth/session";
 import { flagLinks } from "../services/link-detection.service";
+import { notifyChatMessage } from "../services/push.service";
 
 let io: ServerIO;
 
@@ -179,6 +180,10 @@ const handleIncomingMessage = async (
   io.to(userRoom(receiver))
     .except(conversationId)
     .emit(`${receiver}_message`, { ...message, unreadCount });
+
+  if (!receiverIsViewing) {
+    notifyChatMessage(message);
+  }
 };
 
 export const setSocketsConfiguration = () => {

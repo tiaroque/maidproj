@@ -13,14 +13,18 @@ export const likeProfile = async (likerUid: string, likedUid: string) => {
   const createdAt = new Date();
 
   try {
-    return await likes().findOneAndUpdate(
+    const result = await likes().findOneAndUpdate(
       { likerUid, likedUid },
       { $setOnInsert: { likerUid, likedUid, createdAt } },
-      { upsert: true, returnDocument: "after" }
+      { upsert: true, returnDocument: "after", includeResultMetadata: true }
     );
+    return {
+      like: result.value,
+      isNew: !result.lastErrorObject?.updatedExisting,
+    };
   } catch (error) {
     if (error instanceof MongoServerError && error.code === 11000) {
-      return likes().findOne({ likerUid, likedUid });
+      return { like: await likes().findOne({ likerUid, likedUid }), isNew: false };
     }
     throw error;
   }

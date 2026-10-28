@@ -231,6 +231,15 @@
     "passkeyLimit": "You can save up to 10 passkeys.",
     "chatAlertsTitle": "Chat alerts",
     "chatAlertsHint": "Play a sound and flash the browser tab when a new message arrives. Conversations you muted individually stay muted.",
+    "pushTitle": "Push notifications",
+    "pushHint": "Get notified on this device about new messages, likes and profile visits, even when Linpura is closed.",
+    "pushEnable": "Turn on",
+    "pushDisable": "Turn off",
+    "pushDenied": "Notifications are blocked for this site. Allow them in your browser settings to turn them on.",
+    "pushUnsupported": "This browser does not support push notifications. On iPhone and iPad, add Linpura to your Home Screen first.",
+    "pushChat": "New messages",
+    "pushLikes": "Likes",
+    "pushVisits": "Profile visits",
     "deleteAccountTitle": "Delete account",
     "deleteAccountHint": "Permanently close your account. Your profile will no longer be visible to anyone.",
     "deleteAccount": "Delete account",
@@ -569,6 +578,8 @@
     "kitchenAppliances": "Oven and fridge",
     "cooking": "Cooking",
     "office": "Office cleaning",
+    "garage": "Garage cleaning",
+    "stairs": "Stair cleaning",
     "ecoProducts": "Eco-friendly products"
   },
   "days": {
@@ -715,5 +726,8 @@
     "cleaner": "Add your services, hourly rate and availability so clients can find you in search.",
     "client": "Tell cleaners what you need: services, budget and availability. It helps them see if they are a good fit.",
     "cta": "Complete profile"
+  },
+  "pushBanner": {
+    "text": "Turn on push notifications to hear about new messages, likes and profile visits, even when Linpura is closed."
   }
 }

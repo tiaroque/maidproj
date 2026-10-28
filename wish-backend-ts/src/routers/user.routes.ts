@@ -72,6 +72,10 @@ import {
 import { flagLinks } from "../services/link-detection.service";
 import passkeyRouter from "./passkey.routes";
 import { deleteAllPasskeys } from "../models/passkey";
+import {
+  deleteAllPushSubscriptions,
+  deletePushSubscription,
+} from "../models/push-subscription";
 import { refreshPresenceBetween } from "../sockets/socketio";
 
 const usersRouter = Router();
@@ -404,6 +408,11 @@ const clearSession = (req: Request, res: Response) => {
 
 usersRouter.post("/sessionLogout", async (req, res, next) => {
   try {
+    // Only this browser stops receiving pushes; the user's other devices keep theirs.
+    const pushEndpoint = req.body?.pushEndpoint;
+    if (req.session?.uid && typeof pushEndpoint === "string") {
+      await deletePushSubscription(req.session.uid, pushEndpoint);
+    }
     clearSession(req, res);
     res.status(200).send();
   } catch (error) {
@@ -417,6 +426,7 @@ usersRouter.delete("/me", auth, async (req, res, next) => {
       return res.status(404).send({ error: "User not found" });
     }
     await deleteAllPasskeys(req.uid);
+    await deleteAllPushSubscriptions(req.uid);
 
     clearSession(req, res);
     res.status(200).send();

@@ -42,6 +42,7 @@ const PUBLIC_HIDDEN_FIELDS = [
   "isFake",
   "additionalUserInfo",
   "blocked",
+  "pushPrefs",
 ];
 
 const excludeUserFields = (fields: string[]) =>
@@ -311,6 +312,33 @@ export const setChatAlertsDisabled = async (uid: string, disabled: boolean) => {
   const result = await getDb()
     .collection("users")
     .updateOne({ uid }, { $set: { chatAlertsDisabled: disabled } });
+  return result.matchedCount === 1;
+};
+
+export type PushKind = "chat" | "likes" | "visits";
+
+export type PushPrefs = Record<PushKind, boolean>;
+
+export const defaultPushPrefs: PushPrefs = {
+  chat: true,
+  likes: true,
+  visits: true,
+};
+
+export const getPushPrefs = async (uid: string): Promise<PushPrefs> => {
+  const doc = await getDb()
+    .collection("users")
+    .findOne({ uid }, { projection: { _id: 0, pushPrefs: 1 } });
+  return { ...defaultPushPrefs, ...(doc?.pushPrefs ?? {}) };
+};
+
+export const setPushPrefs = async (uid: string, prefs: Partial<PushPrefs>) => {
+  const update = Object.fromEntries(
+    Object.entries(prefs).map(([kind, enabled]) => [`pushPrefs.${kind}`, enabled])
+  );
+  const result = await getDb()
+    .collection("users")
+    .updateOne({ uid }, { $set: update });
   return result.matchedCount === 1;
 };
 

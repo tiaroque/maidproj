@@ -1706,12 +1706,84 @@
           <context context-type="linenumber">237</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="preferencesScreen.pushTitle" datatype="html">
+        <source>Push notifications</source>
+        <target>Notificaciones push</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">238</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.pushHint" datatype="html">
+        <source>Get notified on this device about new messages, likes and profile visits, even when Linpura is closed.</source>
+        <target>Recibe avisos en este dispositivo sobre mensajes nuevos, me gusta y visitas al perfil, incluso con Linpura cerrado.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">239</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.pushEnable" datatype="html">
+        <source>Turn on</source>
+        <target>Activar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">240</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.pushDisable" datatype="html">
+        <source>Turn off</source>
+        <target>Desactivar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">241</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.pushDenied" datatype="html">
+        <source>Notifications are blocked for this site. Allow them in your browser settings to turn them on.</source>
+        <target>Las notificaciones están bloqueadas para este sitio. Permítelas en los ajustes del navegador para activarlas.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">242</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.pushUnsupported" datatype="html">
+        <source>This browser does not support push notifications. On iPhone and iPad, add Linpura to your Home Screen first.</source>
+        <target>Este navegador no admite notificaciones push. En iPhone y iPad, añade primero Linpura a la pantalla de inicio.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">243</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.pushChat" datatype="html">
+        <source>New messages</source>
+        <target>Mensajes nuevos</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">244</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.pushLikes" datatype="html">
+        <source>Likes</source>
+        <target>Me gusta</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">245</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="preferencesScreen.pushVisits" datatype="html">
+        <source>Profile visits</source>
+        <target>Visitas al perfil</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">246</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="preferencesScreen.deleteAccountTitle" datatype="html">
         <source>Delete account</source>
         <target>Eliminar cuenta</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">238</context>
+          <context context-type="linenumber">247</context>
         </context-group>
       </trans-unit>
       <trans-unit id="preferencesScreen.deleteAccountHint" datatype="html">
@@ -1719,7 +1791,7 @@
         <target>Cierra tu cuenta de forma permanente. Tu perfil dejará de ser visible para cualquier persona.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">239</context>
+          <context context-type="linenumber">248</context>
         </context-group>
       </trans-unit>
       <trans-unit id="preferencesScreen.deleteAccount" datatype="html">
@@ -1727,7 +1799,7 @@
         <target>Eliminar cuenta</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">240</context>
+          <context context-type="linenumber">249</context>
         </context-group>
       </trans-unit>
       <trans-unit id="preferencesScreen.deleteAccountConfirm" datatype="html">
@@ -1735,7 +1807,7 @@
         <target>¿Eliminar tu cuenta? Se cerrará tu sesión y ya no podrás iniciar sesión. Esta acción no se puede deshacer.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">241</context>
+          <context context-type="linenumber">250</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chatScreen.block" datatype="html">
@@ -1743,7 +1815,7 @@
         <target>Bloquear</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">244</context>
+          <context context-type="linenumber">253</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chatScreen.moreMessage" datatype="html">
@@ -1751,7 +1823,7 @@
         <target>más mensajes</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">245</context>
+          <context context-type="linenumber">254</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chatScreen.newMessage" datatype="html">
@@ -1759,7 +1831,7 @@
         <target>¡nuevo mensaje!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">246</context>
+          <context context-type="linenumber">255</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chatScreen.isTyping" datatype="html">
@@ -1767,7 +1839,7 @@
         <target> está escribiendo</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">247</context>
+          <context context-type="linenumber">256</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chatScreen.selectConversation" datatype="html">
@@ -1775,7 +1847,7 @@
         <target>Seleccione una conversación</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">248</context>
+          <context context-type="linenumber">257</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chatScreen.noContacts" datatype="html">
@@ -1783,7 +1855,7 @@
         <target>Todavía no has contactado a nadie.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">249</context>
+          <context context-type="linenumber">258</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chatScreen.blockUser" datatype="html">
@@ -1791,7 +1863,7 @@
         <target>¿Quieres bloquear al usuario?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">250</context>
+          <context context-type="linenumber">259</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chatScreen.writeMessage" datatype="html">
@@ -1799,7 +1871,7 @@
         <target>Escribir un mensaje</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">251</context>
+          <context context-type="linenumber">260</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chatScreen.disableAlert" datatype="html">
@@ -1807,7 +1879,7 @@
         <target>Desactivar alerta</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">252</context>
+          <context context-type="linenumber">261</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chatScreen.enableAlerts" datatype="html">
@@ -1815,7 +1887,7 @@
         <target>Activar alerta</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">253</context>
+          <context context-type="linenumber">262</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chatScreen.online" datatype="html">
@@ -1823,7 +1895,7 @@
         <target>En línea</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">254</context>
+          <context context-type="linenumber">263</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chatScreen.offline" datatype="html">
@@ -1831,7 +1903,7 @@
         <target>Desconectado</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">255</context>
+          <context context-type="linenumber">264</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chatScreen.all" datatype="html">
@@ -1839,7 +1911,7 @@
         <target>Todas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">256</context>
+          <context context-type="linenumber">265</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chatScreen.favorites" datatype="html">
@@ -1847,7 +1919,7 @@
         <target>Favoritos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">257</context>
+          <context context-type="linenumber">266</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chatScreen.noFavorites" datatype="html">
@@ -1855,7 +1927,7 @@
         <target>Todavía no hay conversaciones favoritas.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">258</context>
+          <context context-type="linenumber">267</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chatScreen.addFavorite" datatype="html">
@@ -1863,7 +1935,7 @@
         <target>Añadir a favoritos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">259</context>
+          <context context-type="linenumber">268</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chatScreen.removeFavorite" datatype="html">
@@ -1871,7 +1943,7 @@
         <target>Quitar de favoritos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">260</context>
+          <context context-type="linenumber">269</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chatScreen.deletePhoto" datatype="html">
@@ -1879,7 +1951,7 @@
         <target>Eliminar foto</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">261</context>
+          <context context-type="linenumber">270</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chatScreen.deletePhotoConfirm" datatype="html">
@@ -1887,7 +1959,7 @@
         <target>¿Eliminar esta foto? Se quitará para los dos.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">262</context>
+          <context context-type="linenumber">271</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chatScreen.photoDeleted" datatype="html">
@@ -1895,7 +1967,7 @@
         <target>Foto eliminada</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">263</context>
+          <context context-type="linenumber">272</context>
         </context-group>
       </trans-unit>
       <trans-unit id="optional" datatype="html">
@@ -1903,7 +1975,7 @@
         <target>Opcional</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">265</context>
+          <context context-type="linenumber">274</context>
         </context-group>
       </trans-unit>
       <trans-unit id="noInformation" datatype="html">
@@ -1911,7 +1983,7 @@
         <target>Aún no indicado</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">266</context>
+          <context context-type="linenumber">275</context>
         </context-group>
       </trans-unit>
       <trans-unit id="connect" datatype="html">
@@ -1919,7 +1991,7 @@
         <target>Conectar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">267</context>
+          <context context-type="linenumber">276</context>
         </context-group>
       </trans-unit>
       <trans-unit id="likeProfile" datatype="html">
@@ -1927,7 +1999,7 @@
         <target>Me gusta</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">268</context>
+          <context context-type="linenumber">277</context>
         </context-group>
       </trans-unit>
       <trans-unit id="unlikeProfile" datatype="html">
@@ -1935,7 +2007,7 @@
         <target>Ya no me gusta</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">269</context>
+          <context context-type="linenumber">278</context>
         </context-group>
       </trans-unit>
       <trans-unit id="likeFailed" datatype="html">
@@ -1943,7 +2015,7 @@
         <target>No se pudo guardar el me gusta</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">270</context>
+          <context context-type="linenumber">279</context>
         </context-group>
       </trans-unit>
       <trans-unit id="visitedProfile" datatype="html">
@@ -1951,7 +2023,7 @@
         <target>Visitado</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">271</context>
+          <context context-type="linenumber">280</context>
         </context-group>
       </trans-unit>
       <trans-unit id="latestUsers" datatype="html">
@@ -1959,7 +2031,7 @@
         <target>Últimos usuarios</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">272</context>
+          <context context-type="linenumber">281</context>
         </context-group>
       </trans-unit>
       <trans-unit id="latestUsersHint" datatype="html">
@@ -1967,7 +2039,7 @@
         <target>Personas que se unieron recientemente</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">273</context>
+          <context context-type="linenumber">282</context>
         </context-group>
       </trans-unit>
       <trans-unit id="latestUsersEmpty" datatype="html">
@@ -1975,7 +2047,7 @@
         <target>Aún no hay miembros recientes que mostrar.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">274</context>
+          <context context-type="linenumber">283</context>
         </context-group>
       </trans-unit>
       <trans-unit id="newThisWeek" datatype="html">
@@ -1983,7 +2055,7 @@
         <target>Nuevos esta semana</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">275</context>
+          <context context-type="linenumber">284</context>
         </context-group>
       </trans-unit>
       <trans-unit id="newArrivals" datatype="html">
@@ -1991,7 +2063,7 @@
         <target>Nuevas llegadas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">276</context>
+          <context context-type="linenumber">285</context>
         </context-group>
       </trans-unit>
       <trans-unit id="viewAllNew" datatype="html">
@@ -1999,7 +2071,7 @@
         <target>Ver todos los nuevos miembros</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">277</context>
+          <context context-type="linenumber">286</context>
         </context-group>
       </trans-unit>
       <trans-unit id="privacyPolicy" datatype="html">
@@ -2007,7 +2079,7 @@
         <target>Política de privacidad</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">278</context>
+          <context context-type="linenumber">287</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cookiePreferences" datatype="html">
@@ -2015,7 +2087,7 @@
         <target>Preferencias de cookies</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">279</context>
+          <context context-type="linenumber">288</context>
         </context-group>
       </trans-unit>
       <trans-unit id="filters" datatype="html">
@@ -2023,7 +2095,7 @@
         <target>Filtros</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">280</context>
+          <context context-type="linenumber">289</context>
         </context-group>
       </trans-unit>
       <trans-unit id="charsCount" datatype="html">
@@ -2031,7 +2103,7 @@
         <target>{{used}} / {{max}}</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">281</context>
+          <context context-type="linenumber">290</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileEdit.completeness" datatype="html">
@@ -2039,7 +2111,7 @@
         <target>Completitud del perfil</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">283</context>
+          <context context-type="linenumber">292</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileEdit.fieldsFilled" datatype="html">
@@ -2047,7 +2119,7 @@
         <target>{{filled}} de {{total}} campos rellenados</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">284</context>
+          <context context-type="linenumber">293</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileEdit.requiredMissing" datatype="html">
@@ -2055,7 +2127,7 @@
         <target>{{count}} campos obligatorios aún vacíos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">285</context>
+          <context context-type="linenumber">294</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileEdit.allRequired" datatype="html">
@@ -2063,7 +2135,7 @@
         <target>Los datos obligatorios están completos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">286</context>
+          <context context-type="linenumber">295</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileEdit.unsaved" datatype="html">
@@ -2071,7 +2143,7 @@
         <target>Tienes cambios sin guardar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">287</context>
+          <context context-type="linenumber">296</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileEdit.detailsHint" datatype="html">
@@ -2079,7 +2151,7 @@
         <target>Dónde estás.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">288</context>
+          <context context-type="linenumber">297</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileEdit.dobHint" datatype="html">
@@ -2087,7 +2159,7 @@
         <target>Solo se usa para confirmar que tienes 18 años o más. Nunca se muestra en tu perfil.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">289</context>
+          <context context-type="linenumber">298</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileEdit.sectionFilled" datatype="html">
@@ -2095,7 +2167,7 @@
         <target>{{filled}} de {{total}} rellenados</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">290</context>
+          <context context-type="linenumber">299</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileEdit.photoCount" datatype="html">
@@ -2103,7 +2175,7 @@
         <target>{{count}} fotos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">291</context>
+          <context context-type="linenumber">300</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileEdit.completePercent" datatype="html">
@@ -2111,7 +2183,7 @@
         <target>{{percent}}% completo</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">292</context>
+          <context context-type="linenumber">301</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileEdit.managePhotos" datatype="html">
@@ -2119,7 +2191,7 @@
         <target>Gestionar fotos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">293</context>
+          <context context-type="linenumber">302</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileEdit.workHint" datatype="html">
@@ -2127,7 +2199,7 @@
         <target>Lo primero que ven los clientes al buscar.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">294</context>
+          <context context-type="linenumber">303</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileEdit.workHintClient" datatype="html">
@@ -2135,7 +2207,7 @@
         <target>Ayuda a los profesionales a saber si encajan contigo.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">295</context>
+          <context context-type="linenumber">304</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileEdit.aboutHint" datatype="html">
@@ -2143,7 +2215,7 @@
         <target>Idiomas que hablas y una breve presentación.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">296</context>
+          <context context-type="linenumber">305</context>
         </context-group>
       </trans-unit>
       <trans-unit id="photosCount" datatype="html">
@@ -2151,7 +2223,7 @@
         <target>{{count}} de {{max}} fotos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">298</context>
+          <context context-type="linenumber">307</context>
         </context-group>
       </trans-unit>
       <trans-unit id="photosEmptyTitle" datatype="html">
@@ -2159,7 +2231,7 @@
         <target>Aún no hay fotos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">299</context>
+          <context context-type="linenumber">308</context>
         </context-group>
       </trans-unit>
       <trans-unit id="photosEmptyHint" datatype="html">
@@ -2167,7 +2239,7 @@
         <target>Añade hasta 5 fotos. Los perfiles con foto reciben más conversaciones.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">300</context>
+          <context context-type="linenumber">309</context>
         </context-group>
       </trans-unit>
       <trans-unit id="photosRemaining" datatype="html">
@@ -2175,7 +2247,7 @@
         <target>{{count}} espacios libres</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">301</context>
+          <context context-type="linenumber">310</context>
         </context-group>
       </trans-unit>
       <trans-unit id="photosSlot" datatype="html">
@@ -2183,7 +2255,7 @@
         <target>Añadir una foto</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">302</context>
+          <context context-type="linenumber">311</context>
         </context-group>
       </trans-unit>
       <trans-unit id="photosEmptyOnProfile" datatype="html">
@@ -2191,7 +2263,7 @@
         <target>Este miembro aún no ha añadido fotos.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">303</context>
+          <context context-type="linenumber">312</context>
         </context-group>
       </trans-unit>
       <trans-unit id="blockedCount" datatype="html">
@@ -2199,7 +2271,7 @@
         <target>{{count}} bloqueados</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">304</context>
+          <context context-type="linenumber">313</context>
         </context-group>
       </trans-unit>
       <trans-unit id="preferencesEmptyHint" datatype="html">
@@ -2207,7 +2279,7 @@
         <target>No has bloqueado a nadie. Los miembros bloqueados aparecerán aquí.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">305</context>
+          <context context-type="linenumber">314</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.about" datatype="html">
@@ -2215,7 +2287,7 @@
         <target>Sobre mí</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">307</context>
+          <context context-type="linenumber">316</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.atAGlance" datatype="html">
@@ -2223,7 +2295,7 @@
         <target>De un vistazo</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">308</context>
+          <context context-type="linenumber">317</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.message" datatype="html">
@@ -2231,7 +2303,7 @@
         <target>Mensaje</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">309</context>
+          <context context-type="linenumber">318</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.registerToContact" datatype="html">
@@ -2239,7 +2311,7 @@
         <target>Regístrate para contactar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">310</context>
+          <context context-type="linenumber">319</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.yourProfile" datatype="html">
@@ -2247,7 +2319,7 @@
         <target>Tu perfil</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">311</context>
+          <context context-type="linenumber">320</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.completePercent" datatype="html">
@@ -2255,7 +2327,7 @@
         <target>{{percent}}% completo</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">312</context>
+          <context context-type="linenumber">321</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.scoreHint" datatype="html">
@@ -2263,7 +2335,7 @@
         <target>{{filled}} de {{total}} datos rellenados</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">313</context>
+          <context context-type="linenumber">322</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.nextToAdd" datatype="html">
@@ -2271,7 +2343,7 @@
         <target>Aún falta</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">314</context>
+          <context context-type="linenumber">323</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.addPhotos" datatype="html">
@@ -2279,7 +2351,7 @@
         <target>Añadir fotos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">315</context>
+          <context context-type="linenumber">324</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.addBio" datatype="html">
@@ -2287,7 +2359,7 @@
         <target>Escribir una bio</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">316</context>
+          <context context-type="linenumber">325</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.addDetails" datatype="html">
@@ -2295,7 +2367,7 @@
         <target>Completar detalles</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">317</context>
+          <context context-type="linenumber">326</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.photoSlot" datatype="html">
@@ -2303,7 +2375,7 @@
         <target>Foto {{n}}</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">318</context>
+          <context context-type="linenumber">327</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.aboutHintOwn" datatype="html">
@@ -2311,7 +2383,7 @@
         <target>Una breve presentación ayuda a que te contacten. Cuenta cómo trabajas y qué es importante para ti.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">319</context>
+          <context context-type="linenumber">328</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.aboutHintOther" datatype="html">
@@ -2319,7 +2391,7 @@
         <target>Aún no hay presentación.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">320</context>
+          <context context-type="linenumber">329</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.aboutWrite" datatype="html">
@@ -2327,7 +2399,7 @@
         <target>Escribir una bio</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">321</context>
+          <context context-type="linenumber">330</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.addField" datatype="html">
@@ -2335,7 +2407,7 @@
         <target>Añadir</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">322</context>
+          <context context-type="linenumber">331</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.missingCount" datatype="html">
@@ -2343,7 +2415,7 @@
         <target>{{count}} aún vacíos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">323</context>
+          <context context-type="linenumber">332</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.statPhotos" datatype="html">
@@ -2351,7 +2423,7 @@
         <target>Fotos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">324</context>
+          <context context-type="linenumber">333</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.statDetails" datatype="html">
@@ -2359,7 +2431,7 @@
         <target>Datos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">325</context>
+          <context context-type="linenumber">334</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.roleCleaner" datatype="html">
@@ -2367,7 +2439,7 @@
         <target>Profesional de limpieza</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">326</context>
+          <context context-type="linenumber">335</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.roleClient" datatype="html">
@@ -2375,7 +2447,7 @@
         <target>Cliente</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">327</context>
+          <context context-type="linenumber">336</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.addServices" datatype="html">
@@ -2383,7 +2455,7 @@
         <target>Añadir tus servicios</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">328</context>
+          <context context-type="linenumber">337</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.addAnnouncement" datatype="html">
@@ -2391,7 +2463,7 @@
         <target>Añadir un anuncio</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">329</context>
+          <context context-type="linenumber">338</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.addJobRequest" datatype="html">
@@ -2399,7 +2471,7 @@
         <target>Añadir una solicitud</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">330</context>
+          <context context-type="linenumber">339</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.statServices" datatype="html">
@@ -2407,7 +2479,7 @@
         <target>Servicios</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">331</context>
+          <context context-type="linenumber">340</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.availability" datatype="html">
@@ -2415,7 +2487,7 @@
         <target>Disponibilidad</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">332</context>
+          <context context-type="linenumber">341</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.availabilityHintOwn" datatype="html">
@@ -2423,7 +2495,7 @@
         <target>Añade los días y horas que mejor te vengan.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">333</context>
+          <context context-type="linenumber">342</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.availabilityHintOther" datatype="html">
@@ -2431,7 +2503,7 @@
         <target>Aún no hay disponibilidad.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">334</context>
+          <context context-type="linenumber">343</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.workDetails" datatype="html">
@@ -2439,7 +2511,7 @@
         <target>Detalles del trabajo</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">335</context>
+          <context context-type="linenumber">344</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.availabilityAreas" datatype="html">
@@ -2447,7 +2519,7 @@
         <target>Disponibilidad y zonas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">336</context>
+          <context context-type="linenumber">345</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.yearsCount" datatype="html">
@@ -2455,7 +2527,7 @@
         <target>{{count}} años</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">337</context>
+          <context context-type="linenumber">346</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profileView.experienceLine" datatype="html">
@@ -2463,7 +2535,7 @@
         <target>{{count}} años de experiencia</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">338</context>
+          <context context-type="linenumber">347</context>
         </context-group>
       </trans-unit>
       <trans-unit id="list.discover" datatype="html">
@@ -2471,7 +2543,7 @@
         <target>Descubrir</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">341</context>
+          <context context-type="linenumber">350</context>
         </context-group>
       </trans-unit>
       <trans-unit id="list.showing" datatype="html">
@@ -2479,7 +2551,7 @@
         <target>Mostrando</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">342</context>
+          <context context-type="linenumber">351</context>
         </context-group>
       </trans-unit>
       <trans-unit id="list.of" datatype="html">
@@ -2487,7 +2559,7 @@
         <target>de</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">343</context>
+          <context context-type="linenumber">352</context>
         </context-group>
       </trans-unit>
       <trans-unit id="list.members" datatype="html">
@@ -2495,7 +2567,7 @@
         <target>miembros</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">344</context>
+          <context context-type="linenumber">353</context>
         </context-group>
       </trans-unit>
       <trans-unit id="list.showingMembers" datatype="html">
@@ -2503,7 +2575,7 @@
         <target>Mostrando {{count}} miembros</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">345</context>
+          <context context-type="linenumber">354</context>
         </context-group>
       </trans-unit>
       <trans-unit id="list.showingMatching" datatype="html">
@@ -2511,7 +2583,7 @@
         <target>Mostrando {{count}} de {{total}} miembros que coinciden con tus preferencias</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">346</context>
+          <context context-type="linenumber">355</context>
         </context-group>
       </trans-unit>
       <trans-unit id="list.searchPlaceholder" datatype="html">
@@ -2519,7 +2591,7 @@
         <target>Anuncios, solicitudes, palabras clave...</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">347</context>
+          <context context-type="linenumber">356</context>
         </context-group>
       </trans-unit>
       <trans-unit id="list.filtersActive" datatype="html">
@@ -2527,7 +2599,7 @@
         <target>{{count}} filtros activos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">348</context>
+          <context context-type="linenumber">357</context>
         </context-group>
       </trans-unit>
       <trans-unit id="list.recent" datatype="html">
@@ -2535,7 +2607,7 @@
         <target>Recientes</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">349</context>
+          <context context-type="linenumber">358</context>
         </context-group>
       </trans-unit>
       <trans-unit id="list.view" datatype="html">
@@ -2543,7 +2615,7 @@
         <target>Ver</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">350</context>
+          <context context-type="linenumber">359</context>
         </context-group>
       </trans-unit>
       <trans-unit id="list.noResultsHint" datatype="html">
@@ -2551,7 +2623,7 @@
         <target>Ningún miembro coincide con tu búsqueda en este momento. Prueba con otro término de búsqueda.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">351</context>
+          <context context-type="linenumber">360</context>
         </context-group>
       </trans-unit>
       <trans-unit id="list.noResultsFiltered" datatype="html">
@@ -2559,7 +2631,7 @@
         <target>Ningún miembro coincide con tus filtros. Elimina uno o amplía tu búsqueda.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">352</context>
+          <context context-type="linenumber">361</context>
         </context-group>
       </trans-unit>
       <trans-unit id="footer.legal" datatype="html">
@@ -2567,7 +2639,7 @@
         <target>Legal</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">355</context>
+          <context context-type="linenumber">364</context>
         </context-group>
       </trans-unit>
       <trans-unit id="footer.terms" datatype="html">
@@ -2575,7 +2647,7 @@
         <target>Términos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">356</context>
+          <context context-type="linenumber">365</context>
         </context-group>
       </trans-unit>
       <trans-unit id="footer.privacy" datatype="html">
@@ -2583,7 +2655,7 @@
         <target>Privacidad</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">357</context>
+          <context context-type="linenumber">366</context>
         </context-group>
       </trans-unit>
       <trans-unit id="footer.cookies" datatype="html">
@@ -2591,7 +2663,7 @@
         <target>Cookies</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">358</context>
+          <context context-type="linenumber">367</context>
         </context-group>
       </trans-unit>
       <trans-unit id="footer.manageCookies" datatype="html">
@@ -2599,7 +2671,7 @@
         <target>Gestionar cookies</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">359</context>
+          <context context-type="linenumber">368</context>
         </context-group>
       </trans-unit>
       <trans-unit id="footer.social" datatype="html">
@@ -2607,7 +2679,7 @@
         <target>Redes sociales</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">360</context>
+          <context context-type="linenumber">369</context>
         </context-group>
       </trans-unit>
       <trans-unit id="footer.company" datatype="html">
@@ -2615,7 +2687,7 @@
         <target>Empresa</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">361</context>
+          <context context-type="linenumber">370</context>
         </context-group>
       </trans-unit>
       <trans-unit id="footer.contact" datatype="html">
@@ -2623,7 +2695,7 @@
         <target>Contacto</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">362</context>
+          <context context-type="linenumber">371</context>
         </context-group>
       </trans-unit>
       <trans-unit id="contact.title" datatype="html">
@@ -2631,7 +2703,7 @@
         <target>Contáctanos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">365</context>
+          <context context-type="linenumber">374</context>
         </context-group>
       </trans-unit>
       <trans-unit id="contact.name" datatype="html">
@@ -2639,7 +2711,7 @@
         <target>Nombre</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">366</context>
+          <context context-type="linenumber">375</context>
         </context-group>
       </trans-unit>
       <trans-unit id="contact.message" datatype="html">
@@ -2647,7 +2719,7 @@
         <target>Mensaje</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">367</context>
+          <context context-type="linenumber">376</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.kicker" datatype="html">
@@ -2655,7 +2727,7 @@
         <target>Limpieza del hogar, sin complicaciones</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">370</context>
+          <context context-type="linenumber">379</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.heroTitle" datatype="html">
@@ -2663,7 +2735,7 @@
         <target>Encuentra a un profesional de limpieza de confianza cerca de ti.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">371</context>
+          <context context-type="linenumber">380</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.heroSubtitle" datatype="html">
@@ -2671,7 +2743,7 @@
         <target>Compara profesionales verificados por servicio, tarifa por hora y disponibilidad, y acordad los detalles en un chat privado.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">372</context>
+          <context context-type="linenumber">381</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.trustBadge" datatype="html">
@@ -2679,7 +2751,7 @@
         <target>Cada insignia, revisada por nuestro equipo</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">373</context>
+          <context context-type="linenumber">382</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.verifyKicker" datatype="html">
@@ -2687,7 +2759,7 @@
         <target>La confianza primero</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">374</context>
+          <context context-type="linenumber">383</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.verifyTitle" datatype="html">
@@ -2695,7 +2767,7 @@
         <target>Sabe quién entra en tu casa</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">375</context>
+          <context context-type="linenumber">384</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.verifyLead" datatype="html">
@@ -2703,7 +2775,7 @@
         <target>Cada insignia de verificación se obtiene con un selfie revisado por una persona real de nuestro equipo, para que distingas los perfiles auténticos de un vistazo.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">376</context>
+          <context context-type="linenumber">385</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.verifyStep1Title" datatype="html">
@@ -2711,7 +2783,7 @@
         <target>Copia una pose al azar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">377</context>
+          <context context-type="linenumber">386</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.verifyStep1Body" datatype="html">
@@ -2719,7 +2791,7 @@
         <target>Pedimos un selfie imitando una pose elegida al azar, así una foto antigua o prestada no sirve.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">378</context>
+          <context context-type="linenumber">387</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.verifyStep2Title" datatype="html">
@@ -2727,7 +2799,7 @@
         <target>Revisado por una persona</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">379</context>
+          <context context-type="linenumber">388</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.verifyStep2Body" datatype="html">
@@ -2735,7 +2807,7 @@
         <target>Un miembro de nuestro equipo compara el selfie con la foto de perfil. Sin conjeturas automáticas.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">380</context>
+          <context context-type="linenumber">389</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.verifyStep3Title" datatype="html">
@@ -2743,7 +2815,7 @@
         <target>Consigue la insignia</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">381</context>
+          <context context-type="linenumber">390</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.verifyStep3Body" datatype="html">
@@ -2751,7 +2823,7 @@
         <target>Los perfiles aprobados muestran una insignia de verificado, para que sepas quién es real antes de abrirle la puerta.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">382</context>
+          <context context-type="linenumber">391</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.verifyPrivacy" datatype="html">
@@ -2759,7 +2831,7 @@
         <target>Tu selfie es privado: nunca se muestra a otros miembros y se elimina en cuanto termina la revisión.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">383</context>
+          <context context-type="linenumber">392</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.joinFree" datatype="html">
@@ -2767,7 +2839,7 @@
         <target>Únete gratis</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">384</context>
+          <context context-type="linenumber">393</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.browseProfiles" datatype="html">
@@ -2775,7 +2847,7 @@
         <target>Ver profesionales</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">385</context>
+          <context context-type="linenumber">394</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.countries" datatype="html">
@@ -2783,7 +2855,7 @@
         <target>Países</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">386</context>
+          <context context-type="linenumber">395</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.verified" datatype="html">
@@ -2791,7 +2863,7 @@
         <target>Verificado</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">387</context>
+          <context context-type="linenumber">396</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.private" datatype="html">
@@ -2799,7 +2871,7 @@
         <target>Privado</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">388</context>
+          <context context-type="linenumber">397</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.chat" datatype="html">
@@ -2807,7 +2879,7 @@
         <target>Chat</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">389</context>
+          <context context-type="linenumber">398</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.membersCount" datatype="html">
@@ -2815,7 +2887,7 @@
         <target>{{count}} miembros registrados</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">390</context>
+          <context context-type="linenumber">399</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.peopleLooking" datatype="html">
@@ -2823,7 +2895,7 @@
         <target>Profesionales cerca de ti</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">391</context>
+          <context context-type="linenumber">400</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.peopleLookingHint" datatype="html">
@@ -2831,7 +2903,7 @@
         <target>Consulta servicios, tarifas y disponibilidad antes de escribir. Regístrate para empezar una conversación.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">392</context>
+          <context context-type="linenumber">401</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.whyTitle" datatype="html">
@@ -2839,7 +2911,7 @@
         <target>Por qué eligen Linpura</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">393</context>
+          <context context-type="linenumber">402</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.europeTitle" datatype="html">
@@ -2847,7 +2919,7 @@
         <target>Profesionales de limpieza en toda Europa</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">394</context>
+          <context context-type="linenumber">403</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.partnerCountryPt" datatype="html">
@@ -2855,7 +2927,7 @@
         <target>Portugal</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">395</context>
+          <context context-type="linenumber">404</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.partnerCountryDe" datatype="html">
@@ -2863,7 +2935,7 @@
         <target>Alemania</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">396</context>
+          <context context-type="linenumber">405</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.partnerCountryFr" datatype="html">
@@ -2871,7 +2943,7 @@
         <target>Francia</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">397</context>
+          <context context-type="linenumber">406</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.partnerCountryEs" datatype="html">
@@ -2879,7 +2951,7 @@
         <target>España</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">398</context>
+          <context context-type="linenumber">407</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.partnerCountryIt" datatype="html">
@@ -2887,7 +2959,7 @@
         <target>Italia</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">399</context>
+          <context context-type="linenumber">408</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.partnerCountryCh" datatype="html">
@@ -2895,7 +2967,7 @@
         <target>Suiza</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">400</context>
+          <context context-type="linenumber">409</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.partnerCountryNl" datatype="html">
@@ -2903,7 +2975,7 @@
         <target>Países Bajos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">401</context>
+          <context context-type="linenumber">410</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.partnerCountryGb" datatype="html">
@@ -2911,7 +2983,7 @@
         <target>Reino Unido</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">402</context>
+          <context context-type="linenumber">411</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.europeSubtitle" datatype="html">
@@ -2919,7 +2991,7 @@
         <target>Ayuda local, vivas donde vivas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">403</context>
+          <context context-type="linenumber">412</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.europeBody" datatype="html">
@@ -2927,7 +2999,7 @@
         <target>Linpura conecta hogares y profesionales de limpieza independientes en 8 países, y pronto llegarán más ciudades.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">404</context>
+          <context context-type="linenumber">413</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.createProfile" datatype="html">
@@ -2935,7 +3007,7 @@
         <target>Crea tu perfil</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">405</context>
+          <context context-type="linenumber">414</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.priceKicker" datatype="html">
@@ -2943,7 +3015,7 @@
         <target>Precio</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">406</context>
+          <context context-type="linenumber">415</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.priceTitle" datatype="html">
@@ -2951,7 +3023,7 @@
         <target>Suscríbete ahora y obtén 3 meses gratis</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">407</context>
+          <context context-type="linenumber">416</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.priceLead" datatype="html">
@@ -2959,7 +3031,7 @@
         <target>Después, 6 euros al mes.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">408</context>
+          <context context-type="linenumber">417</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.priceFree" datatype="html">
@@ -2967,7 +3039,7 @@
         <target>3 meses gratis</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">409</context>
+          <context context-type="linenumber">418</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.pricePerMonth" datatype="html">
@@ -2975,7 +3047,7 @@
         <target>al mes</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">410</context>
+          <context context-type="linenumber">419</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.priceCta" datatype="html">
@@ -2983,7 +3055,7 @@
         <target>Suscríbete ahora</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">411</context>
+          <context context-type="linenumber">420</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.ctaTitle" datatype="html">
@@ -2991,7 +3063,7 @@
         <target>Tu profesional de limpieza, a unos clics</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">412</context>
+          <context context-type="linenumber">421</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.ctaSubtitle" datatype="html">
@@ -2999,7 +3071,7 @@
         <target>Únete a Linpura y encuentra ayuda para tu casa esta semana.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">413</context>
+          <context context-type="linenumber">422</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.step1" datatype="html">
@@ -3007,7 +3079,7 @@
         <target>Busca</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">414</context>
+          <context context-type="linenumber">423</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.step1Title" datatype="html">
@@ -3015,7 +3087,7 @@
         <target>Encuentra a la persona adecuada</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">415</context>
+          <context context-type="linenumber">424</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.step1Body" datatype="html">
@@ -3023,7 +3095,7 @@
         <target>Filtra por servicio, tarifa por hora, los días que necesitas y la zona donde vives.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">416</context>
+          <context context-type="linenumber">425</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.step2" datatype="html">
@@ -3031,7 +3103,7 @@
         <target>Habla</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">417</context>
+          <context context-type="linenumber">426</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.step2Title" datatype="html">
@@ -3039,7 +3111,7 @@
         <target>Acordad los detalles</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">418</context>
+          <context context-type="linenumber">427</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.step2Body" datatype="html">
@@ -3047,7 +3119,7 @@
         <target>Escribe en privado a los profesionales para acordar tareas, horarios y precio antes de que nadie vaya a tu casa.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">419</context>
+          <context context-type="linenumber">428</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.step3" datatype="html">
@@ -3055,7 +3127,7 @@
         <target>Relájate</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">420</context>
+          <context context-type="linenumber">429</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.step3Title" datatype="html">
@@ -3063,7 +3135,7 @@
         <target>Vuelve a una casa limpia</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">421</context>
+          <context context-type="linenumber">430</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.step3Body" datatype="html">
@@ -3071,7 +3143,7 @@
         <target>Una limpieza semanal, una mudanza o una limpieza a fondo puntual: consigue la ayuda que necesitas.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">422</context>
+          <context context-type="linenumber">431</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.reason1Title" datatype="html">
@@ -3079,7 +3151,7 @@
         <target>Precios claros</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">423</context>
+          <context context-type="linenumber">432</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.reason1Body" datatype="html">
@@ -3087,7 +3159,7 @@
         <target>La tarifa por hora aparece en el perfil de cada profesional, así que no hay sorpresas.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">424</context>
+          <context context-type="linenumber">433</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.reason2Title" datatype="html">
@@ -3095,7 +3167,7 @@
         <target>Perfiles verificados</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">425</context>
+          <context context-type="linenumber">434</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.reason2Body" datatype="html">
@@ -3103,7 +3175,7 @@
         <target>Los selfies revisados por nuestro equipo te ayudan a saber a quién abres la puerta.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">426</context>
+          <context context-type="linenumber">435</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.reason3Title" datatype="html">
@@ -3111,7 +3183,7 @@
         <target>Disponibilidad real</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">427</context>
+          <context context-type="linenumber">436</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.reason3Body" datatype="html">
@@ -3119,7 +3191,7 @@
         <target>Consulta qué días y horas trabaja cada profesional y en qué zonas.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">428</context>
+          <context context-type="linenumber">437</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.reason4Title" datatype="html">
@@ -3127,7 +3199,7 @@
         <target>Justo para los profesionales</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">429</context>
+          <context context-type="linenumber">438</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.reason4Body" datatype="html">
@@ -3135,7 +3207,7 @@
         <target>Los profesionales fijan sus tarifas, eligen sus zonas y deciden qué trabajos aceptar.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">430</context>
+          <context context-type="linenumber">439</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.findCleanerIn" datatype="html">
@@ -3143,7 +3215,7 @@
         <target>Encuentra limpieza en</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">431</context>
+          <context context-type="linenumber">440</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.topCities" datatype="html">
@@ -3151,7 +3223,7 @@
         <target>Ciudades con más profesionales</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">432</context>
+          <context context-type="linenumber">441</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.postsKicker" datatype="html">
@@ -3159,7 +3231,7 @@
         <target>Anuncios y solicitudes</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">433</context>
+          <context context-type="linenumber">442</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.postsTitle" datatype="html">
@@ -3167,7 +3239,7 @@
         <target>Di lo que necesitas o lo que ofreces</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">434</context>
+          <context context-type="linenumber">443</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.postsBody" datatype="html">
@@ -3175,7 +3247,7 @@
         <target>Los profesionales publican anuncios breves. Los clientes publican solicitudes. Ambos aparecen en el perfil y cualquiera puede buscarlos.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">435</context>
+          <context context-type="linenumber">444</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.announcementsLabel" datatype="html">
@@ -3183,7 +3255,7 @@
         <target>Anuncios</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">436</context>
+          <context context-type="linenumber">445</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.announcementsBody" datatype="html">
@@ -3191,7 +3263,7 @@
         <target>Los profesionales comparten huecos libres, servicios especiales u ofertas. El más reciente también aparece en su tarjeta.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">437</context>
+          <context context-type="linenumber">446</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.requestsLabel" datatype="html">
@@ -3199,7 +3271,7 @@
         <target>Solicitudes</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">438</context>
+          <context context-type="linenumber">447</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.requestsBody" datatype="html">
@@ -3207,7 +3279,7 @@
         <target>Los clientes describen los trabajos que necesitan. Los profesionales los buscan y escriben cuando pueden ayudar.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">439</context>
+          <context context-type="linenumber">448</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.postsExamples" datatype="html">
@@ -3215,7 +3287,7 @@
         <target>Ejemplos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">440</context>
+          <context context-type="linenumber">449</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.announcementChip1" datatype="html">
@@ -3223,7 +3295,7 @@
         <target>Libre los viernes por la mañana</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">441</context>
+          <context context-type="linenumber">450</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.announcementChip2" datatype="html">
@@ -3231,7 +3303,7 @@
         <target>Solo productos ecológicos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">442</context>
+          <context context-type="linenumber">451</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.announcementChip3" datatype="html">
@@ -3239,7 +3311,7 @@
         <target>Plancha incluida</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">443</context>
+          <context context-type="linenumber">452</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.requestChip1" datatype="html">
@@ -3247,7 +3319,7 @@
         <target>Limpieza semanal de 3 horas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">444</context>
+          <context context-type="linenumber">453</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.requestChip2" datatype="html">
@@ -3255,7 +3327,7 @@
         <target>Limpieza a fondo por mudanza</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">445</context>
+          <context context-type="linenumber">454</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.requestChip3" datatype="html">
@@ -3263,7 +3335,7 @@
         <target>Cristales antes de las fiestas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">446</context>
+          <context context-type="linenumber">455</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.postsSearch" datatype="html">
@@ -3271,7 +3343,7 @@
         <target>La búsqueda usa las mismas palabras. Escribe un servicio o una palabra clave y la lista se filtra.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">447</context>
+          <context context-type="linenumber">456</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.latestPostsTitle" datatype="html">
@@ -3279,7 +3351,7 @@
         <target>Últimos anuncios y solicitudes</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">448</context>
+          <context context-type="linenumber">457</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.announcementTag" datatype="html">
@@ -3287,7 +3359,7 @@
         <target>Anuncio</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">449</context>
+          <context context-type="linenumber">458</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.requestTag" datatype="html">
@@ -3295,7 +3367,7 @@
         <target>Solicitud</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">450</context>
+          <context context-type="linenumber">459</context>
         </context-group>
       </trans-unit>
       <trans-unit id="country" datatype="html">
@@ -3303,7 +3375,7 @@
         <target>País</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">452</context>
+          <context context-type="linenumber">461</context>
         </context-group>
       </trans-unit>
       <trans-unit id="locationPlaceholder" datatype="html">
@@ -3311,7 +3383,7 @@
         <target>Empiece a escribir después de elegir un país</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">453</context>
+          <context context-type="linenumber">462</context>
         </context-group>
       </trans-unit>
       <trans-unit id="locationSearchError" datatype="html">
@@ -3319,7 +3391,7 @@
         <target>La búsqueda de ubicación no está disponible temporalmente.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">454</context>
+          <context context-type="linenumber">463</context>
         </context-group>
       </trans-unit>
       <trans-unit id="clearLocation" datatype="html">
@@ -3327,7 +3399,7 @@
         <target>Borrar ubicación</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">455</context>
+          <context context-type="linenumber">464</context>
         </context-group>
       </trans-unit>
       <trans-unit id="searchLabel" datatype="html">
@@ -3335,7 +3407,7 @@
         <target>Buscar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">456</context>
+          <context context-type="linenumber">465</context>
         </context-group>
       </trans-unit>
       <trans-unit id="searchTypePlaceholder" datatype="html">
@@ -3343,7 +3415,7 @@
         <target>Escriba para buscar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">457</context>
+          <context context-type="linenumber">466</context>
         </context-group>
       </trans-unit>
       <trans-unit id="notFound.title" datatype="html">
@@ -3351,7 +3423,7 @@
         <target>Página no encontrada</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">459</context>
+          <context context-type="linenumber">468</context>
         </context-group>
       </trans-unit>
       <trans-unit id="notFound.text" datatype="html">
@@ -3359,7 +3431,7 @@
         <target>La página que buscas no existe o ya no está disponible.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">460</context>
+          <context context-type="linenumber">469</context>
         </context-group>
       </trans-unit>
       <trans-unit id="notFound.backHome" datatype="html">
@@ -3367,7 +3439,7 @@
         <target>Volver al inicio</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">461</context>
+          <context context-type="linenumber">470</context>
         </context-group>
       </trans-unit>
       <trans-unit id="seo.termsDescription" datatype="html">
@@ -3375,7 +3447,7 @@
         <target>Lee los términos que se aplican cuando usas Linpura: tu cuenta, tu suscripción, tu conducta y los pagos.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">464</context>
+          <context context-type="linenumber">473</context>
         </context-group>
       </trans-unit>
       <trans-unit id="seo.privacyDescription" datatype="html">
@@ -3383,7 +3455,7 @@
         <target>Cómo Linpura recopila, usa y protege tus datos personales, y las opciones y derechos que tienes.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">465</context>
+          <context context-type="linenumber">474</context>
         </context-group>
       </trans-unit>
       <trans-unit id="seo.profileTitleCleaner" datatype="html">
@@ -3391,7 +3463,7 @@
         <target>{{name}}, profesional de limpieza en {{location}}</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">466</context>
+          <context context-type="linenumber">475</context>
         </context-group>
       </trans-unit>
       <trans-unit id="seo.profileTitleClient" datatype="html">
@@ -3399,7 +3471,7 @@
         <target>{{name}} busca un profesional de limpieza en {{location}}</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">467</context>
+          <context context-type="linenumber">476</context>
         </context-group>
       </trans-unit>
       <trans-unit id="seo.profileDescriptionCleaner" datatype="html">
@@ -3407,7 +3479,7 @@
         <target>{{name}} ofrece {{services}} en {{location}}. Consulta la disponibilidad y contacta en Linpura.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">468</context>
+          <context context-type="linenumber">477</context>
         </context-group>
       </trans-unit>
       <trans-unit id="seo.profileDescriptionCleanerRate" datatype="html">
@@ -3415,7 +3487,7 @@
         <target>{{name}} ofrece {{services}} en {{location}}, a {{rate}} {{currency}} por hora. Consulta la disponibilidad y contacta en Linpura.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">469</context>
+          <context context-type="linenumber">478</context>
         </context-group>
       </trans-unit>
       <trans-unit id="seo.profileDescriptionClient" datatype="html">
@@ -3423,7 +3495,7 @@
         <target>{{name}} busca {{services}} en {{location}}. Los profesionales de limpieza pueden contactar en Linpura.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">470</context>
+          <context context-type="linenumber">479</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminMenu" datatype="html">
@@ -3431,7 +3503,7 @@
         <target>Admin</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">472</context>
+          <context context-type="linenumber">481</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.cardTitle" datatype="html">
@@ -3439,7 +3511,7 @@
         <target>Verificación del perfil</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">474</context>
+          <context context-type="linenumber">483</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.dialogTitle" datatype="html">
@@ -3447,7 +3519,7 @@
         <target>Verifica tu perfil</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">475</context>
+          <context context-type="linenumber">484</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.intro" datatype="html">
@@ -3455,7 +3527,7 @@
         <target>Hazte un selfie imitando la pose que te mostramos. Un miembro de nuestro equipo lo compara con tu foto de perfil y, si coincide, tu perfil recibe la insignia de verificado.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">476</context>
+          <context context-type="linenumber">485</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.privacyNote" datatype="html">
@@ -3463,7 +3535,7 @@
         <target>Tu selfie se guarda de forma privada, nunca se muestra a otros miembros y se elimina en cuanto termina la revisión.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">477</context>
+          <context context-type="linenumber">486</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.consent" datatype="html">
@@ -3471,7 +3543,7 @@
         <target>Acepto que Linpura use este selfie solo para verificar mi perfil.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">478</context>
+          <context context-type="linenumber">487</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.continue" datatype="html">
@@ -3479,7 +3551,7 @@
         <target>Continuar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">479</context>
+          <context context-type="linenumber">488</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.poseIntro" datatype="html">
@@ -3487,7 +3559,7 @@
         <target>Hazte un selfie haciendo esto:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">480</context>
+          <context context-type="linenumber">489</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.poseHint" datatype="html">
@@ -3495,7 +3567,7 @@
         <target>Asegúrate de que tu cara se vea bien, con buena luz y sin nada que la tape. Esta pose caduca en 10 minutos.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">481</context>
+          <context context-type="linenumber">490</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.takeSelfie" datatype="html">
@@ -3503,7 +3575,7 @@
         <target>Hacer selfie</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">482</context>
+          <context context-type="linenumber">491</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.retake" datatype="html">
@@ -3511,7 +3583,7 @@
         <target>Repetir</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">483</context>
+          <context context-type="linenumber">492</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.submit" datatype="html">
@@ -3519,7 +3591,7 @@
         <target>Enviar a revisión</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">484</context>
+          <context context-type="linenumber">493</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.submitted" datatype="html">
@@ -3527,7 +3599,7 @@
         <target>Selfie enviado. Lo revisaremos pronto.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">485</context>
+          <context context-type="linenumber">494</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.verifyMe" datatype="html">
@@ -3535,7 +3607,7 @@
         <target>Verificarme</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">486</context>
+          <context context-type="linenumber">495</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.tryAgain" datatype="html">
@@ -3543,7 +3615,7 @@
         <target>Intentar de nuevo</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">487</context>
+          <context context-type="linenumber">496</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.moderationLink" datatype="html">
@@ -3551,7 +3623,7 @@
         <target>Cola de revisión</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">488</context>
+          <context context-type="linenumber">497</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.hintNone" datatype="html">
@@ -3559,7 +3631,7 @@
         <target>Demuestra a los demás miembros que eres real. Los perfiles verificados tienen una insignia junto al nombre.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">489</context>
+          <context context-type="linenumber">498</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.hintNeedsPhoto" datatype="html">
@@ -3567,7 +3639,7 @@
         <target>Elige una foto de perfil tuya antes de verificar.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">490</context>
+          <context context-type="linenumber">499</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.hintPending" datatype="html">
@@ -3575,7 +3647,7 @@
         <target>Tu selfie está pendiente de revisión.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">491</context>
+          <context context-type="linenumber">500</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.hintVerified" datatype="html">
@@ -3583,7 +3655,7 @@
         <target>Tu perfil está verificado. Cambiar la foto de perfil quita la insignia.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">492</context>
+          <context context-type="linenumber">501</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.hintRejected" datatype="html">
@@ -3591,7 +3663,7 @@
         <target>Tu última verificación no fue aprobada.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">493</context>
+          <context context-type="linenumber">502</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.badgeTooltip" datatype="html">
@@ -3599,7 +3671,7 @@
         <target>Perfil verificado</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">494</context>
+          <context context-type="linenumber">503</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.banner.none" datatype="html">
@@ -3607,7 +3679,7 @@
         <target>Tu perfil aún no está verificado. Verifícalo para obtener una insignia y demostrar a otros miembros que eres real.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">496</context>
+          <context context-type="linenumber">505</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.banner.pending" datatype="html">
@@ -3615,7 +3687,7 @@
         <target>La verificación de tu perfil está en revisión. Tu insignia aparecerá en cuanto se apruebe.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">497</context>
+          <context context-type="linenumber">506</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.banner.rejected" datatype="html">
@@ -3623,7 +3695,7 @@
         <target>La verificación de tu perfil no fue aprobada. Puedes intentarlo de nuevo con un selfie nuevo.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">498</context>
+          <context context-type="linenumber">507</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.banner.cta" datatype="html">
@@ -3631,7 +3703,7 @@
         <target>Verificar ahora</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">499</context>
+          <context context-type="linenumber">508</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.banner.dismiss" datatype="html">
@@ -3639,7 +3711,7 @@
         <target>Cerrar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">500</context>
+          <context context-type="linenumber">509</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.status.pending" datatype="html">
@@ -3647,7 +3719,7 @@
         <target>En revisión</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">503</context>
+          <context context-type="linenumber">512</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.status.approved" datatype="html">
@@ -3655,7 +3727,7 @@
         <target>Verificado</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">504</context>
+          <context context-type="linenumber">513</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.pose.thumbs_up_left" datatype="html">
@@ -3663,7 +3735,7 @@
         <target>Levanta el pulgar con la mano izquierda</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">507</context>
+          <context context-type="linenumber">516</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.pose.thumbs_up_right" datatype="html">
@@ -3671,7 +3743,7 @@
         <target>Levanta el pulgar con la mano derecha</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">508</context>
+          <context context-type="linenumber">517</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.pose.peace_sign_left" datatype="html">
@@ -3679,7 +3751,7 @@
         <target>Haz el signo de la paz con la mano izquierda</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">509</context>
+          <context context-type="linenumber">518</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.pose.peace_sign_right" datatype="html">
@@ -3687,7 +3759,7 @@
         <target>Haz el signo de la paz con la mano derecha</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">510</context>
+          <context context-type="linenumber">519</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.pose.touch_nose" datatype="html">
@@ -3695,7 +3767,7 @@
         <target>Tócate la nariz con un dedo</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">511</context>
+          <context context-type="linenumber">520</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.pose.hand_on_head" datatype="html">
@@ -3703,7 +3775,7 @@
         <target>Pon una mano sobre la cabeza</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">512</context>
+          <context context-type="linenumber">521</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.pose.three_fingers" datatype="html">
@@ -3711,7 +3783,7 @@
         <target>Muestra tres dedos junto a tu cara</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">513</context>
+          <context context-type="linenumber">522</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.pose.point_at_camera" datatype="html">
@@ -3719,7 +3791,7 @@
         <target>Señala a la cámara</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">514</context>
+          <context context-type="linenumber">523</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.errors.CHALLENGE_EXPIRED" datatype="html">
@@ -3727,7 +3799,7 @@
         <target>Esta pose ha caducado. Empieza de nuevo.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">517</context>
+          <context context-type="linenumber">526</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.errors.PROFILE_PHOTO_REQUIRED" datatype="html">
@@ -3735,7 +3807,7 @@
         <target>Elige una foto de perfil antes de verificar.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">518</context>
+          <context context-type="linenumber">527</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.errors.ALREADY_PENDING" datatype="html">
@@ -3743,7 +3815,7 @@
         <target>Ya tienes un selfie pendiente de revisión.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">519</context>
+          <context context-type="linenumber">528</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.errors.TOO_MANY_ATTEMPTS" datatype="html">
@@ -3751,7 +3823,7 @@
         <target>Demasiados intentos hoy. Inténtalo de nuevo mañana.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">520</context>
+          <context context-type="linenumber">529</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.errors.generic" datatype="html">
@@ -3759,7 +3831,7 @@
         <target>Algo ha fallado. Inténtalo de nuevo.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">521</context>
+          <context context-type="linenumber">530</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.moderation.title" datatype="html">
@@ -3767,7 +3839,7 @@
         <target>Cola de verificación</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">524</context>
+          <context context-type="linenumber">533</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.moderation.lead" datatype="html">
@@ -3775,7 +3847,7 @@
         <target>Aprueba solo cuando el selfie muestre la pose pedida y la misma persona que la foto de perfil.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">525</context>
+          <context context-type="linenumber">534</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.moderation.refresh" datatype="html">
@@ -3783,7 +3855,7 @@
         <target>Actualizar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">526</context>
+          <context context-type="linenumber">535</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.moderation.emptyTitle" datatype="html">
@@ -3791,7 +3863,7 @@
         <target>Nada que revisar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">527</context>
+          <context context-type="linenumber">536</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.moderation.emptyText" datatype="html">
@@ -3799,7 +3871,7 @@
         <target>Los nuevos selfies aparecerán aquí.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">528</context>
+          <context context-type="linenumber">537</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.moderation.openProfile" datatype="html">
@@ -3807,7 +3879,7 @@
         <target>Abrir perfil</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">529</context>
+          <context context-type="linenumber">538</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.moderation.selfie" datatype="html">
@@ -3815,7 +3887,7 @@
         <target>Selfie</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">530</context>
+          <context context-type="linenumber">539</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.moderation.profilePhoto" datatype="html">
@@ -3823,7 +3895,7 @@
         <target>Foto de perfil</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">531</context>
+          <context context-type="linenumber">540</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.moderation.approve" datatype="html">
@@ -3831,7 +3903,7 @@
         <target>Aprobar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">532</context>
+          <context context-type="linenumber">541</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.moderation.reject" datatype="html">
@@ -3839,7 +3911,7 @@
         <target>Rechazar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">533</context>
+          <context context-type="linenumber">542</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.moderation.reasonPlaceholder" datatype="html">
@@ -3847,7 +3919,7 @@
         <target>Motivo que verá el usuario</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">534</context>
+          <context context-type="linenumber">543</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.moderation.reasonRequired" datatype="html">
@@ -3855,7 +3927,7 @@
         <target>Añade un motivo antes de rechazar.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">535</context>
+          <context context-type="linenumber">544</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.moderation.approved" datatype="html">
@@ -3863,7 +3935,7 @@
         <target>Aprobado.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">536</context>
+          <context context-type="linenumber">545</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.moderation.rejected" datatype="html">
@@ -3871,7 +3943,7 @@
         <target>Rechazado.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">537</context>
+          <context context-type="linenumber">546</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.moderation.photoChanged" datatype="html">
@@ -3879,7 +3951,7 @@
         <target>Aprobado, pero el usuario ha cambiado su foto de perfil desde entonces, así que no recibió la insignia.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">538</context>
+          <context context-type="linenumber">547</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.cameraError" datatype="html">
@@ -3887,7 +3959,7 @@
         <target>No pudimos abrir tu cámara. Permite el acceso a la cámara en el navegador y vuelve a intentarlo, o sube un selfie.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">540</context>
+          <context context-type="linenumber">549</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.cameraRetry" datatype="html">
@@ -3895,7 +3967,7 @@
         <target>Probar la cámara de nuevo</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">541</context>
+          <context context-type="linenumber">550</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verification.uploadInstead" datatype="html">
@@ -3903,7 +3975,7 @@
         <target>Subir una foto</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">542</context>
+          <context context-type="linenumber">551</context>
         </context-group>
       </trans-unit>
       <trans-unit id="Client.title" datatype="html">
@@ -3911,7 +3983,7 @@
         <target>Tus solicitudes</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">545</context>
+          <context context-type="linenumber">554</context>
         </context-group>
       </trans-unit>
       <trans-unit id="Client.addKeyword" datatype="html">
@@ -3919,7 +3991,7 @@
         <target>Añadir una solicitud</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">546</context>
+          <context context-type="linenumber">555</context>
         </context-group>
       </trans-unit>
       <trans-unit id="Client.inputLabel" datatype="html">
@@ -3927,7 +3999,7 @@
         <target>Solicitudes</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">547</context>
+          <context context-type="linenumber">556</context>
         </context-group>
       </trans-unit>
       <trans-unit id="Client.lastOffersDreams" datatype="html">
@@ -3935,7 +4007,7 @@
         <target>Últimos anuncios</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">548</context>
+          <context context-type="linenumber">557</context>
         </context-group>
       </trans-unit>
       <trans-unit id="Client.example" datatype="html">
@@ -3943,7 +4015,7 @@
         <target>ej.: Limpieza semanal de 3 horas, piso de 2 habitaciones</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">549</context>
+          <context context-type="linenumber">558</context>
         </context-group>
       </trans-unit>
       <trans-unit id="Cleaner.title" datatype="html">
@@ -3951,7 +4023,7 @@
         <target>Tus anuncios</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">552</context>
+          <context context-type="linenumber">561</context>
         </context-group>
       </trans-unit>
       <trans-unit id="Cleaner.addKeyword" datatype="html">
@@ -3959,7 +4031,7 @@
         <target>Añadir un anuncio</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">553</context>
+          <context context-type="linenumber">562</context>
         </context-group>
       </trans-unit>
       <trans-unit id="Cleaner.inputLabel" datatype="html">
@@ -3967,7 +4039,7 @@
         <target>Anuncios</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">554</context>
+          <context context-type="linenumber">563</context>
         </context-group>
       </trans-unit>
       <trans-unit id="Cleaner.lastOffersDreams" datatype="html">
@@ -3975,7 +4047,7 @@
         <target>Últimas solicitudes</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">555</context>
+          <context context-type="linenumber">564</context>
         </context-group>
       </trans-unit>
       <trans-unit id="Cleaner.example" datatype="html">
@@ -3983,7 +4055,7 @@
         <target>ej.: Libre los viernes por la mañana en Lausana</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">556</context>
+          <context context-type="linenumber">565</context>
         </context-group>
       </trans-unit>
       <trans-unit id="role.question" datatype="html">
@@ -3991,7 +4063,7 @@
         <target>¿Cómo vas a usar Linpura?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">559</context>
+          <context context-type="linenumber">568</context>
         </context-group>
       </trans-unit>
       <trans-unit id="role.client" datatype="html">
@@ -3999,7 +4071,7 @@
         <target>Busco limpieza</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">560</context>
+          <context context-type="linenumber">569</context>
         </context-group>
       </trans-unit>
       <trans-unit id="role.clientHint" datatype="html">
@@ -4007,7 +4079,7 @@
         <target>Encuentra ayuda para tu casa</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">561</context>
+          <context context-type="linenumber">570</context>
         </context-group>
       </trans-unit>
       <trans-unit id="role.cleaner" datatype="html">
@@ -4015,7 +4087,7 @@
         <target>Ofrezco limpieza</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">562</context>
+          <context context-type="linenumber">571</context>
         </context-group>
       </trans-unit>
       <trans-unit id="role.cleanerHint" datatype="html">
@@ -4023,7 +4095,7 @@
         <target>Encuentra clientes cerca de ti</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">563</context>
+          <context context-type="linenumber">572</context>
         </context-group>
       </trans-unit>
       <trans-unit id="services.regular" datatype="html">
@@ -4031,7 +4103,7 @@
         <target>Limpieza habitual</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">566</context>
+          <context context-type="linenumber">575</context>
         </context-group>
       </trans-unit>
       <trans-unit id="services.deep" datatype="html">
@@ -4039,7 +4111,7 @@
         <target>Limpieza a fondo</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">567</context>
+          <context context-type="linenumber">576</context>
         </context-group>
       </trans-unit>
       <trans-unit id="services.ironing" datatype="html">
@@ -4047,7 +4119,7 @@
         <target>Plancha</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">568</context>
+          <context context-type="linenumber">577</context>
         </context-group>
       </trans-unit>
       <trans-unit id="services.laundry" datatype="html">
@@ -4055,7 +4127,7 @@
         <target>Colada</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">569</context>
+          <context context-type="linenumber">578</context>
         </context-group>
       </trans-unit>
       <trans-unit id="services.windows" datatype="html">
@@ -4063,7 +4135,7 @@
         <target>Cristales</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">570</context>
+          <context context-type="linenumber">579</context>
         </context-group>
       </trans-unit>
       <trans-unit id="services.moveInOut" datatype="html">
@@ -4071,7 +4143,7 @@
         <target>Mudanzas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">571</context>
+          <context context-type="linenumber">580</context>
         </context-group>
       </trans-unit>
       <trans-unit id="services.afterParty" datatype="html">
@@ -4079,7 +4151,7 @@
         <target>Después de una fiesta</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">572</context>
+          <context context-type="linenumber">581</context>
         </context-group>
       </trans-unit>
       <trans-unit id="services.kitchenAppliances" datatype="html">
@@ -4087,7 +4159,7 @@
         <target>Horno y nevera</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">573</context>
+          <context context-type="linenumber">582</context>
         </context-group>
       </trans-unit>
       <trans-unit id="services.cooking" datatype="html">
@@ -4095,7 +4167,7 @@
         <target>Cocinar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">574</context>
+          <context context-type="linenumber">583</context>
         </context-group>
       </trans-unit>
       <trans-unit id="services.office" datatype="html">
@@ -4103,7 +4175,23 @@
         <target>Oficinas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">575</context>
+          <context context-type="linenumber">584</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="services.garage" datatype="html">
+        <source>Garage cleaning</source>
+        <target>Limpieza de garajes</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">585</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="services.stairs" datatype="html">
+        <source>Stair cleaning</source>
+        <target>Limpieza de escaleras</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">586</context>
         </context-group>
       </trans-unit>
       <trans-unit id="services.ecoProducts" datatype="html">
@@ -4111,7 +4199,7 @@
         <target>Productos ecológicos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">576</context>
+          <context context-type="linenumber">587</context>
         </context-group>
       </trans-unit>
       <trans-unit id="days.mon" datatype="html">
@@ -4119,7 +4207,7 @@
         <target>Lunes</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">579</context>
+          <context context-type="linenumber">590</context>
         </context-group>
       </trans-unit>
       <trans-unit id="days.tue" datatype="html">
@@ -4127,7 +4215,7 @@
         <target>Martes</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">580</context>
+          <context context-type="linenumber">591</context>
         </context-group>
       </trans-unit>
       <trans-unit id="days.wed" datatype="html">
@@ -4135,7 +4223,7 @@
         <target>Miércoles</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">581</context>
+          <context context-type="linenumber">592</context>
         </context-group>
       </trans-unit>
       <trans-unit id="days.thu" datatype="html">
@@ -4143,7 +4231,7 @@
         <target>Jueves</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">582</context>
+          <context context-type="linenumber">593</context>
         </context-group>
       </trans-unit>
       <trans-unit id="days.fri" datatype="html">
@@ -4151,7 +4239,7 @@
         <target>Viernes</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">583</context>
+          <context context-type="linenumber">594</context>
         </context-group>
       </trans-unit>
       <trans-unit id="days.sat" datatype="html">
@@ -4159,7 +4247,7 @@
         <target>Sábado</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">584</context>
+          <context context-type="linenumber">595</context>
         </context-group>
       </trans-unit>
       <trans-unit id="days.sun" datatype="html">
@@ -4167,7 +4255,7 @@
         <target>Domingo</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">585</context>
+          <context context-type="linenumber">596</context>
         </context-group>
       </trans-unit>
       <trans-unit id="daysShort.mon" datatype="html">
@@ -4175,7 +4263,7 @@
         <target>lun</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">588</context>
+          <context context-type="linenumber">599</context>
         </context-group>
       </trans-unit>
       <trans-unit id="daysShort.tue" datatype="html">
@@ -4183,7 +4271,7 @@
         <target>mar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">589</context>
+          <context context-type="linenumber">600</context>
         </context-group>
       </trans-unit>
       <trans-unit id="daysShort.wed" datatype="html">
@@ -4191,7 +4279,7 @@
         <target>mié</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">590</context>
+          <context context-type="linenumber">601</context>
         </context-group>
       </trans-unit>
       <trans-unit id="daysShort.thu" datatype="html">
@@ -4199,7 +4287,7 @@
         <target>jue</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">591</context>
+          <context context-type="linenumber">602</context>
         </context-group>
       </trans-unit>
       <trans-unit id="daysShort.fri" datatype="html">
@@ -4207,7 +4295,7 @@
         <target>vie</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">592</context>
+          <context context-type="linenumber">603</context>
         </context-group>
       </trans-unit>
       <trans-unit id="daysShort.sat" datatype="html">
@@ -4215,7 +4303,7 @@
         <target>sáb</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">593</context>
+          <context context-type="linenumber">604</context>
         </context-group>
       </trans-unit>
       <trans-unit id="daysShort.sun" datatype="html">
@@ -4223,7 +4311,7 @@
         <target>dom</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">594</context>
+          <context context-type="linenumber">605</context>
         </context-group>
       </trans-unit>
       <trans-unit id="slots.morning" datatype="html">
@@ -4231,7 +4319,7 @@
         <target>Mañana</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">597</context>
+          <context context-type="linenumber">608</context>
         </context-group>
       </trans-unit>
       <trans-unit id="slots.afternoon" datatype="html">
@@ -4239,7 +4327,7 @@
         <target>Tarde</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">598</context>
+          <context context-type="linenumber">609</context>
         </context-group>
       </trans-unit>
       <trans-unit id="slots.evening" datatype="html">
@@ -4247,7 +4335,7 @@
         <target>Noche</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">599</context>
+          <context context-type="linenumber">610</context>
         </context-group>
       </trans-unit>
       <trans-unit id="work.title" datatype="html">
@@ -4255,7 +4343,7 @@
         <target>Servicios y disponibilidad</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">602</context>
+          <context context-type="linenumber">613</context>
         </context-group>
       </trans-unit>
       <trans-unit id="work.titleClient" datatype="html">
@@ -4263,7 +4351,7 @@
         <target>Qué necesitas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">603</context>
+          <context context-type="linenumber">614</context>
         </context-group>
       </trans-unit>
       <trans-unit id="work.servicesOffered" datatype="html">
@@ -4271,7 +4359,7 @@
         <target>Servicios que ofreces</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">604</context>
+          <context context-type="linenumber">615</context>
         </context-group>
       </trans-unit>
       <trans-unit id="work.servicesNeeded" datatype="html">
@@ -4279,7 +4367,7 @@
         <target>Servicios que necesitas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">605</context>
+          <context context-type="linenumber">616</context>
         </context-group>
       </trans-unit>
       <trans-unit id="work.hourlyRate" datatype="html">
@@ -4287,7 +4375,7 @@
         <target>Tarifa por hora</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">606</context>
+          <context context-type="linenumber">617</context>
         </context-group>
       </trans-unit>
       <trans-unit id="work.budget" datatype="html">
@@ -4295,7 +4383,7 @@
         <target>Presupuesto por hora</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">607</context>
+          <context context-type="linenumber">618</context>
         </context-group>
       </trans-unit>
       <trans-unit id="work.hour" datatype="html">
@@ -4303,7 +4391,7 @@
         <target>hora</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">608</context>
+          <context context-type="linenumber">619</context>
         </context-group>
       </trans-unit>
       <trans-unit id="work.perHour" datatype="html">
@@ -4311,7 +4399,7 @@
         <target>por hora</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">609</context>
+          <context context-type="linenumber">620</context>
         </context-group>
       </trans-unit>
       <trans-unit id="work.from" datatype="html">
@@ -4319,7 +4407,7 @@
         <target>Desde</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">610</context>
+          <context context-type="linenumber">621</context>
         </context-group>
       </trans-unit>
       <trans-unit id="work.budgetUpTo" datatype="html">
@@ -4327,7 +4415,7 @@
         <target>Presupuesto hasta</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">611</context>
+          <context context-type="linenumber">622</context>
         </context-group>
       </trans-unit>
       <trans-unit id="work.rateRange" datatype="html">
@@ -4335,7 +4423,7 @@
         <target>Introduce un importe entre {{min}} y {{max}} {{currency}}.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">612</context>
+          <context context-type="linenumber">623</context>
         </context-group>
       </trans-unit>
       <trans-unit id="work.availableDays" datatype="html">
@@ -4343,7 +4431,7 @@
         <target>Días en los que estás disponible</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">613</context>
+          <context context-type="linenumber">624</context>
         </context-group>
       </trans-unit>
       <trans-unit id="work.preferredDays" datatype="html">
@@ -4351,7 +4439,7 @@
         <target>Días preferidos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">614</context>
+          <context context-type="linenumber">625</context>
         </context-group>
       </trans-unit>
       <trans-unit id="work.timeOfDay" datatype="html">
@@ -4359,7 +4447,7 @@
         <target>Franja horaria</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">615</context>
+          <context context-type="linenumber">626</context>
         </context-group>
       </trans-unit>
       <trans-unit id="work.availabilityHint" datatype="html">
@@ -4367,7 +4455,7 @@
         <target>Marca un día completo o elige las franjas que te vengan bien cada día.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">616</context>
+          <context context-type="linenumber">627</context>
         </context-group>
       </trans-unit>
       <trans-unit id="work.areasCovered" datatype="html">
@@ -4375,7 +4463,7 @@
         <target>Zonas en las que trabajas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">617</context>
+          <context context-type="linenumber">628</context>
         </context-group>
       </trans-unit>
       <trans-unit id="work.areasHint" datatype="html">
@@ -4383,7 +4471,7 @@
         <target>Añade las localidades o barrios a los que puedes desplazarte (hasta {{max}}).</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">618</context>
+          <context context-type="linenumber">629</context>
         </context-group>
       </trans-unit>
       <trans-unit id="work.addArea" datatype="html">
@@ -4391,7 +4479,7 @@
         <target>Añadir zona</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">619</context>
+          <context context-type="linenumber">630</context>
         </context-group>
       </trans-unit>
       <trans-unit id="work.experienceYears" datatype="html">
@@ -4399,7 +4487,7 @@
         <target>Años de experiencia</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">620</context>
+          <context context-type="linenumber">631</context>
         </context-group>
       </trans-unit>
       <trans-unit id="work.experienceRange" datatype="html">
@@ -4407,7 +4495,7 @@
         <target>Introduce un número entre 0 y 60.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">621</context>
+          <context context-type="linenumber">632</context>
         </context-group>
       </trans-unit>
       <trans-unit id="work.openToRelocate" datatype="html">
@@ -4415,7 +4503,7 @@
         <target>Dispuesto a mudarse al extranjero</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">622</context>
+          <context context-type="linenumber">633</context>
         </context-group>
       </trans-unit>
       <trans-unit id="work.openToRelocateHint" datatype="html">
@@ -4423,7 +4511,7 @@
         <target>Actívalo si no te importa mudarte a otro país para trabajar.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">623</context>
+          <context context-type="linenumber">634</context>
         </context-group>
       </trans-unit>
       <trans-unit id="work.openToRelocateYes" datatype="html">
@@ -4431,7 +4519,7 @@
         <target>Sí</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">624</context>
+          <context context-type="linenumber">635</context>
         </context-group>
       </trans-unit>
       <trans-unit id="work.openToRelocateNo" datatype="html">
@@ -4439,7 +4527,7 @@
         <target>No</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">625</context>
+          <context context-type="linenumber">636</context>
         </context-group>
       </trans-unit>
       <trans-unit id="about.title" datatype="html">
@@ -4447,7 +4535,7 @@
         <target>Sobre ti</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">628</context>
+          <context context-type="linenumber">639</context>
         </context-group>
       </trans-unit>
       <trans-unit id="about.cleanerPlaceholder" datatype="html">
@@ -4455,7 +4543,7 @@
         <target>Cuenta a los clientes cómo trabajas, qué aportas y todo lo que deban saber.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">629</context>
+          <context context-type="linenumber">640</context>
         </context-group>
       </trans-unit>
       <trans-unit id="about.clientPlaceholder" datatype="html">
@@ -4463,7 +4551,7 @@
         <target>Describe tu casa y la ayuda que buscas: tamaño, mascotas, frecuencia.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">630</context>
+          <context context-type="linenumber">641</context>
         </context-group>
       </trans-unit>
       <trans-unit id="posts.cleanerTitle" datatype="html">
@@ -4471,7 +4559,7 @@
         <target>Anuncios</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">633</context>
+          <context context-type="linenumber">644</context>
         </context-group>
       </trans-unit>
       <trans-unit id="posts.clientTitle" datatype="html">
@@ -4479,7 +4567,7 @@
         <target>Solicitudes</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">634</context>
+          <context context-type="linenumber">645</context>
         </context-group>
       </trans-unit>
       <trans-unit id="posts.count" datatype="html">
@@ -4487,7 +4575,7 @@
         <target>{{count}} publicados</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">635</context>
+          <context context-type="linenumber">646</context>
         </context-group>
       </trans-unit>
       <trans-unit id="posts.cleanerHint" datatype="html">
@@ -4495,7 +4583,7 @@
         <target>Notas breves que los clientes pueden buscar, como huecos libres u ofertas especiales.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">636</context>
+          <context context-type="linenumber">647</context>
         </context-group>
       </trans-unit>
       <trans-unit id="posts.clientHint" datatype="html">
@@ -4503,7 +4591,7 @@
         <target>Describe los trabajos que necesitas para que los profesionales te encuentren.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">637</context>
+          <context context-type="linenumber">648</context>
         </context-group>
       </trans-unit>
       <trans-unit id="posts.cleanerEmpty" datatype="html">
@@ -4511,7 +4599,7 @@
         <target>Aún no hay nada publicado. Empieza con uno o dos anuncios breves.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">638</context>
+          <context context-type="linenumber">649</context>
         </context-group>
       </trans-unit>
       <trans-unit id="posts.clientEmpty" datatype="html">
@@ -4519,7 +4607,7 @@
         <target>Aún no hay nada publicado. Empieza con una solicitud clara.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">639</context>
+          <context context-type="linenumber">650</context>
         </context-group>
       </trans-unit>
       <trans-unit id="posts.cleanerHintOwn" datatype="html">
@@ -4527,7 +4615,7 @@
         <target>Publica anuncios breves, como tus huecos libres, para que los clientes te encuentren.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">640</context>
+          <context context-type="linenumber">651</context>
         </context-group>
       </trans-unit>
       <trans-unit id="posts.cleanerHintOther" datatype="html">
@@ -4535,7 +4623,7 @@
         <target>Aún no hay anuncios.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">641</context>
+          <context context-type="linenumber">652</context>
         </context-group>
       </trans-unit>
       <trans-unit id="posts.clientHintOwn" datatype="html">
@@ -4543,7 +4631,7 @@
         <target>Publica los trabajos que necesitas para que los profesionales te encuentren.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">642</context>
+          <context context-type="linenumber">653</context>
         </context-group>
       </trans-unit>
       <trans-unit id="posts.clientHintOther" datatype="html">
@@ -4551,7 +4639,7 @@
         <target>Aún no hay solicitudes.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">643</context>
+          <context context-type="linenumber">654</context>
         </context-group>
       </trans-unit>
       <trans-unit id="multiAccounts.eyebrow" datatype="html">
@@ -4559,7 +4647,7 @@
         <target>Moderación</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">646</context>
+          <context context-type="linenumber">657</context>
         </context-group>
       </trans-unit>
       <trans-unit id="multiAccounts.title" datatype="html">
@@ -4567,7 +4655,7 @@
         <target>Cuentas duplicadas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">647</context>
+          <context context-type="linenumber">658</context>
         </context-group>
       </trans-unit>
       <trans-unit id="multiAccounts.lead" datatype="html">
@@ -4575,7 +4663,7 @@
         <target>Cuentas que se registraron o iniciaron sesión desde el mismo navegador o dispositivo. Elimina las cuentas sobrantes o descarta el grupo si pertenecen a personas distintas.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">648</context>
+          <context context-type="linenumber">659</context>
         </context-group>
       </trans-unit>
       <trans-unit id="multiAccounts.verificationLink" datatype="html">
@@ -4583,7 +4671,7 @@
         <target>Cola de verificación</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">649</context>
+          <context context-type="linenumber">660</context>
         </context-group>
       </trans-unit>
       <trans-unit id="multiAccounts.signal.device" datatype="html">
@@ -4591,7 +4679,7 @@
         <target>Mismo navegador</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">651</context>
+          <context context-type="linenumber">662</context>
         </context-group>
       </trans-unit>
       <trans-unit id="multiAccounts.signal.fingerprint" datatype="html">
@@ -4599,7 +4687,7 @@
         <target>Dispositivo similar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">652</context>
+          <context context-type="linenumber">663</context>
         </context-group>
       </trans-unit>
       <trans-unit id="multiAccounts.signalHint.device" datatype="html">
@@ -4607,7 +4695,7 @@
         <target>Estas cuentas se usaron en el mismo navegador. Es un indicio fuerte de que pertenecen a una sola persona.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">655</context>
+          <context context-type="linenumber">666</context>
         </context-group>
       </trans-unit>
       <trans-unit id="multiAccounts.signalHint.fingerprint" datatype="html">
@@ -4615,7 +4703,7 @@
         <target>Estas cuentas se usaron en dispositivos con características idénticas. Los móviles del mismo modelo suelen coincidir, así que revisa los perfiles antes de eliminar nada.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">656</context>
+          <context context-type="linenumber">667</context>
         </context-group>
       </trans-unit>
       <trans-unit id="multiAccounts.emptyTitle" datatype="html">
@@ -4623,7 +4711,7 @@
         <target>Nada que revisar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">658</context>
+          <context context-type="linenumber">669</context>
         </context-group>
       </trans-unit>
       <trans-unit id="multiAccounts.emptyText" datatype="html">
@@ -4631,7 +4719,7 @@
         <target>Los grupos de cuentas vinculadas aparecerán aquí.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">659</context>
+          <context context-type="linenumber">670</context>
         </context-group>
       </trans-unit>
       <trans-unit id="multiAccounts.accountsCount" datatype="html">
@@ -4639,7 +4727,7 @@
         <target>{{count}} cuentas activas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">660</context>
+          <context context-type="linenumber">671</context>
         </context-group>
       </trans-unit>
       <trans-unit id="multiAccounts.returningTitle" datatype="html">
@@ -4647,7 +4735,7 @@
         <target>Puede que un usuario eliminado haya vuelto</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">661</context>
+          <context context-type="linenumber">672</context>
         </context-group>
       </trans-unit>
       <trans-unit id="multiAccounts.returningHint" datatype="html">
@@ -4655,7 +4743,7 @@
         <target>Una cuenta de este grupo se creó después de que un moderador eliminara otra cuenta en el mismo navegador o dispositivo.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">662</context>
+          <context context-type="linenumber">673</context>
         </context-group>
       </trans-unit>
       <trans-unit id="multiAccounts.lastSeen" datatype="html">
@@ -4663,7 +4751,7 @@
         <target>Visto por última vez</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">663</context>
+          <context context-type="linenumber">674</context>
         </context-group>
       </trans-unit>
       <trans-unit id="multiAccounts.created" datatype="html">
@@ -4671,7 +4759,7 @@
         <target>creada</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">664</context>
+          <context context-type="linenumber">675</context>
         </context-group>
       </trans-unit>
       <trans-unit id="multiAccounts.badge.verified" datatype="html">
@@ -4679,7 +4767,7 @@
         <target>Verificada</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">666</context>
+          <context context-type="linenumber">677</context>
         </context-group>
       </trans-unit>
       <trans-unit id="multiAccounts.badge.emailUnverified" datatype="html">
@@ -4687,7 +4775,7 @@
         <target>Email sin verificar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">667</context>
+          <context context-type="linenumber">678</context>
         </context-group>
       </trans-unit>
       <trans-unit id="multiAccounts.badge.removed" datatype="html">
@@ -4695,7 +4783,7 @@
         <target>Eliminada</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">668</context>
+          <context context-type="linenumber">679</context>
         </context-group>
       </trans-unit>
       <trans-unit id="multiAccounts.badge.deleted" datatype="html">
@@ -4703,7 +4791,7 @@
         <target>Borrada por el usuario</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">669</context>
+          <context context-type="linenumber">680</context>
         </context-group>
       </trans-unit>
       <trans-unit id="multiAccounts.remove" datatype="html">
@@ -4711,7 +4799,7 @@
         <target>Eliminar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">671</context>
+          <context context-type="linenumber">682</context>
         </context-group>
       </trans-unit>
       <trans-unit id="multiAccounts.confirmRemove" datatype="html">
@@ -4719,7 +4807,7 @@
         <target>Confirmar eliminación</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">672</context>
+          <context context-type="linenumber">683</context>
         </context-group>
       </trans-unit>
       <trans-unit id="multiAccounts.reasonPlaceholder" datatype="html">
@@ -4727,7 +4815,7 @@
         <target>Motivo de la eliminación, se guarda como registro</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">673</context>
+          <context context-type="linenumber">684</context>
         </context-group>
       </trans-unit>
       <trans-unit id="multiAccounts.reasonRequired" datatype="html">
@@ -4735,7 +4823,7 @@
         <target>Añade un motivo antes de eliminar una cuenta.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">674</context>
+          <context context-type="linenumber">685</context>
         </context-group>
       </trans-unit>
       <trans-unit id="multiAccounts.dismiss" datatype="html">
@@ -4743,7 +4831,7 @@
         <target>No es la misma persona</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">675</context>
+          <context context-type="linenumber">686</context>
         </context-group>
       </trans-unit>
       <trans-unit id="multiAccounts.removed" datatype="html">
@@ -4751,7 +4839,7 @@
         <target>Cuenta eliminada.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">676</context>
+          <context context-type="linenumber">687</context>
         </context-group>
       </trans-unit>
       <trans-unit id="multiAccounts.dismissed" datatype="html">
@@ -4759,7 +4847,7 @@
         <target>Grupo descartado. Volverá si otra cuenta se une a él.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">677</context>
+          <context context-type="linenumber">688</context>
         </context-group>
       </trans-unit>
       <trans-unit id="multiAccounts.errors.generic" datatype="html">
@@ -4767,7 +4855,7 @@
         <target>Algo salió mal. Inténtalo de nuevo.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">679</context>
+          <context context-type="linenumber">690</context>
         </context-group>
       </trans-unit>
       <trans-unit id="multiAccounts.errors.moderator" datatype="html">
@@ -4775,7 +4863,7 @@
         <target>No se pueden eliminar cuentas de moderadores.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">680</context>
+          <context context-type="linenumber">691</context>
         </context-group>
       </trans-unit>
       <trans-unit id="linkFlags.eyebrow" datatype="html">
@@ -4783,7 +4871,7 @@
         <target>Moderación</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">684</context>
+          <context context-type="linenumber">695</context>
         </context-group>
       </trans-unit>
       <trans-unit id="linkFlags.title" datatype="html">
@@ -4791,7 +4879,7 @@
         <target>Enlaces compartidos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">685</context>
+          <context context-type="linenumber">696</context>
         </context-group>
       </trans-unit>
       <trans-unit id="linkFlags.lead" datatype="html">
@@ -4799,7 +4887,7 @@
         <target>Usuarios que han puesto enlaces, direcciones de correo o direcciones disfrazadas en su perfil o en mensajes de chat. Elimina la cuenta, o permítela si el enlace es inofensivo.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">686</context>
+          <context context-type="linenumber">697</context>
         </context-group>
       </trans-unit>
       <trans-unit id="linkFlags.emptyTitle" datatype="html">
@@ -4807,7 +4895,7 @@
         <target>Nada que revisar</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">687</context>
+          <context context-type="linenumber">698</context>
         </context-group>
       </trans-unit>
       <trans-unit id="linkFlags.emptyText" datatype="html">
@@ -4815,7 +4903,7 @@
         <target>Los usuarios que compartan enlaces aparecerán aquí.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">688</context>
+          <context context-type="linenumber">699</context>
         </context-group>
       </trans-unit>
       <trans-unit id="linkFlags.source.profile" datatype="html">
@@ -4823,7 +4911,7 @@
         <target>Perfil</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">690</context>
+          <context context-type="linenumber">701</context>
         </context-group>
       </trans-unit>
       <trans-unit id="linkFlags.source.chat" datatype="html">
@@ -4831,7 +4919,7 @@
         <target>Chat</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">691</context>
+          <context context-type="linenumber">702</context>
         </context-group>
       </trans-unit>
       <trans-unit id="linkFlags.field.profileName" datatype="html">
@@ -4839,7 +4927,7 @@
         <target>Nombre de perfil</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">694</context>
+          <context context-type="linenumber">705</context>
         </context-group>
       </trans-unit>
       <trans-unit id="linkFlags.field.nationality" datatype="html">
@@ -4847,7 +4935,7 @@
         <target>Nacionalidad</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">695</context>
+          <context context-type="linenumber">706</context>
         </context-group>
       </trans-unit>
       <trans-unit id="linkFlags.field.qualifications" datatype="html">
@@ -4855,7 +4943,7 @@
         <target>Formación</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">696</context>
+          <context context-type="linenumber">707</context>
         </context-group>
       </trans-unit>
       <trans-unit id="linkFlags.field.profession" datatype="html">
@@ -4863,7 +4951,7 @@
         <target>Profesión</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">697</context>
+          <context context-type="linenumber">708</context>
         </context-group>
       </trans-unit>
       <trans-unit id="linkFlags.field.country" datatype="html">
@@ -4871,7 +4959,7 @@
         <target>País</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">698</context>
+          <context context-type="linenumber">709</context>
         </context-group>
       </trans-unit>
       <trans-unit id="linkFlags.field.location" datatype="html">
@@ -4879,7 +4967,7 @@
         <target>Ubicación</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">699</context>
+          <context context-type="linenumber">710</context>
         </context-group>
       </trans-unit>
       <trans-unit id="linkFlags.field.locationName" datatype="html">
@@ -4887,7 +4975,7 @@
         <target>Ubicación</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">700</context>
+          <context context-type="linenumber">711</context>
         </context-group>
       </trans-unit>
       <trans-unit id="linkFlags.field.eyes" datatype="html">
@@ -4895,7 +4983,7 @@
         <target>Ojos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">701</context>
+          <context context-type="linenumber">712</context>
         </context-group>
       </trans-unit>
       <trans-unit id="linkFlags.field.languages" datatype="html">
@@ -4903,7 +4991,7 @@
         <target>Idiomas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">702</context>
+          <context context-type="linenumber">713</context>
         </context-group>
       </trans-unit>
       <trans-unit id="linkFlags.field.description" datatype="html">
@@ -4911,7 +4999,7 @@
         <target>Descripción</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">703</context>
+          <context context-type="linenumber">714</context>
         </context-group>
       </trans-unit>
       <trans-unit id="linkFlags.field.sportHobbies" datatype="html">
@@ -4919,7 +5007,7 @@
         <target>Deportes y aficiones</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">704</context>
+          <context context-type="linenumber">715</context>
         </context-group>
       </trans-unit>
       <trans-unit id="linkFlags.field.offer" datatype="html">
@@ -4927,7 +5015,7 @@
         <target>Oferta</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">705</context>
+          <context context-type="linenumber">716</context>
         </context-group>
       </trans-unit>
       <trans-unit id="linkFlags.field.message" datatype="html">
@@ -4935,7 +5023,7 @@
         <target>Mensaje</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">706</context>
+          <context context-type="linenumber">717</context>
         </context-group>
       </trans-unit>
       <trans-unit id="linkFlags.count" datatype="html">
@@ -4943,7 +5031,7 @@
         <target>{{count}} veces</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">708</context>
+          <context context-type="linenumber">719</context>
         </context-group>
       </trans-unit>
       <trans-unit id="linkFlags.dismiss" datatype="html">
@@ -4951,7 +5039,7 @@
         <target>Permitir</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">709</context>
+          <context context-type="linenumber">720</context>
         </context-group>
       </trans-unit>
       <trans-unit id="linkFlags.reasonRequired" datatype="html">
@@ -4959,7 +5047,7 @@
         <target>Añade un motivo antes de eliminar una cuenta.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">710</context>
+          <context context-type="linenumber">721</context>
         </context-group>
       </trans-unit>
       <trans-unit id="linkFlags.removed" datatype="html">
@@ -4967,7 +5055,7 @@
         <target>Cuenta eliminada.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">711</context>
+          <context context-type="linenumber">722</context>
         </context-group>
       </trans-unit>
       <trans-unit id="linkFlags.dismissed" datatype="html">
@@ -4975,7 +5063,7 @@
         <target>Avisos borrados. El usuario volverá a aparecer si comparte otro enlace.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">712</context>
+          <context context-type="linenumber">723</context>
         </context-group>
       </trans-unit>
       <trans-unit id="linkFlags.errors.generic" datatype="html">
@@ -4983,7 +5071,7 @@
         <target>Algo salió mal. Inténtalo de nuevo.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">714</context>
+          <context context-type="linenumber">725</context>
         </context-group>
       </trans-unit>
       <trans-unit id="linkFlags.errors.moderator" datatype="html">
@@ -4991,7 +5079,7 @@
         <target>No se pueden eliminar cuentas de moderadores.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">715</context>
+          <context context-type="linenumber">726</context>
         </context-group>
       </trans-unit>
       <trans-unit id="workBanner.cleaner" datatype="html">
@@ -4999,7 +5087,7 @@
         <target>Añade tus servicios, tarifa por hora y disponibilidad para que los clientes te encuentren en la búsqueda.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">719</context>
+          <context context-type="linenumber">730</context>
         </context-group>
       </trans-unit>
       <trans-unit id="workBanner.client" datatype="html">
@@ -5007,7 +5095,7 @@
         <target>Cuéntales a los profesionales de limpieza lo que necesitas: servicios, presupuesto y disponibilidad. Así sabrán si encajan contigo.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">720</context>
+          <context context-type="linenumber">731</context>
         </context-group>
       </trans-unit>
       <trans-unit id="workBanner.cta" datatype="html">
@@ -5015,7 +5103,15 @@
         <target>Completar perfil</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">721</context>
+          <context context-type="linenumber">732</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="pushBanner.text" datatype="html">
+        <source>Turn on push notifications to hear about new messages, likes and profile visits, even when Linpura is closed.</source>
+        <target>Activa las notificaciones push para enterarte de nuevos mensajes, me gusta y visitas a tu perfil, incluso con Linpura cerrado.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">735</context>
         </context-group>
       </trans-unit>
     </body>

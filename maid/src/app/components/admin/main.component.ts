@@ -17,7 +17,8 @@ import { ChatStore } from '../../services/admin/signals/store';
 import { TranslateService } from '@ngx-translate/core';
 import { ListFilterService } from '../../services/admin/list-filter.service';
 import { ChatSocketsService } from '../../services/admin/chat-sockets.service';
-import { VerificationBannerComponent } from '../../shared/verification-banner/verification-banner.component';
+import { PushNotificationsService } from '../../services/push-notifications.service';
+import { PushBannerComponent } from '../../shared/push-banner/push-banner.component';
 import { WorkBannerComponent } from '../../shared/work-banner/work-banner.component';
 
 type MenuStates = 'closed' | 'opened';
@@ -29,7 +30,7 @@ type MenuStates = 'closed' | 'opened';
     NgClass,
     RouterOutlet,
     RightContentComponent,
-    VerificationBannerComponent,
+    PushBannerComponent,
     WorkBannerComponent,
   ],
   templateUrl: './main.component.html',
@@ -44,6 +45,7 @@ export class MainComponent implements OnInit, OnDestroy {
   readonly translateService = inject(TranslateService);
   readonly listFilterService: ListFilterService = inject(ListFilterService);
   private chatSocketsService = inject(ChatSocketsService);
+  private pushNotificationsService = inject(PushNotificationsService);
 
   hasSideMenu = signal(true);
   menu = signal<MenuStates>('closed');
@@ -94,6 +96,7 @@ export class MainComponent implements OnInit, OnDestroy {
     this.name = this.user.user?.name;
 
     this.chatSocketsService.connect();
+    void this.pushNotificationsService.resync();
 
     await this.loadCountries();
   }

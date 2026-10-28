@@ -13,6 +13,8 @@ export const SERVICES = [
   'kitchenAppliances',
   'cooking',
   'office',
+  'garage',
+  'stairs',
   'ecoProducts',
 ] as const;
 export type ServiceKey = (typeof SERVICES)[number];
@@ -44,6 +46,8 @@ export const SERVICE_ICONS: Record<ServiceKey, string> = {
   kitchenAppliances: 'kitchen',
   cooking: 'restaurant',
   office: 'business_center',
+  garage: 'garage',
+  stairs: 'stairs',
   ecoProducts: 'eco',
 };
 

@@ -77,6 +77,8 @@ export const SERVICE_SLUGS: Readonly<Record<ServiceKey, string>> = {
   kitchenAppliances: 'oven-and-fridge',
   cooking: 'cooking',
   office: 'office-cleaning',
+  garage: 'garage-cleaning',
+  stairs: 'stair-cleaning',
   ecoProducts: 'eco-friendly-cleaning',
 };
 

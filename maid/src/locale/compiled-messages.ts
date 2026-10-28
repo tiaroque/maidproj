@@ -235,6 +235,15 @@ export const compiledMessages = {
     passkeyLimit: $localize`:@@preferencesScreen.passkeyLimit:You can save up to 10 passkeys.`,
     chatAlertsTitle: $localize`:@@preferencesScreen.chatAlertsTitle:Chat alerts`,
     chatAlertsHint: $localize`:@@preferencesScreen.chatAlertsHint:Play a sound and flash the browser tab when a new message arrives. Conversations you muted individually stay muted.`,
+    pushTitle: $localize`:@@preferencesScreen.pushTitle:Push notifications`,
+    pushHint: $localize`:@@preferencesScreen.pushHint:Get notified on this device about new messages, likes and profile visits, even when Linpura is closed.`,
+    pushEnable: $localize`:@@preferencesScreen.pushEnable:Turn on`,
+    pushDisable: $localize`:@@preferencesScreen.pushDisable:Turn off`,
+    pushDenied: $localize`:@@preferencesScreen.pushDenied:Notifications are blocked for this site. Allow them in your browser settings to turn them on.`,
+    pushUnsupported: $localize`:@@preferencesScreen.pushUnsupported:This browser does not support push notifications. On iPhone and iPad, add Linpura to your Home Screen first.`,
+    pushChat: $localize`:@@preferencesScreen.pushChat:New messages`,
+    pushLikes: $localize`:@@preferencesScreen.pushLikes:Likes`,
+    pushVisits: $localize`:@@preferencesScreen.pushVisits:Profile visits`,
     deleteAccountTitle: $localize`:@@preferencesScreen.deleteAccountTitle:Delete account`,
     deleteAccountHint: $localize`:@@preferencesScreen.deleteAccountHint:Permanently close your account. Your profile will no longer be visible to anyone.`,
     deleteAccount: $localize`:@@preferencesScreen.deleteAccount:Delete account`,
@@ -573,6 +582,8 @@ export const compiledMessages = {
     kitchenAppliances: $localize`:@@services.kitchenAppliances:Oven and fridge`,
     cooking: $localize`:@@services.cooking:Cooking`,
     office: $localize`:@@services.office:Office cleaning`,
+    garage: $localize`:@@services.garage:Garage cleaning`,
+    stairs: $localize`:@@services.stairs:Stair cleaning`,
     ecoProducts: $localize`:@@services.ecoProducts:Eco-friendly products`,
   },
   days: {
@@ -719,5 +730,8 @@ export const compiledMessages = {
     cleaner: $localize`:@@workBanner.cleaner:Add your services, hourly rate and availability so clients can find you in search.`,
     client: $localize`:@@workBanner.client:Tell cleaners what you need: services, budget and availability. It helps them see if they are a good fit.`,
     cta: $localize`:@@workBanner.cta:Complete profile`,
+  },
+  pushBanner: {
+    text: $localize`:@@pushBanner.text:Turn on push notifications to hear about new messages, likes and profile visits, even when Linpura is closed.`,
   },
 };

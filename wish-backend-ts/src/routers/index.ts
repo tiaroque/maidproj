@@ -13,6 +13,7 @@ import locationRouter from "./locations/location.routes";
 import verificationRouter from "./verification.routes";
 import mediaRouter from "./media.routes";
 import moderationRouter from "./moderation.routes";
+import pushRouter from "./push.routes";
 
 const routes = Router();
 
@@ -28,6 +29,8 @@ routes.use("/api/contact", contactRouter);
 routes.use("/api/verification", verificationRouter);
 
 routes.use("/api/moderation", moderationRouter);
+
+routes.use("/api/push", pushRouter);
 
 // Dating
 routes.use("/api/assets", assetsRouter);

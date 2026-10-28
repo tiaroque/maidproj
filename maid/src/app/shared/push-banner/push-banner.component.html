@@ -1,0 +1,30 @@
+@if (visible()) {
+  <div class="verification-banner" role="status">
+    <mat-icon class="verification-banner-icon" aria-hidden="true">
+      notifications_active
+    </mat-icon>
+
+    <p class="verification-banner-text">
+      {{ "pushBanner.text" | translate }}
+    </p>
+
+    <div class="verification-banner-actions">
+      <button
+        type="button"
+        class="ad-btn verification-banner-cta"
+        [disabled]="enabling()"
+        (click)="enable()"
+      >
+        {{ "preferencesScreen.pushEnable" | translate }}
+      </button>
+      <button
+        type="button"
+        class="verification-banner-close"
+        [attr.aria-label]="'verification.banner.dismiss' | translate"
+        (click)="dismiss()"
+      >
+        <mat-icon aria-hidden="true">close</mat-icon>
+      </button>
+    </div>
+  </div>
+}

@@ -230,6 +230,15 @@
     "passkeyThisDevice": "Solo este dispositivo",
     "chatAlertsTitle": "Alertas del chat",
     "chatAlertsHint": "Reproduce un sonido y hace parpadear la pestaña del navegador cuando llega un mensaje nuevo. Las conversaciones que silenciaste individualmente siguen silenciadas.",
+    "pushTitle": "Notificaciones push",
+    "pushHint": "Recibe avisos en este dispositivo sobre mensajes nuevos, me gusta y visitas al perfil, incluso con Linpura cerrado.",
+    "pushEnable": "Activar",
+    "pushDisable": "Desactivar",
+    "pushDenied": "Las notificaciones están bloqueadas para este sitio. Permítelas en los ajustes del navegador para activarlas.",
+    "pushUnsupported": "Este navegador no admite notificaciones push. En iPhone y iPad, añade primero Linpura a la pantalla de inicio.",
+    "pushChat": "Mensajes nuevos",
+    "pushLikes": "Me gusta",
+    "pushVisits": "Visitas al perfil",
     "deleteAccountTitle": "Eliminar cuenta",
     "deleteAccountHint": "Cierra tu cuenta de forma permanente. Tu perfil dejará de ser visible para cualquier persona.",
     "deleteAccount": "Eliminar cuenta",
@@ -569,6 +578,8 @@
     "kitchenAppliances": "Horno y nevera",
     "cooking": "Cocinar",
     "office": "Oficinas",
+    "garage": "Limpieza de garajes",
+    "stairs": "Limpieza de escaleras",
     "ecoProducts": "Productos ecológicos"
   },
   "days": {
@@ -715,5 +726,8 @@
     "cleaner": "Añade tus servicios, tarifa por hora y disponibilidad para que los clientes te encuentren en la búsqueda.",
     "client": "Cuéntales a los profesionales de limpieza lo que necesitas: servicios, presupuesto y disponibilidad. Así sabrán si encajan contigo.",
     "cta": "Completar perfil"
+  },
+  "pushBanner": {
+    "text": "Activa las notificaciones push para enterarte de nuevos mensajes, me gusta y visitas a tu perfil, incluso con Linpura cerrado."
   }
 }

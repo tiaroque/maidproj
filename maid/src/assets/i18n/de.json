@@ -230,6 +230,15 @@
     "passkeyThisDevice": "Nur dieses Gerät",
     "chatAlertsTitle": "Chat-Benachrichtigungen",
     "chatAlertsHint": "Bei einer neuen Nachricht einen Ton abspielen und den Browser-Tab blinken lassen. Einzeln stummgeschaltete Unterhaltungen bleiben stumm.",
+    "pushTitle": "Push-Benachrichtigungen",
+    "pushHint": "Auf diesem Gerät über neue Nachrichten, Likes und Profilbesuche informiert werden, auch wenn Linpura geschlossen ist.",
+    "pushEnable": "Aktivieren",
+    "pushDisable": "Deaktivieren",
+    "pushDenied": "Benachrichtigungen sind für diese Website blockiert. Erlauben Sie sie in den Browser-Einstellungen, um sie zu aktivieren.",
+    "pushUnsupported": "Dieser Browser unterstützt keine Push-Benachrichtigungen. Fügen Sie Linpura auf iPhone und iPad zuerst zum Home-Bildschirm hinzu.",
+    "pushChat": "Neue Nachrichten",
+    "pushLikes": "Likes",
+    "pushVisits": "Profilbesuche",
     "deleteAccountTitle": "Konto löschen",
     "deleteAccountHint": "Schliessen Sie Ihr Konto dauerhaft. Ihr Profil ist danach für niemanden mehr sichtbar.",
     "deleteAccount": "Konto löschen",
@@ -569,6 +578,8 @@
     "kitchenAppliances": "Backofen und Kühlschrank",
     "cooking": "Kochen",
     "office": "Büroreinigung",
+    "garage": "Garagenreinigung",
+    "stairs": "Treppenreinigung",
     "ecoProducts": "Ökologische Produkte"
   },
   "days": {
@@ -715,5 +726,8 @@
     "cleaner": "Fügen Sie Ihre Leistungen, Ihren Stundensatz und Ihre Verfügbarkeit hinzu, damit Kunden Sie in der Suche finden.",
     "client": "Sagen Sie Reinigungskräften, was Sie brauchen: Leistungen, Budget und Verfügbarkeit. So sehen sie, ob sie zu Ihnen passen.",
     "cta": "Profil vervollständigen"
+  },
+  "pushBanner": {
+    "text": "Aktivieren Sie Push-Benachrichtigungen, um über neue Nachrichten, Likes und Profilbesuche informiert zu werden, auch wenn Linpura geschlossen ist."
   }
 }

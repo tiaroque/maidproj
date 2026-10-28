@@ -230,6 +230,15 @@
     "passkeyThisDevice": "Cet appareil uniquement",
     "chatAlertsTitle": "Alertes du chat",
     "chatAlertsHint": "Émettre un son et faire clignoter l'onglet du navigateur à l'arrivée d'un nouveau message. Les conversations que vous avez mises en sourdine individuellement le restent.",
+    "pushTitle": "Notifications push",
+    "pushHint": "Soyez averti sur cet appareil des nouveaux messages, j'aime et visites de profil, même lorsque Linpura est fermé.",
+    "pushEnable": "Activer",
+    "pushDisable": "Désactiver",
+    "pushDenied": "Les notifications sont bloquées pour ce site. Autorisez-les dans les paramètres du navigateur pour les activer.",
+    "pushUnsupported": "Ce navigateur ne prend pas en charge les notifications push. Sur iPhone et iPad, ajoutez d'abord Linpura à l'écran d'accueil.",
+    "pushChat": "Nouveaux messages",
+    "pushLikes": "J'aime",
+    "pushVisits": "Visites de profil",
     "deleteAccountTitle": "Supprimer le compte",
     "deleteAccountHint": "Fermez définitivement votre compte. Votre profil ne sera plus visible par personne.",
     "deleteAccount": "Supprimer le compte",
@@ -569,6 +578,8 @@
     "kitchenAppliances": "Four et frigo",
     "cooking": "Cuisine",
     "office": "Ménage de bureaux",
+    "garage": "Nettoyage de garages",
+    "stairs": "Nettoyage d’escaliers",
     "ecoProducts": "Produits écologiques"
   },
   "days": {
@@ -715,5 +726,8 @@
     "cleaner": "Ajoutez vos services, votre tarif horaire et vos disponibilités pour que les clients vous trouvent dans la recherche.",
     "client": "Dites aux agents d’entretien ce dont vous avez besoin : services, budget et disponibilités. Cela les aide à voir s’ils vous conviennent.",
     "cta": "Compléter le profil"
+  },
+  "pushBanner": {
+    "text": "Activez les notifications push pour être averti des nouveaux messages, des j’aime et des visites de votre profil, même lorsque Linpura est fermé."
   }
 }

@@ -231,6 +231,15 @@
     "passkeyLimit": "Je kunt maximaal 10 passkeys opslaan.",
     "chatAlertsTitle": "Chatmeldingen",
     "chatAlertsHint": "Speel een geluid af en laat het browsertabblad knipperen bij een nieuw bericht. Gesprekken die je afzonderlijk hebt gedempt, blijven gedempt.",
+    "pushTitle": "Pushmeldingen",
+    "pushHint": "Ontvang op dit apparaat meldingen over nieuwe berichten, likes en profielbezoeken, ook als Linpura gesloten is.",
+    "pushEnable": "Inschakelen",
+    "pushDisable": "Uitschakelen",
+    "pushDenied": "Meldingen zijn geblokkeerd voor deze site. Sta ze toe in je browserinstellingen om ze in te schakelen.",
+    "pushUnsupported": "Deze browser ondersteunt geen pushmeldingen. Voeg Linpura op iPhone en iPad eerst toe aan je beginscherm.",
+    "pushChat": "Nieuwe berichten",
+    "pushLikes": "Likes",
+    "pushVisits": "Profielbezoeken",
     "deleteAccountTitle": "Account verwijderen",
     "deleteAccountHint": "Sluit je account definitief. Je profiel is daarna voor niemand meer zichtbaar.",
     "deleteAccount": "Account verwijderen",
@@ -569,6 +578,8 @@
     "kitchenAppliances": "Oven en koelkast",
     "cooking": "Koken",
     "office": "Kantoorschoonmaak",
+    "garage": "Garageschoonmaak",
+    "stairs": "Trappenschoonmaak",
     "ecoProducts": "Milieuvriendelijke producten"
   },
   "days": {
@@ -715,5 +726,8 @@
     "cleaner": "Voeg je diensten, uurtarief en beschikbaarheid toe zodat klanten je in de zoekresultaten vinden.",
     "client": "Vertel schoonmakers wat je nodig hebt: diensten, budget en beschikbaarheid. Zo zien ze of ze bij je passen.",
     "cta": "Profiel aanvullen"
+  },
+  "pushBanner": {
+    "text": "Zet pushmeldingen aan om op de hoogte te blijven van nieuwe berichten, likes en profielbezoeken, ook als Linpura gesloten is."
   }
 }

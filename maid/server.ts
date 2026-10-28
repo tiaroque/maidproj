@@ -116,6 +116,8 @@ const SERVICE_SLUGS: Record<string, string> = {
   kitchenAppliances: 'oven-and-fridge',
   cooking: 'cooking',
   office: 'office-cleaning',
+  garage: 'garage-cleaning',
+  stairs: 'stair-cleaning',
   ecoProducts: 'eco-friendly-cleaning',
 };
 
@@ -303,6 +305,28 @@ app.get(['/favicon.ico', '/robots.txt', '/llms.txt'], (req, res, next) => {
       next();
     }
   });
+});
+
+// Served from the root so the worker's scope covers every locale. It must not
+// be cached, or browsers keep running an outdated worker.
+app.get(['/sw-push.js', '/manifest.webmanifest'], (req, res, next) => {
+  const isWorker = req.path === '/sw-push.js';
+  res.sendFile(
+    resolve(browserDistFolder, 'en', req.path.slice(1)),
+    {
+      headers: {
+        'Content-Type': isWorker
+          ? 'application/javascript; charset=utf-8'
+          : 'application/manifest+json; charset=utf-8',
+        'Cache-Control': isWorker ? 'no-cache' : 'public, max-age=86400',
+      },
+    },
+    (error) => {
+      if (error) {
+        next();
+      }
+    },
+  );
 });
 
 // Only the build's bundles and media/ carry a content hash in their name;

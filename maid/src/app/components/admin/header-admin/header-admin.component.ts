@@ -20,7 +20,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { NgClass } from '@angular/common';
 import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
 import { MatIcon } from '@angular/material/icon';
-import { Subscription } from 'rxjs';
+import { from, Subscription, switchMap } from 'rxjs';
 import { ChatStore } from '../../../services/admin/signals/store';
 import {
   TranslatePipe,
@@ -34,6 +34,7 @@ import { LanguageService } from '../../../services/shared/language-service.servi
 import { LanguageLinksComponent } from '../../../shared/language-links/language-links.component';
 import { LanguageSelectorComponent } from '../../../shared/language-selector/language-selector.component';
 import { VerificationService } from '../../../services/verification.service';
+import { PushNotificationsService } from '../../../services/push-notifications.service';
 
 @Component({
   selector: 'app-header-admin',
@@ -69,6 +70,7 @@ export class HeaderAdminComponent implements OnInit {
   private chatSocketsService = inject(ChatSocketsService);
   menusService = inject(MenusService);
   private verificationService = inject(VerificationService);
+  private pushNotificationsService = inject(PushNotificationsService);
   isModerator = computed(
     () => this.verificationService.current()?.isModerator ?? false,
   );
@@ -189,13 +191,19 @@ export class HeaderAdminComponent implements OnInit {
     this.cookieService.delete('session_admin');
     this.cookieService.delete('session');
 
-    this.authService.sessionLogout().subscribe({
-      next: () => {
-        this.chatSocketsService.disconnect();
-        this.storeChat.resetStore();
-        this.router.navigate([this.lang(), 'login']);
-      },
-    });
+    from(this.pushNotificationsService.detachForLogout())
+      .pipe(
+        switchMap((pushEndpoint) =>
+          this.authService.sessionLogout(pushEndpoint),
+        ),
+      )
+      .subscribe({
+        next: () => {
+          this.chatSocketsService.disconnect();
+          this.storeChat.resetStore();
+          this.router.navigate([this.lang(), 'login']);
+        },
+      });
   }
 
   // toggleUnderLine(value: boolean) {

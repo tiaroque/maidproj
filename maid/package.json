@@ -6,6 +6,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
+    "typecheck:sw": "tsc -p src/sw/jsconfig.json",
     "generate:avatars": "python3 scripts/generate-avatars.py",
     "generate:og": "node scripts/generate-og-images.mjs",
     "i18n:compile": "node scripts/build-locale-messages.mjs"

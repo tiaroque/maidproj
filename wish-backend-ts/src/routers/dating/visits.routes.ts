@@ -3,6 +3,7 @@ import { auth } from "../../middleware/auth";
 import { validateGenderExists } from "../../middleware/validate-gender";
 import { getUserByUid } from "../../models/user";
 import { visitProfile } from "../../models/dating/visits";
+import { notifyProfileVisited } from "../../services/push.service";
 
 const router = Router();
 
@@ -43,6 +44,7 @@ router.post("/", auth, validateGenderExists, async (req, res, next) => {
     }
 
     const visit = await visitProfile(req.uid, visitedUid);
+    notifyProfileVisited(req.uid, visitedUid);
     return res.status(200).send({
       visited: true,
       visitedUid,
