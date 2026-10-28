@@ -231,7 +231,10 @@ export class SeoService {
             name: 'Linpura',
             url: SITE_ORIGIN,
             logo: `${SITE_ORIGIN}/assets/images/logo-mop.png`,
-            sameAs: ['https://www.facebook.com/people/Linpura/61595661271521/'],
+            sameAs: [
+              'https://www.facebook.com/people/Linpura/61595661271521/',
+              'https://www.instagram.com/linpura_cleaning/',
+            ],
           },
           {
             '@type': 'WebSite',
