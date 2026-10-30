@@ -731,5 +731,36 @@
   },
   "pushBanner": {
     "text": "Zet pushmeldingen aan om op de hoogte te blijven van nieuwe berichten, likes en profielbezoeken, ook als Linpura gesloten is."
+  },
+  "adminMail": {
+    "menu": "E-mail versturen",
+    "eyebrow": "Admin",
+    "title": "Een e-mail versturen",
+    "lead": "Schrijf een bericht en verstuur het nu naar één persoon, of naar iedereen met een account. Elke e-mail begint met de naam van die persoon.",
+    "audience": "Wie het ontvangt",
+    "one": "Eén persoon",
+    "all": "Iedereen met een account",
+    "email": "E-mail",
+    "subject": "Onderwerp",
+    "message": "Bericht",
+    "cta": "Knoptekst",
+    "url": "Knoplink",
+    "checking": "Ontvangers worden gecontroleerd…",
+    "previewOne": "Dit gaat naar {{name}} ({{email}}).",
+    "previewAll": "Dit gaat naar {{count}} mensen.",
+    "previewMissing": "Geen account gebruikt dit e-mailadres.",
+    "none": "Er is niemand om dit naartoe te sturen.",
+    "send": "Versturen",
+    "sending": "Bezig met versturen…",
+    "sentOne": "E-mail verstuurd.",
+    "sent": "Verstuurd naar {{sent}} mensen.",
+    "sentPartial": "Verstuurd naar {{sent}} mensen. {{failed}} konden niet worden verstuurd.",
+    "confirmAll": "Deze e-mail naar {{count}} mensen versturen?",
+    "required": "Vul een onderwerp en een bericht in.",
+    "linkRequired": "Een knop heeft zowel een tekst als een link nodig.",
+    "urlInvalid": "De knoplink moet beginnen met http:// of https://.",
+    "errors": {
+      "generic": "De e-mail kon niet worden verstuurd. Probeer het opnieuw."
+    }
   }
 }

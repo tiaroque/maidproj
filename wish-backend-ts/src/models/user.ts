@@ -429,6 +429,59 @@ export const unblockUser = async (
   return inserts;
 };
 
+const mailableMatch = {
+  deleted: { $ne: true },
+  isFake: { $ne: true },
+  email: { $type: "string", $gt: "" },
+};
+
+export type MailableUser = {
+  email: string;
+  name?: string;
+  lang?: string;
+};
+
+export const listMailableUsers = async (): Promise<MailableUser[]> => {
+  const users = await getDb()
+    .collection("users")
+    .find(mailableMatch)
+    .project<{ email?: string; name?: string; lang?: string }>({
+      _id: 0,
+      email: 1,
+      name: 1,
+      lang: 1,
+    })
+    .toArray();
+
+  const seen = new Set<string>();
+  const recipients: MailableUser[] = [];
+  for (const user of users) {
+    const email = String(user.email || "").trim().toLowerCase();
+    if (!email || seen.has(email)) {
+      continue;
+    }
+    seen.add(email);
+    recipients.push({
+      email,
+      name: user.name,
+      lang: user.lang,
+    });
+  }
+  return recipients;
+};
+
+export const countMailableUsers = async () => {
+  const [result] = await getDb()
+    .collection("users")
+    .aggregate<{ count: number }>([
+      { $match: mailableMatch },
+      { $group: { _id: { $toLower: "$email" } } },
+      { $count: "count" },
+    ])
+    .toArray();
+  return result?.count ?? 0;
+};
+
 export const getBlockedUsers = async (uid: string) => {
   let collection = getDb().collection("users");
   return collection

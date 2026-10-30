@@ -93,3 +93,79 @@ export const getPasswordResetEmail = (name: string, url: string, lang?: string) 
         url,
         lang
     );
+
+const customGreetings: Record<string, string> = {
+    en: 'Hi --NAME--,',
+    pt: 'Olá --NAME--,',
+    de: 'Hallo --NAME--,',
+    fr: 'Bonjour --NAME--,',
+    it: 'Ciao --NAME--,',
+    es: 'Hola --NAME--,',
+    nl: 'Hallo --NAME--,',
+};
+
+const escapeHtml = (value: string) =>
+    value
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+
+const messageParagraphs = (message: string) =>
+    message
+        .trim()
+        .split(/\n{2,}/)
+        .map((block) => `<p>${escapeHtml(block).replace(/\n/g, '<br />')}</p>`)
+        .join('');
+
+const ctaBlock = (label: string, url: string) => `
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
+  <tbody>
+    <tr>
+      <td align="left">
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+          <tbody>
+            <tr>
+              <td>
+                <a href="${escapeHtml(url)}" target="_blank">${escapeHtml(label)}</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>`;
+
+export const getCustomMessageEmail = (
+    name: string,
+    lang: string | undefined,
+    subject: string,
+    message: string,
+    cta?: string,
+    url?: string,
+) => {
+    const resolvedLang = resolveEmailLang(lang);
+    const greeting = escapeHtml(
+        fallbackGreeting(
+            resolvedLang,
+            customGreetings[resolvedLang],
+            name,
+        ),
+    );
+    const preheader = message.replace(/\s+/g, ' ').trim().slice(0, 140);
+    const values: Record<string, string> = {
+        '--LANG--': resolvedLang,
+        '--TITLE--': escapeHtml(subject),
+        '--PREHEADER--': escapeHtml(preheader),
+        '--HEADING--': escapeHtml(subject),
+        '--GREETING--': greeting,
+        '--BODY--': messageParagraphs(message),
+        '--CTA_BLOCK--': cta && url ? ctaBlock(cta, url) : '',
+    };
+
+    return readCachedTemplate('message.html').replace(
+        /--(?:LANG|TITLE|PREHEADER|HEADING|GREETING|BODY|CTA_BLOCK)--/g,
+        (token) => values[token] ?? '',
+    );
+};

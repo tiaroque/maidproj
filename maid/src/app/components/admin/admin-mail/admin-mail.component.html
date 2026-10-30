@@ -1,0 +1,121 @@
+<div class="ad-page">
+  <div class="ad-col">
+    <div class="ad-head">
+      <div>
+        <p class="ad-eyebrow">{{ "adminMail.eyebrow" | translate }}</p>
+        <h1 class="ad-title">{{ "adminMail.title" | translate }}</h1>
+        <p class="ad-lead">{{ "adminMail.lead" | translate }}</p>
+      </div>
+    </div>
+
+    <form class="ad-card flex flex-col gap-4" (submit)="$event.preventDefault(); send()">
+      <div>
+        <p class="ad-card-title">{{ "adminMail.audience" | translate }}</p>
+        <div class="mt-3 flex flex-wrap gap-2" role="radiogroup" [attr.aria-label]="'adminMail.audience' | translate">
+          <button
+            type="button"
+            role="radio"
+            [attr.aria-checked]="audience() === 'one'"
+            [class]="audience() === 'one' ? 'ad-btn' : 'ad-btn-ghost'"
+            (click)="setAudience('one')"
+          >
+            {{ "adminMail.one" | translate }}
+          </button>
+          <button
+            type="button"
+            role="radio"
+            [attr.aria-checked]="audience() === 'all'"
+            [class]="audience() === 'all' ? 'ad-btn' : 'ad-btn-ghost'"
+            (click)="setAudience('all')"
+          >
+            {{ "adminMail.all" | translate }}
+          </button>
+        </div>
+      </div>
+
+      @if (audience() === 'one') {
+        <mat-form-field [appearance]="utils.inputType()" class="w-full">
+          <mat-label>{{ "adminMail.email" | translate }}</mat-label>
+          <input
+            matInput
+            type="email"
+            autocomplete="off"
+            [value]="email()"
+            (input)="setEmail($event)"
+          />
+        </mat-form-field>
+      }
+
+      <mat-form-field [appearance]="utils.inputType()" class="w-full">
+        <mat-label>{{ "adminMail.subject" | translate }}</mat-label>
+        <input
+          matInput
+          maxlength="140"
+          [value]="subject()"
+          (input)="setSubject($event)"
+        />
+      </mat-form-field>
+
+      <mat-form-field [appearance]="utils.inputType()" class="w-full">
+        <mat-label>{{ "adminMail.message" | translate }}</mat-label>
+        <textarea
+          matInput
+          rows="8"
+          maxlength="8000"
+          [value]="message()"
+          (input)="setMessage($event)"
+        ></textarea>
+      </mat-form-field>
+
+      <mat-form-field [appearance]="utils.inputType()" class="w-full">
+        <mat-label>{{ "adminMail.cta" | translate }}</mat-label>
+        <input
+          matInput
+          maxlength="60"
+          [value]="cta()"
+          (input)="setCta($event)"
+        />
+        <mat-hint>{{ "optional" | translate }}</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field [appearance]="utils.inputType()" class="w-full">
+        <mat-label>{{ "adminMail.url" | translate }}</mat-label>
+        <input
+          matInput
+          type="url"
+          [value]="url()"
+          (input)="setUrl($event)"
+        />
+        <mat-hint>{{ "optional" | translate }}</mat-hint>
+      </mat-form-field>
+
+      @if (previewing()) {
+        <p class="ad-card-hint">{{ "adminMail.checking" | translate }}</p>
+      } @else if (preview(); as found) {
+        <p class="ad-card-hint">
+          @if (audience() === 'one' && found.count === 1) {
+            {{
+              "adminMail.previewOne"
+                | translate: { name: found.name || found.email, email: found.email }
+            }}
+          } @else if (audience() === 'one') {
+            {{ "adminMail.previewMissing" | translate }}
+          } @else {
+            {{ "adminMail.previewAll" | translate: { count: found.count } }}
+          }
+        </p>
+      }
+
+      <div>
+        <button type="submit" class="ad-btn" [disabled]="sending()">
+          @if (sending()) {
+            <mat-spinner diameter="18"></mat-spinner>
+            {{ "adminMail.sending" | translate }}
+          } @else {
+            {{ "adminMail.send" | translate }}
+          }
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -731,5 +731,36 @@
   },
   "pushBanner": {
     "text": "Activa las notificaciones push para enterarte de nuevos mensajes, me gusta y visitas a tu perfil, incluso con Linpura cerrado."
+  },
+  "adminMail": {
+    "menu": "Enviar email",
+    "eyebrow": "Admin",
+    "title": "Enviar un email",
+    "lead": "Escribe un mensaje y envíalo ahora a una persona, o a todas las personas con cuenta. Cada email empieza con su nombre.",
+    "audience": "Quién lo recibe",
+    "one": "Una persona",
+    "all": "Todas las personas con cuenta",
+    "email": "Email",
+    "subject": "Asunto",
+    "message": "Mensaje",
+    "cta": "Texto del botón",
+    "url": "Enlace del botón",
+    "checking": "Comprobando quién lo recibirá…",
+    "previewOne": "Se enviará a {{name}} ({{email}}).",
+    "previewAll": "Se enviará a {{count}} personas.",
+    "previewMissing": "Ninguna cuenta usa ese email.",
+    "none": "No hay nadie a quien enviar este email.",
+    "send": "Enviar",
+    "sending": "Enviando…",
+    "sentOne": "Email enviado.",
+    "sent": "Enviado a {{sent}} personas.",
+    "sentPartial": "Enviado a {{sent}} personas. {{failed}} no se pudieron enviar.",
+    "confirmAll": "¿Enviar este email a {{count}} personas?",
+    "required": "Escribe un asunto y un mensaje.",
+    "linkRequired": "El botón necesita un texto y un enlace.",
+    "urlInvalid": "El enlace del botón debe empezar por http:// o https://.",
+    "errors": {
+      "generic": "No se pudo enviar el email. Inténtalo de nuevo."
+    }
   }
 }

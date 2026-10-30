@@ -14,6 +14,7 @@ import verificationRouter from "./verification.routes";
 import mediaRouter from "./media.routes";
 import moderationRouter from "./moderation.routes";
 import pushRouter from "./push.routes";
+import adminMailRouter from "./admin-mail.routes";
 
 const routes = Router();
 
@@ -31,6 +32,8 @@ routes.use("/api/verification", verificationRouter);
 routes.use("/api/moderation", moderationRouter);
 
 routes.use("/api/push", pushRouter);
+
+routes.use("/api/admin/mail", adminMailRouter);
 
 // Dating
 routes.use("/api/assets", assetsRouter);

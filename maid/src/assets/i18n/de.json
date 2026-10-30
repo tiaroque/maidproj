@@ -731,5 +731,36 @@
   },
   "pushBanner": {
     "text": "Aktivieren Sie Push-Benachrichtigungen, um über neue Nachrichten, Likes und Profilbesuche informiert zu werden, auch wenn Linpura geschlossen ist."
+  },
+  "adminMail": {
+    "menu": "E-Mail senden",
+    "eyebrow": "Admin",
+    "title": "E-Mail senden",
+    "lead": "Schreiben Sie eine Nachricht und senden Sie sie jetzt an eine Person oder an alle mit einem Konto. Jede E-Mail beginnt mit dem Namen der Person.",
+    "audience": "Wer sie erhält",
+    "one": "Eine Person",
+    "all": "Alle mit einem Konto",
+    "email": "E-Mail",
+    "subject": "Betreff",
+    "message": "Nachricht",
+    "cta": "Schaltflächentext",
+    "url": "Schaltflächenlink",
+    "checking": "Empfänger werden geprüft…",
+    "previewOne": "Wird an {{name}} ({{email}}) gesendet.",
+    "previewAll": "Wird an {{count}} Personen gesendet.",
+    "previewMissing": "Kein Konto verwendet diese E-Mail.",
+    "none": "Es gibt niemanden, der diese E-Mail erhalten kann.",
+    "send": "Senden",
+    "sending": "Wird gesendet…",
+    "sentOne": "E-Mail gesendet.",
+    "sent": "An {{sent}} Personen gesendet.",
+    "sentPartial": "An {{sent}} Personen gesendet. {{failed}} konnten nicht gesendet werden.",
+    "confirmAll": "Diese E-Mail an {{count}} Personen senden?",
+    "required": "Geben Sie einen Betreff und eine Nachricht ein.",
+    "linkRequired": "Eine Schaltfläche braucht einen Text und einen Link.",
+    "urlInvalid": "Der Link muss mit http:// oder https:// beginnen.",
+    "errors": {
+      "generic": "Die E-Mail konnte nicht gesendet werden. Bitte versuchen Sie es erneut."
+    }
   }
 }

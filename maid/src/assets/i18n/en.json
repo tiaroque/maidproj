@@ -731,5 +731,36 @@
   },
   "pushBanner": {
     "text": "Turn on push notifications to hear about new messages, likes and profile visits, even when Linpura is closed."
+  },
+  "adminMail": {
+    "menu": "Send email",
+    "eyebrow": "Admin",
+    "title": "Send an email",
+    "lead": "Write a message and send it now to one person, or to everyone with an account. Each email opens with their name.",
+    "audience": "Who receives it",
+    "one": "One person",
+    "all": "Everyone with an account",
+    "email": "Email",
+    "subject": "Subject",
+    "message": "Message",
+    "cta": "Button label",
+    "url": "Button link",
+    "checking": "Checking who will receive this…",
+    "previewOne": "This will be sent to {{name}} ({{email}}).",
+    "previewAll": "This will be sent to {{count}} people.",
+    "previewMissing": "No account uses that email.",
+    "none": "There is nobody to send this to.",
+    "send": "Send",
+    "sending": "Sending…",
+    "sentOne": "Email sent.",
+    "sent": "Sent to {{sent}} people.",
+    "sentPartial": "Sent to {{sent}} people. {{failed}} could not be sent.",
+    "confirmAll": "Send this email to {{count}} people?",
+    "required": "Add a subject and a message.",
+    "linkRequired": "A button needs both a label and a link.",
+    "urlInvalid": "The button link must start with http:// or https://.",
+    "errors": {
+      "generic": "The email could not be sent. Please try again."
+    }
   }
 }

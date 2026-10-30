@@ -218,6 +218,10 @@
             <mat-icon>shield</mat-icon>
             <span>{{ "verification.moderationLink" | translate }}</span>
           </div>
+          <div mat-menu-item [routerLink]="['/', lang(), 'admin', 'mail']">
+            <mat-icon>mail</mat-icon>
+            <span>{{ "adminMail.menu" | translate }}</span>
+          </div>
         }
 
         <div class="app-menu-divider" role="separator"></div>
@@ -356,12 +360,22 @@
           <mat-icon aria-hidden="true">shield</mat-icon>
           <span>{{ "verification.moderationLink" | translate }}</span>
         </button>
+        <button
+          type="button"
+          class="menu-item menu-action"
+          style="--i: 5"
+          (click)="closeMobileMenu()"
+          [routerLink]="['/', lang(), 'admin', 'mail']"
+        >
+          <mat-icon aria-hidden="true">mail</mat-icon>
+          <span>{{ "adminMail.menu" | translate }}</span>
+        </button>
       }
 
       <button
         type="button"
         class="menu-item menu-action"
-        style="--i: 5"
+        style="--i: 6"
         (click)="logout()"
       >
         <svg

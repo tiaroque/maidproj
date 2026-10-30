@@ -132,6 +132,15 @@ export const routesAdminChildren: Routes = [
       },
 
       {
+        path: 'mail',
+        loadComponent: () =>
+          import('./admin-mail/admin-mail.component').then(
+            (cp) => cp.AdminMailComponent,
+          ),
+        title: 'Linpura - Send email',
+      },
+
+      {
         path: 'moderation/multi-accounts',
         loadComponent: () =>
           import('./moderation/multi-accounts/multi-accounts.component').then(
