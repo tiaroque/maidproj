@@ -98,6 +98,11 @@ export class HeaderAdminComponent implements OnInit {
       if (!this.storeChat.inboxLoaded()) {
         void this.storeChat.loadMoreConversations();
       }
+      // Moderator links read this status. It used to load only on the photos
+      // page, so the account menu hid them everywhere else.
+      if (!this.verificationService.current()) {
+        this.verificationService.status().subscribe({ error: () => {} });
+      }
     });
 
     this.menusService.portal$.subscribe((portal) => {

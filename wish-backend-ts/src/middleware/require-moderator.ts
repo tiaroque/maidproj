@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import config from "../endpoints.config";
 
 export const isModerator = (email?: string) =>
-  !!email && config.moderatorEmails.includes(email.toLowerCase());
+  !!email && config.moderatorEmails.includes(email.trim().toLowerCase());
 
 export const requireModerator = (
   req: Request,
