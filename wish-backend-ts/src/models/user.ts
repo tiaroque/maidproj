@@ -435,16 +435,21 @@ const mailableMatch = {
   email: { $type: "string", $gt: "" },
 };
 
+const mailableQuery = (userType?: "Cleaner" | "Client") =>
+  userType ? { ...mailableMatch, userType } : mailableMatch;
+
 export type MailableUser = {
   email: string;
   name?: string;
   lang?: string;
 };
 
-export const listMailableUsers = async (): Promise<MailableUser[]> => {
+export const listMailableUsers = async (
+  userType?: "Cleaner" | "Client",
+): Promise<MailableUser[]> => {
   const users = await getDb()
     .collection("users")
-    .find(mailableMatch)
+    .find(mailableQuery(userType))
     .project<{ email?: string; name?: string; lang?: string }>({
       _id: 0,
       email: 1,
@@ -470,11 +475,11 @@ export const listMailableUsers = async (): Promise<MailableUser[]> => {
   return recipients;
 };
 
-export const countMailableUsers = async () => {
+export const countMailableUsers = async (userType?: "Cleaner" | "Client") => {
   const [result] = await getDb()
     .collection("users")
     .aggregate<{ count: number }>([
-      { $match: mailableMatch },
+      { $match: mailableQuery(userType) },
       { $group: { _id: { $toLower: "$email" } } },
       { $count: "count" },
     ])

@@ -42,6 +42,7 @@ export class AdminMailComponent implements OnInit {
 
   protected utils = this.utilsService;
 
+  readonly audiences: MailAudience[] = ['one', 'all', 'cleaners', 'clients'];
   audience = signal<MailAudience>('one');
   email = signal('');
   subject = signal('');
@@ -116,7 +117,7 @@ export class AdminMailComponent implements OnInit {
       this.notify('adminMail.previewMissing');
       return;
     }
-    if (this.audience() === 'all') {
+    if (this.audience() !== 'one') {
       const count = this.preview()?.count ?? 0;
       if (count === 0) {
         this.notify('adminMail.none');

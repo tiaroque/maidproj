@@ -5155,8 +5155,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="adminMail.lead" datatype="html">
-        <source>Write a message and send it now to one person, or to everyone with an account. Each email opens with their name.</source>
-        <target>Schrijf een bericht en verstuur het nu naar één persoon, of naar iedereen met een account. Elke e-mail begint met de naam van die persoon.</target>
+        <source>Write a message and send it now to one person, all cleaners, all clients, or everyone with an account. Each email opens with their name.</source>
+        <target>Schrijf een bericht en verstuur het nu naar één persoon, alle schoonmakers, alle klanten, of iedereen met een account. Elke e-mail begint met de naam van die persoon.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
           <context context-type="linenumber">743</context>
@@ -5186,12 +5186,28 @@
           <context context-type="linenumber">746</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="adminMail.cleaners" datatype="html">
+        <source>All cleaners</source>
+        <target>Alle schoonmakers</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">747</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminMail.clients" datatype="html">
+        <source>All clients</source>
+        <target>Alle klanten</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">748</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="adminMail.email" datatype="html">
         <source>Email</source>
         <target>E-mail</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">747</context>
+          <context context-type="linenumber">749</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminMail.subject" datatype="html">
@@ -5199,7 +5215,7 @@
         <target>Onderwerp</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">748</context>
+          <context context-type="linenumber">750</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminMail.message" datatype="html">
@@ -5207,7 +5223,7 @@
         <target>Bericht</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">749</context>
+          <context context-type="linenumber">751</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminMail.cta" datatype="html">
@@ -5215,7 +5231,7 @@
         <target>Knoptekst</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">750</context>
+          <context context-type="linenumber">752</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminMail.url" datatype="html">
@@ -5223,7 +5239,7 @@
         <target>Knoplink</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">751</context>
+          <context context-type="linenumber">753</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminMail.checking" datatype="html">
@@ -5231,7 +5247,7 @@
         <target>Ontvangers worden gecontroleerd…</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">752</context>
+          <context context-type="linenumber">754</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminMail.previewOne" datatype="html">
@@ -5239,7 +5255,7 @@
         <target>Dit gaat naar {{name}} ({{email}}).</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">753</context>
+          <context context-type="linenumber">755</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminMail.previewAll" datatype="html">
@@ -5247,7 +5263,7 @@
         <target>Dit gaat naar {{count}} mensen.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">754</context>
+          <context context-type="linenumber">756</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminMail.previewMissing" datatype="html">
@@ -5255,7 +5271,7 @@
         <target>Geen account gebruikt dit e-mailadres.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">755</context>
+          <context context-type="linenumber">757</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminMail.none" datatype="html">
@@ -5263,7 +5279,7 @@
         <target>Er is niemand om dit naartoe te sturen.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">756</context>
+          <context context-type="linenumber">758</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminMail.send" datatype="html">
@@ -5271,7 +5287,7 @@
         <target>Versturen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">757</context>
+          <context context-type="linenumber">759</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminMail.sending" datatype="html">
@@ -5279,7 +5295,7 @@
         <target>Bezig met versturen…</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">758</context>
+          <context context-type="linenumber">760</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminMail.sentOne" datatype="html">
@@ -5287,7 +5303,7 @@
         <target>E-mail verstuurd.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">759</context>
+          <context context-type="linenumber">761</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminMail.sent" datatype="html">
@@ -5295,7 +5311,7 @@
         <target>Verstuurd naar {{sent}} mensen.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">760</context>
+          <context context-type="linenumber">762</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminMail.sentPartial" datatype="html">
@@ -5303,7 +5319,7 @@
         <target>Verstuurd naar {{sent}} mensen. {{failed}} konden niet worden verstuurd.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">761</context>
+          <context context-type="linenumber">763</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminMail.confirmAll" datatype="html">
@@ -5311,7 +5327,7 @@
         <target>Deze e-mail naar {{count}} mensen versturen?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">762</context>
+          <context context-type="linenumber">764</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminMail.required" datatype="html">
@@ -5319,7 +5335,7 @@
         <target>Vul een onderwerp en een bericht in.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">763</context>
+          <context context-type="linenumber">765</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminMail.linkRequired" datatype="html">
@@ -5327,7 +5343,7 @@
         <target>Een knop heeft zowel een tekst als een link nodig.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">764</context>
+          <context context-type="linenumber">766</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminMail.urlInvalid" datatype="html">
@@ -5335,7 +5351,7 @@
         <target>De knoplink moet beginnen met http:// of https://.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">765</context>
+          <context context-type="linenumber">767</context>
         </context-group>
       </trans-unit>
       <trans-unit id="adminMail.errors.generic" datatype="html">
@@ -5343,7 +5359,7 @@
         <target>De e-mail kon niet worden verstuurd. Probeer het opnieuw.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
-          <context context-type="linenumber">767</context>
+          <context context-type="linenumber">769</context>
         </context-group>
       </trans-unit>
     </body>

@@ -3,7 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
-export type MailAudience = 'one' | 'all';
+export type MailAudience = 'one' | 'all' | 'cleaners' | 'clients';
 
 export interface MailPreview {
   count: number;

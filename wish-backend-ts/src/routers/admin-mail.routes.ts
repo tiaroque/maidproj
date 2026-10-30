@@ -18,6 +18,9 @@ import {
 const adminMailRouter = Router();
 adminMailRouter.use(auth, requireModerator);
 
+const userTypeFor = (audience: string) =>
+  audience === "cleaners" ? "Cleaner" : audience === "clients" ? "Client" : undefined;
+
 const oneRecipient = async (email: string): Promise<MailableUser[]> => {
   const user = (await getUserByEmail(email))?.user;
   if (!user || user.deleted || user.isFake || !user.email) {
@@ -47,7 +50,9 @@ adminMailRouter.get(
           email: recipient?.email || email,
         });
       }
-      res.status(200).send({ count: await countMailableUsers() });
+      res.status(200).send({
+        count: await countMailableUsers(userTypeFor(audience)),
+      });
     } catch (error) {
       next(error);
     }
@@ -66,7 +71,7 @@ adminMailRouter.post(
       const recipients =
         audience === "one"
           ? await oneRecipient(email)
-          : await listMailableUsers();
+          : await listMailableUsers(userTypeFor(audience));
 
       if (audience === "one" && recipients.length === 0) {
         return res.status(404).send({ error: "USER_NOT_FOUND" });

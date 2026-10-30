@@ -9,8 +9,12 @@ const isHttpUrl = (value: string) => {
   }
 };
 
+const AUDIENCES = ["one", "all", "cleaners", "clients"];
+
 export const previewMailRules = [
-  query("audience").isIn(["one", "all"]).withMessage("audience must be one or all"),
+  query("audience")
+    .isIn(AUDIENCES)
+    .withMessage("audience must be one, all, cleaners or clients"),
   query("email")
     .if(query("audience").equals("one"))
     .trim()
@@ -20,7 +24,9 @@ export const previewMailRules = [
 ];
 
 export const sendMailRules = [
-  body("audience").isIn(["one", "all"]).withMessage("audience must be one or all"),
+  body("audience")
+    .isIn(AUDIENCES)
+    .withMessage("audience must be one, all, cleaners or clients"),
   body("email")
     .if(body("audience").equals("one"))
     .trim()

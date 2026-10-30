@@ -12,24 +12,17 @@
       <div>
         <p class="ad-card-title">{{ "adminMail.audience" | translate }}</p>
         <div class="mt-3 flex flex-wrap gap-2" role="radiogroup" [attr.aria-label]="'adminMail.audience' | translate">
-          <button
-            type="button"
-            role="radio"
-            [attr.aria-checked]="audience() === 'one'"
-            [class]="audience() === 'one' ? 'ad-btn' : 'ad-btn-ghost'"
-            (click)="setAudience('one')"
-          >
-            {{ "adminMail.one" | translate }}
-          </button>
-          <button
-            type="button"
-            role="radio"
-            [attr.aria-checked]="audience() === 'all'"
-            [class]="audience() === 'all' ? 'ad-btn' : 'ad-btn-ghost'"
-            (click)="setAudience('all')"
-          >
-            {{ "adminMail.all" | translate }}
-          </button>
+          @for (option of audiences; track option) {
+            <button
+              type="button"
+              role="radio"
+              [attr.aria-checked]="audience() === option"
+              [class]="audience() === option ? 'ad-btn' : 'ad-btn-ghost'"
+              (click)="setAudience(option)"
+            >
+              {{ ("adminMail." + option) | translate }}
+            </button>
+          }
         </div>
       </div>
 
