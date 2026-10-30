@@ -103,6 +103,7 @@ const COUNTRY_SLUGS: Record<string, string> = {
   CH: 'switzerland',
   NL: 'netherlands',
   GB: 'united-kingdom',
+  US: 'united-states',
 };
 
 const SERVICE_SLUGS: Record<string, string> = {

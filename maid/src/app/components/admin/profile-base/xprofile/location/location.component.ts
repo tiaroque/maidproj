@@ -84,6 +84,7 @@ export class LocationComponent {
     { code: 'CH', name: 'Switzerland' },
     { code: 'NL', name: 'Netherlands' },
     { code: 'GB', name: 'United Kingdom' },
+    { code: 'US', name: 'United States' },
   ];
 
   readonly results = signal<MeridianLocationResult[]>([]);

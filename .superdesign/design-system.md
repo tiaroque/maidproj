@@ -1,7 +1,7 @@
 # Linpura design system
 
 ## Product
-Linpura is a European home-cleaning marketplace. Two roles: **Cleaner** (offers services) and **Client** (household looking for help). Authenticated `/admin` is the member app: **Profile**, **Search**, **Chat**.
+Linpura is a home-cleaning marketplace. Two roles: **Cleaner** (offers services) and **Client** (household looking for help). Authenticated `/admin` is the member app: **Profile**, **Search**, **Chat**.
 
 Jobs to be done:
 - Clients find cleaners by service, hourly rate, availability (days + time of day) and area covered

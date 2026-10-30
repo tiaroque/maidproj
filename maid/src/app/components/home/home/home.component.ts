@@ -66,6 +66,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     { key: 'landing.partnerCountryCh', slug: 'switzerland' },
     { key: 'landing.partnerCountryNl', slug: 'netherlands' },
     { key: 'landing.partnerCountryGb', slug: 'united-kingdom' },
+    { key: 'landing.partnerCountryUs', slug: 'united-states' },
   ];
   readonly whyReasons: {
     titleKey: string;

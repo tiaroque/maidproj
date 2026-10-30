@@ -93,7 +93,7 @@ router.get(
 );
 
 // Mirrors BROWSE_COUNTRIES in the frontend's src/app/utils/browse-locations.ts.
-const browseCountries = new Set(["PT", "DE", "FR", "ES", "IT", "CH", "NL", "GB"]);
+const browseCountries = new Set(["PT", "DE", "FR", "ES", "IT", "CH", "NL", "GB", "US"]);
 
 const visitorCountry = (ip: string | undefined) => {
   const country = ip ? geoip.lookup(ip)?.country : undefined;

@@ -61,6 +61,7 @@ export const BROWSE_COUNTRIES: readonly BrowseCountry[] = [
   { slug: 'switzerland', code: 'CH', name: 'Switzerland' },
   { slug: 'netherlands', code: 'NL', name: 'Netherlands' },
   { slug: 'united-kingdom', code: 'GB', name: 'United Kingdom' },
+  { slug: 'united-states', code: 'US', name: 'United States' },
 ];
 
 // Spelled out rather than derived from the catalog keys, because the key is a

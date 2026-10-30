@@ -7,7 +7,7 @@ CSS approach: Material CSS variables (`--mat-sys-*`) + Tailwind utilities + `src
 
 ### Brand
 
-- Product: linpura — European maid / lifestyle matching (Client / Provider)
+- Product: linpura — home cleaning marketplace (Client / Provider)
 - Wordmark: Albert Sans, tracking-tighter, gold `#e8c97a`
 - Body: Nunito
 - Header chrome: wine `#1c1016` with cream text `#fff6ee`

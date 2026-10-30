@@ -2,7 +2,7 @@
 
 > Linpura is a marketplace for home cleaning. Cleaners publish the services they offer, their hourly rate, when they are available and the areas they cover. Households (clients) browse cleaners, post job requests and agree the details in a private chat.
 
-The site is available in English, Portuguese, French, German, Italian, Spanish and Dutch. Every page lives under a language prefix (`/en`, `/pt`, `/fr`, `/de`, `/it`, `/es`, `/nl`), and each page lists its translations with `hreflang` links. Linpura is active in 8 countries: Portugal, Germany, France, Spain, Italy, Switzerland, the Netherlands and the United Kingdom.
+The site is available in English, Portuguese, French, German, Italian, Spanish and Dutch. Every page lives under a language prefix (`/en`, `/pt`, `/fr`, `/de`, `/it`, `/es`, `/nl`), and each page lists its translations with `hreflang` links. Linpura is active in 9 countries: Portugal, Germany, France, Spain, Italy, Switzerland, the Netherlands, the United Kingdom and the United States.
 
 Browsing public profiles does not require an account. Contacting someone requires registering, verifying an email address and solving an image captcha. Account areas under `/{lang}/admin` are private and must not be crawled.
 
@@ -10,7 +10,7 @@ Browsing public profiles does not require an account. Contacting someone require
 
 - [Home](https://www.linpura.com/en): What Linpura is and how announcements and job requests work
 - [Browse profiles](https://www.linpura.com/en/browse): Search public profiles. Accepts the query parameters `type` (`Cleaner` or `Client`, default `Cleaner`), `service` (`regular`, `deep`, `ironing`, `laundry`, `windows`, `moveInOut`, `afterParty`, `kitchenAppliances`, `office`, `garage`, `stairs`, `ecoProducts`), `country` and `location`
-- [Browse by country](https://www.linpura.com/en/browse/portugal): Cleaners in one country, at `/{lang}/browse/{country}`. The country slugs are `portugal`, `germany`, `france`, `spain`, `italy`, `switzerland`, `netherlands` and `united-kingdom`
+- [Browse by country](https://www.linpura.com/en/browse/portugal): Cleaners in one country, at `/{lang}/browse/{country}`. The country slugs are `portugal`, `germany`, `france`, `spain`, `italy`, `switzerland`, `netherlands`, `united-kingdom` and `united-states`
 - [Browse by city](https://www.linpura.com/en/browse/portugal/lisboa): Cleaners in one city, at `/{lang}/browse/{country}/{city}`. A cleaner appears in the city they live in and in every area they cover. City slugs are unaccented and lowercase
 - [Browse by city and service](https://www.linpura.com/en/browse/portugal/lisboa/deep-cleaning): Cleaners offering one service in one city, at `/{lang}/browse/{country}/{city}/{service}`. The service slugs are `regular-cleaning`, `deep-cleaning`, `ironing`, `laundry`, `window-cleaning`, `move-in-move-out`, `after-party-cleaning`, `oven-and-fridge`, `cooking`, `office-cleaning`, `garage-cleaning`, `stair-cleaning` and `eco-friendly-cleaning`. A place with no cleaners returns 404, and one with only a few renders but is marked `noindex`. The sitemap lists the pages that are indexable
 - [Create an account](https://www.linpura.com/en/register): Register with an email address and password, or with Google

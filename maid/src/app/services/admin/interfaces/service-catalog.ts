@@ -29,7 +29,7 @@ export const MAX_AREAS = 10;
 export const MIN_RATE = 5;
 export const MAX_RATE = 200;
 
-const CURRENCY_BY_COUNTRY: Record<string, string> = { CH: 'CHF', GB: 'GBP' };
+const CURRENCY_BY_COUNTRY: Record<string, string> = { CH: 'CHF', GB: 'GBP', US: 'USD' };
 
 export const currencyForCountry = (country?: string | null) =>
   CURRENCY_BY_COUNTRY[country ?? ''] ?? 'EUR';
