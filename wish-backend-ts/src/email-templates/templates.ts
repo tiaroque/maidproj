@@ -4,6 +4,7 @@ import {
     getResetCopy,
     getSignupReminderCopy,
     getVerificationCopy,
+    getWelcomeCopy,
     resolveEmailLang,
     type EmailCopy,
 } from './email-i18n';
@@ -164,8 +165,31 @@ export const getCustomMessageEmail = (
         '--CTA_BLOCK--': cta && url ? ctaBlock(cta, url) : '',
     };
 
-    return readCachedTemplate('message.html').replace(
+    return fillMessageTemplate(values);
+};
+
+const fillMessageTemplate = (values: Record<string, string>) =>
+    readCachedTemplate('message.html').replace(
         /--(?:LANG|TITLE|PREHEADER|HEADING|GREETING|BODY|CTA_BLOCK)--/g,
         (token) => values[token] ?? '',
     );
+
+export const getWelcomeEmail = (name: string, url: string, lang?: string) => {
+    const resolvedLang = resolveEmailLang(lang);
+    const copy = getWelcomeCopy(resolvedLang);
+    const greeting = escapeHtml(
+        fallbackGreeting(resolvedLang, copy.greeting, name),
+    );
+
+    return fillMessageTemplate({
+        '--LANG--': resolvedLang,
+        '--TITLE--': escapeHtml(copy.subject),
+        '--PREHEADER--': escapeHtml(copy.preheader),
+        '--HEADING--': escapeHtml(copy.heading),
+        '--GREETING--': greeting,
+        '--BODY--': copy.paragraphs
+            .map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`)
+            .join(''),
+        '--CTA_BLOCK--': ctaBlock(copy.cta, url),
+    });
 };

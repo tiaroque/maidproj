@@ -54,6 +54,7 @@ import { sendEmail } from "../services/email.service";
 import {
   emailTokenTtlMs,
   sendVerificationEmail,
+  sendWelcomeEmail,
 } from "../services/verification-email.service";
 import { getPasswordResetEmail } from "../email-templates/templates";
 import { getResetCopy, resolveEmailLang } from "../email-templates/email-i18n";
@@ -247,8 +248,10 @@ usersRouter.get("/google/callback", async (req, res, next) => {
       return res.redirect(loginRedirect(lang, "/login?googleError=1"));
     }
 
+    let created = false;
     let userObj = await getUserByEmail(email);
     if (!userObj?.user) {
+      created = true;
       await createUser({
         name: payload.name || "",
         lastname: "",
@@ -283,6 +286,14 @@ usersRouter.get("/google/callback", async (req, res, next) => {
       emailVerified: user.emailVerified !== false,
     });
     await recordLogin(req, user.uid);
+
+    if (created) {
+      void sendWelcomeEmail(
+        user.email,
+        user.name || payload.name || "",
+        user.lang || lang,
+      );
+    }
 
     if (user.userType) {
       return res.redirect(loginRedirect(lang, "/admin/list"));
@@ -342,8 +353,10 @@ usersRouter.get("/facebook/callback", async (req, res) => {
       return fail("email");
     }
 
+    let created = false;
     let userObj = await getUserByEmail(email);
     if (!userObj?.user) {
+      created = true;
       await createUser({
         name: profile.name || "",
         lastname: "",
@@ -378,6 +391,14 @@ usersRouter.get("/facebook/callback", async (req, res) => {
       emailVerified: user.emailVerified !== false,
     });
     await recordLogin(req, user.uid);
+
+    if (created) {
+      void sendWelcomeEmail(
+        user.email,
+        user.name || profile.name || "",
+        user.lang || lang,
+      );
+    }
 
     if (user.userType) {
       return res.redirect(loginRedirect(lang, "/admin/list"));
@@ -703,6 +724,7 @@ usersRouter.post("/verify-email", async (req, res, next) => {
     }
 
     await confirmEmailVerification(user.email);
+    void sendWelcomeEmail(user.email, user.name || "", user.lang || "en");
     res.status(200).send();
   } catch (error) {
     next(error);

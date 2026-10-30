@@ -93,7 +93,7 @@ const fireAndForget = (task: () => Promise<void>) => {
 
 const memoryThrottle = new Map<string, number>();
 
-const acquireThrottle = async (key: string, seconds: number) => {
+export const acquireThrottle = async (key: string, seconds: number) => {
   const redis = getRedisConnection();
   if (redis) {
     return (await redis.set(key, "1", "EX", seconds, "NX")) === "OK";

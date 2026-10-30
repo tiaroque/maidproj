@@ -2,9 +2,13 @@ import config from "../endpoints.config";
 import { createResetToken, hashResetToken } from "../auth/google-oauth";
 import { setEmailVerification } from "../models/user";
 import { sendEmail } from "./email.service";
-import { getAccountVerificationEmail } from "../email-templates/templates";
+import {
+  getAccountVerificationEmail,
+  getWelcomeEmail,
+} from "../email-templates/templates";
 import {
   getVerificationCopy,
+  getWelcomeCopy,
   resolveEmailLang,
 } from "../email-templates/email-i18n";
 
@@ -28,4 +32,17 @@ export const sendVerificationEmail = async (
     getAccountVerificationEmail(name || "", verifyUrl, locale),
     getVerificationCopy(locale).subject,
   );
+};
+
+export const sendWelcomeEmail = (email: string, name: string, lang: string) => {
+  const locale = resolveEmailLang(lang);
+  const url = `${config.returnUrlEmail}/${locale}/admin/preferences`;
+  const copy = getWelcomeCopy(locale);
+  return sendEmail(
+    email,
+    getWelcomeEmail(name || "", url, locale),
+    copy.subject,
+  ).catch((error) => {
+    console.error("Welcome email failed", error);
+  });
 };

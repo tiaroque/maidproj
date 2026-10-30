@@ -11,6 +11,7 @@ import { ChatMessageDTO } from "../interfaces/main-interfaces";
 import config from "../endpoints.config";
 import { readSessionFromCookies } from "../auth/session";
 import { flagLinks } from "../services/link-detection.service";
+import { notifyChatByEmail } from "../services/activity-email.service";
 import { notifyChatMessage } from "../services/push.service";
 
 let io: ServerIO;
@@ -183,6 +184,7 @@ const handleIncomingMessage = async (
 
   if (!receiverIsViewing) {
     notifyChatMessage(message);
+    notifyChatByEmail(message);
   }
 };
 

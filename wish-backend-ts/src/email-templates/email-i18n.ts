@@ -319,6 +319,221 @@ const signupReminderCopy: Record<EmailLang, EmailCopy> = {
   },
 };
 
+export type WelcomeCopy = {
+  subject: string;
+  preheader: string;
+  heading: string;
+  greeting: string;
+  paragraphs: [string, string, string];
+  cta: string;
+};
+
+export type NoticeCopy = {
+  subject: string;
+  heading: string;
+  body: string;
+  cta: string;
+  someone: string;
+};
+
+const welcomeCopy: Record<EmailLang, WelcomeCopy> = {
+  en: {
+    subject: "Welcome to Linpura",
+    preheader:
+      "We email you when someone contacts you or likes your profile.",
+    heading: "Welcome to Linpura",
+    greeting: "Hi --NAME--,",
+    paragraphs: [
+      "Your Linpura account is ready. Complete your profile and start using the app.",
+      "When someone contacts you, or when your profile receives a like, you get a notification at this email address.",
+      "You can also turn on automatic browser notifications. You will find that option in your preferences, so you hear about it even when Linpura is closed.",
+    ],
+    cta: "Open preferences",
+  },
+  pt: {
+    subject: "Bem-vindo ao Linpura",
+    preheader:
+      "Avisamos por email quando alguém lhe escrever ou gostar do seu perfil.",
+    heading: "Bem-vindo ao Linpura",
+    greeting: "Olá --NAME--,",
+    paragraphs: [
+      "A sua conta Linpura está pronta. Complete o perfil e comece a usar a app.",
+      "Quando alguém entrar em contacto consigo, ou quando o seu perfil receber um gosto, recebe uma notificação neste email.",
+      "Pode também ligar as notificações automáticas do navegador. Encontra essa opção nas preferências, para ser avisado mesmo com o Linpura fechado.",
+    ],
+    cta: "Abrir preferências",
+  },
+  de: {
+    subject: "Willkommen bei Linpura",
+    preheader:
+      "Wir schreiben Ihnen, wenn Sie jemand kontaktiert oder Ihr Profil gefällt.",
+    heading: "Willkommen bei Linpura",
+    greeting: "Hallo --NAME--,",
+    paragraphs: [
+      "Ihr Linpura-Konto ist bereit. Vervollständigen Sie Ihr Profil und nutzen Sie die App.",
+      "Wenn Sie jemand kontaktiert oder Ihr Profil ein Like erhält, bekommen Sie eine Benachrichtigung an diese E-Mail-Adresse.",
+      "Sie können auch die automatischen Browser-Benachrichtigungen einschalten. Die Option finden Sie in den Einstellungen, damit Sie auch dann Bescheid bekommen, wenn Linpura geschlossen ist.",
+    ],
+    cta: "Einstellungen öffnen",
+  },
+  fr: {
+    subject: "Bienvenue sur Linpura",
+    preheader:
+      "Nous vous écrivons lorsqu'une personne vous contacte ou aime votre profil.",
+    heading: "Bienvenue sur Linpura",
+    greeting: "Bonjour --NAME--,",
+    paragraphs: [
+      "Votre compte Linpura est prêt. Complétez votre profil et commencez à utiliser l'application.",
+      "Lorsqu'une personne vous contacte ou aime votre profil, vous recevez une notification à cette adresse email.",
+      "Vous pouvez aussi activer les notifications automatiques du navigateur. Vous les trouverez dans les préférences, pour être prévenu même lorsque Linpura est fermé.",
+    ],
+    cta: "Ouvrir les préférences",
+  },
+  it: {
+    subject: "Benvenuto su Linpura",
+    preheader:
+      "Ti scriviamo quando qualcuno ti contatta o mette mi piace al tuo profilo.",
+    heading: "Benvenuto su Linpura",
+    greeting: "Ciao --NAME--,",
+    paragraphs: [
+      "Il tuo account Linpura è pronto. Completa il profilo e inizia a usare l'app.",
+      "Quando qualcuno ti contatta o mette mi piace al tuo profilo, ricevi una notifica a questo indirizzo email.",
+      "Puoi anche attivare le notifiche automatiche del browser. Le trovi nelle preferenze, così vieni avvisato anche quando Linpura è chiuso.",
+    ],
+    cta: "Apri le preferenze",
+  },
+  es: {
+    subject: "Bienvenido a Linpura",
+    preheader:
+      "Te escribimos cuando alguien contacta contigo o le gusta tu perfil.",
+    heading: "Bienvenido a Linpura",
+    greeting: "Hola --NAME--,",
+    paragraphs: [
+      "Tu cuenta de Linpura está lista. Completa tu perfil y empieza a usar la app.",
+      "Cuando alguien se ponga en contacto contigo, o cuando tu perfil reciba un me gusta, recibirás una notificación en este correo.",
+      "También puedes activar las notificaciones automáticas del navegador. Las encuentras en las preferencias, para enterarte aunque Linpura esté cerrado.",
+    ],
+    cta: "Abrir preferencias",
+  },
+  nl: {
+    subject: "Welkom bij Linpura",
+    preheader:
+      "We mailen je als iemand contact opneemt of je profiel leuk vindt.",
+    heading: "Welkom bij Linpura",
+    greeting: "Hoi --NAME--,",
+    paragraphs: [
+      "Je Linpura-account is klaar. Maak je profiel af en begin de app te gebruiken.",
+      "Als iemand contact met je opneemt, of als je profiel een like krijgt, ontvang je een melding op dit e-mailadres.",
+      "Je kunt ook automatische browsermeldingen aanzetten. Die optie staat bij je voorkeuren, zodat je het ook hoort als Linpura gesloten is.",
+    ],
+    cta: "Voorkeuren openen",
+  },
+};
+
+const likeNoticeCopy: Record<EmailLang, NoticeCopy> = {
+  en: {
+    subject: "Someone liked your Linpura profile",
+    heading: "New like",
+    body: "--NAME-- liked your profile.",
+    cta: "View activity",
+    someone: "Someone",
+  },
+  pt: {
+    subject: "Alguém gostou do seu perfil no Linpura",
+    heading: "Novo gosto",
+    body: "--NAME-- gostou do seu perfil.",
+    cta: "Ver atividade",
+    someone: "Alguém",
+  },
+  de: {
+    subject: "Jemandem gefällt Ihr Linpura-Profil",
+    heading: "Neues Like",
+    body: "--NAME-- gefällt Ihr Profil.",
+    cta: "Aktivität ansehen",
+    someone: "Jemand",
+  },
+  fr: {
+    subject: "Quelqu'un a aimé votre profil Linpura",
+    heading: "Nouveau j'aime",
+    body: "--NAME-- a aimé votre profil.",
+    cta: "Voir l'activité",
+    someone: "Quelqu'un",
+  },
+  it: {
+    subject: "A qualcuno piace il tuo profilo Linpura",
+    heading: "Nuovo mi piace",
+    body: "A --NAME-- piace il tuo profilo.",
+    cta: "Vedi attività",
+    someone: "Qualcuno",
+  },
+  es: {
+    subject: "A alguien le gusta tu perfil de Linpura",
+    heading: "Nuevo me gusta",
+    body: "A --NAME-- le gusta tu perfil.",
+    cta: "Ver actividad",
+    someone: "Alguien",
+  },
+  nl: {
+    subject: "Iemand vindt je Linpura-profiel leuk",
+    heading: "Nieuwe like",
+    body: "--NAME-- vindt je profiel leuk.",
+    cta: "Activiteit bekijken",
+    someone: "Iemand",
+  },
+};
+
+const chatNoticeCopy: Record<EmailLang, NoticeCopy> = {
+  en: {
+    subject: "You have a new message on Linpura",
+    heading: "New message",
+    body: "--NAME-- contacted you.",
+    cta: "Open conversation",
+    someone: "Someone",
+  },
+  pt: {
+    subject: "Tem uma nova mensagem no Linpura",
+    heading: "Nova mensagem",
+    body: "--NAME-- entrou em contacto consigo.",
+    cta: "Abrir conversa",
+    someone: "Alguém",
+  },
+  de: {
+    subject: "Sie haben eine neue Nachricht auf Linpura",
+    heading: "Neue Nachricht",
+    body: "--NAME-- hat Sie kontaktiert.",
+    cta: "Unterhaltung öffnen",
+    someone: "Jemand",
+  },
+  fr: {
+    subject: "Vous avez un nouveau message sur Linpura",
+    heading: "Nouveau message",
+    body: "--NAME-- vous a contacté.",
+    cta: "Ouvrir la conversation",
+    someone: "Quelqu'un",
+  },
+  it: {
+    subject: "Hai un nuovo messaggio su Linpura",
+    heading: "Nuovo messaggio",
+    body: "--NAME-- ti ha contattato.",
+    cta: "Apri la conversazione",
+    someone: "Qualcuno",
+  },
+  es: {
+    subject: "Tienes un mensaje nuevo en Linpura",
+    heading: "Nuevo mensaje",
+    body: "--NAME-- se ha puesto en contacto contigo.",
+    cta: "Abrir conversación",
+    someone: "Alguien",
+  },
+  nl: {
+    subject: "Je hebt een nieuw bericht op Linpura",
+    heading: "Nieuw bericht",
+    body: "--NAME-- heeft contact met je opgenomen.",
+    cta: "Gesprek openen",
+    someone: "Iemand",
+  },
+};
+
 export const getVerificationCopy = (lang?: string): EmailCopy =>
   verificationCopy[resolveEmailLang(lang)];
 
@@ -327,3 +542,12 @@ export const getSignupReminderCopy = (lang?: string): EmailCopy =>
 
 export const getResetCopy = (lang?: string): EmailCopy =>
   resetCopy[resolveEmailLang(lang)];
+
+export const getWelcomeCopy = (lang?: string): WelcomeCopy =>
+  welcomeCopy[resolveEmailLang(lang)];
+
+export const getLikeNoticeCopy = (lang?: string): NoticeCopy =>
+  likeNoticeCopy[resolveEmailLang(lang)];
+
+export const getChatNoticeCopy = (lang?: string): NoticeCopy =>
+  chatNoticeCopy[resolveEmailLang(lang)];
