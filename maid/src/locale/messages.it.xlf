@@ -5130,6 +5130,222 @@
           <context context-type="linenumber">737</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="adminMail.menu" datatype="html">
+        <source>Send email</source>
+        <target>Invia email</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">740</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminMail.eyebrow" datatype="html">
+        <source>Admin</source>
+        <target>Admin</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">741</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminMail.title" datatype="html">
+        <source>Send an email</source>
+        <target>Invia un&apos;email</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">742</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminMail.lead" datatype="html">
+        <source>Write a message and send it now to one person, or to everyone with an account. Each email opens with their name.</source>
+        <target>Scrivi un messaggio e invialo ora a una persona, o a tutte le persone con un account. Ogni email inizia con il suo nome.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">743</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminMail.audience" datatype="html">
+        <source>Who receives it</source>
+        <target>Chi la riceve</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">744</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminMail.one" datatype="html">
+        <source>One person</source>
+        <target>Una persona</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">745</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminMail.all" datatype="html">
+        <source>Everyone with an account</source>
+        <target>Tutte le persone con un account</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">746</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminMail.email" datatype="html">
+        <source>Email</source>
+        <target>Email</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">747</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminMail.subject" datatype="html">
+        <source>Subject</source>
+        <target>Oggetto</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">748</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminMail.message" datatype="html">
+        <source>Message</source>
+        <target>Messaggio</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">749</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminMail.cta" datatype="html">
+        <source>Button label</source>
+        <target>Testo del pulsante</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">750</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminMail.url" datatype="html">
+        <source>Button link</source>
+        <target>Link del pulsante</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">751</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminMail.checking" datatype="html">
+        <source>Checking who will receive this…</source>
+        <target>Controllo di chi la riceverà…</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">752</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminMail.previewOne" datatype="html">
+        <source>This will be sent to {{name}} ({{email}}).</source>
+        <target>Sarà inviata a {{name}} ({{email}}).</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">753</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminMail.previewAll" datatype="html">
+        <source>This will be sent to {{count}} people.</source>
+        <target>Sarà inviata a {{count}} persone.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">754</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminMail.previewMissing" datatype="html">
+        <source>No account uses that email.</source>
+        <target>Nessun account usa questa email.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">755</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminMail.none" datatype="html">
+        <source>There is nobody to send this to.</source>
+        <target>Non c&apos;è nessuno a cui inviare questa email.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">756</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminMail.send" datatype="html">
+        <source>Send</source>
+        <target>Invia</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">757</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminMail.sending" datatype="html">
+        <source>Sending…</source>
+        <target>Invio…</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">758</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminMail.sentOne" datatype="html">
+        <source>Email sent.</source>
+        <target>Email inviata.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">759</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminMail.sent" datatype="html">
+        <source>Sent to {{sent}} people.</source>
+        <target>Inviata a {{sent}} persone.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">760</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminMail.sentPartial" datatype="html">
+        <source>Sent to {{sent}} people. {{failed}} could not be sent.</source>
+        <target>Inviata a {{sent}} persone. {{failed}} non sono state inviate.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">761</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminMail.confirmAll" datatype="html">
+        <source>Send this email to {{count}} people?</source>
+        <target>Inviare questa email a {{count}} persone?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">762</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminMail.required" datatype="html">
+        <source>Add a subject and a message.</source>
+        <target>Inserisci un oggetto e un messaggio.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">763</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminMail.linkRequired" datatype="html">
+        <source>A button needs both a label and a link.</source>
+        <target>Il pulsante ha bisogno di un testo e di un link.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">764</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminMail.urlInvalid" datatype="html">
+        <source>The button link must start with http:// or https://.</source>
+        <target>Il link del pulsante deve iniziare con http:// o https://.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">765</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="adminMail.errors.generic" datatype="html">
+        <source>The email could not be sent. Please try again.</source>
+        <target>Impossibile inviare l&apos;email. Riprova.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/locale/compiled-messages.ts</context>
+          <context context-type="linenumber">767</context>
+        </context-group>
+      </trans-unit>
     </body>
   </file>
 </xliff>
