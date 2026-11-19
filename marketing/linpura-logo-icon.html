@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8" />
+    <title>Linpura — ícone</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        width: 1080px;
+        height: 1080px;
+        overflow: hidden;
+        background: #071c20;
+      }
+
+      .icon {
+        position: relative;
+        width: 1080px;
+        height: 1080px;
+        display: grid;
+        place-items: center;
+        background:
+          radial-gradient(
+            780px 620px at 8% -6%,
+            rgba(127, 216, 195, 0.26),
+            transparent 58%
+          ),
+          radial-gradient(
+            680px 520px at 108% 112%,
+            rgba(15, 118, 110, 0.55),
+            transparent 55%
+          ),
+          linear-gradient(168deg, #16484d 0%, #0d3337 48%, #071c20 100%);
+        overflow: hidden;
+      }
+
+      .icon::before,
+      .icon::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        border: 3px solid rgba(127, 216, 195, 0.16);
+      }
+
+      .icon::before {
+        width: 620px;
+        height: 620px;
+        right: -180px;
+        top: -240px;
+      }
+
+      .icon::after {
+        width: 400px;
+        height: 400px;
+        right: -40px;
+        top: -80px;
+        border-color: rgba(127, 216, 195, 0.1);
+      }
+
+      .broom {
+        position: relative;
+        z-index: 1;
+        width: 560px;
+        height: 560px;
+        fill: #7fd8c3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="icon">
+      <svg class="broom" viewBox="0 0 64 64" aria-label="Linpura">
+        <g transform="rotate(15 32 32) translate(0 -3)">
+          <rect x="30" y="3" width="4" height="27" rx="2" />
+          <path d="M23 28h18l3 9H20z" />
+          <path d="M20.5 36h5l-7 18a3.5 3.5 0 0 1-7 0z" />
+          <path d="M25 36h5l-2.5 21a3.5 3.5 0 0 1-7 0z" />
+          <path d="M29.5 36h5l1 22a3.5 3.5 0 0 1-7 0z" />
+          <path d="M34 36h5l4.5 21a3.5 3.5 0 0 1-7 0z" />
+          <path d="M38.5 36h5l8.5 18a3.5 3.5 0 0 1-7 0z" />
+        </g>
+      </svg>
+    </div>
+  </body>
+</html>
